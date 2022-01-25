@@ -1,2 +1,2 @@
 # GRB
-Project work on GRB. Master thesis
+Code for filtering, analyzing and reading data related to GRB
