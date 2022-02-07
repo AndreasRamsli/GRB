@@ -1,2 +1,2 @@
 # GRB
-Code for filtering, analyzing and reading data related to GRB
+Code for reading data, filtering and analyzing related to GRB
