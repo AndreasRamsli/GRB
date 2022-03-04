@@ -71,6 +71,6 @@ linkaxes(ax, 'x')           % link time axes of both subplots to each other
 set(gca, 'xlim', [0, 1e6])  % set up certain time window
 
 string = datestr(T, 'yyyy_mm_dd_HH_MM_SS');
-filename =  ['output/file_mat_TGF/',char(string), '.mat'];
+filename =  ['/Home/siv30/wad005/master/GRB/MATLAB/output/file_mat_TGF/',char(string), '.mat'];
 save(filename, 'date', 'dau', 'det', 'erg', 'lat', 'lon', 'tms', 'tsc', 'tus', 'typ', 'DetCol', 'adr', '-v7');
 end

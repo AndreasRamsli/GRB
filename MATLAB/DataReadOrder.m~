@@ -8,12 +8,10 @@ function [Lat, Lon, T0, Tsc, Tms, Tus, Ttk, Typ, Erg, Dau, Det] = DataReadOrder(
 % and your path to the data (line 14).
 
 %---------------------
-addpath('matlab_cdf380_patch-64');
-addpath("/Home/siv30/wad005/master/GRB/MATLAB/output/file_mat_TGF")
-addpath ("/Home/siv30/wad005/master/GRB/MATLAB")
+%addpath('matlab_cdf370_patch-64');
 %---------------------
 %DataDir = '/Volumes/ift_asdc/bulktransfer/ops/MXGS/cdf/mxgstgfobservation/';    %% uncomment here <-------------------
-DataDir = '/net_krb5/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/MXGS/cdf/mxgstgfobservation/';    %% uncomment here <-------------------
+DataDir = '/net_krb5/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/MXGS/cdf/mxgstgfobservation';    %% uncomment here <-------------------
 %DataDir = '/Volumes/ift_asdc/bulktransfer/ops/MXGS/cdf/mxgstgfobservationlevel1/';    %% uncomment here <-------------------
 
 T0 = datetime(datevec(datenum(year, 1, 1, 0, 0, 0)));

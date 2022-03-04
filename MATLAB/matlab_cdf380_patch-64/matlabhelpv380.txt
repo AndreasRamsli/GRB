@@ -1,0 +1,1977 @@
+function out = SPDFBREAKDOWNEPOCH16(epoch16)
+%SPDFBREAKDOWNEPOCH16 converts the CDF_EPOCH16 time, picoseconds since
+%             0000-01-01 to UTC date/time.
+%
+%   OUT = SPDFBREAKDOWNEPOCH16(epoch16) returns the UTC date/time from CDF_EPOCH16
+%   time. OUT is an array with each row having ten (10) numerical values
+%   for year, month, day, hour, minute, second, millisecond, microsecond,
+%   nanosecond and picosecond..
+%
+%     epoch16            An array with each row having two (2) numerical
+%                        value in CDF_EPOCH16 of mxDOUBLE_CLASS (double).
+%
+%   Examples:
+%
+%   % breakdown three CDF_EPOCH16 times to their UTC form.
+%
+%   data = spdfparseepoch16 (['2009-01-01T00:00:00.123456789123', ...
+%                             '2009-01-01T12:00:00.987654321123', ...
+%                             '2009-01-01T12:34:56.123456789123']);
+%   out = SPDFBREAKDOWNEPOCH16(data)
+%   ans =
+%
+%        2009     1     1     0      0     0    123    456    789  123
+%        2009     1     1    12      0     0    987    654    321  123
+%        2010     1     1    12     34    56    123    456    789  123
+%
+%
+%   See also SPDFENCODEEPOCH16, SPDFPARSEEPOCH16, SPDFCOMPUTEEPOCH16
+
+%
+function out = SPDFBREAKDOWNEPOCH(epoch)
+%SPDFBREAKDOWNEPOCH converts the CDF_EPOCH time, milliseconds since
+%             0000-01-01 to UTC date/time.
+%
+%   OUT = SPDFBREAKDOWNEPOCH(epoch) returns the UTC date/time from CDF_EPOCH
+%   time. OUT is an array with each row having seven (7) numerical values
+%   for year, month, day, hour, minute, second, millisecond.
+%
+%     epoch            A vector with each row having one (1) numerical
+%                      value in CDF_EPOCH of mxDOUBLE_CLASS (double).
+%
+%   Examples:
+%
+%   % breakdown three CDF_EPOCH times to their UTC form.
+%
+%   data = spdfparseepoch (['2009-01-01T00:00:00.123', ...
+%                           '2009-01-01T12:00:00.987', ...
+%                           '2009-01-01T12:34:56.123']);
+%   out = SPDFBREAKDOWNEPOCH(data)
+%   ans =
+%
+%        2009     1     1     0      0     0    123
+%        2009     1     1    12      0     0    987
+%        2010     1     1    12     34    56    123
+%
+%
+%   See also CDFEPOCH, SPDFENCODEEPOCH, SPDFPARSEEPOCH, SPDFCOMPUTEEPOCH
+
+function out = SPDFBREAKDOWNTT2000(tt2000)
+%SPDFBREAKDOWNTT2000 converts the CDF TT2000 time, nanoseconds since
+%             2000-01-01 12:00:00 to UTC date/time.
+%
+%   OUT = SPDFBREAKDOWNTT2000(tt2000) returns the UTC date/time from CDF TT2000
+%   time. OUT is an array with each row having nine (9) numerical values
+%   for year, month, day, hour, minute, second, millisecond, microsecond
+%   and nanosecond.
+%
+%     tt2000             A vector with each row having one (1) numerical
+%                        value in CDF TT2000 of mxINT64_CLASS (int64).
+%
+%   Examples:
+%
+%   % breakdown three CDF TT2000 times to their UTC form.
+%
+%   data = [ 284040066307456789; 284083267171654321; 315621362307456789];
+%   out = SPDFBREAKDOWNTT2000(data)
+%   ans =
+%
+%        2009     1     1     0      0     0    123    456    789
+%        2009     1     1    12      0     0    987    654    321
+%        2010     1     1    12     34    56    123    456    789
+%
+%
+%   See also CDFTT2000, SPDFENCODETT2000, SPDFPARSETT2000, SPDFCOMPUTETT2000
+
+function info = spdfcdfinfo(filename, varargin)
+%SPDFCDFINFO Get details about a CDF file.
+%   INFO = SPDFCDFINFO(FILE) gives information about a Common Data Format
+%   (CDF) file.  INFO is a structure containing the following fields:
+%
+%     Filename             A string containing the name of the file
+%
+%     FileModDate          A string containing the modification date of
+%                          the file
+%
+%     FileSize             An integer indicating the size of the file in
+%                          bytes
+%
+%     Format               A string containing the file format (CDF)
+%
+%     FormatVersion        A string containing the version of the CDF
+%                          library used to create the file
+%
+%     FileSettings         A structure containing the file settings
+%                          describing the file
+%
+%     Subfiles             A cell array of filenames which contain the
+%                          CDF file's data if it is a multifile CDF
+%
+%     Variables            A cell array containing details about the
+%                          variables in the file (see below)
+%
+%     GlobalAttributes     A structure containing the global meta-data
+%
+%     VariableAttributes   A structure containing meta-data for the
+%                          variables
+%
+%     LibVersion           A string containing the library version of 
+%                          the CDF that is used to build the SPDFCDFinfo tool
+%
+%     PatchVersion         A string containing the patch version of 
+%                          the MATLAB-CDF modules, e.g., spdfcdfinfo,
+%                          spdfcdfread, spdfcdfwrite, and its release
+%
+%   Note: The CDF file name can be passed in as a null. In this case, INFO
+%         contains only the CDF library version and MATLAB-CDF version.  
+%
+%   The "Variables" field contains a cell array of details about the
+%   variables in the CDF file.  There are two presentations that can be
+%   acquired. The original form is presented as the following:
+%   each row represents a variable in the file.  The columns are:
+%
+%     (1) The variable's name as a string.
+%
+%     (2) The dimensions of the variable according to MATLAB's SIZE
+%         function. 
+%
+%     (3) The number of records assigned for this variable.
+%
+%     (4) The variable's data type as it is stored in the CDF file.
+%
+%     (5) The record and dimension variance settings for the variable.
+%         The value to the left of the slash designates whether values
+%         vary by record; the values to the right designate whether
+%         values vary at each dimension.
+%
+%     (6) The sparsity of the variables records.  Allowable values are
+%         'Full', 'Sparse(padded)', and 'Sparse(previous)'.
+%
+%     (7) The compression of the variables.  Allowable values are
+%         'None', 'RLE', 'HUFF', 'AHUFF', and 'GZIP.x' where x is the 
+%         GZIP compression level.
+%
+%     (8) The blocking factors of the variables, if set.  A blocking factor is
+%         the chunk of records to be pre-allocated for a standard variable when
+%         a record being written does not already exist, or the number of
+%         records to be compressed together for a compressed variable. For 
+%         variables with large record size or number, providing a large 
+%         blocking factor would have a significant impact on I/O performance
+%         over the defaults.
+%
+%     (9) The pad values of the variables, if set. 
+%    (10) The FILLVAL attribute entry values of the variables, if set. 
+%    (11) The VALIDMIN attribute entry values of the variables, if set. 
+%    (12) The VALIDMAX attribute entry values of the variables, if set. 
+%
+%   varinfo = spdfcdfinfo (FILE, 'VARIABLES', {'var1', 'var2', ...});
+%   The optional 'VARIABLES' can be used to specify the variables that their
+%   info is to be returned. The info includes only two varibale related fields:
+%   Variables and VariableAttributes. No CDF info, e.g., Filename, Format, etc,
+%   will be retrieved. A null is filled if a variable is not found in the CDF.
+%
+%   info = spdfcdfinfo (FILE, 'VARSTRUCT', TF);
+%   The returned Variable field can also be preseted in a struture form, if 
+%   the option is provided with a true value.
+%
+%   The struture has the following fields, each one is a cell array.
+%
+%     Name                 A string containing the name of the variable
+%
+%     Dimensions           The dimensions of the variable
+%
+%     NumRecords           The number of written records for the variable
+%
+%     DataType             The data type of the variable
+%
+%     RecDimVariance       Record and dimensional variances of the variable
+%
+%     Sparseness           The sparseness of the variable
+%
+%     Compression          The Compression of the variablee
+%
+%     BlockingFactor       The blocking factor of the variable
+%
+%     PadValue             The pad value of the variable
+%
+%     FILLVAL              The FILLVAL attribute entry value for the variable
+%
+%     VALIDMIN             The VALIDMIN attribute entry value for the variable
+%
+%     VALIDMAX             The VALIDMAX attribute entry value for the variable
+%
+%   The "GlobalAttributes" and "VariableAttributes" structures contain a
+%   field for each attribute.  Each field's name corresponds to the name
+%   of the attribute, and the field contains a cell array containing the
+%   entry values for the attribute.  For variable attributes, the first
+%   column of the cell array contains the Variable names associated with
+%   the entries, and the second contains the entry values.
+%
+%   NOTE: Attribute names which SPDFCDFINFO uses for field names in
+%   "GlobalAttributes" and "VariableAttributes" may not match the names
+%   of the attributes in the CDF file exactly.  Because attribute names
+%   can contain characters which are illegal in MATLAB field names, they
+%   may be translated into legal field names.  Illegal characters which
+%   appear at the beginning of attributes are removed; other illegal
+%   characters are replaced with underscores ('_').  If an attribute's
+%   name is modified, the attribute's internal number is appended to the
+%   end of the field name.  For example, '  Variable%Attribute ' might
+%   become 'Variable_Attribute_013'.
+%
+%   To get the CDF library version that is used to build the current MATLAB
+%   tool programs, e.g., spdfcdfread, spdfcdfwrite, spdfcdfinfo, you can
+%   simply enter the command without providing a CDF file:
+%   spdfcdfinfo()
+%
+%   Library version may differ from a CDF file's version. A CDF file is
+%   assigned with the library version when it is created or modified.
+%
+%   Notes:
+%
+%     SPDFCDFINFO creates temporary files when accessing CDF files.  The
+%     current working directory must be writable.
+%
+%
+%   See also SPDFCDFREAD, SPDFCDFUPDATE, SPDFCDFWRITE, CDFEPOCH, CDFTT2000,
+%            SPDFENCODEEPOCH, SPDFCOMPUTEEPOCH, SPDFPARSEEPOCH,
+%            SPDFBREAKDOWNEPOCH, SPDFENCODEEPOCH16, SPDFCOMPUTEEPOCH16,
+%            SPDFPARSEEPOCH16, SPDFBREAKDOWNEPOCH16, SPDFENCODETT2000,
+%            SPDFCOMPUTETT2000, SPDFPARSETT2000, SPDFBREAKDOWNTT2000,
+%            SPDFDATENUMTOEPOCH, SPDFDATENUMTOEPOCH16, SPDFDATENUMTOTT2000,
+%            SPDFCDFLEAPSECONDSINFO
+
+function SPDFCDFLEAPSECONDSINFO(varargin)
+%SPDFCDFLEAPSECONDSINFO shows the information how the leap seconds is used by
+%CDF.
+%
+%   SPDFCDFLEAPSECONDSINFO() displays the basic setup the CDF library uses to 
+%   acquire the leap second table.
+%
+%   SPDFCDFLEAPSECONDSINFO('DUMP', TF) the 'DUMP' option will show the contents
+%   of the leap second table, in addition to the basic information, if TF is
+%   true.
+%
+%   See also CDFTT2000, SPDFENCODETT2000, SPDFCOMPUTETT2000, SPDFPARSETT2000,
+%            SPDFBREAKDOWNTT2000.
+
+
+function [out, info] = spdfcdfread(filename, varargin)
+%SPDFCDFREAD Read the data from a CDF file.
+%   DATA = SPDFCDFREAD(FILE) reads all of the variables from each record of
+%   FILE. Every piece of data from the CDF file is read and returned.
+%
+%   Note: To improve the performance and reduce the size of returned data,
+%   especially working with large data files, the previously designated as
+%   optional option 'Combinerecords' (with 'true' value) has been changed to be
+%   the default. No need to specify this option, unless 'false' is requested.
+%
+%   DATA = SPDFCDFREAD(FILE, 'CombineRecords', TF, ...) combines all of the
+%   records from each variable into a cell array with one row (1-by-N), where
+%   N is the number of variables, if TF is true (the default). Each cell in
+%   the cell array is either a scalar value or an array. Each cell may contain
+%   a different number of data elements. For example, a single value(s) is
+%   returned for a variable of non-record variant, while a multi-dimensional
+%   array of data is returned for record-variant of scalar or dimensional
+%   variables. For epoch data of CDF_EPOCH, CDF_EPOCH16 and CDF_TIME_TT2000
+%   types, their values are automatically converted into MATLAB's datenum.
+%   (To overwrite the conversion, use 'KeepEpochAsIs' option.)
+%
+%   If the option 'Combinerecords' is specified as false, DATA will be a cell
+%   array of M-by-N, where M is the maximum number of record among the variables
+%   and N is the number of variables. Each row corresponds to a record while
+%   each column to a variable. This is the default output from MATLAB's
+%   distributed CDFREAD module. The data from scalar variables are
+%   imported into a column array.  Importing dimensional and string data
+%   extends the dimensionality of the variable.  For example,
+%   reading 1000 records of a 1-byte variable with dimensions of 20-by-30
+%   yields a cell containing a 20-by-30-by-1000 UINT8 array. For data
+%   from non-record variant variables, as their values never change from 
+%   record to record, same value(s) will be repeated in all records.
+%
+%   DATA = SPDFCDFREAD(FILE, 'Records', RECNUMS, ...) reads particular
+%   records from a CDF file.  RECNUMS is a vector of one or more
+%   zero-based record numbers to read.  DATA is a cell array with
+%   length(RECNUM) number of rows.  There are as many columns as
+%   variables.
+% 
+%   DATA = SPDFCDFREAD(FILE, 'Variables', VARNAMES, ...) reads the variables
+%   in the cell array VARNAMES from a CDF file.  DATA is a vector array
+%   with length(VARNAMES) number of columns.  There is a row for each
+%   record requested.
+% 
+%   DATA = SPDFCDFREAD(FILE, 'Slices', DIMENSIONVALUES, ...) reads specified
+%   values from one variable in the CDF file.  The matrix DIMENSIONVALUES
+%   is an m-by-3 array of "start", "interval", and "count" values.  The
+%   "start" values are zero-based.
+%
+%   The number of rows in DIMENSIONVALUES must be less than or equal to
+%   the number dimensions of the variable.  Unspecified rows are filled
+%   with the values [0 1 N] to read every value from those dimensions.
+% 
+%   When using the 'Slices' parameter, only one variable can be read at a
+%   time, so the 'Variables' parameter must be used.
+% 
+%   DATA = SPDFCDFREAD(FILE, 'ConvertEpochToDatenum', TF, ...) converts CDF 
+%   epoch data values to MATLAB datenum if TF is true (the default if the 
+%   'CombineRecords' is true). In this case, variable data will be presented in
+%   an array of datenum. If TF is false (the default if 'CombineRecords' is
+%   false), data of CDF_EPOCH type are wrapped in CDFEPOCH objects and
+%   CDF_TIME_TT2000 in CDFTT2000 objects, which can hurt performance for large
+%   datasets. For higher time resolution types as CDF_EPOCH16 and CDF_TIME_TT2000,
+%   this option will cause the loss of sub-milliseconds resolution and not 
+%   properly present the time at a leap second time.
+%
+%   DATA = SPDFCDFREAD(FILE, 'ConvertEpochToDatestr', TF, ...) converts CDF
+%   epoch data values to MATLAB datestr if TF is true. This option is
+%   similar to 'ConvertEpochToDatenum', with each CDF epoch returning as the 
+%   form: dd-mmm-yyyy hh:mm:ss (all sub-milliseconds info is not displayed).
+%   To display sub-milliseconds, use the 'CDFEpochToString' option.
+%
+%   DATA = SPDFCDFREAD(FILE, 'KeepEpochAsIs', TF, ...) whether to keep CDF 
+%   Epoch data values as is.  If TF is set as true, no data conversion
+%   from CDF epoch to MATLAB datenum is performed. The data values can
+%   be written back to CDF later again without MATLAB datenum to CDF epoch
+%   conversion. Each epoch will be kept as a double for CDF_EPOCH data, array
+%   of doubles for CDF_EPOCH16 data, or an INT64 (mxINT64_CLASS) for
+%   CDF_TIME_TT2000. If false, the default, all CDF epoch data will be converted
+%   to MATLAB's datenum. CDF epoch values can be encoded, broken down, etc, by
+%   epoch handling modules, e.g., spdfencodeepoch, spdfencodett2000, 
+%   spdfbreakdownepoch, spdfbreakdowntt2000, etc.
+%
+%   DATA = SPDFCDFREAD(FILE, 'CDFEpochToString', TF, ...) whether to return 
+%   CDF Epoch data values in strings, instead of numeric values. If TF
+%   is set to true, each epoch data, by default, will be presented in the
+%   form of dd-mon-yyyy hh:mm:ss.mmm for CDF_EPOCH, or
+%   dd-mon-yyyy hh:mm:ss.mmm:uuu:nnn:ppp for CDF_EPOCH16, or
+%   yyyy-mm-ddThh:mm:ss.mmmuuunnn for CDF_TIME_TT2000.
+%
+%   DATASTRUCT = SPDFCDFREAD(FILE, 'Structure', TF, ...) returns a structure
+%   array (instead of a cell array) that contains the following
+%   fields for each member (a variable) in the array if TF is true:
+%       VariableName - variable name
+%       Data - variable data in M-by-1 cell array without 'CombineRecords'
+%              option, or a multi-dimensional array with 'CombineRecords'
+%       Attributes - a structure that contains all the attributes that
+%                    associated with this variable
+%
+%   DATA = SPDFCDFREAD(FILE, 'DATAONLY', TF, ...) specifies whether to simply 
+%   just return the CDF variable data, without metadata, nor attribute info. 
+%   This option provides the quick way of retrieving variable data as is, if
+%   true, without any data conversion. The retrieved data will be in the same
+%   form as the non-dataonly option, either a cell array for multiple
+%   variables or a vector for a single variable. It works with these defined
+%   options:
+%    "CombineRecords", true, "KeepEpochAsis', true, "CDFEpochtoDatenum", false
+%   without calling spdfcdfinfo for any info about the variables.
+%   If the 'Variables' option is provided, only selected variables' data are
+%   returned. Otherwise, all variables are retrieved. An empty matrix is
+%   returned for the variable that is not found in the CDF. The dataonly option 
+%   works faster as it only reads the data and it, unlike all other options,
+%   will not call spdfcdfinfo to collect the vital CDF and variable info.
+%   Such metadata and its variables' info can be acquired separately from
+%   spdfcdfinfo call, if required.
+%   
+%   [DATA, INFO] = SPDFCDFREAD(FILE, ...) also returns details about the CDF
+%   file in the INFO structure.
+%
+%   Notes:
+%
+%     SPDFCDFREAD creates temporary files when accessing CDF files.  The
+%     current working directory must be writable.
+%
+%     Currently, it is not possible to provide a set of records to read
+%     (using the 'Records' parameter) and to combine records (using the
+%     'CombineRecords' parameter).
+%
+%     'ConvertEpochToDatenum', 'ConvertEpochToDatestr', 'KeepEpochAsIs' 
+%     and 'CDFEpochToString' are mutually exclusive.
+%
+%   Examples:
+%
+%   % Read all of the data from example.cdf with the default of  true for
+%   'Combinerecords' option, the most efficient way.
+%
+%   data = spdfcdfread('example');
+%
+%   % Read the same file as above and also return any CDF EPOCH or EPOCH16
+%     variable data in the string form (dd-mon-yyyy hh:mm:ss.mmm for EPOCH, 
+%     dd-mon-yyyy hh:mm:ss.mmm.uuu.nnn.ppp for EPOCH16 or 
+%     yyyy-mm-ddThh:mm:ss.mmmuuunnn for CDF_TIME_TT2000) if they exist.
+%
+%   data = spdfcdfread('example', 'CDFEpochtoString', true);
+%
+%   % Read just the data from variable "Time".
+%
+%   data = spdfcdfread('example', 'Variable', {'Time'});
+%
+%   % Read the first value in the first dimension, the second value in
+%   % the second dimension, the first and third values in the third
+%   % dimension, and all of the values in the remaining dimension of
+%   % the variable "multidimensional".  
+%
+%   data = spdfcdfread('example', 'Variable', {'multidimensional'}, ...
+%                  'Slices', [0 1 1; 1 1 1; 0 2 2]);
+%
+%   % The example above is analogous to reading the whole variable 
+%   % into a variable called "data" and then using matrix indexing, 
+%   % as follows:
+%
+%   data = spdfcdfread('example', ...
+%                  'Variable', {'multidimensional'});
+%   data{1}(1, 2, [1 3], :)
+%
+%   % Displays the name of the variable being processed.
+%
+%   data = spdfcdfread('example', 'ShowProgress', true);
+%
+%   See also CDFEPOCH, CDFTT2000, SPDFCDFINFO, SPDFCDFWRITE, SPDFCDFUPDATE,
+%            SPDFENCODEEPOCH, SPDFCOMPUTEEPOCH, SPDFBREAKDOWNEPOCH,
+%            SPDFPARSEEPOCH, SPDFEPOCHTODATENUM, SPDFENCODEEPOCH16,
+%            SPDFCOMPUTEEPOCH16, SPDFBREAKDOWNEPOCH16, SPDFPARSEEPOCH16,
+%            SPDFEPOCH16TODATENUM, SPDFENCODETT2000, SPDFCOMPUTETT2000,
+%            SPDFBREAKDOWNTT2000, SPDFPARSETT2000, SPDFDATENUMTOEPOCH,
+%            SPDFDATENUMTOEPOCH16, SPDFDATENUMTOTT2000.
+
+
+function spdfcdfupdate(filename, varargin)
+%SPDFCDFUPDATE Update data in an existing CDF file.
+% 
+%   SPDFCDFUPDATE(FILE, 'VariableData', VARIABLELIST, ...) updates variable 
+%   data in a CDF file whose name is specified by FILE.  VARIABLELIST is a 
+%   cell array of ordered pairs, which are comprised of a CDF variable name 
+%   (a string) and a corresponding value cell array. The value cell array 
+%   is comprised of a number of cells, each cell consisting of a record number,
+%   a dimension indices, as well as the new data value. The record number and 
+%   dimension indices are all zero(0)-based. The number of dimension indices 
+%   depends on the dimensionality of the variable. The form for entering
+%   multiple value changes for variables is as follows:
+%   {'varname1' [ {rec_no_1, {index1, index2, ...}, value1}; ...
+%                 {rec_no_2, {index2, index2, ...}, value2}; ...
+%                 ...
+%               ] ...
+%    'varname2' [ {rec_no_1, {index1, index2, ...}, value1}; ...
+%                 {rec_no_2, {index2, index2, ...}, value2}; ...
+%                 ...
+%               ] ...
+%    ...
+%   }                 
+%
+%
+%   SPDFCDFUPDATE(..., 'GlobalAttributes', GATTRIB, ...) updates the structure
+%   GATTRIB as global meta-data for the CDF.  Each field of the
+%   struct is the name of a global attribute.  The value of each
+%   field contains the value of the attribute.  To update
+%   multiple values for an attribute, the field value should be a
+%   cell array.
+%
+%   SPDFCDFUPDATE(..., 'VariableAttributes', VATTRIB, ...) updates the
+%   structure VATTRIB as variable meta-data for the CDF.  Each
+%   field of the struct is the name of a variable attribute.  The
+%   value of each field should be an mx2 cell array where m is the
+%   number of variables with attributes.  The first element in the
+%   cell array is the name of the variable, a string, and the 
+%   second element, also a string, is the CDF specific data type of 
+%   the entry, and the third element is the new entry value of the 
+%   attribute for that variable.
+%
+%   SPDFCDFUPDATE(..., 'CDFCompression', TF, ...) resets the CDF compression.
+%   The CDF is set to use GZIP compression if TF is true. If TF is
+%   is false, the CDF is set to be a uncompressed file.
+%
+%   SPDFCDFUPDATE(..., 'CDFChecksum', TF, ...) resets the CDF checksum.
+%   The CDF is set to use MD5 checksum if TF is true. If TF is
+%   is false, the CDF is set not to use checksum.
+%
+%   SPDFCDFUPDATE(..., 'CDFLeapSecondLastUpdated', value, ...) resets the CDF's
+%   leap second last updated date.  For CDFs created prior to V 3.6.0, this 
+%   field is not set. It is set to indicate what leap second table this CDF is
+%   based upon. The value, in YYYYMMDD form, must be a valid entry in the
+%   currently used leap second table, or zero (0) if the table is not used. 
+%   CDF will automatically fill the value with the last entry date in the leap
+%   second table if this option is not specified. 
+%
+%   Notes:
+%
+%     SPDFCDFUPDATE only updates the data values for the existing variables.
+%     For Epoch and Epoch16 data type variables, the updated values should
+%     be in the string form, e.g., 01-Jan-2008 07:06:05.004 and 
+%     01-Jan-2008 07:06:05.004:100:200:300:400, respectively, instead of
+%     the double form as they are stored.
+%
+%   Examples:
+%
+%   %  Change data values for Longitude (a 1-dim of CDF_INT2 data type): 
+%   %  4th element in Record 0 to 100, 3rd element in Record 1 to 200; and 
+%   %  change data value for variable Latitude (a 2-dim of CDF_REAL4 data type) 
+%   %  at index [0,0] in Record 10 to 20.2; and change record 2 for variable
+%   %  Epoch (a 0-dim of CDF_EPOCH data type) to 01-Jan-2008 07:06:05.004 in 
+%   %  the file 'example.cdf'. 
+%
+%      spdfcdfupdate('example', 'VariableData', {'Longitude' [{0,{3},100};{1,{2},200}] ...
+%                                            'Latitude' [{10,{0,0},20.2}] ...
+%                                            'Epoch' [{1,{0},'01-Jan-2008 07:06:05.004'}] ...
+%                                           } ...
+%               );
+%   Or,
+%      var1 = {'Longitude' [{0,{3},100};{1,{2},200}]};
+%      var2 = {'Latitude' [{10,{0,0},20.2}]};
+%      var3 = {'Epoch' [{1,{0},'01-Jan-2008 07:06:05.004'}]};
+%      spdfcdfupdate('example', 'VariableData', [var1 var2 var3]);
+%
+%   Make sure that the data values are of the data type for the variables.
+%
+%   % Update the meta-data for the entry of variable attribute 'validmin' for
+%   % variable 'Longitude' while updating its data values in the file 'example.cdf': 
+%
+%   varAttribStruct.validmin = {'Longitude' [10]};
+%   spdfcdfupdate('example', 'VariableData', {'Longitude' [{0,{3},100};{1,{2},200}]}, ...
+%                        'VariableAttributes', varAttribStruct);
+%
+%   % Update the global attribute, 'Name': the first entry to 'MyName', a CDF_CHAR 
+%   % data type, and the second entry to 10, of data type CDF_INT2, in the 
+%   % file 'example.cdf':
+%
+%   globalAttribStruct.Name = [{0, 'CDF_CHAR', 'MyName'},{1, 'CDF_INT2', 10}];
+%   spdfcdfupdate('example', 'GlobalAttributes', globalAttribStruct);
+%
+%   % Set the CDF file, 'example.cdf', to use the GZIP compression:
+%
+%   spdfcdfupdate('example', 'cdfcompression', true);
+%
+%   % Set the CDF file, 'example.cdf', to use the MD5 checksum:
+%
+%   spdfcdfupdate('example', 'cdfchecksum', true);
+%
+%   See also SPDFCDFREAD, SPDFCDFWRITE, SPDFCDFINFO, CDFEPOCH, CDFTT2000,
+%            SPDFENCODEEPOCH, SPDFCOMPUTEEPOCH, SPDFPARSEEPOCH,
+%            SPDFBREAKDOWNEPOCH, SPDFENCODEEPOCH16, SPDFCOMPUTEEPOCH16,
+%            SPDFPARSEEPOCH16, SPDFBREAKDOWNEPOCH16, SPDFENCODETT2000,
+%            SPDFCOMPUTETT2000, SPDFPARSETT2000, SPDFBREAKDOWNTT2000,
+%            SPDFDATENUMTOEPOCH, SPDFDATENUMTOEPOCH16, SPDFDATENUMTOTT2000,
+%            SPDFCDFLEAPSECONDSINFO
+
+
+function spdfcdfwrite(filename, varcell, varargin)
+%SPDFCDFWRITE Write data to a CDF file.
+% 
+%   SPDFCDFWRITE(FILE, VARIABLELIST, ...) writes out a CDF file whose name
+%   is specified by FILE.  VARIABLELIST is a cell array of ordered
+%   pairs, which are comprised of a CDF variable name (a string) and
+%   the corresponding CDF variable value.  To write out multiple records
+%   for a variable, there are two ways of doing it. One way is putting the
+%   variable values in a cell array, where each element in the cell array
+%   represents a record. Another way, the better one, is to place the
+%   values in a vector (single or multi-dimensional) with the option
+%   'RecordBound' being specified.  
+%
+%   SPDFCDFWRITE(..., 'PadValues', PADVALS) writes out pad values for given
+%   variable names.  PADVALS is a cell array of pairs of a variable name (a
+%   string) and a corresponding pad value.  Pad values are the default value
+%   associated with the variable when an out-of-bounds record is accessed.
+%   Variable names that appear in PADVALS must be in VARIABLELIST.
+%
+%   SPDFCDFWRITE(..., 'GlobalAttributes', GATTRIB, ...) writes the structure
+%   GATTRIB as global meta-data for the CDF.  Each field of the
+%   struct is the name of a global attribute.  The value of each
+%   field contains the value of the attribute.  To write out
+%   multiple values for an attribute, the field value should be a
+%   cell array. 
+%
+%   If there is a master CDF that has all the meta-data that the new CDF needs,
+%   then SPDFCDFINFO module can be used to retrieve the infomation. The
+%   'GlobalAttributes' field from the returned structure can be
+%   passed in for the GATTRIB.
+%
+%   In order to specify a global attribute name that is illegal in
+%   MATLAB, create a field called "CDFAttributeRename" in the 
+%   attribute struct.  The "CDFAttribute Rename" field must have a value
+%   which is a cell array of ordered pairs.  The ordered pair consists
+%   of the name of the original attribute, as listed in the 
+%   GlobalAttributes struct and the corresponding name of the attribute
+%   to be written to the CDF.
+%
+%   SPDFCDFWRITE(..., 'VariableAttributes', VATTRIB, ...) writes the
+%   structure VATTRIB as variable meta-data for the CDF.  Each
+%   field of the struct is the name of a variable attribute.  The
+%   value of each field should be an Mx2 cell array where M is the
+%   number of variables with attributes.  The first element in the
+%   cell array should be the name of the variable and the second
+%   element should be the value of the attribute for that variable.
+%
+%   If there is a master CDF that has all the meta-data that the new CDF needs,
+%   then SPDFCDFINFO module can be used to retrieve the infomation. The 
+%   'VariableAttributes' field from the returned structure can be passed
+%   in for the VATTRIB.
+%   Note: For string variable attributes, they can be either a single string
+%         or a cell of strings. 
+%
+%   In order to specify a variable attribute name that is illegal in
+%   MATLAB, create a field called "CDFAttributeRename" in the 
+%   attribute struct.  The "CDFAttribute Rename" field must have a value
+%   which is a cell array of ordered pairs.  The ordered pair consists
+%   of the name of the original attribute, as listed in the 
+%   VariableAttributes struct and the corresponding name of the attribute
+%   to be written to the CDF.   If you are specifying a variable attribute
+%   of a CDF variable that you are re-naming, the name of the variable in
+%   the VariableAttributes struct must be the same as the re-named variable.
+%
+%   SPDFCDFWRITE(..., 'WriteMode', MODE, ...) where MODE is either 'overwrite'
+%   or 'append' indicates whether or not the specified variables or attributes
+%   should be appended to the CDF if the file already exists.  The 
+%   default is 'overwrite', indicating that SPDFCDFWRITE will not append
+%   variables and attributes.
+%
+%   SPDFCDFWRITE(..., 'Format', FORMAT, ...) where FORMAT is either 'multifile'
+%   or 'singlefile' indicates whether or not the data is written out
+%   as a multi-file CDF.  In a multi-file CDF, each variable is stored
+%   in a *.vN file where N is the number of the variable that is
+%   written out to the CDF.  The default is 'singlefile', which indicates
+%   that SPDFCDFWRITE will write out a single file CDF.  When the 'WriteMode'
+%   is set to 'Append', the 'Format' option is ignored, and the format
+%   of the pre-existing CDF is used.
+%
+%   SPDFCDFWRITE(..., 'Version', VERSION, ...) where VERSION is a string which 
+%   specifies the version of the CDF library to use in writing the file.
+%   The default option is to use the latest version of the library 
+%   (currently version 3.2+), and has to be specified '3.0'.  The 
+%   other available version is version 2.7 ('2.7').  Note that 
+%   versions of MATLAB before R2006b will not be able to read files 
+%   which were written with CDF versions greater than 3.0.
+%
+%   SPDFCDFWRITE(..., 'RecordBound', RECBNDVARS) specifies data values in arrays
+%   (1-D or multi-dimensional) are to be written into "records" for the given
+%   variable. RECBNDVARS is a cell array of variable names. The M-by-N array
+%   data will create M rows (records), while each row having N elements. For an
+%   M-by-1 (column) or 1-by-M (row) vector, it will create M records, each 
+%   being a scarlar. For a 3-D array M-by-N-by-R, R records will be written,
+%   and each record with M-by-N elements. Without this option, an array of 
+%   M-by-N will be written into a single record of 2-dimensions. See sample
+%   codes for its usage.
+%
+%   SPDFCDFWRITE(..., 'Vardatatypes', VARDATATYPE) specifies the variable's
+%   data types. By default, this module uses each variable's passed data to
+%   determine its corresponding CDF data type. While it is fine for the most
+%   cases, this will not work for the CDF epoch types, i.e., CDF_EPOCH (a double),
+%   CDF_EPOCH16 (an array of 2 doubles) and CDF_TIME_TT2000 (an int64). This
+%   option can be used to address such issue. VARDATATYPE is a cell array of
+%   variable names and their respective data types (in string).
+%
+%   The following table shows the valid type strings, either in CDF defined
+%   forms, or alternatively in the forms presented at column 4 in the Variables
+%   field of the structure returned from a SPDFCDFINFO module call to an
+%   existing CDF or master CDF.  
+%       type             CDF Types
+%       -----            ---------
+%       int8             CDF_INT1 or CDF_BYTE
+%       int16            CDF_INT2
+%       int32            CDF_INT4
+%       int64            CDF_INT8
+%       uint8            CDF_UINT1
+%       uint16           CDF_UINT2
+%       uint32           CDF_UINT4
+%       single           CDF_FLOAT or CDF_REAL4
+%       double           CDF_DOUBLE or CDF_REAL8
+%       epoch            CDF_EPOCH
+%       epoch16          CDF_EPOCH16
+%       tt2000           CDF_TIME_TT2000
+%       char             CDF_CHAR or CDF_UCHAR
+%
+%   Note: Make sure variable's data match to the defined type.
+%
+%   SPDFCDFWRITE(..., 'VarCompress', COMPRESSVARS) specifies which variables
+%   will be compressed by what compression method (and level for GZIP).
+%   COMPRESSVARS is a cell array of variable names and their respective
+%   compression methods. For examples, to set the compression for 'var1' and
+%   'var2' with AHUFF and GZIP.6 respectively, COMPRESSVARS should be given
+%   as {'var1', 'ahuff', 'var2', 'gzip.6'}. GZIP.6 compression provides the
+%   best compression rate and performance.
+%
+%   If there is a master CDF that has all the same variable info as the new CDF,
+%   then SPDFCDFINFO module can be used to retrieve the infomation. The 
+%   'Variables' field from the returned structure contain the compression info
+%   (at element 7) for each variable,  Set up a cell to use such compression
+%   info.
+%
+%   SPDFCDFWRITE(..., 'CDFCompress', COMPRESSVALUE) specifies the CDF will be
+%   compressed at the file level by what compression method (and level for GZIP).
+%   COMPRESSVALUE is a string of a valid compression method and level.
+%
+%   If there is a master CDF that can be used to define the new CDF's settings,
+%   then SPDFCDFINFO module can be used to retrieve the infomation. The 
+%   'Compression' and 'CompressionParam' fields from the returned structure's
+%   'FileSettings' structure field contain the compression info. Combining these 
+%   fields will make a valid compression. See the example.
+%   Alternatively, COMPRESSVALUE can be provided as one of the following strings:
+%   'none', 'gzip.x', 'rle' (Run-length encoding), 'huff' (Huffman), 'ahuff'
+%   (Adaptive Huffman), where 'x' in 'gzip.x' is the level of 1-9 (6 being the
+%   preferable). 
+%
+%   SPDFCDFWRITE(..., 'VarSparse', SPARSEVARS) specifies which variables have
+%   sparse records. SPARSEVARS is a cell array of prderly pairs of a variable
+%   name and its respective value. The valid value should be 'full',
+%   'Sparse(padded)' or 'Sparse(previous)' (the 6th column from Variables field
+%   from spdfcdfinfo).
+%   Value 'full' is the default if a variable does not have the sparse records.
+%   For examples, to set the sparse record for 'var1' and 'var2' with 'full'
+%   and 'Sparse(previous)', SPARSEVARS should be specified as {'var1', 'full',
+%   'var2', 'Sparse(padded)'}. (Actually, there is no need for 'var1'.) 
+%   Variable's record data should be provided in cell form for the sparse record
+%   variables. Data for any virtual records should be presented as []s. See the
+%   sample code for its usage.  
+%
+%   SPDFCDFWRITE(..., 'BlockingFactor', BFVARS) specifies the blocking factor
+%   for the variables. The blocking factor is the number of variable records
+%   that will be pre-allocated when a new record is to be written. The default 
+%   value could be too small for variables that have large record size or
+%   number. A large blocking factor (up to a variable's maximum record number)
+%   can make access to the full variable data more efficient as less blocks
+%   are involved (thus less I/Os). It can also make the file less fragmented.
+%   BFVARS is a cell array of pairs of variable name and its respective value.
+%   The value should be a numeric.
+%
+%   If there is a master CDF that has all the same variable info as the new CDF,
+%   then SPDFCDFINFO module can be used to retrieve the infomation. The 
+%  'Variables' field from the returned structure contain the record sparseness
+%   info (at element 6) for each variable,  Set up a cell to use such sparseness
+%   info.
+%
+%   SPDFCDFWRITE(..., 'ConvertDatenumToEpoch', TF, ...) converts MATLAB datenum
+%   values to CDF epoch data if TF is true. This option works with the
+%   variable(s) that is of CDF_EPOCH type in a CDF. 
+%   There are two ways to write data for epoch variable(s) of CDF_EPOCH into
+%   a CDF. First, uses cdfepoch objects, each of which is from a datenum,
+%   datestr, or even cdfepoch object, to pass data to spdfcdfwrite: 
+%      SPDFCDFWRITE(..., {'Epoch',cdfepoch([...], ...)}, ...) 
+%   This option is time and space consuming if large datasets are involved. 
+%   The second way uses 'ConvertDatenumToEpoch':
+%     SPDFCDFWRITE(..., {'Epoch',[...], ...}, 'ConvertDatenumToEpoch', TF, ...) 
+%   If TF is set to true, the passed data are assumed as MATLAB datenum
+%   values and a data conversion to CDF epoch values is performed. 
+%   Setting it to false (the default), All data will be considered already in
+%   CDF_EPOCH form and will be filled, as is, to
+%   CDF_EPOCH data type variable(s). The CDF_EPOCH data need to be numeric of
+%   mxDouble_CLASS (double).
+%
+%   SPDFCDFWRITE(..., 'ConvertDatenumToTT2000', TF, ...) converts MATLAB datenum
+%   values to CDF TT2000 data if TF is true. This option works with the
+%   variable(s) that is of CDF_TIME_TT2000 type in a CDF.
+%   There are two ways to write data for epoch variable (s) of CDF_TIME_TT2000
+%   into a CDF. First, uses cdftt2000 objects, each of which is from a datenum,
+%   datestr, or even cdftt2000 object, to pass data to spdfcdfwrite:
+%      SPDFCDFWRITE(..., {'Epoch',cdftt2000([...], ...)}, ...)
+%   This option is also time and space consuming if large datasets are involved.
+%   The second way uses 'ConvertDatenumToTT2000':
+%     SPDFCDFWRITE(..., {'Epoch',[...], ...}, 'ConvertDatenumToTT2000', TF, ...)
+%   If TF is set to true, the passed data are assumed as MATLAB datenum
+%   values and a data conversion to CDF TT2000 values is performed.
+%   Setting it to false (the default), All data will be considered already in
+%   CDF_TIME_TT2000 form and will be filled, as is, to
+%   CDF_TIME_TT2000 data type variable(s). The CDF TT2000 values needs to be
+%   numeric of mxINT64_CLASS (int64).
+%
+%   SPDFCDFWRITE(..., 'Checksum', CHECKSUMVAL, ...) specifies whether the output
+%   CDF should have its checksum computed. The valid values are 'MD5' or 'none'.
+%   The default is 'none'.
+%
+%   SPDFCDFWRITE(..., 'CDFLeapSecondLastUpdated', value, ...) resets the CDF's
+%   leap second last updated date.  For CDFs created prior to V 3.6.0, this 
+%   field is not set. It is set to indicate what leap second table this CDF is
+%   based upon. The value, in YYYYMMDD form, must be a valid entry in the
+%   currently used leap second table, or zero (0) if the table is not used. 
+%   CDF will automatically fill the value with the last entry date in the leap
+%   second table if this option is not specified. 
+%
+%   SPDFCDFWRITE(..., 'Singleton', VARS, ...) indicates whether to keep the
+%   singleton dimension(s) passed in from the multi-dimensional data. VARS is
+%   a cell array of variable names, indicating each variable's singleton 
+%   dimension(s) is to be kept.
+%   For example, variable with data dimensions like 10x1x100 will be written
+%   as 2-dimensions (10x1) for 100 records if the record bound is specified.
+%   For a row (1-by-M) or column (M-by-1) vector, the variable data will be
+%   written as 2-dimension as is, unless the recordbound is specified.  
+%   The default setting is to have all singleton dimension(s) removed.
+%   The above 10x1x100 variable will be written as 1-dimension
+%   (with 10 elements).  
+%
+%   Notes:
+%
+%     SPDFCDFWRITE creates temporary files when writing CDF files.  Both the
+%     target directory for the file and the current working directory
+%     must be writable.
+%
+%     To maximize performance, specify the 'ConvertDatenumToEpoch' 
+%     parameter with true (nonzero) value while providing datenum values
+%     for 'Epoch' variable. 
+%
+%     CDF epoch is the number of milliseconds since 1-Jan-0000 0h:0m:0s:000ms.
+%     CDF TT2000 is the number of nanoseconds since 1-Jan-2000
+%                12h:0m:0s:000000000ns with leap seconds included.
+%
+%
+%   Examples:
+%
+%   % Write out a file 'example.cdf' containing a variable 'Longitude'
+%   % with a single record (row) of a vector with 361 elements:
+%
+%   spdfcdfwrite('example', {'Longitude', 0:360});
+%
+%   % Write out a file 'example.cdf', containing a variable 'Longitude'
+%   % with the value [0:360] (one record of 361 values), and with a variable
+%   % attribute of 'validmin' with the value 10:
+%
+%   varAttribStruct.validmin = {'Longitude' [10]};
+%   spdfcdfwrite('example', {'Longitude' 0:360}, ...
+%                'VariableAttributes', varAttribStruct);
+%
+%   % Write out a file 'example.cdf' containing variables 'Longitude'
+%   % and 'Latitude' with the variable 'Longitude' being a Record-bound
+%   % (361 records to be written)::
+%
+%   spdfcdfwrite('example', {'Longitude', (0:360), 'Latitude', 10:20}, ...
+%                'RecordBound', {'Longitude'});
+%
+%   % These two commands should write out the data values identically:
+%      SPDFCDFWRITE('example', {'Epoch', num2cell(1:100)}, ...
+%                   'epochiscdfepoch', true);
+%      SPDFCDFWRITE('example', {'Epoch', (1:100)'}, ...
+%                   'recordbound', {'Epoch'}, ...
+%                   'epochiscdfepoch', true);
+%
+%   % Write out a file 'example.cdf' containing variables 'Longitude'
+%   % and 'Latitude' with the variable 'Latitude' having a pad value
+%   % of 10 for all out-of-bounds records that are accessed. The
+%   % 'Longitude' variable has one record (row) of a vector with 361 elements
+%   % 'Latitude' has one record of a vector with 11 elements.
+%
+%   spdfcdfwrite('example', {'Longitude', (0:360)', 'Latitude', (10:20)'}, ...
+%                'RecordBound', {'Latitude', 'Longitude'}, ...
+%                'PadValues', {'Latitude', 10});
+%
+%   % Write out a file 'example.cdf', with multiple rows of time series data.
+%   % Each row has a time and a sampled data, both being scalar. 
+%   % The following sample shows 100 records (rows): epoch is of CDF_EPOCH 
+%   % data type and Samples of CDF_DOUBLE. 
+%   % The epoch starts from 2010-01-01T00:00:00.000 with 1 second stride.
+%   % Each sampled value starts from 0.0, with 5.0 stride. 
+%
+%   epoch=utc2cdfepoch(2010,1,1,0,0,0,0);
+%   epochvalues = (epoch+[0:99]*1000)';
+%   values = ([0:99]*5.0)';
+%   spdfcdfwrite('example', {'Epoch', epochvalues, 'Samples', values}, ...
+%                'EpochisCDFEpoch', true, ...
+%                'RecordBound', {'Epoch', 'Samples'});
+%
+%   % 'EpochisCDFEpoch' option is needed as 'Epoch' is to be created of
+%   % CDF_EPOCH type.
+%
+%   % Alternatively, the same result can be accomplished by using the 
+%   % 'EpochType' option:
+%
+%   spdfcdfwrite('example', {'Epoch', epochvalues, 'Samples', values}, ...
+%                'EpochType', {'Epoch'}, ...
+%                'RecordBound', {'Epoch', 'Samples'});
+%
+%   % Alternatively, the same result can be accomplished by making the epoch
+%   % vector to cell. No 'RECORDBOUND' option is needed.
+%   epoch=utc2cdfepoch(2010,1,1,0,0,0,0);
+%   epochvalues = epoch+[0:99]*1000;
+%   epochscell = num2cell(epochvalues);
+%   values = num2cell([0:99]*5.0);
+%   spdfcdfwrite('example', {'Epoch', epochvalues, 'Samples', values}, ...
+%                'EpochType', {'Epoch'});
+%
+%   % Write out a file 'example.cdf', with single or multiple rows of
+%   % vectorized data. Variable 'one0' will have one record with 5 elements.
+%   % Variable 'one1' has five records, each record having 1 value. Variable
+%   % 'two0' has one 5-by-2 record, while Variable 'two2' has five (5) 
+%   % records, each record having 2 elements. Variable 'three0' has a
+%   % single 3-D (3-by-2-by-2) record, while Variable 'three3' has two (2)
+%   % records, each record being a 3-by-2 matrix. 
+%
+%   data0=1:5;
+%   data1=data0';
+%   data2=[10 20;30 40;50 60;70 80;90 100];
+%   data2a=data2+100;
+%   data3=[1 2;3 4;5 6];
+%   data3(:,:,2)=[11 22; 33 44; 55 66];
+%   data3a=data3+100;
+%   spdfcdfwrite('example',{'one0',data0,'one1',data1,'two0',data2, ...
+%                'two2',data2a,'three0',data3,'three3',data3a}, ...          
+%                'recordbound',{'one1','two2','three3'});
+%
+%   % For writing out two variables: 'Epoch' of CDF_EPOCH type, and
+%   % 'Sample' of CDF_DOUBLE type. Four records are written for each. Epoch's
+%   % record is a scalar, while Sample's is an 1-D with 4 elements.
+%
+%   epoch=utc2cdfepoch(2010,1,1,0,0,0,0);
+%   epochvalues = (epoch+[0:3]*1000)';
+%   value = [0:3]*5.0;
+%   values = [value; value+10; value+20; value+30];
+%   spdfcdfwrite('example', {'Epoch', epochvalues, 'Sample', values}, ...
+%                'EpochType', {'Epoch'}, ...
+%                'RecordBound', {'Epoch', 'Sample'});
+%
+%   % Write out a file 'example.cdf', with 100 MATLAB datenum values,
+%   % starting from 2010-01-01T00:00:00.000 with 1 second stride, 
+%   % into variable: 'Epoch' of CDF_EPOCH type. The first record has a date:
+%   %  01-Jan-2010 00:00:00.000, the second record:
+%   %  01-Jan-2010 00:00:01.000, the third record:
+%   %  01-Jan-2010 00:00:02.000, etc.
+%   % 'Epoch' has a pad value of 01-Jan-0000 00:00:00.001.
+%
+%   datenum1=datenum(2010,1,1,0,0,0);
+%   datenumvalues = (datenum1+[0:99]/86400)';
+%   spdfcdfwrite('example', {'Epoch', datenumvalues}, ...
+%                'ConvertDatenumToEpoch', true, ...
+%                'RecordBound', {'Epoch'}, ...
+%                'PadValue', {'Epoch', 1});
+%
+%   % Write out a file 'example.cdf', with three records for the variable
+%   % 'Epoch' of CDF_TIME_TT2000 type. The first record has a date:
+%   % 2010-10-10T01:02:03.456, the second record: 2010-11-11T02:04:06.789
+%   % and the third record: 2010-12-12T03:04:05.123.
+%
+%   dates = datenum([2010 10 10 1 2 3.456; 2010 11 11 2 4 6.789; ...
+%                    2010 12 12 3 4 5.123]);
+%   spdfcdfwrite('example', {'Epoch', dates'}, ...
+%                'ConvertDatenumToTT2000', true, ...
+%                'RecordBound', {'Epoch'});
+%
+%   % Write out a file 'example.cdf', with 6 records for the variable 
+%   % 'Epoch', which will be of CDF_TIME_TT2000 data type. The data
+%   $ crosses over a leap second. Convert the epoch in UTC string
+%   $ to their TT2000 values before write out to the CDF file.
+%
+%   time = {'2008-12-31T23:59:58.123456789'; ...
+%           '2008-12-31T23:59:59.123456789'; ...
+%           '2008-12-31T23:59:60.123456789'; ...
+%           '2009-01-01T00:00:00.123456789'; ...
+%           '2009-01-01T00:00:01.123456789'; ...
+%           '2009-01-01T00:00:02.123456789'};
+%   values = spdfparsett2000(time);          
+%   spdfcdfwrite('example', {'Epoch', values}, ...
+%                'EpochType', {'Epoch'}, ...
+%                'RecordBound', {'Epoch'});
+%
+%   % Write out a file 'sample.cdf', with two variables. One variable, 'var2'.
+%   % is compressed with GZIP.6.
+%
+%   var1data=......;
+%   var2data=......;
+%   spdfcdfwrite('sample',{'Epoch',var1data,'var2',var2data}, ...
+%                'recordbound',{'Epoch','var2'}, ...
+%                'varcompress',{'var2','gzip.6'});
+%
+%   % Write out a file 'sparse.cdf', with a variable that has sparse records.
+%   % The variable 'one' only has two (2) physical data: at record 0 and
+%   % record 4. 
+%
+%   spdata={[123 321];[];[];[];[-321 -123]};
+%   spdfcdfwrite('sparse',{'one',spdata}, ...
+%                'varsparse', {'one','Sparse(previous)'});
+%
+%   % Write out a file 'real.cdf', based on the master cdf, which provides the
+%   % file settings info, i.e., checksum, CDF file level compression, as well as
+%   % meta-data for all of the global and variable attribute information.  It
+%   % also provides the variable spec, e.g., data type, record variance, record
+%   % sparseness, blocking factor, pad value and compression, for each variable.
+%   % 'Recordbound' option is used for specifying record-variant (RV) variables.
+%   % Among the variables, Variable number 15, a single floating point array, has
+%   % sparse records [at record 1 and 5]. Its data has to be in the cell array.
+%
+%   info=spdfcdfinfo('master.cdf');
+%   for p = 1:length(info.Variables(:,1))
+%     compress{(2*p)-1} = info.Variables(p,1); 	% Variable name
+%     compress{2*p} = info.Variables(p,7);	% Variable compression
+%     sparse{(2*p)-1} = info.Variables(p,1);	% Variable name
+%     sparse{2*p} = info.Variables(p,6);	% Variable sparseness
+%     bf{2*p-1} = info.Variables{p,1};		% Variable name
+%     bf{2*p} = info.Variables{p,8};		% Variable blocking factor
+%     pad{2*p-1} = info.Variables{p,1};		% Variable name
+%     pad{2*p} = info.Variables{p,9};		% Variable pad value
+%     datatypes{2*p-1} = info.Variables{p,1};	% Variable name
+%     datatypes{2*p} = info.Variables{p,4};	% Variable data type
+%   end
+%   rbvars = {info.Variables{:,1}};		% Variable names for recordbound
+%   for p = length(vars):-1:1
+%     if (strncmpi(info.Variables{p,5},'f',1)==1)	% NRV variable
+%       rbvars(:,p)=[]; 	  		% Remove it
+%     end
+%   end
+%   if isnumeric(info.FileSettings.CompressionParam) % A number for Gzip parameter 
+%     cdfcompress=strcat(info.FileSettings.Compression, '.', ... % Make it 'gzip.x'
+%                        num2str(info.FileSettings.CompressionParam));
+%   else
+%     cdfcompress=strcat(info.FileSettings.Compression, '.', ... % None or non-gzip
+%                        info.FileSettings.CompressionParam);
+%   end
+%
+%   % fill data
+%   for p = 1:length(info.Variables(:,1))
+%     varsdata{2*p-1} = info.Variables(p,1);
+%     if (p == 15)				% A sparse record variable 
+%       var15data={single([123 321]);[];[];[];single([-321 -123])};
+%       varsdata{(2*15)} = var15data;		% Sparse record data
+%     else
+%       varsdata{(2*p)} = [...];		% Normal data
+%     end
+%   end
+%   spdfcdfwrite('real',varsdata, ...
+%                'GlobalAttributes', info.GlobalAttributes, ...	% Global attributes
+%                'VariableAttributes', info.VariableAttributes, ... %Variable attributes
+%                'RecordBound', rbvars, ...			% Var record bound
+%                'varcompress',compress, ...			% Var compression 
+%                'varsparse', sparse, ...			% Var sparseness
+%                'blockingfactor', bf, ...			% Var blocking factors 
+%                'padvalues', pad, ...				% Var Pad values
+%                'cdfcompress',cdfcompress, ...			% CDF compression
+%                'checksum', info.FileSettings.Checksum, ... 	% Checsum
+%                'VarDatatypes', datatypes);			% Var data types
+%
+%   Note: The compatible data types between MATLAB and CDF are as follows:
+%         MATLAB                  CDF
+%         ------                --------
+%         int8                  CDF_BYTE or CDF_INT1
+%         int16                 CDF_INT2
+%         int32                 CDF_INT4
+%         int64                 CDF_INT8 or CDF_TIME_TT2000
+%         uint8                 CDF_UINT1
+%         uint16                CDF_UINT2
+%         uint32                CDF_UINT4
+%         single                CDF_FLOAT
+%         double                CDF_DOUBLE or CDF_EPOCH or CDF_EPOCH16
+%         char/string           CDF_UCHAR or CDF_CHAR
+%
+%         DEFAULT_FILLED_EPOCH_VALUE and DEFAULT_FILLED_TT2000_VALUE
+%         are defined in this module so they can be used for the attribute
+%         "FILLVAL" for CDF_EPOCH/CDF_EPOCH16 and CDF_TIME_TT2000 epoch
+%         variables.
+%
+%   See also SPDFCDFREAD, SPDFCDFUPDATE, SPDFCDFINFO, CDFEPOCH, CDFTT2000,
+%            SPDFENCODEEPOCH, SPDFCOMPUTEEPOCH, SPDFPARSEEPOCH,
+%            SPDFBREAKDOWNEPOCH, SPDFENCODEEPOCH16, SPDFCOMPUTEEPOCH16,
+%            SPDFPARSEEPOCH16, SPDFBREAKDOWNEPOCH16, SPDFENCODETT2000,
+%            SPDFCOMPUTETT2000, SPDFPARSETT2000, SPDFBREAKDOWNTT2000,
+%            SPDFDATENUMTOEPOCH, SPDFDATENUMTOEPOCH16, SPDFDATENUMTOTT2000,
+%            SPDFCDFLEAPSECONDSINFO
+
+
+function out = SPDFCOMPUTEEPOCH16(datetime)
+%SPDFCOMPUTEEPOCH16 converts the UTC date/time components to CDF_EPOCH16 time,
+%              in nanoseconds since 2000-01-01 12:00:00 with leap seconds.
+%
+%   OUT = SPDFCOMPUTEEPOCH16(datetime) returns the CDF_EPOCH16 time. OUT is
+%   an array of N by 2 double values of mxDOUBLE_CLASS (double), each row
+%   having two double values..
+%
+%     datetime             An array with each row having ten (10) numerical
+%                          values for year, month, day, hour, minute, second,
+%                          millisecond, microsecond and nanosecond.
+%
+%   Examples:
+%
+%   % Compute two UTC times into CDF_EPOCH16.
+%
+%   data = [2009 01 01  0 0 0 123 456 789 123;
+%           2009 01 01 12 0 0 987 654 321 987];
+%   out = SPDFCOMPUTEEPOCH16(data);
+%
+%   SPDFENCODEEPOCH16(out) will show:
+%   ans = 
+%
+%       '01-JAN-2009 00:00:00.123456789123'
+%       '01-JAN-2009 12:00:00.987654321987'
+%
+%
+%   See also SPDFENCODEEPOCH16, SPDFPARSEEPOCH16, SPDFBREAKDOWNEPOCH16
+
+
+function out = SPDFCOMPUTEEPOCH(datetime)
+%SPDFCOMPUTEEPOCH converts the UTC date/time components to CDF_EPOCH time,
+%              in milliseconds since 00-01-01.
+%
+%   OUT = SPDFCOMPUTEEPOCH(datetime) returns the CDF_EPOCH time. OUT is
+%   a vector of double values of mxDOUBLE_CLASS (double).
+%
+%     datetime             An array with each row having seven (7) numerical
+%                          values for year, month, day, hour, minute, second,
+%                          millisecond.
+%
+%   Examples:
+%
+%   % Compute two UTC times into CDF_EPOCH.
+%
+%   data = [2009 01 01  0 0 0 123;
+%           2009 01 01 12 0 0 987];
+%   out = SPDFCOMPUTEEPOCH(data);
+%
+%  SPDFENCODEEPOCH(out) will show:
+%   ans = 
+%
+%       '01-JAN-2009 00:00:00.123'
+%       '01-JAB-2009 12:00:00.987'
+%
+%
+%   See also CDFEPOCH, SPDFENCODEEPOCH, SPDFPARSEEPOCH, SPDFBREAKDOWNEPOCH
+
+
+function out = SPDFCOMPUTETT2000(datetime)
+%SPDFCOMPUTETT2000 converts the UTC date/time components to CDF TT2000 time,
+%              in nanoseconds since 2000-01-01 12:00:00 with leap seconds.
+%
+%   OUT = SPDFCOMPUTETT2000(datetime) returns the CDF TT2000 time. OUT is
+%   a vector of integer values of mxINT64_CLASS (int64).
+%
+%     datetime             An array with each row having nine (9) numerical
+%                          values for year, month, day, hour, minute, second,
+%                          millisecond, microsecond and nanosecond.
+%
+%   Examples:
+%
+%   % Compute two UTC times into CDF TT2000.
+%
+%   data = [2009 01 01  0 0 0 123 456 789;
+%           2009 01 01 12 0 0 987 654 321];
+%   out = SPDFCOMPUTETT2000(data);
+%
+%   SPDFENCODETT2000(out) will show:
+%   ans = 
+%
+%       '2009-01-01T00:00:00.123456789'
+%       '2009-01-01T12:00:00.987654321'
+%
+%
+%   See also CDFTT2000, SPDFENCODETT2000, SPDFPARSETT2000, SPDFBREAKDOWNTT2000
+
+
+function epoch16 = spdfdatenumtoepoch16(varargin)
+%SPDFDATENUMtoEPOCH16 Convert MATLAB's datenum to CDF_EPOCH16 values.
+%
+%    E = SPDFDATENUMtoEPOCH16(DATE) convert a DATE, a valid string (datestr) or
+%        number (datenum) representing a date, to CDF_EPOCH16 value.
+%
+%    Note that a CDF_EPOCH16 is the number of picoseconds since 
+%    1-Jan-0000 while MATLAB datenums are the number of days since 0-Jan-0000.
+%
+%    See also SPDFEPOCH16TODATENUM, SPDFCOMPUTEEPOCH16, SPDFENCODEEPOCH16.
+%             SPDFPARSEEPOCH16, SPDFBREAKDOWNEPOCH16.
+
+if (nargin > 1)
+    error('MATLAB:SPDFDATENUMtoEPOCH16:SPDFDATENUMtoEPOCH16:tooManyInput', ...
+          'Only one argument is allowed.');
+elseif (nargin < 1)
+    error('MATLAB:SPDFDATENUMtoEPOCH16:SPDFDATENUMtoEPOCH16:tooFewInput', ...
+          'Only one argument is allowed.');
+else
+    input = varargin{1};
+end
+
+if iscellstr(input)
+    input = char(input);
+end
+
+if ~ischar(input) & ~isnumeric(input)
+    error('MATLAB:SPDFDATENUMtoEPOCH16:SPDFDATENUMtoEPOCH16:badInputs', ...
+          'Input must be a number, string, cellstr.');
+end
+
+if ischar(input)
+    % If the input is a string, then you have to convert
+
+    % Convert to MATLAB datenum.  If this bombs out, an invalid
+    % datestr was passed to datenum.
+    n = datenum(input);
+else
+    % It's numeric, so if it's a matrix, go element by element
+    % and convert each and then reshape.
+    n = input(:);
+end
+
+epoch16 = spdfdatenumtoepoch16c(n);
+
+function epoch = spdfdatenumtoepoch(varargin)
+%SPDFDATENUMtoEPOCH Convert MATLAB's datenum to CDF_EPOCH values.
+%
+%    E = SPDFDATENUMtoEPOCH(DATE) convert a DATE, a valid string (datestr) or
+%        number (datenum) representing a date, to CDF_EPOCH value.
+%
+%    Note that a CDF epoch is the number of milliseconds since 
+%    1-Jan-0000 while MATLAB datenums are the number of days since 0-Jan-0000.
+%
+%    See also CDFEPOCH, SPDFEPOCHTODATENUM, SPDFCOMPUTEEPOCH, SPDFENCODEEPOCH.
+%             SPDFPARSEEPOCH, SPDFBREAKDOWNEPOCH.
+
+if (nargin > 1)
+    error('MATLAB:SPDFDATENUMtoEPOCH:SPDFDATENUMtoEPOCH:tooManyInput', ...
+          'Only one argument is allowed.');
+elseif (nargin < 1)
+    error('MATLAB:SPDFDATENUMtoEPOCH:SPDFDATENUMtoEPOCH:tooFewInput', ...
+          'Only one argument is allowed.');
+else
+    input = varargin{1};
+end
+
+if iscellstr(input)
+    input = char(input);
+end
+
+if ~ischar(input) & ~isnumeric(input)
+    error('MATLAB:SPDFDATENUMtoEPOCH:SPDFDATENUMtoEPOCH:badInputs', ...
+          'Input must be a number, string, cellstr.');
+end
+
+if ischar(input)
+    % If the input is a string, then you have to convert
+
+    % Convert to MATLAB datenum.  If this bombs out, an invalid
+    % datestr was passed to datenum.
+    n = datenum(input);
+else
+    % It's numeric, so if it's a matrix, go element by element
+    % and convert each and then reshape.
+    n = input(:);
+end
+
+epoch = spdfdatenumtoepochc(n);
+
+function tt2000 = spdfdatenumtott2000(varargin)
+%SPDFDATENUMtoTT2000 Convert MATLAB's datenum to CDF_TIME_TT2000 values.
+%
+%    E = SPDFDATENUMtoTT2000(DATE) convert a DATE, a valid string (datestr) or
+%        number (datenum) representing a date, to CDF TT2001 value.
+%
+%    Note that a CDF TT2000 is the number of nanoseconds since 
+%    1-Jan-0000T12:00:00 with leap seconds included and that MATLAB
+%    datenums are the number of days since 0-Jan-0000.
+%
+%    See also CDFTT2000, SPDFTT2000TODATENUM, SPDFCOMPUTETT2000, SPDFENCODETT2000,
+%             SPDFPARSETT2000, SPDFBREAKDOWNTT2000.
+
+
+if (nargin > 1)
+    error('MATLAB:SPDFDATENUMtoTT2000:SPDFDATENUMtoTT2000:tooManyInput', ...
+          'Only one argument is allowed.');
+elseif (nargin < 1)
+    error('MATLAB:SPDFDATENUMtoTT2000:SPDFDATENUMtoTT2000:tooFewInput', ...
+          'Only one argument is allowed.');
+else
+    input = varargin{1};
+end
+
+if iscellstr(input)
+    input = char(input);
+end
+
+if ~ischar(input) & ~isnumeric(input)
+    error('MATLAB:SPDFDATENUMtoTT2000:SPDFDATENUMtoTT2000:badInputs', ...
+          'Input must be a number, string, cellstr.');
+end
+
+if ischar(input)
+    % If the input is a string, then you have to convert
+
+    % Convert to MATLAB datenum.  If this bombs out, an invalid
+    % datestr was passed to datenum.
+    n = datenum(input);
+else
+    % It's numeric, so if it's a matrix, go element by element
+    % and convert each and then reshape.
+    n = input(:);
+end
+
+tt2000 = spdfdatenumtott2000c(n);
+
+function out = SPDFENCODEEPOCH16(epoch, varargin)
+%SPDFENCODEEPOCH16 encodes an epoch of CDF_EPOCH16 data type, an double array value
+%
+%   OUT = SPDFENCODEEPOCH16(epoch) 
+%         Returns a UTC string(s).
+%
+%     epoch                An epoch
+%
+%   The encoded epoch string will have the following format:
+%          dd-mmm-yyyy hh:mm:ss.mmm.uuu.nnn.ppp
+%   e.g., "01-Jan-2000 12:34:56.123.456.789.999"
+%
+%   OUT = SPDFENCODEEPOCH16(epoch, 'Format', FORMAT) encodes the UTC
+%   string into the specified format. FORMAT is a number from 0 to 3.
+%   FORMAT:
+%     0: dd-mmm-yyyy hh:mm:ss.mmm.uuu.nnn.ppp 
+%        e.g., "01-JAN-2000 12:34:56.123.456.789.999"
+%     1: yyyymmdd.ddddddd e.g., "20000101.1200000"
+%     2: yyymmddhhmmss e.g., "20000101123456"
+%     3: yyyy-mm-ddThh:mm:ss.mmm.uuu.nnn.pppZ
+%        e.g., "2000-01-01T12:34:56.123.456.789.999Z"
+%     4: yyyy-mm-ddThh:mm:ss.mmmuuunnnppp
+%        e.g., "2000-01-01T12:34:56.123456789999"
+%   where mmm is milliseconds,
+%   where uuu is microseconds,
+%   where nnn is nanoseconds,
+%   where ppp is picoseconds.
+%
+%   Examples:
+%
+%   % Acquire 'Epoch' variable data as is (two double values) from 'sample' CDF
+%   % and encode the epoch values.
+%
+%   epochs = spdfcdfread('Sample', 'Variables', {'Epoch'}, 
+%                        "KeepEpochAsIs", true);
+%   spdfencodeepoch16(epochs)
+%
+%   See also SPDFBREAKDOWNEPOCH16, SPDFCOMPUTEEPOCH16, SPDFPARSEEPOCH16
+
+% HISTORY:
+%   March 5, 2013  Mike Liu    The initial version.
+
+if (nargin < 1)
+    error('MATLAB:SPDFENCODEEPOCH16:inputArgumentCount', ...
+          'SPDFENCODEEPOCH16 requires at least one input argument.')
+end
+
+if (nargout > 1)
+    error('MATLAB:SPDFENCODEEPOCH16:outputArguments', ...
+          'SPDFENCODEEPOCH16 requires only one output argument.')
+end
+
+[args, msg] = parse_inputs(varargin{:});
+if (~isempty(msg))
+    error('MATLAB:SPDFENCODEEPOCH:badInputArguments', '%s', msg)
+end
+out = spdfencodeepoch16c(epoch, args.Format);
+%%%
+%%% Function parse_inputs
+%%%
+
+function [args, msg] = parse_inputs(varargin)
+% Set default values
+args.Format = int32(4);
+msg = '';
+% Parse arguments based on their number.
+if (nargin > 0)
+    paramStrings = {'format'};
+
+    % For each pair
+    for k = 1:2:length(varargin)
+       param = lower(varargin{k});
+       if (~ischar(param))
+           msg = 'Parameter name must be a string.';
+           return
+       end
+
+       idx = strmatch(param, paramStrings);
+
+       if (isempty(idx))
+           msg = sprintf('Unrecognized parameter name "%s".', param);
+           return
+       elseif (length(idx) > 1)
+           msg = sprintf('Ambiguous parameter name "%s".', param);
+           return
+       end
+
+       switch (paramStrings{idx})
+       case 'format'
+
+           if (k == length(varargin))
+               msg = 'No format specified.';
+               return
+           else
+               format = varargin{k + 1};
+
+               if (~isa(format, 'double') || ~isscalar(format))
+                   msg = 'Format must be a single integer.';
+                   return;
+               end
+
+               if (int32(format) < 0 || int32(format) > 4)
+                 msg = sprintf('format value "%d" is out or 0-4 range.', format);
+                 return;
+
+               end
+               args.Format = int32(format);
+           end
+       end  % switch
+    end  % for
+
+end  % if (nargin > 1)
+
+function out = SPDFENCODEEPOCH(epoch, varargin)
+%SPDFENCODEEPOCH encodes an epoch of CDF_EPOCH data type, a double value or
+%cdfepoch object..
+%
+%   OUT = SPDFENCODEEPOCH(epoch) 
+%         Returns a UTC string.
+%
+%     epoch                An epoch
+%
+%   The encoded epoch string will have the following format:
+%       dd-mmm-yyyy hh:mm:ss.mmm, e.g., "01-Jan-2000 12:34:56.123"
+%
+%   OUT = SPDFENCODEEPOCH(epoch, 'Format', FORMAT) encodes the UTC
+%   string into the specified format. FORMAT is a number from 0 to 3.
+%   FORMAT:
+%     0: dd-mmm-yyyy hh:mm:ss.mmm, e.g., "01-JAN-2000 12:34:56.123"
+%     1: yyyymmdd.ddddddd, e.g., "20000101.1200000"
+%     2: yyymmddhhmmss, e.g., "20000101123456"
+%     3: yyyy-mm-ddThh:mm:ss.mmmZ, e.g., "2000-01-01T12:34:56.123Z"
+%     4: yyyy-mm-ddThh:mm:ss.mmm, e.g., "2000-01-01T12:34:56.123"
+%   where mmm is milliseconds.
+%   Format: 0 is the only allowed form for cdfepoch object.
+%
+%   Note: If the epoch values come from spdfcdfread function call, the values
+%         can be in one of the three forms: in cdfepoch object, in MATLAB
+%         datenum (the default), or in their original CDF_EPOCH 
+%         data via an extra 'keepepochasis' option. This function works for
+%         cdfepoch objects or the data retrieved with 'keepepochasis' option.
+%         For datenum values, use MATLAB's datestr instead.
+%
+%   Examples:
+%
+%   % Encode epoch from date/time: 2012-10-10T10:10:10.010Z:
+%
+%   utc = '2012-10-10T10:10:10.010';
+%   epoch = UTC2CDFEpoch(utc);
+%   SPDFENCODEEPOCH(epoch)
+%   ans =
+%       '10-Oct-2012 10:10:10.010'
+%   SPDFENCODEEPOCH(epoch, 'format', 3) 
+%   ans =
+%       '2012-10-10T10:10:10.010Z'
+%
+%   % Acquire 'Epoch' variable data as is (double values) from 'sample' CDF
+%   % and encode the epoch values.
+%
+%   epochs = spdfcdfread('Sample', 'Variables', {'Epoch'}, 'KEEPEPOCHASIS', true);
+%   spdfencodeepoch(epochs)
+%
+%   See also CDFEPOCH, SPDFBREAKDOWNEPOCH, SPDFCOMPUTEEPOCH, SPDFPARSEEPOCH
+
+% HISTORY:
+%   August 16, 2011  Mike Liu    The initial version.
+%   October 16, 2018  Mike Liu   The default format is now 4 (from 0).
+
+if (nargin < 1)
+    error('MATLAB:SPDFENCODEEPOCH:inputArgumentCount', ...
+          'SPDFENCODEEPOCH requires at least one input argument.')
+end
+
+if (nargout > 1)
+    error('MATLAB:SPDFENCODEEPOCH:outputArguments', ...
+          'SPDFENCODEEPOCH requires only one output argument.')
+end
+
+[args, msg] = parse_inputs(varargin{:});
+if (~isempty(msg))
+    error('MATLAB:SPDFENCODEEPOCH:badInputArguments', '%s', msg)
+end
+if (isa(epoch,'cdfepoch'))
+  if (length(epoch) > 1)
+    for p = 1:length(epoch)
+      if (~isa(epoch, 'cell'))
+        dataaa(p,1) = datestr((todatenum(epoch(p,1))), 0);
+      else
+        if (length(epoch{p}) > 1)
+          for q = 1:length(epoch{p})
+            dataaa(q) = datastr((todatenum(epoch{p}(q,1))), 0);
+          end
+        else
+          dataaa(p,1) = datastr((todatenum(epoch{p})), 0);
+        end
+      end
+    end
+    out = dataaa;
+  end
+else
+  out = spdfencodeepochc(epoch, args.Format);
+end
+%%%
+%%% Function parse_inputs
+%%%
+
+function [args, msg] = parse_inputs(varargin)
+% Set default values
+args.Format = int32(4);
+msg = '';
+% Parse arguments based on their number.
+if (nargin > 0)
+    paramStrings = {'format'};
+
+    % For each pair
+    for k = 1:2:length(varargin)
+       param = lower(varargin{k});
+       if (~ischar(param))
+           msg = 'Parameter name must be a string.';
+           return
+       end
+
+       idx = strmatch(param, paramStrings);
+
+       if (isempty(idx))
+           msg = sprintf('Unrecognized parameter name "%s".', param);
+           return
+       elseif (length(idx) > 1)
+           msg = sprintf('Ambiguous parameter name "%s".', param);
+           return
+       end
+
+       switch (paramStrings{idx})
+       case 'format'
+
+           if (k == length(varargin))
+               msg = 'No format specified.';
+               return
+           else
+               format = varargin{k + 1};
+
+               if (~isa(format, 'double') || ~isscalar(format))
+                   msg = 'Format must be a single integer.';
+                   return;
+               end
+
+               if (int32(format) < 0 || int32(format) > 4)
+                 msg = sprintf('format value "%d" is out or 0-4 range.', format);
+                 return;
+
+               end
+               args.Format = int32(format);
+           end
+       end  % switch
+    end  % for
+
+end  % if (nargin > 1)
+
+function out = SPDFENCODETT2000(tt2000, varargin)
+%SPDFENCODETT2000 encodes the CDF epoch data in TT2000 data type to UTC
+%strings.
+%
+%   OUT = SPDFENCODETT2000(tt2000) returns the CDF epoch in string. OUT is
+%   a cell of strings.
+%
+%     tt2000               A single or vector of numerical values of
+%                          CDF_TIME_TT2000 (an mxINT64_CLASS) data type.
+%
+%   The encoded epoch string will have the following format:
+%       yyyy-mm-ddThh:mm:ss.mmmuuunnn, e.g., "2000-01-01T12:34:56.123456789"
+%
+%   OUT = SPDFENCODETT2000(tt2000, 'Format', FORMAT) encodes the UTC
+%   string into the specified format. FORMAT is a number from 0 to 3.
+%   FORMAT:
+%     0: dd-mmm-yyyy hh:mm:ss.mmmuuunnn, e.g., "01-JAN-2000 12:34:56.123456789"
+%     1: yyyymmdd.dddddddddd, e.g., "20000101.1200000000"
+%     2: yyymmddhhmmss, e.g., "20000101123456"
+%     3: yyyy-mm-ddThh:mm:ss.mmmuuunnn, e.g., "2000-01-01T12:34:56.123456789"
+%   where mmmuuunnn is milliseconds, microseconds and nanoseconds.
+%   Format 3 is the default (as ISO 8601) if this option is not provided.
+%
+%   Examples:
+%
+%   % Read all of the data from the same file, the most efficient way,
+%   % and encode the Variable Epoch, of CDF_TIME_TT2000 data type, to UTC
+%   % string.
+%
+%   data = spdfcdfread('example', 'Variables', {'Epoch'}, "KEEPEPOCHASIS", true);
+%   out = SPDFENCODETT2000(data);
+%
+%
+%   See also CDFTT2000, SPDFPARSETT2000, SPDFCOMPUTETT2000, SPDFBREAKDOWNTT2000,
+
+
+function out = SPDFEPOCH16toDATENUM(epoch16)
+%SPDFEPOCH16toDATENUM converts the time in UTC string (returned from
+%                 spdfcdfread) or date/time values for CDF_EPOCH16 to
+%                 MATLAB datenum
+%
+%   OUT = SPDFEPOCH16toDATENUM(epoch16) returns MATLAB datenum.
+%   OUT a column vector of numerical values of MATLAB date numbers.
+%
+%     epoch16               A vector or cell of UTC string or an M-by-10 matrix
+%                           containing M full or partial date vectors for
+%                           year, month, day, hour, minute, second, millisecond,
+%                           microsecond, nanosecond and picosecond, in that 
+%                           order.
+%
+%   Note:
+%     The valid epoch string should have one of the following forms:
+%     1. dd-mmm-yyyy hh:mm:ss.mmm.uuu.nnn.ppp (length of 36), e.g.,
+%       "01-JAN-2000 12:00:00.123.456.789.000"
+%     2. yyyymmdd.ddddddddddddddd (length of 24), e.g.,
+%       "20000101.120000000000000"
+%     3. yyyymmddhhmmss (length of 14), e.g.,
+%       "20000101120000"
+%     4. yyyy-mm-ddThh:mm:ss.mmmuuunnnppp (length of 32), e.g.,
+%       "2000-01-01T12:00:00.123456789000"
+%     where mmmuuunnnppp is for milliseconds, microseconds, nanoseconds and
+%                           picoseconds.
+%
+%   Examples:
+%
+%   % Read all the variable data in a CDF file. Among them, the variable of 
+%     CDF_EPOCH16 data type is returned in UTC strings. Convert the strings
+%     to MATLAB datenum. The variable is at index of 17 from the output of
+%     1 by 20 array of cells from spdfcdfread, the efficient way. 
+%
+%   data = spdfcdfread('test');
+%   epoch = data(1,17);
+%   datenums = SPDFEPOCH16toDATENUM(epoch);
+%
+%   % Similar to the above example. But, read in the data into 40 by 20 array
+%     of cells by spdfcdfread. Convert the variable of CDF_EPOCH16 data type in
+%     UTC strings and convert them to MATLAB datenum.
+%
+%   data = spdfcdfread('test', 'Combinerecords', false);
+%   epoch = data(:,17);
+%   datenums = SPDFEPOCH16toDATENUM(epoch);
+%
+%   % Convert the UTC strings in vector to MATLAB datenum.
+%
+%   epoch1 = ['2009-01-01T00:00:00.123456789000';
+%             '2009-01-01T12:00:00.123456789000'];
+%   datenums = SPDFEPOCH16toDATENUM(epoch1);
+%
+%   % Convert the date/times in matrix to MATLAB datenum.
+%
+%   epoch2 = [2009 01 01 00 00 00 123 456 789 000;
+%             2009 01 01 12 00 00 123 456 789 000];
+%   datenums = SPDFEPOCH16toDATENUM(epoch2);
+%
+%   See also SPDFCDFREAD.
+
+
+function out = SPDFEPOCH16UnixTime(time, varargin)
+%SPDFEPOCH16UnixTime converts the CDF_EPOCH16 time (picoseconds since 
+%                  01-01-0000 00:00:00.000) to unix time (seconds from 
+%                  01-01-1970 00:00:00.000) or vice verse. The Unix time can
+%                  have sub-second, with a time resolution of microseconds, 
+%                  in its fractional part.
+%
+%   OUT = SPDFEPOCH16UnixTime(time, 'TOEPOCH16', TF) returns converted time(s).
+%   OUT a column vector of numerical values of converted times.
+%
+%     time         A vector or scalar of time(s), based on CDF_EPOCH16 data 
+%                  type or unix time. 
+%
+%   The option 'TOEPOCH16' is specified to true if the time conversion is from
+%   unix time to CDF_EPOCH16. If false, or not specified, the conversion is
+%   from CDF_EPOCH16 to unix time.
+%
+%   Note: Since CDF_EPOCH16 has higher time resolution, the converted
+%         time might not preserve the full resolution for sub-microseconds.
+%         sub-microseconds portion.
+%
+%   Examples:
+%
+%   % Convert a CDF_EPOCH16 data, a scalar at 
+%     01-01-2000 00:00:00.123.456.789.000 to a unix
+%     time value.
+%
+%   epoch = spdfcomputeepoch16([2000,1,1,0,0,0,123,456,789,000]);
+%   unixtime = SPDFEPOCH16UnixTime(epoch);
+%
+%   % Convert CDF_EPOCH16 data, a vector of
+%     01-01-2000 00:00:00.123.456.789.000 and 
+%     02-02-2001 01:01:01.456.789.012.345 to unix time values.
+%
+%   epochs = spdfcomputeepoch16([2000,1,1,0,0,0,123,456,789,0;
+%                                2001,2,2,1,1,1,456,789,012,345]);
+%   unixtimes = SPDFEPOCH16UnixTime(epochs);
+%
+%   % Convert a unix time to CDF_EPOCH16 epoch. 
+%
+%   epoch = SPDFEPOCH16UnixTime(unixtime, 'TOEPOCH16', true);
+%
+%   % Convert a vector of unix times to CDF_EPOCH16 epochs.
+%
+%   epochs = SPDFEPOCH16UnixTime(unixtimes, 'TOEPOCH16', true);
+%
+
+
+function out = SPDFEPOCHtoDATENUM(epoch)
+%SPDFEPOCHtoDATENUM converts the time in UTC string (returned from spdfcdfread) or
+%               date/time values for CDF_EPOCH to MATLAB datenum
+%
+%   OUT = SPDFEPOCHtoDATENUM(epoch) returns MATLAB datenum.
+%   OUT a column vector of numerical values of MATLAB date numbers.
+%
+%     epoch               A vector or cell of UTC string or an M-by-7 matrix
+%                           containing M full or partial date vectors for
+%                           year, month, day, hour, minute, second, millisecond,
+%                           in that order.
+%
+%   Note:
+%     The valid epoch string should have one of the following forms:
+%     1. dd-mmm-yyyy hh:mm:ss.lll (length of 24), e.g.,
+%       "01-JAN-2000 12:00:00.123"
+%     2. yyyymmdd.ddddddd (length of 16), e.g.,
+%       "20000101.1200000"
+%     3. yyyymmddhhmmss (length of 14), e.g.,
+%       "20000101120000"
+%     4. yyyy-mm-ddThh:mm:ss.lll (length of 23), e.g.,
+%       "2000-01-01T12:00:00.123"
+%
+%   Examples:
+%
+%   % Read all the variable data in a CDF file. Among them, the variable of 
+%     CDF_EPOCH data type is returned in UTC strings. Convert the strings
+%     to MATLAB datenum. The variable is at index of 17 from the output of
+%     1 by 20 array of cells from spdfcdfread, the efficient way. 
+%
+%   data = spdfcdfread('test', 'KeepEpochAsIs', true);
+%   epoch = data(1,17);
+%   datenums = SPDFEPOCHtoDATENUM(epoch);
+%
+%   % Similar to the above example. But, read in the data into 40 by 20 array
+%     of cells by spdfcdfread. Convert the variable of CDF_EPOCH data type in
+%     UTC strings and convert them to MATLAB datenum.
+%
+%   data = spdfcdfread('test');
+%   epoch = data(:,17);
+%   datenums = SPDFEPOCHtoDATENUM(epoch);
+%
+%   % Convert the UTC strings in vector to MATLAB datenum.
+%
+%   epoch1 = ['2009-01-01T00:00:00.123';
+%             '2009-01-01T12:00:00.123'];
+%   datenums = SPDFEPOCHtoDATENUM(epoch1);
+%
+%   % Convert the date/times in matrix to MATLAB datenum.
+%
+%   epoch2 = [2009 01 01 00 00 00 123;
+%             2009 01 01 12 00 00 123];
+%   datenums = SPDFEPOCHtoDATENUM(epoch2);
+%
+%   See also SPDFCDFREAD.
+
+function out = SPDFEPOCHUnixTime(time, varargin)
+%SPDFEPOCHUnixTime converts the CDF_EPOCH time (milliseconds since 
+%                  01-01-0000 00:00:00.000) to unix time (seconds from 
+%                  01-01-1970 00:00:00.000) or vice verse. The Unix time
+%                  can have sub-second, with a time resolution of microseconds,
+%                  in its fractional part.
+%
+%   OUT = SPDFEPOCHUnixTime(time, 'TOEPOCH', TF) returns converted time(s).
+%   OUT a column vector of numerical values of converted times.
+%
+%     time         A vector or scalar of time(s), based on CDF_EPOCH data type
+%                  or unix time. 
+%
+%   The option 'TOEPOCH' is specified to true if the time conversion is from
+%   unix time to CDF_EPOCH. If false, or not specified, the conversion is
+%   from CDF_EPOCH to unix time.
+%
+%   Examples:
+%
+%   % Convert a CDF_EPOCH data, a scalar at 01-01-2000 00:00:00.123 to a unix
+%     time value.
+%
+%   epoch = spdfcomputeepoch([2000,1,1,0,0,0,123]);
+%   unixtime = SPDFEPOCHUnixTime(epoch);
+%
+%   % Convert CDF_EPOCH data, a vector at 01-01-2000 00:00:00.123 and 
+%     02-02-2001 01:01:01.456 to unix time values.
+%
+%   epochs = spdfcomputeepoch([2000,1,1,0,0,0,123; 2001,2,2,1,1,1,456]);
+%   unixtimes = SPDFEPOCHUnixTime(epochs);
+%
+%   % Convert a unix time to CDF_EPOCH epoch. 
+%
+%   epoch = SPDFEPOCHUnixTime(unixtime, 'TOEPOCH', true);
+%
+%   % Convert a vector of unix times to CDF_EPOCH epochs.
+%
+%   epochs = SPDFEPOCHUnixTime(unixtimes, 'TOEPOCH', true);
+%
+%   Note: CDF_EPOCH does not have the time resolution for microseconds. The
+%         conversion will not preserve it if the Unix time has that.
+
+
+function out = SPDFPARSEEPOCH16(epoch16)
+%SPDFPARSEEPOCH16 converts the epoch in UTC string to CDF_EPOCH16
+%data type.
+%
+%   OUT = SPDFPARSEEPOCH16(epoch16) returns the CDF epoch in CDF_EPOCH16 type.
+%   OUT an array of numerical values of mxDOUBLE_CLASS (double).
+%
+%     epoch16               A cell or vector of UTC string
+%
+%   Note: the valid epoch string must be one of the following forms:
+%      0: dd-mmm-yyyy hh:mm:ss.mmm.uuu.nnn.ppp, e.g., "01-JAN-2010 12:00:00.000.000.000.000"
+%      1: yyyymmdd.ddddddddddddddd, e.g., "20100101.120000000000000"
+%      2: yyyymmddhhmmss, e.g., "20100101120000"
+%      3: yyyy-mm-ddThh:mm:ss.mmm.uuu.nnn.pppZ, e.g., "2010-01-01T12:00:00.000.000.000.000Z"
+%         where mmm is milliseconds, uuu microseconds, nnn nanoseconds,
+%         ppp picoseconds.
+%      4: yyyy-mm-ddThh:mm:ss.mmmuuunnnppp, e.g., "2010-01-01T12:00:00.000000000000"
+%         where mmm is milliseconds, uuu microseconds, nnn nanoseconds,
+%         ppp picoseconds.
+%
+%   Examples:
+%
+%   % Convert the UTC strings in cell to CDF_EPOCH16 and write it to Epoch
+%   % variable of CDF CDF_EPOCH16 data type in a CDF.
+%
+%   utcs = {'2009-01-01 00:00:00.123'; '2009-01-01 12:00:00.123'};
+%   epoch16 = SPDFPARSEEPOCH16(utcs);
+%   SPDFCDFWRITE('example', {'Epoch', epoch16}, ...
+%            'recordbound', {'Epoch'});
+%
+%   See also SPDFENCODEEPOCH16, SPDFCOMPUTEEPOCH16, SPDFBREAKDOWNEPOCH16
+
+
+function out = SPDFPARSEEPOCH(epoch)
+%SPDFPARSEEPOCH converts the epoch in UTC string to CDF_EPOCH
+%data type.
+%
+%   OUT = SPDFPARSEEPOCH(epoch) returns the CDF epoch in EPOCH type.
+%   OUT a vector of numerical values of mxDOUBLE_CLASS (double).
+%
+%     epoch               A cell or vector of UTC string
+%
+%   Note: the valid epoch string must be one of the following forms:
+%      0: dd-mmm-yyyy hh:mm:ss.mmm, e.g., "01-JAN-2010 12:00:00.000"
+%      1: yyyymmdd.ddddddd, e.g., "20100101.1200000"
+%      2: yyyymmddhhmmss, e.g., "20100101120000"
+%      3: yyyy-mm-ddThh:mm:ss.mmm, e.g., "2010-01-01T12:00:00.000"
+%         where mmm is milliseconds.
+%      4: yyyy-mm-ddThh:mm:ss.mmmZ, e.g., "2010-01-01T12:00:00.000Z"
+%         where mmm is milliseconds.
+%
+%   Examples:
+%
+%   % Convert the UTC strings in cell to CDF_EPOCH and write it to Epoch
+%   % variable of CDF CDF_EPOCH data type in a CDF.
+%
+%   utcs = {'2009-01-01 00:00:00.123'; '2009-01-01 12:00:00.123'};
+%   epoch = SPDFPARSEEPOCH(utcs);
+%   SPDFCDFWRITE('example', {'Epoch', epoch}, ...
+%            'recordbound', {'Epoch'});
+%
+%   See also CDFEPOCH, SPDFENCODEEPOCH, SPDFCOMPUTEEPOCH, SPDFBREAKDOWNEPOCH
+
+
+function out = SPDFPARSETT2000(tt2000)
+%SPDFPARSETT2000 converts the CDF epoch in UTC string to CDF_TIME_TT2000
+%data type.
+%
+%   OUT = SPDFPARSETT2000(tt2000) returns the CDF epoch in TT2000 data type.
+%   OUT a vector of numerical values of mxINT64_CLASS (int64).
+%
+%     tt2000               A cell or vector of TT2000 UTC string
+%
+%   Note: the valid epoch string should be one of the following forms:
+%      0: dd-mmm-yyyy hh:mm:ss.mmmuuunnn, e.g., "01-JAN-2010 12:00:00.000000000"
+%      1: yyyymmdd.dddddddddd, e.g., "20100101.1200000000"
+%      2: yyyymmddhhmmss, e.g., "20100101120000"
+%      3: yyyy-mm-ddThh:mm:ss.mmmuuunnn, e.g., "2010-01-01T12:00:00.000000000"
+%         where mmmuuunnn is for milliseconds, microseconds and nanoseconds.
+%      4: yyyy-mm-ddThh:mm:ss.mmmuuunnnZ, e.g., "2010-01-01T12:00:00.000000000Z"
+%         where mmmuuunnn is for milliseconds, microseconds and nanoseconds.
+%
+%   Examples:
+%
+%   % Convert the UTC strings in cell to TT2000 and write it to Epoch
+%   % variable of CDF TT2000 data type in a CDF.
+%
+%   utcs = {'2009-01-01T00:00:00.123456789'; '2009-01-01T12:00:00.123456789'};
+%   tt2000 = SPDFPARSETT2000(utcs);
+%   SPDFCDFWRITE('example', {'Epoch', tt2000}, 'TT2000', true, ...
+%            'recordbound', {'Epoch'});
+%
+%   See also CDFTT2000, SPDFENCODETT2000, SPDFCOMPUTETT2000, SPDFBREAKDOWNTT2000
+
+
+function out = SPDFTT2000toDATENUM(tt2000)
+%SPDFTT2000toDATENUM converts the time in UTC string (returned from spdfcdfread)
+%                or date/time values for CDF_TIME_TT2000 to MATLAB datenum
+%
+%   OUT = SPDFTT2000toDATENUM(tt2000) returns MATLAB datenum.
+%   OUT a column vector of numerical values of MATLAB date numbers.
+%
+%     tt2000               A vector or cell of UTC string or an either
+%                          M-by-1 matrix of CDF_TIME_TT2000 values or
+%                          M-by-9 matrix containing M rows, each with date/time
+%                          fields for year, month, day, hour, minute, second,
+%                          millisecond, microsecond, and nanosecond, in that
+%                          order.
+%
+%   Note:
+%     The valid tt2000 string should have one of the following forms:
+%     1. dd-mmm-yyyy hh:mm:ss.mmmuuunnn (length of 30), e.g.,
+%       "01-JAN-2000 12:00:00.123456789"
+%     2. yyyymmdd.dddddddddd (length of 19), e.g.,
+%       "20000101.1200000000"
+%     3. yyyymmddhhmmss (length of 14), e.g.,
+%       "20000101120000"
+%     4. yyyy-mm-ddThh:mm:ss.mmmuuunnn (ISO 8601, length of 29), e.g.,
+%       "2000-01-01T12:00:00.123456789"
+%     where mmmuuunnn is milliseconds, microseconds and nanoseconds.
+%
+%   Examples:
+%
+%   % Read all the variable data in a CDF file. Among them, the variable of 
+%     CDF_TIME_TT2000 data type, at index of 17, is returned. Convert the
+%     variable of CDF_TIME_TT2000 data type in cdftt2000 objects to MATLAB
+%     datenum.
+%
+%   data = spdfcdfread('test','KeepEpochAsIs',true);
+%   tt2000 = data(1,17);
+%   datenums = SPDFTT2000toDATENUM(tt2000);
+%
+%   % Convert the UTC strings in vector to MATLAB datenum.
+%
+%   tt2000 = ['2009-01-01T00:00:00.123456789';
+%             '2009-01-01T12:00:00.123456789'];
+%   datenums = SPDFTT2000toDATENUM(tt2000);
+%
+%   % Convert the date/times in matrix to MATLAB datenum.
+%
+%   tt2000 = [2009 01 01 00 00 00 123 456 789;
+%             2009 01 01 12 00 00 123 456 789];
+%   datenums = SPDFTT2000toDATENUM(tt2000);
+%
+%   See also CDFTT2000, SPDFENCODETT2000, SPDFCOMPUTETT2000, SPDFPARSETT2000
+
+
+function out = SPDFTT2000UnixTime(time, varargin)
+%SPDFTT2000UnixTime converts the CDF_TIME_TT2000 time (nanoseconds since 
+%                  2000-01-01 12:00:00.000 with leap seconds) to unix time
+%                  (seconds from 1970-01-01 00:00:00.000) or vice verse.
+%                  The Unix time can have sub-second, with a time resolution
+%                  of microseconds, in its fractional part.
+%
+%   OUT = SPDFTT2000UnixTime(time, 'TOTT2000', TF) returns converted time(s).
+%   OUT a column vector of numerical values of converted times.
+%
+%     time         A vector or scalar of time(s), based on CDF_TIME_TT2000 data type
+%                  or unix time. 
+%
+%   The option 'TOTT2000' is specified to true if the time conversion is from
+%   unix time to CDF_TIME_TT2000. If false, or not specified, the conversion is
+%   from CDF_TIME_TT2000 to unix time.
+%
+%   Note: Since unix time does not include leap seconds, the time conversion will
+%         not be properly handled if a time falls on a leap second. The TT2000
+%         time has a higher time resolution, sub-microseonds might not be preserved
+%         in unix time.
+%
+%   Examples:
+%
+%   % Convert a CDF_TIME_TT2000 data, a scalar at 2000-01-01 00:00:00.123 to a unix
+%     time value.
+%
+%   epoch = spdfcomputett2000([2000,1,1,0,0,0,123,0,0]);
+%   unixtime = SPDFTT2000UnixTime(epoch);
+%
+%   % Convert CDF_TIME_TT2000 data, a vector at 2000-01-01-2000 00:00:00.123 and 
+%     2001-02-02 01:01:01.456 to unix time values.
+%
+%   epochs = spdfcomputett2000([2000,1,1,0,0,0,123,0,0; 2001,2,2,1,1,1,456,0,0]);
+%   unixtimes = SPDFTT2000UnixTime(epochs);
+%
+%   % Convert a unix time to CDF_TIME_TT2000 epoch. 
+%
+%   epoch = SPDFTT2000UnixTime(unixtime, 'TOTT2000', true);
+%
+%   % Convert a vector of unix times to CDF_TIME_TT2000 epochs.
+%
+%   epochs = SPDFTT2000UnixTime(unixtimes, 'TOTT2000', true);
+%
+

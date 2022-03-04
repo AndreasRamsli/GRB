@@ -8,10 +8,12 @@ function [Data] = DataReadBin(year, DOY, K, k);
 % This call makes ML data for all triggers from a specified file of DOY for MXGS data. 
 
 %---------------------
-addpath ('/Users/andreas/phys/master/MATLAB/matlab_cdf370_patch-64');
+addpath ("/Home/siv30/wad005/master/GRB/MATLAB/matlab_cdf380_patch-64");
+addpath ("/Home/siv30/wad005/master/GRB/MATLAB/CZT_calibration/file_mat_CZT_TGF/")
+addpath ("/Home/siv30/wad005/master/GRB/MATLAB/")
 %---------------------
 %DirPrefix = '/Volumes/Helheim/Data/ASIM/';
-DirPrefix = '/Volumes/ift_asdc/bulktransfer2/ops/';
+DirPrefix = '/net_krb5/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/';
 DataDir = [DirPrefix 'MXGS/cdf/mxgstgfobservation/'];
 
 DOY_Path = [DataDir int2str(year) '/' sprintf('%03d', DOY) '/'];

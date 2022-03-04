@@ -2,7 +2,7 @@ function CDF_GUI();
 
 % This GUI shows list of cdf files in subfolders.
 
-addpath ('matlab_cdf370_patch-64');
+%addpath ('matlab_cdf380_patch-64');
 
 T0 = datetime(datevec(datenum(0, 1, 1, 0, 0, 0)));  % reference time
 
@@ -16,7 +16,7 @@ f.Name = 'CDF GUI';
 % Move the window to the center of the screen.
 movegui(f,'center')
 f.Position = [0 0 1 1];
-f.Resize = 'on';
+f.Resize = 'off';
 
 % create tab_group
 tabgp = uitabgroup(f, 'Position', [0 0 1 1]);
@@ -29,8 +29,8 @@ tab3 = uitab(tabgp, 'Title', 'Export Selected Variables');
 
 % global vars --------
 %TargetDir = 'C:\Work\Bergen\Projects\ASIM\Data';
-TargetDir = '/Volumes/ift_asdc/bulktransfer2/ops';
-%TargetDir = '/Volumes/Helheim/Data/ASIM/';
+%TargetDir = '/Volumes/ift_asdc/bulktransfer2/ops/';
+TargetDir = '/net_krb5/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/MXGS/cdf/mxgstgfobservation/';
 f_ToShow = {};
 %---------------------
 
