@@ -3,7 +3,7 @@ function [channel_spectra, keV_spectra, pixel_energy] = czt_make_spectra_per_pix
 % prepare vars and structs for spectra
 % input: asic address, asic channel (pixel address), pulse heigh
 % output: 16384x1024 arrays with pixel level spectra
-    load('calm.mat','calm2019');
+load('calm.mat','calm2019');
 calm = calm2019;
 n_pixels = 128*128;
 n_EnergyBins = 1024;
