@@ -8,7 +8,7 @@ function [Lat, Lon, T0, Tsc, Tms, Tus, Ttk, Typ, Erg, Dau, Det] = DataReadOrder(
 % and your path to the data (line 14).
 
 %---------------------
-addpath('matlab_cdf380_patch-64');
+addpath('/Home/siv30/wad005/master/GRB/MATLAB/matlab_cdf380_patch-64');
 addpath("/Home/siv30/wad005/master/GRB/MATLAB/output/file_mat_TGF")
 addpath ("/Home/siv30/wad005/master/GRB/MATLAB")
 %---------------------

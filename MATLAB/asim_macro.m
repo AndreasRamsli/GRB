@@ -1,7 +1,7 @@
 clear all;
 close all;
 
-[lat, lon, t0, tsc, tms, tus, ttk, typ, erg, dau, det] = DataReadOrder(2019,64,14,3); % Format: 2019-Sep-03 18:51:57.085569
+[lat, lon, t0, tsc, tms, tus, ttk, typ, erg, dau, det] = DataReadOrder(2020,362,24,1); % Format: 2019-Sep-03 18:51:57.085569
 
 
 %Data = DataReadBin(2018, 172, 16, 2);
