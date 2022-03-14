@@ -1,6 +1,6 @@
 %clear all;
 %close all;
-TGF_str_Andrew = '2019-01-17 08:50:42.939689';
+TGF_str_Andrew = '2018_12_27_06_17_04.210500';
 xmin=-99999999999999;
 xmax=99999999999999;
 tus_TGF=0;
@@ -19,11 +19,12 @@ TGF_str_Andrew = strrep(TGF_str_Andrew,' ','_');
 tus_min = tus_TGF + xmin;
 tus_max = tus_TGF + xmax;
 
-
+disp(TGF_str_Andrew);
 %trigger_number = 1:88;
-savename = strcat('/Home/siv30/wad005/master/GRB/MATLAB/CZT_calibration/file_mat_CZT_TGF/',TGF_str_Andrew, ".mat");
-savename_fulltrigger = strcat('/Home/siv30/wad005/master/GRB/MATLAB/CZT_calibration/file_mat_CZT_TGF/',TGF_str_Andrew,"_Fulltrigger.mat");
-
+savename = '/Home/siv30/wad005/master/GRB/MATLAB/CZT_calibration/file_mat_CZT_TGF/' + TGF_str_Andrew + ".mat" ;
+savename_fulltrigger = '/Home/siv30/wad005/master/GRB/MATLAB/CZT_calibration/file_mat_CZT_TGF/' + TGF_str_Andrew + "_Fulltrigger.mat" ;
+disp(savename);
+disp(savename_fulltrigger);
 
 ans = DataReadBin(year, doy, filenumber, trigger_number); % SCIENCE
 
