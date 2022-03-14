@@ -2,7 +2,7 @@ function CDF_GUI();
 
 % This GUI shows list of cdf files in subfolders.
 
-%addpath ('matlab_cdf380_patch-64');
+addpath ('matlab_cdf380_patch-64');
 
 T0 = datetime(datevec(datenum(0, 1, 1, 0, 0, 0)));  % reference time
 
@@ -30,7 +30,7 @@ tab3 = uitab(tabgp, 'Title', 'Export Selected Variables');
 % global vars --------
 %TargetDir = 'C:\Work\Bergen\Projects\ASIM\Data';
 %TargetDir = '/Volumes/ift_asdc/bulktransfer2/ops/';
-TargetDir = '/net_krb5/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/MXGS/cdf/mxgstgfobservation/';
+TargetDir = '/net_krb5/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/';
 f_ToShow = {};
 %---------------------
 
@@ -44,7 +44,11 @@ TopLine = 0.94;
 % Construct Tab1 components------------------------------------------------
 % List of Instruments 
 folder = TargetDir;
+disp(folder);
+
 I = dir(folder);     % list of all objects in current folder
+disp(I);
+
 I_val = {}; j = 0;
 for k = 1:length(I)
     if (I(k).isdir==1) && (strcmp(I(k).name, 'DHPU') || strcmp(I(k).name, 'MMIA') || strcmp(I(k).name, 'MXGS'))
