@@ -1,13 +1,14 @@
-%clear all;
-%close all;
-TGF_str_Andrew = '2019-05-01 05:23:21.736797';
+clear all;
+close all;
+
+TGF_str_Andrew = '2019-10-01 06:41:51.631214';
 xmin=-99999999999999;
 xmax=99999999999999;
 tus_TGF=0;
 year = 2019;
-doy = 121;
-filenumber = 6;
-trigger_number = 18;
+doy = 274;
+filenumber = 9;
+trigger_number = 3;
 
 %[lat, lon, t0, tsc, tms, tus, ttk, typ, erg, dau, det] = DataReadOrder(2018,321,27,21); %  2018-Nov-17 22:26:33.634498
 
