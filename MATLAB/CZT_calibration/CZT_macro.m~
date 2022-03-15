@@ -1,13 +1,13 @@
 %clear all;
 %close all;
-TGF_str_Andrew = '2018_12_27_06_17_04.210500';
+TGF_str_Andrew = '2019-04-20 23:32:24.931211';
 xmin=-99999999999999;
 xmax=99999999999999;
 tus_TGF=0;
 year = 2019;
-doy = 17;
-filenumber = 10;
-trigger_number = 7;
+doy = 110;
+filenumber = 25;
+trigger_number = ;
 
 %[lat, lon, t0, tsc, tms, tus, ttk, typ, erg, dau, det] = DataReadOrder(2018,321,27,21); %  2018-Nov-17 22:26:33.634498
 
@@ -19,12 +19,11 @@ TGF_str_Andrew = strrep(TGF_str_Andrew,' ','_');
 tus_min = tus_TGF + xmin;
 tus_max = tus_TGF + xmax;
 
-disp(TGF_str_Andrew);
+
 %trigger_number = 1:88;
-savename = '/Home/siv30/wad005/master/GRB/MATLAB/CZT_calibration/file_mat_CZT_TGF/' + TGF_str_Andrew + ".mat" ;
-savename_fulltrigger = '/Home/siv30/wad005/master/GRB/MATLAB/CZT_calibration/file_mat_CZT_TGF/' + TGF_str_Andrew + "_Fulltrigger.mat" ;
-disp(savename);
-disp(savename_fulltrigger);
+savename = strcat('/Home/siv30/wad005/master/GRB/MATLAB/CZT_calibration/file_mat_CZT_TGF/',TGF_str_Andrew, ".mat");
+savename_fulltrigger = strcat('/Home/siv30/wad005/master/GRB/MATLAB/CZT_calibration/file_mat_CZT_TGF/',TGF_str_Andrew,"_Fulltrigger.mat");
+
 
 ans = DataReadBin(year, doy, filenumber, trigger_number); % SCIENCE
 
