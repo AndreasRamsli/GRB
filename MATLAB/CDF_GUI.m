@@ -16,7 +16,7 @@ f.Name = 'CDF GUI';
 % Move the window to the center of the screen.
 movegui(f,'center')
 f.Position = [0 0 1 1];
-f.Resize = 'off';
+f.Resize = 'on';
 
 % create tab_group
 tabgp = uitabgroup(f, 'Position', [0 0 1 1]);
