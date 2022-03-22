@@ -1,14 +1,14 @@
 clear all;
 close all;
 
-TGF_str_Andrew = '2021-06-07 21:39:21.187641';
+TGF_str_Andrew = '2019-04-04 07:01:06.584820';
 xmin=-99999999999999;
 xmax=99999999999999;
 tus_TGF=0;
-year = 2021;
-doy = 114;
-filenumber = 234;
-trigger_number = 1;
+year = 2019;
+doy = 79;
+filenumber = ;
+trigger_number = 76;
 
 %[lat, lon, t0, tsc, tms, tus, ttk, typ, erg, dau, det] = DataReadOrder(2018,321,27,21); %  2018-Nov-17 22:26:33.634498
 
