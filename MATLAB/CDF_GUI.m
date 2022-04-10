@@ -2,7 +2,7 @@ function CDF_GUI();
 
 % This GUI shows list of cdf files in subfolders.
 
-addpath ('matlab_cdf380_patch-64');
+%addpath ('matlab_cdf380_patch-64');
 
 T0 = datetime(datevec(datenum(0, 1, 1, 0, 0, 0)));  % reference time
 
