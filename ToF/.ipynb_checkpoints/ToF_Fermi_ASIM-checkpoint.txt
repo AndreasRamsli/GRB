@@ -1,0 +1,14 @@
+# Propagation times (ToF) between Fermi and the ISS (if a value is positive, the radiation first reaches the ISS).
+Name            RA         Dec     ToF_Fermi_ASIM    Fermi_GBM_detected
+GRB180720B      0.530     -2.933    -0.0051            Y
+GRB181222B    312.572     24.240     0.0026            Y
+GRB190206A    313.330    -30.510     0.0189            N
+GRB190305A     11.627    -50.349     0.0091            N
+GRB190606A     76.561     -0.638    -0.0081            Y
+GRB200415A     11.071    -25.017    -0.0246            NOT A GRB: the famous extragalactic magnetar flare
+GRB200521A    169.531      7.222     0.0339            N
+GRB200716C    196.010     29.645     0.0109            Y
+GRB201227A    170.121    -73.613    -0.0008            Y
+GRB210424B    284.716     16.172     0.0254            N
+GRB210619B    319.712     33.867     0.0227            Y
+GRB211211A    212.271     27.883     0.0049            Y
