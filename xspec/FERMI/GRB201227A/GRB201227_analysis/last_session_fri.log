@@ -1,0 +1,757 @@
+#XSPEC version: 12.12.1
+#Build Date/Time: Fri Jul  1 23:38:21 2022
+#
+!XSPEC12> @gbm_n4_n8_b0.xcm #using @ to load a previous model and its parameters
+#
+!XSPEC12>statistic chi
+#Default fit statistic is set to: Chi-Squared
+#   This will apply to all current and newly loaded spectra.
+#
+!XSPEC12>lmod grb  #loading all local models
+#
+!XSPEC12>lappend auto_path /Users/andreas/phys/master/GRB_local/Local_models_xspec12/
+#
+!XSPEC12>::tcl::tm::UnknownHandler {::tcl::MacOSXPkgUnknown ::tclPkgUnknown} grb 0-
+#
+!XSPEC12>::tcl::namespace::current
+#
+!XSPEC12>::tcl::tm::UnknownHandler ::tcl::MacOSXPkgUnknown ::tclPkgUnknown grb 0-
+#
+!XSPEC12>::tcl::MacOSXPkgUnknown ::tclPkgUnknown grb 0-
+#
+!XSPEC12>::tcl::namespace::current
+#
+!XSPEC12>::tcl::MacOSXPkgUnknown ::tclPkgUnknown grb 0-
+#
+!XSPEC12>::tclPkgUnknown grb 0-
+#
+!XSPEC12>load /Users/andreas/phys/master/GRB_local/Local_models_xspec12/libgrb.dylib
+#Model package grb successfully loaded.
+#
+!XSPEC12>data 1:1 GRB201227A_n4_grp3.pha #assigning data
+#
+#1 spectrum  in use
+# 
+#Spectral Data File: GRB201227A_n4_grp3.pha  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  8.136e+03 +/- 3.741e+02 (85.4 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.0682 sec
+# Using fit statistic: chi
+# Using Background File                GRB201227A_n4.bak
+#  Background Exposure Time: 0.06632 sec
+# Using Response (RMF) File            GRB201227A_n4.rsp for Source 1
+#
+#
+!XSPEC12>data 1:2 GRB201227A_n8_grp3.pha
+#
+#***XSPEC Error:  cannot open file named: GRB201227A_n8.bak
+#Error: cannot read background file 
+#
+# background file  read skipped
+#
+#2 spectra  in use
+# 
+#Spectral Data File: GRB201227A_n8_grp3.pha  Spectrum 2
+#Net count rate (cts/s) for Spectrum:2  5.942e+03 +/- 2.960e+02
+# Assigned to Data Group 1 and Plot Group 2
+#  Noticed Channels:  1-26
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06783 sec #too long exposure time
+# Using fit statistic: chi
+# Using Response (RMF) File            GRB201227A_n8.rsp for Source 1
+#
+#
+!XSPEC12>data 2:3 GRB201227A_b0_grp3.pha
+#
+#***XSPEC Error:  cannot open file named: GRB201227A_b0.bak
+#Error: cannot read background file 
+#
+# background file  read skipped
+#
+#3 spectra  in use
+# 
+#Spectral Data File: GRB201227A_b0_grp3.pha  Spectrum 3
+#Net count rate (cts/s) for Spectrum:3  1.553e+04 +/- 4.837e+02
+# Assigned to Data Group 2 and Plot Group 3
+#  Noticed Channels:  1-27
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06638 sec
+# Using fit statistic: chi
+# Using Response (RMF) File            GRB201227A_b0.rsp for Source 1
+#
+#
+!XSPEC12>ignore 3:1-5,27
+#     5 channels (1,5) ignored in spectrum #     3
+#     1 channels (27-27) ignored in spectrum #     3
+#
+#
+!XSPEC12>method leven 10000 0.01
+#
+!XSPEC12>abund angr
+# Solar Abundance Vector set to angr:  Anders E. & Grevesse N. Geochimica et Cosmochimica Acta 53, 197 (1989)
+#
+!XSPEC12>xsect vern
+# Cross Section Table set to vern:  Verner, Ferland, Korista, and Yakovlev 1996
+#
+!XSPEC12>cosmo 70 0 0.73
+#
+!XSPEC12>xset delta 0.01
+#Parameter delta values for fits will now be 0.01 * parValue
+#
+!XSPEC12>systematic 0
+# Model systematic error set to 0
+#
+!XSPEC12>model  cplflux  ;        -0.245677        0.1        -10         -3          1          2  ;          1028.25          1          1          1      10000      10000  ;              100      -0.01          1          1       1000       1000  ;                8      -0.01          0          0      20000      20000  ;              900      -0.01          0          0      20000      20000  ;          44.3833       0.01          0          0      1e+20      1e+24  ;  = p1  ;  = p2  ;  = p3  ;  = p4  ;  = p5  ;  = p6
+#
+#========================================================================
+#Model cplflux<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   cplflux    alpha               -0.245677    +/-  0.0          
+#   2    1   cplflux    Epeak      keV      1028.25      +/-  0.0          
+#   3    1   cplflux    enorm      keV      100.000      frozen
+#   4    1   cplflux    Emin       keV      8.00000      frozen
+#   5    1   cplflux    Emax       keV      900.000      frozen
+#   6    1   cplflux    norm                44.3833      +/-  0.0          
+#                           Data group: 2
+#   7    1   cplflux    alpha               -0.245677    = p1
+#   8    1   cplflux    Epeak      keV      1028.25      = p2
+#   9    1   cplflux    enorm      keV      100.000      = p3
+#  10    1   cplflux    Emin       keV      8.00000      = p4
+#  11    1   cplflux    Emax       keV      900.000      = p5
+#  12    1   cplflux    norm                44.3833      = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   32.87     using 40 bins.
+#                 Chi-Squared                   39.18     using 26 bins.
+#                 Chi-Squared                   38.13     using 21 bins.
+#Total fit statistic                           110.18     with 84 d.o.f.
+#
+#Test statistic : Chi-Squared                  110.18     using 87 bins.
+# Null hypothesis probability of 2.93e-02 with 84 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> cpd /xw
+#
+!XSPEC12> setpl en
+#
+!XSPEC12> pl lda delchi
+#***Warning: Fit is not current.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       1:alpha       2:Epeak        6:norm
+#93.5786      0.431227     -3     -0.381376       1210.92       46.4195
+#93.0245      5.02662      -4     -0.373002       1245.74       46.3629
+#93.0243      0.0875425    -5     -0.372698       1245.93       46.3580
+#========================================
+# Variances and Principal Axes
+#                 1        2        6  
+# 1.6298E-03|  1.0000   0.0004  -0.0086  
+# 1.7027E+00|  0.0086   0.0098   0.9999  
+# 8.7684E+03| -0.0005   1.0000  -0.0098  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   4.046e-03  -4.481e+00   5.848e-02
+#  -4.481e+00   8.768e+03  -8.571e+01
+#   5.848e-02  -8.571e+01   2.541e+00
+#------------------------------------
+#
+#========================================================================
+#Model cplflux<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   cplflux    alpha               -0.372698    +/-  6.36112E-02  
+#   2    1   cplflux    Epeak      keV      1245.93      +/-  93.6352      
+#   3    1   cplflux    enorm      keV      100.000      frozen
+#   4    1   cplflux    Emin       keV      8.00000      frozen
+#   5    1   cplflux    Emax       keV      900.000      frozen
+#   6    1   cplflux    norm                46.3580      +/-  1.59392      
+#                           Data group: 2
+#   7    1   cplflux    alpha               -0.372698    = p1
+#   8    1   cplflux    Epeak      keV      1245.93      = p2
+#   9    1   cplflux    enorm      keV      100.000      = p3
+#  10    1   cplflux    Emin       keV      8.00000      = p4
+#  11    1   cplflux    Emax       keV      900.000      = p5
+#  12    1   cplflux    norm                46.3580      = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   40.69     using 40 bins.
+#                 Chi-Squared                   28.55     using 26 bins.
+#                 Chi-Squared                   23.78     using 21 bins.
+#Total fit statistic                            93.02     with 84 d.o.f.
+#
+#Test statistic : Chi-Squared                   93.02     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 84 degrees of freedom
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       1:alpha       2:Epeak        6:norm
+#93.0243      0.000165736  -3     -0.372701       1245.93       46.3579
+#========================================
+# Variances and Principal Axes
+#                 1        2        6  
+# 1.6315E-03|  1.0000   0.0004  -0.0086  
+# 1.7025E+00|  0.0086   0.0098   0.9999  
+# 8.7706E+03| -0.0005   1.0000  -0.0098  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   4.050e-03  -4.483e+00   5.849e-02
+#  -4.483e+00   8.770e+03  -8.574e+01
+#   5.849e-02  -8.574e+01   2.541e+00
+#------------------------------------
+#
+#========================================================================
+#Model cplflux<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   cplflux    alpha               -0.372701    +/-  6.36390E-02  
+#   2    1   cplflux    Epeak      keV      1245.93      +/-  93.6471      
+#   3    1   cplflux    enorm      keV      100.000      frozen
+#   4    1   cplflux    Emin       keV      8.00000      frozen
+#   5    1   cplflux    Emax       keV      900.000      frozen
+#   6    1   cplflux    norm                46.3579      +/-  1.59402      
+#                           Data group: 2
+#   7    1   cplflux    alpha               -0.372701    = p1
+#   8    1   cplflux    Epeak      keV      1245.93      = p2
+#   9    1   cplflux    enorm      keV      100.000      = p3
+#  10    1   cplflux    Emin       keV      8.00000      = p4
+#  11    1   cplflux    Emax       keV      900.000      = p5
+#  12    1   cplflux    norm                46.3579      = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   40.69     using 40 bins.
+#                 Chi-Squared                   28.55     using 26 bins.
+#                 Chi-Squared                   23.78     using 21 bins.
+#Total fit statistic                            93.02     with 84 d.o.f.
+#
+#Test statistic : Chi-Squared                   93.02     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 84 degrees of freedom
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       1:alpha       2:Epeak        6:norm
+#93.0243      4.54478e-07  -3     -0.372701       1245.93       46.3579
+#========================================
+# Variances and Principal Axes
+#                 1        2        6  
+# 1.6315E-03|  1.0000   0.0004  -0.0086  
+# 1.7025E+00|  0.0086   0.0098   0.9999  
+# 8.7707E+03| -0.0005   1.0000  -0.0098  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   4.050e-03  -4.483e+00   5.849e-02
+#  -4.483e+00   8.770e+03  -8.574e+01
+#   5.849e-02  -8.574e+01   2.541e+00
+#------------------------------------
+#
+#========================================================================
+#Model cplflux<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   cplflux    alpha               -0.372701    +/-  6.36388E-02  
+#   2    1   cplflux    Epeak      keV      1245.93      +/-  93.6476      
+#   3    1   cplflux    enorm      keV      100.000      frozen
+#   4    1   cplflux    Emin       keV      8.00000      frozen
+#   5    1   cplflux    Emax       keV      900.000      frozen
+#   6    1   cplflux    norm                46.3579      +/-  1.59402      
+#                           Data group: 2
+#   7    1   cplflux    alpha               -0.372701    = p1
+#   8    1   cplflux    Epeak      keV      1245.93      = p2
+#   9    1   cplflux    enorm      keV      100.000      = p3
+#  10    1   cplflux    Emin       keV      8.00000      = p4
+#  11    1   cplflux    Emax       keV      900.000      = p5
+#  12    1   cplflux    norm                46.3579      = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   40.69     using 40 bins.
+#                 Chi-Squared                   28.55     using 26 bins.
+#                 Chi-Squared                   23.78     using 21 bins.
+#Total fit statistic                            93.02     with 84 d.o.f.
+#
+#Test statistic : Chi-Squared                   93.02     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 84 degrees of freedom
+#
+!XSPEC12> err 1
+# Parameter   Confidence Range (2.706)
+#     1    -0.473291    -0.263424    (-0.10059,0.109276)
+#
+!XSPEC12> er 2
+# Parameter   Confidence Range (2.706)
+#     2      1107.17      1422.07    (-138.761,176.133)
+#
+!XSPEC12> addcomp 1 const
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)          0          0      1e+10      1e+10
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)          0          0      1e+10      1e+10
+#
+#Fit statistic  : Chi-Squared                   40.69     using 40 bins.
+#                 Chi-Squared                   28.55     using 26 bins.
+#                 Chi-Squared                   23.78     using 21 bins.
+#Total fit statistic                            93.02     with 84 d.o.f.
+#
+#Test statistic : Chi-Squared                   93.02     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 84 degrees of freedom
+# Current data and model not fit yet.
+#
+#========================================================================
+#Model constant<1>*cplflux<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   cplflux    alpha               -0.372701    +/-  6.36388E-02  
+#   3    2   cplflux    Epeak      keV      1245.93      +/-  93.6476      
+#   4    2   cplflux    enorm      keV      100.000      frozen
+#   5    2   cplflux    Emin       keV      8.00000      frozen
+#   6    2   cplflux    Emax       keV      900.000      frozen
+#   7    2   cplflux    norm                46.3579      +/-  1.59402      
+#
+#                           Data group: 2
+#   8    1   constant   factor              1.00000      = p1
+#   9    2   cplflux    alpha               -0.372701    = p2
+#  10    2   cplflux    Epeak      keV      1245.93      = p3
+#  11    2   cplflux    enorm      keV      100.000      = p4
+#  12    2   cplflux    Emin       keV      8.00000      = p5
+#  13    2   cplflux    Emax       keV      900.000      = p6
+#  14    2   cplflux    norm                46.3579      = p7
+#
+#________________________________________________________________________
+#
+!XSPEC12> untie 8
+#
+#Fit statistic  : Chi-Squared                   40.69     using 40 bins.
+#                 Chi-Squared                   28.55     using 26 bins.
+#                 Chi-Squared                   23.78     using 21 bins.
+#Total fit statistic                            93.02     with 84 d.o.f.
+#
+#Test statistic : Chi-Squared                   93.02     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 84 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha       3:Epeak        7:norm
+#93.0243      3.12492e-09  -3     -0.372701       1245.93       46.3579
+#========================================
+# Variances and Principal Axes
+#                 2        3        7  
+# 1.6315E-03|  1.0000   0.0004  -0.0086  
+# 1.7025E+00|  0.0086   0.0098   0.9999  
+# 8.7707E+03| -0.0005   1.0000  -0.0098  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   4.050e-03  -4.483e+00   5.849e-02
+#  -4.483e+00   8.770e+03  -8.574e+01
+#   5.849e-02  -8.574e+01   2.541e+00
+#------------------------------------
+#
+#========================================================================
+#Model constant<1>*cplflux<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   cplflux    alpha               -0.372701    +/-  6.36388E-02  
+#   3    2   cplflux    Epeak      keV      1245.93      +/-  93.6476      
+#   4    2   cplflux    enorm      keV      100.000      frozen
+#   5    2   cplflux    Emin       keV      8.00000      frozen
+#   6    2   cplflux    Emax       keV      900.000      frozen
+#   7    2   cplflux    norm                46.3579      +/-  1.59402      
+#                           Data group: 2
+#   8    1   constant   factor              1.00000      frozen
+#   9    2   cplflux    alpha               -0.372701    = p2
+#  10    2   cplflux    Epeak      keV      1245.93      = p3
+#  11    2   cplflux    enorm      keV      100.000      = p4
+#  12    2   cplflux    Emin       keV      8.00000      = p5
+#  13    2   cplflux    Emax       keV      900.000      = p6
+#  14    2   cplflux    norm                46.3579      = p7
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   40.69     using 40 bins.
+#                 Chi-Squared                   28.55     using 26 bins.
+#                 Chi-Squared                   23.78     using 21 bins.
+#Total fit statistic                            93.02     with 84 d.o.f.
+#
+#Test statistic : Chi-Squared                   93.02     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 84 degrees of freedom
+#
+!XSPEC12> thaw 8
+#
+#Fit statistic  : Chi-Squared                   40.69     using 40 bins.
+#                 Chi-Squared                   28.55     using 26 bins.
+#                 Chi-Squared                   23.78     using 21 bins.
+#Total fit statistic                            93.02     with 83 d.o.f.
+#
+#Test statistic : Chi-Squared                   93.02     using 87 bins.
+# Null hypothesis probability of 2.12e-01 with 83 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha       3:Epeak        7:norm      8:factor
+#91.9468      3.52682      -3     -0.393970       1217.54       44.9989       1.07751
+#91.9419      0.397299     -4     -0.394266       1218.98       45.0010       1.08003
+#==================================================
+# Variances and Principal Axes
+#                 2        3        7        8  
+# 1.3736E-03|  0.8507   0.0005   0.0016   0.5257  
+# 2.8085E-03| -0.5254   0.0002   0.0342   0.8502  
+# 3.9767E+00|  0.0166   0.0047   0.9994  -0.0300  
+# 8.8897E+03| -0.0004   1.0000  -0.0047  -0.0002  
+#--------------------------------------------------
+#
+#================================================
+#  Covariance Matrix
+#        1           2           3           4   
+#   4.357e-03  -3.639e+00   8.317e-02  -1.728e-03
+#  -3.639e+00   8.890e+03  -4.196e+01  -2.183e+00
+#   8.317e-02  -4.196e+01   4.170e+00  -1.088e-01
+#  -1.728e-03  -2.183e+00  -1.088e-01   6.520e-03
+#------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*cplflux<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   cplflux    alpha               -0.394266    +/-  6.60089E-02  
+#   3    2   cplflux    Epeak      keV      1218.98      +/-  94.2844      
+#   4    2   cplflux    enorm      keV      100.000      frozen
+#   5    2   cplflux    Emin       keV      8.00000      frozen
+#   6    2   cplflux    Emax       keV      900.000      frozen
+#   7    2   cplflux    norm                45.0010      +/-  2.04210      
+#                           Data group: 2
+#   8    1   constant   factor              1.08003      +/-  8.07479E-02  
+#   9    2   cplflux    alpha               -0.394266    = p2
+#  10    2   cplflux    Epeak      keV      1218.98      = p3
+#  11    2   cplflux    enorm      keV      100.000      = p4
+#  12    2   cplflux    Emin       keV      8.00000      = p5
+#  13    2   cplflux    Emax       keV      900.000      = p6
+#  14    2   cplflux    norm                45.0010      = p7
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   38.49     using 40 bins.
+#                 Chi-Squared                   29.99     using 26 bins.
+#                 Chi-Squared                   23.46     using 21 bins.
+#Total fit statistic                            91.94     with 83 d.o.f.
+#
+#Test statistic : Chi-Squared                   91.94     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 83 degrees of freedom
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha       3:Epeak        7:norm      8:factor
+#91.9419      0.00120851   -3     -0.394326       1219.09       44.9998       1.08003
+#==================================================
+# Variances and Principal Axes
+#                 2        3        7        8  
+# 1.3708E-03|  0.8504   0.0005   0.0017   0.5262  
+# 2.8089E-03| -0.5259   0.0002   0.0343   0.8498  
+# 3.9745E+00|  0.0166   0.0047   0.9994  -0.0301  
+# 8.8858E+03| -0.0004   1.0000  -0.0047  -0.0002  
+#--------------------------------------------------
+#
+#================================================
+#  Covariance Matrix
+#        1           2           3           4   
+#   4.350e-03  -3.634e+00   8.312e-02  -1.735e-03
+#  -3.634e+00   8.886e+03  -4.208e+01  -2.178e+00
+#   8.312e-02  -4.208e+01   4.169e+00  -1.090e-01
+#  -1.735e-03  -2.178e+00  -1.090e-01   6.532e-03
+#------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*cplflux<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   cplflux    alpha               -0.394326    +/-  6.59575E-02  
+#   3    2   cplflux    Epeak      keV      1219.09      +/-  94.2632      
+#   4    2   cplflux    enorm      keV      100.000      frozen
+#   5    2   cplflux    Emin       keV      8.00000      frozen
+#   6    2   cplflux    Emax       keV      900.000      frozen
+#   7    2   cplflux    norm                44.9998      +/-  2.04186      
+#                           Data group: 2
+#   8    1   constant   factor              1.08003      +/-  8.08200E-02  
+#   9    2   cplflux    alpha               -0.394326    = p2
+#  10    2   cplflux    Epeak      keV      1219.09      = p3
+#  11    2   cplflux    enorm      keV      100.000      = p4
+#  12    2   cplflux    Emin       keV      8.00000      = p5
+#  13    2   cplflux    Emax       keV      900.000      = p6
+#  14    2   cplflux    norm                44.9998      = p7
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   38.49     using 40 bins.
+#                 Chi-Squared                   29.99     using 26 bins.
+#                 Chi-Squared                   23.46     using 21 bins.
+#Total fit statistic                            91.94     with 83 d.o.f.
+#
+#Test statistic : Chi-Squared                   91.94     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 83 degrees of freedom
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha       3:Epeak        7:norm      8:factor
+#91.9419      0.000137911  -3     -0.394327       1219.09       44.9998       1.08003
+#==================================================
+# Variances and Principal Axes
+#                 2        3        7        8  
+# 1.3706E-03|  0.8504   0.0005   0.0017   0.5262  
+# 2.8089E-03| -0.5259   0.0002   0.0343   0.8499  
+# 3.9743E+00|  0.0166   0.0047   0.9994  -0.0301  
+# 8.8887E+03| -0.0004   1.0000  -0.0047  -0.0002  
+#--------------------------------------------------
+#
+#================================================
+#  Covariance Matrix
+#        1           2           3           4   
+#   4.350e-03  -3.635e+00   8.311e-02  -1.735e-03
+#  -3.635e+00   8.889e+03  -4.210e+01  -2.178e+00
+#   8.311e-02  -4.210e+01   4.169e+00  -1.090e-01
+#  -1.735e-03  -2.178e+00  -1.090e-01   6.532e-03
+#------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*cplflux<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   cplflux    alpha               -0.394327    +/-  6.59548E-02  
+#   3    2   cplflux    Epeak      keV      1219.09      +/-  94.2789      
+#   4    2   cplflux    enorm      keV      100.000      frozen
+#   5    2   cplflux    Emin       keV      8.00000      frozen
+#   6    2   cplflux    Emax       keV      900.000      frozen
+#   7    2   cplflux    norm                44.9998      +/-  2.04183      
+#                           Data group: 2
+#   8    1   constant   factor              1.08003      +/-  8.08203E-02  
+#   9    2   cplflux    alpha               -0.394327    = p2
+#  10    2   cplflux    Epeak      keV      1219.09      = p3
+#  11    2   cplflux    enorm      keV      100.000      = p4
+#  12    2   cplflux    Emin       keV      8.00000      = p5
+#  13    2   cplflux    Emax       keV      900.000      = p6
+#  14    2   cplflux    norm                44.9998      = p7
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   38.49     using 40 bins.
+#                 Chi-Squared                   29.99     using 26 bins.
+#                 Chi-Squared                   23.46     using 21 bins.
+#Total fit statistic                            91.94     with 83 d.o.f.
+#
+#Test statistic : Chi-Squared                   91.94     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 83 degrees of freedom
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha       3:Epeak        7:norm      8:factor
+#91.9419      1.85736e-06  -3     -0.394327       1219.09       44.9998       1.08003
+#==================================================
+# Variances and Principal Axes
+#                 2        3        7        8  
+# 1.3706E-03|  0.8504   0.0005   0.0017   0.5262  
+# 2.8089E-03| -0.5259   0.0002   0.0343   0.8499  
+# 3.9743E+00|  0.0166   0.0047   0.9994  -0.0301  
+# 8.8888E+03| -0.0004   1.0000  -0.0047  -0.0002  
+#--------------------------------------------------
+#
+#================================================
+#  Covariance Matrix
+#        1           2           3           4   
+#   4.350e-03  -3.635e+00   8.311e-02  -1.735e-03
+#  -3.635e+00   8.889e+03  -4.210e+01  -2.178e+00
+#   8.311e-02  -4.210e+01   4.169e+00  -1.090e-01
+#  -1.735e-03  -2.178e+00  -1.090e-01   6.532e-03
+#------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*cplflux<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   cplflux    alpha               -0.394327    +/-  6.59548E-02  
+#   3    2   cplflux    Epeak      keV      1219.09      +/-  94.2792      
+#   4    2   cplflux    enorm      keV      100.000      frozen
+#   5    2   cplflux    Emin       keV      8.00000      frozen
+#   6    2   cplflux    Emax       keV      900.000      frozen
+#   7    2   cplflux    norm                44.9998      +/-  2.04183      
+#                           Data group: 2
+#   8    1   constant   factor              1.08003      +/-  8.08205E-02  
+#   9    2   cplflux    alpha               -0.394327    = p2
+#  10    2   cplflux    Epeak      keV      1219.09      = p3
+#  11    2   cplflux    enorm      keV      100.000      = p4
+#  12    2   cplflux    Emin       keV      8.00000      = p5
+#  13    2   cplflux    Emax       keV      900.000      = p6
+#  14    2   cplflux    norm                44.9998      = p7
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   38.49     using 40 bins.
+#                 Chi-Squared                   29.99     using 26 bins.
+#                 Chi-Squared                   23.46     using 21 bins.
+#Total fit statistic                            91.94     with 83 d.o.f.
+#
+#Test statistic : Chi-Squared                   91.94     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 83 degrees of freedom
+#
+!XSPEC12> show all
+#
+#XSPEC version: 12.12.1
+#
+#Fri Jul  8 11:54:34 2022
+# Auto-saving is done after every command.
+# Fit statistic in use: Chi-Squared
+# Minimization technique: Levenberg-Marquardt
+#    Convergence criterion = 0.01
+#    Parameter fit deltas: 0.01 * parValue
+#Using chain rule to calculate statistic derivatives (faster method).
+# Querying enabled.
+# Prefit-renorming enabled.
+# Solar abundance table: angr
+# Photoionization Cross-Section Table:
+#    vern:  Verner, Ferland, Korista, and Yakovlev 1996
+# Cosmology in use: H0 = 70 q0 = 0 Lambda0 = 0.73
+# Model data directory: /Users/andreas/phys/master/GRB_local/heasoft-6.30.1/x86_64-apple-darwin21.5.0/../spectral/manager/../modelData/
+# Plot settings:
+#   Showing of individual additive components is OFF.
+#   Showing of background spectra is OFF.
+#   Effective area normalization is OFF.
+#   Current unit settings:
+#      Energy     = keV
+#      Wavelength = angstrom, with Y-Axis displayed per Hz
+#   X-Axis data display mode: Energy
+#   Spectra plots will be shifted to source frame by redshift value z: 0
+#   Device: /xw
+#   Plotting of line IDs is OFF.
+#   Splashpage is ON.
+#   xlog for data plots is ON.
+#   ylog for data plots is OFF.
+#
+#   Default plot rebin settings for all plot groups:
+#   Min. Signif.   Max. # Bins   Error Type
+#        0.00000             1         quad
+#
+# Responses read: 
+#   GRB201227A_b0.rsp associated with spectrum 3 source 1 data group 2
+#      energies: 140 channels: 27
+#   GRB201227A_n4.rsp associated with spectrum 1 source 1
+#      energies: 140 channels: 40
+#   GRB201227A_n8.rsp associated with spectrum 2 source 1
+#      energies: 140 channels: 26
+# Distinct RMF files: 
+#     /Users/andreas/phys/master/FERMI/GRB201227_analysis/GRB201227A_b0.rsp     /Users/andreas/phys/master/FERMI/GRB201227_analysis/GRB201227A_n4.rsp     /Users/andreas/phys/master/FERMI/GRB201227_analysis/GRB201227A_n8.rsp
+#
+#3 files 3 spectra 
+#Spectrum 1  Spectral Data File: GRB201227A_n4_grp3.pha
+#Net count rate (cts/s) for Spectrum:1  8.136e+03 +/- 3.741e+02 (85.4 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.0682 sec
+# Using fit statistic: chi
+# Using Background File                GRB201227A_n4.bak
+#  Background Exposure Time: 0.06632 sec
+# Using Response (RMF) File            GRB201227A_n4.rsp for Source 1
+#
+# Spectral data counts: 650
+# Model predicted rate: 8408.37
+#
+#Spectrum 2  Spectral Data File: GRB201227A_n8_grp3.pha
+#Net count rate (cts/s) for Spectrum:2  5.942e+03 +/- 2.960e+02
+# Assigned to Data Group 1 and Plot Group 2
+#  Noticed Channels:  1-26
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06783 sec
+# Using fit statistic: chi
+# Using Response (RMF) File            GRB201227A_n8.rsp for Source 1
+#
+# Spectral data counts: 403
+# Model predicted rate: 4818.46
+#
+#Spectrum 3  Spectral Data File: GRB201227A_b0_grp3.pha
+#Net count rate (cts/s) for Spectrum:3  8.421e+03 +/- 3.562e+02
+# Assigned to Data Group 2 and Plot Group 3
+#  Noticed Channels:  6-26
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06638 sec
+# Using fit statistic: chi
+# Using Response (RMF) File            GRB201227A_b0.rsp for Source 1
+#
+# Spectral data counts: 559
+# Model predicted rate: 8067.66
+#
+#
+#Current model list:
+#
+#========================================================================
+#Model constant<1>*cplflux<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   cplflux    alpha               -0.394327    +/-  6.59548E-02  
+#   3    2   cplflux    Epeak      keV      1219.09      +/-  94.2792      
+#   4    2   cplflux    enorm      keV      100.000      frozen
+#   5    2   cplflux    Emin       keV      8.00000      frozen
+#   6    2   cplflux    Emax       keV      900.000      frozen
+#   7    2   cplflux    norm                44.9998      +/-  2.04183      
+#                           Data group: 2
+#   8    1   constant   factor              1.08003      +/-  8.08205E-02  
+#   9    2   cplflux    alpha               -0.394327    = p2
+#  10    2   cplflux    Epeak      keV      1219.09      = p3
+#  11    2   cplflux    enorm      keV      100.000      = p4
+#  12    2   cplflux    Emin       keV      8.00000      = p5
+#  13    2   cplflux    Emax       keV      900.000      = p6
+#  14    2   cplflux    norm                44.9998      = p7
+#________________________________________________________________________
+#
+#   Using energies from responses.
+#
+#Fit statistic  : Chi-Squared                   38.49     using 40 bins.
+#                 Chi-Squared                   29.99     using 26 bins.
+#                 Chi-Squared                   23.46     using 21 bins.
+#Total fit statistic                            91.94     with 83 d.o.f.
+#
+#Test statistic : Chi-Squared                   91.94     using 87 bins.
+# Null hypothesis probability of 2.35e-01 with 83 degrees of freedom
+#
+#Bayes is off
+#
+#
+!XSPEC12> save all
+#Saving to file savexspec.xcm
+#
+!XSPEC12> log none
+#

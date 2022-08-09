@@ -1,0 +1,33 @@
+Model constant<1>*cflux<2>*cutplep<3> Source No.: 1   Active/On
+Model Model Component  Parameter  Unit     Value
+ par  comp
+                           Data group: 1
+   1    1   constant   factor              1.00000      frozen
+   2    2   cflux      Emin       keV      20.0000      frozen
+   3    2   cflux      Emax       keV      1.00000E+04  frozen
+   4    2   cflux      lg10Flux   cgs      -3.68638     +/-  2.28819E-02  
+   5    3   cutplep    PhoIndex            0.466871     +/-  6.01482E-02  
+   6    3   cutplep    Epeak      keV      1236.18      +/-  56.7172      
+   7    3   cutplep    norm                1.00000      frozen
+                           Data group: 2
+   8    1   constant   factor              2.73969      +/-  0.186994     
+   9    2   cflux      Emin       keV      20.0000      = p2
+  10    2   cflux      Emax       keV      1.00000E+04  = p3
+  11    2   cflux      lg10Flux   cgs      -3.68638     = p4
+  12    3   cutplep    PhoIndex            0.466871     = p5
+  13    3   cutplep    Epeak      keV      1236.18      = p6
+  14    3   cutplep    norm                1.00000      = p7
+________________________________________________________________________
+
+   Using energies from responses.
+
+Fit statistic  : Chi-Squared                   24.53     using 20 bins.
+                 Chi-Squared                   15.01     using 12 bins.
+                 Chi-Squared                   21.84     using 12 bins.
+Total fit statistic                            61.38     with 40 d.o.f.
+
+Test statistic : Chi-Squared                   61.38     using 44 bins.
+ Null hypothesis probability of 1.64e-02 with 40 degrees of freedom
+
+Bayes is off
+

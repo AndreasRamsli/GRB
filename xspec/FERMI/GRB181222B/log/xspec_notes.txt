@@ -1,0 +1,10 @@
+>> b0 detector: Not possible to get a good fit to the data with the original pha files.
+See alot of unceartanty for the data in the high energy range.
+Might ignore those channels
+
+-Tried the to include the spectrum for the whole event but still the same mess. Not a good fit for the lower energy range either.
+-Might be because the incidnet angle is so large
+
+>>Trying to import the data for the triggered detectors (n2)
+-Easier to get a better fit with this data. Had to ignore some channels to get a reasonable fit
+

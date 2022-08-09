@@ -1,0 +1,137 @@
+#XSPEC version: 12.12.1
+#Build Date/Time: Fri Jul  1 23:38:21 2022
+#
+!XSPEC12> show all
+#
+#XSPEC version: 12.12.1
+#
+#Wed Jul  6 11:23:08 2022
+# Auto-saving is done after every command.
+# Fit statistic in use: Chi-Squared
+# Minimization technique: Levenberg-Marquardt
+#    Convergence criterion = 0.01
+#    Parameter fit deltas: 0.01 * parValue
+#Using chain rule to calculate statistic derivatives (faster method).
+# Querying enabled.
+# Prefit-renorming enabled.
+# Solar abundance table: angr
+# Photoionization Cross-Section Table:
+#    vern:  Verner, Ferland, Korista, and Yakovlev 1996
+# Cosmology in use: H0 = 70 q0 = 0 Lambda0 = 0.73
+# Model data directory: /Users/andreas/phys/master/GRB_local/heasoft-6.30.1/x86_64-apple-darwin21.5.0/../spectral/manager/../modelData/
+# Plot settings:
+#   Showing of individual additive components is OFF.
+#   Showing of background spectra is OFF.
+#   Effective area normalization is OFF.
+#   Current unit settings:
+#      Energy     = keV
+#      Wavelength = angstrom, with Y-Axis displayed per Hz
+#   X-Axis data display mode: Energy
+#   Spectra plots will be shifted to source frame by redshift value z: 0
+#   Device: /xw
+#   Plotting of line IDs is OFF.
+#   Splashpage is ON.
+#   xlog for data plots is ON.
+#   ylog for data plots is OFF.
+#
+#   Default plot rebin settings for all plot groups:
+#   Min. Signif.   Max. # Bins   Error Type
+#        0.00000             1         quad
+#
+# Responses read: 
+#   HED_RMF_1.fits associated with spectrum 3 source 1 data group 2
+#      energies: 40 channels: 29
+#   KW20190206_T13763_1.rmf associated with spectrum 1 source 1
+#      energies: 263 channels: 32
+#   KW20190206_T13763_2.rmf associated with spectrum 2 source 1
+#      energies: 263 channels: 28
+# Distinct RMF files: 
+#     /Users/andreas/phys/master/GRB_local/GRB190206_spectral_analysis/HED_RMF_1.fits     /Users/andreas/phys/master/GRB_local/GRB190206_spectral_analysis/KW20190206_T13763_1.rmf     /Users/andreas/phys/master/GRB_local/GRB190206_spectral_analysis/KW20190206_T13763_2.rmf
+#
+#3 files 3 spectra 
+#Spectrum 1  Spectral Data File: KW20190206_T13763_1_sp1_GR20.pha
+#Net count rate (cts/s) for Spectrum:1  1.803e+04 +/- 7.866e+02 (93.7 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-20
+#  Telescope: WIND Instrument: KONUS  Channel Type: PHA
+#  Exposure Time: 0.03111 sec
+# Using fit statistic: chi
+# Using Background File                KW20190206_T13763_1_bg.pha
+#  Background Exposure Time: 162.4 sec
+# Using Response (RMF) File            KW20190206_T13763_1.rmf for Source 1
+# Using Auxiliary Response (ARF) File  KW20190206_T13763.arf
+#
+# Spectral data counts: 599
+# Model predicted rate: 1.75681E+04
+#
+#Spectrum 2  Spectral Data File: KW20190206_T13763_2_sp1_gr_20.pha
+#Net count rate (cts/s) for Spectrum:2  6.474e+03 +/- 3.821e+02 (95.3 % total)
+# Assigned to Data Group 1 and Plot Group 2
+#  Noticed Channels:  1-12
+#  Telescope: WIND Instrument: KONUS  Channel Type: PHA
+#  Exposure Time: 0.04653 sec
+# Using fit statistic: chi
+# Using Background File                KW20190206_T13763_2_bg.pha
+#  Background Exposure Time: 168.8 sec
+# Using Response (RMF) File            KW20190206_T13763_2.rmf for Source 1
+# Using Auxiliary Response (ARF) File  KW20190206_T13763.arf
+#
+# Spectral data counts: 316
+# Model predicted rate: 5767.96
+#
+#Spectrum 3  Spectral Data File: HED_PHA_1_grp.fits
+#Net count rate (cts/s) for Spectrum:3  2.124e+04 +/- 6.930e+02 (70.7 % total)
+# Assigned to Data Group 2 and Plot Group 3
+#  Noticed Channels:  18-29
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.064 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.8 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+# Spectral data counts: 1922
+# Model predicted rate: 2.06024E+04
+#
+#
+#Current model list:
+#
+#========================================================================
+#Model constant<1>*cflux<2>*cutplep<3> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   cflux      Emin       keV      20.0000      frozen
+#   3    2   cflux      Emax       keV      1.00000E+04  frozen
+#   4    2   cflux      lg10Flux   cgs      -3.68638     +/-  2.28819E-02  
+#   5    3   cutplep    PhoIndex            0.466871     +/-  6.01482E-02  
+#   6    3   cutplep    Epeak      keV      1236.18      +/-  56.7172      
+#   7    3   cutplep    norm                1.00000      frozen
+#                           Data group: 2
+#   8    1   constant   factor              2.73969      +/-  0.186994     
+#   9    2   cflux      Emin       keV      20.0000      = p2
+#  10    2   cflux      Emax       keV      1.00000E+04  = p3
+#  11    2   cflux      lg10Flux   cgs      -3.68638     = p4
+#  12    3   cutplep    PhoIndex            0.466871     = p5
+#  13    3   cutplep    Epeak      keV      1236.18      = p6
+#  14    3   cutplep    norm                1.00000      = p7
+#________________________________________________________________________
+#
+#   Using energies from responses.
+#
+#Fit statistic  : Chi-Squared                   24.53     using 20 bins.
+#                 Chi-Squared                   15.01     using 12 bins.
+#                 Chi-Squared                   21.84     using 12 bins.
+#Total fit statistic                            61.38     with 40 d.o.f.
+#
+#Test statistic : Chi-Squared                   61.38     using 44 bins.
+# Null hypothesis probability of 1.64e-02 with 40 degrees of freedom
+#
+#Bayes is off
+#
+#
+!XSPEC12> save all GRB190206_joint_analysis_wed.xcm
+#
+!XSPEC12> log none
+#
