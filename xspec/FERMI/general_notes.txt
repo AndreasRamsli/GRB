@@ -25,6 +25,12 @@
     >>Another problem is that the uncertanties is larger after loading the data into xspec. 3 orders of magnitude difference between xspec and python code ?
     >> Background exposure time shown in xspec is not the same as interval chosen in python code. Why is that?
 
+    >> Is there a command that can label the spectra in the plotting window? For example when plotting three different spectra in the same window, they have different color 
+    but xspec should label the spectra.
+    
+    
+    >> Background exposure time. Have chosen a very long bkgd_times variable, but the exposure time when loading the data into xspec is around the same as the src time. 
+    Is this because the background have been calculated over the bkgd_times and then sampled over the scr_time after?
     
     
 
