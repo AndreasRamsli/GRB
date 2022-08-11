@@ -3,12 +3,12 @@ Notes regaring data extracted from FERMI GBM for GRB210619B
 >>Location
 grb_ra, grb_dec = 319.716, 33.85 
 
->>Trigtime
+>>Trigtime GBM
 T0 = 2021-06-19 23:59:25.604186
 
 
 
->> Angle of incidence in increasing order
+>> Angular separation from the GRB position
 
 Detector Degrees 
 n8      25.951
@@ -32,3 +32,15 @@ ToF_Fermi_ASIM = 0.0227
 ToF_KW_ASIM = -2.6183 
 
 calculated t_shift = -0.042786
+
+
+>>Energy range for NaI detectors
+8-1000 keV
+
+>>Background estimated from T0-120 to T0-2 s 
+
+>>Spectra retrived from T0+0.512 to T0+0.768 s
+src time does capture the max count rate of the burst
+
+>>
+
