@@ -35,7 +35,7 @@ n9 165.202
 
 >> Energy range
 NaI: 8-1000 keV
-BGO: 150 keV - 40MeV
+BGO: 100 keV - 40MeV
 
 >>Background estimated from T0-100 to T0-25 s & T0+50 to T0+100
 fit order = 2
@@ -44,7 +44,7 @@ fit order = 2
 src time does capture the max count rate of the burst
 
 >>Grouping in xspec
-used grppha to group the channels by grou min 20
+used grppha to group the channels by grou min 
 
 
 

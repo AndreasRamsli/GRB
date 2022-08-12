@@ -1,0 +1,21 @@
+statistic chi
+data 1:1 GRB201227A_n4_gr20.pha
+
+data 1:2 GRB201227A_n8_gr20.pha
+
+data 1:3 GRB201227A_b0_gr20.pha
+ignore 1:1-2,27 2:1 3:1,25
+
+method leven 1000 0.01
+abund angr
+xsect vern
+cosmo 70 0 0.73
+xset delta 0.01
+systematic 0
+model  ngrbep
+      -0.215104       0.01        -10         -3          2          5
+        -3.0271       0.01        -10         -5          2         10
+           1000         10        0.1        0.1       1000      10000
+        94.5108       0.01          0          0       1000       1000
+       0.267996       0.01          0          0      1e+20      1e+24
+bayes off
