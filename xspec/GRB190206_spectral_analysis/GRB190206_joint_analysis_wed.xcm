@@ -5,7 +5,7 @@ data 1:2 KW20190206_T13763_2_sp1_gr_20.pha
 
 data 2:3 HED_PHA_1_grp.fits
 ignore 1:21-32 2:13-28 3:1-17
-lmod cutplep /Users/andreas/phys/master/GRB_local/local_mod
+lmod grb
 cpd /xw
 setpl en
 
