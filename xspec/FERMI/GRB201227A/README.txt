@@ -10,7 +10,8 @@ T0 = 2021-06-19 23:59:25.604186
 ToF_Fermi_ASIM = -0.0008
 ToF_KW_ASIM = 0.7142
 
-calculated t_shift = 0.003836
+>>Cross Corrolation of lightcurves
+Calculated from CC: t_shift = -0.006 (s)
 
 
 >> Angular separation from the GRB position
