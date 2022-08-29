@@ -9,9 +9,16 @@ lmod grb #loading local models for spectral fit
 mod cutplep #setting which model to use; in this case cutoff powerlaw with E_peak
 mod ngrbep # Band function parameterized with Epeak
 
+untie <par> #untie the parameter from other parameters. Useful to let normalization constant float
+
+thaw <par> #unfreeze parameter
+
+freeze <par> #freeze parameter
 plot lda #plotting data on log axis
 
 setpl en #setting plotting parameter to energy
+
+pl eeufspec #plotting for E**2 pr photon,sec,energy. Showing Ep
 
 error # prints out the confidence interval for the parameters
 
