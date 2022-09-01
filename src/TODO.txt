@@ -1,3 +1,5 @@
 -GRB archive table: Update trigdate with absolute timing correction
 
 -Export ASIM data for GRB190206A
+
+-streamline the setting of paths
