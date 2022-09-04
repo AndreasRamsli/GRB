@@ -53,7 +53,9 @@
 #      energies: 263 channels: 37
 # Distinct RMF files: 
 #     /Users/andreas/phys/master/GRB/xspec/GRB201227A/GRB201227A_b0.rsp     /Users/andreas/phys/master/GRB/xspec/GRB201227A/GRB201227A_n4.rsp     /Users/andreas/phys/master/GRB/xspec/GRB201227A/GRB201227A_n8.rsp     /Users/andreas/phys/master/GRB/xspec/GRB201227A/HED_RMF_1.fits     /Users/andreas/phys/master/GRB/xspec/GRB201227A/KW20201227_T54846_1.rmf     /Users/andreas/phys/master/GRB/xspec/GRB201227A/KW20201227_T54846_2.rmf
-#
+
+# data 1:1 GRB201227A_n4_gr20.pha 1:2 GRB201227A_n8_gr20.pha 2:3 GRB201227A_b0_gr20.pha 3:4 KW201227_1_gr20.pha 3:5 KW201227_2_gr20.pha 4:6 HED_PHA_1.fits
+
 #6 files 6 spectra 
 #Spectrum 1  Spectral Data File: GRB201227A_n4_gr20.pha
 #Net count rate (cts/s) for Spectrum:1  8.374e+03 +/- 3.961e+02 (86.6 % total)
