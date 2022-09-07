@@ -1,0 +1,32 @@
+cpd /xw #opens up the xspec plotting window
+
+fparkey rspfile phafile+2  RESPFILE #setting the respfile to pha file, +2 ??
+
+data phafile #loads pha,rsp and back file if all are linked to the corrected pha file
+
+lmod grb #loading local models for spectral fit
+
+mod cutplep #setting which model to use; in this case cutoff powerlaw with E_peak
+mod ngrbep # Band function parameterized with Epeak
+
+untie <par> #untie the parameter from other parameters. Useful to let normalization constant float
+
+thaw <par> #unfreeze parameter
+
+freeze <par> #freeze parameter
+plot lda #plotting data on log axis
+
+setpl en #setting plotting parameter to energy
+
+pl eeufspec #plotting for E**2 pr photon,sec,energy. Showing Ep
+
+error # prints out the confidence interval for the parameters
+
+flux E1 E2 #command calculates the flux from the current model in the given
+
+save model "model_name" #saves the current model
+
+save all "command_name" #saves all the command required to load the data
+
+@model_name.xcm #loads the model
+

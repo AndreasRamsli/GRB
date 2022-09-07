@@ -1,0 +1,35 @@
+statistic chi
+data 1:1 KW20190206_T13763_1_sp1_GR20.pha
+
+data 1:2 KW20190206_T13763_2_sp1_gr_20.pha
+
+data 2:3 HED_PHA_1_grp.fits
+ignore 1:21-32 2:13-28 3:1-17
+lmod grb
+cpd /xw
+setpl en
+
+method leven 1000 0.01
+abund angr
+xsect vern
+cosmo 70 0 0.73
+xset delta 0.01
+systematic 0
+model  constant*cflux*cutplep
+              1         -1          0          0      1e+10      1e+10
+             20         -1          0          0      1e+06      1e+06
+          10000         -1          0          0      1e+06      1e+06
+       -3.68638       0.01       -100       -100        100        100
+       0.466871       0.01         -3         -2          9         10
+        1236.18        0.1       0.01          1       1000      10000
+              1         -1          0          0      1e+20      1e+24
+        2.73969       0.01          0          0      1e+10      1e+10
+= p2
+= p3
+= p4
+= p5
+= p6
+= p7
+bayes off
+
+pl lda delchi
