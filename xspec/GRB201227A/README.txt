@@ -11,3 +11,9 @@ Colors for the detectors attached plots:
 	Blue: KW, 1
 	Cyan: KW, 2
 	Pink: ASIM, HED
+
+
+Cross corrolation done for ASIM and FERMI lightcurves to align them to T0_KW.
+
+Spectral data retrived after cross corrolation for T0 to T0+64ms.
+
