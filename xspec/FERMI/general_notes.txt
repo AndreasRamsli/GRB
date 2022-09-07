@@ -1,0 +1,36 @@
+>>Make sure version is correct when creating fn_rsp! Use ls *.rsp2 in bn data folder to find the correct version.
+    
+>> Angles
+    >> Be careful when finding the ra,dec angles for the burst!
+    >> Do not use the annulus center (wrong), but find the location the triagulation intersects
+    >> Use IPN or XRT location instument
+    
+    
+>> src time range
+    >> should it be only the main peaks or should it also include the tail of the event
+    
+    
+>> TODO: extract files for GRB181222B and load them into xspec. Done.
+    Ran into troubles with the fitting. High unceartanty for the high energies
+    
+    
+>> xspec questions for Cristiano
+    >> find keyword for showing which file im using (same as when you load the data)
+    >> How to convert flux to fluence: flux E1 E2 (energy range)
+    
+    
+    >> Possible solution: Group the bins! YES, this must be done in order to "remove the uncertanty"
+    >> After loading the data into xspec, the high energy channels have a large uncertanty. This makes it hard to produce a good fit. 
+    What should be done in this case (show a screenshot as an example)? 
+    >>Another problem is that the uncertanties is larger after loading the data into xspec. 3 orders of magnitude difference between xspec and python code ?
+    >> Background exposure time shown in xspec is not the same as interval chosen in python code. Why is that?
+
+    >> Is there a command that can label the spectra in the plotting window? For example when plotting three different spectra in the same window, they have different color 
+    but xspec should label the spectra.
+    
+    
+    >> Background exposure time. Have chosen a very long bkgd_times variable, but the exposure time when loading the data into xspec is around the same as the src time. 
+    Is this because the background have been calculated over the bkgd_times and then sampled over the scr_time after?
+    
+    
+
