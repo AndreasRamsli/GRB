@@ -1,7 +1,12 @@
 Notes regaring data extracted from FERMI GBM for GRB210619B 
 
 >>Location
-grb_ra, grb_dec = 319.716, 33.85 
+grb_ra, grb_dec = 319.7125, 33.8667 
+
+
+TODO: Do a Cross correlation of Fermi/ASIM to find the proper tshift
+
+
 
 >>Trigtime GBM
 T0_GBM = 2021-06-19 23:59:25.604186
