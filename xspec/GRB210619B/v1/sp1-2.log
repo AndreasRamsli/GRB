@@ -1,0 +1,170 @@
+#XSPEC version: 12.12.1
+#Build Date/Time: Fri Jul  1 23:38:21 2022
+#
+!XSPEC12>data HED_PHA_1-2.fits
+#***Warning: Data file HED_PHA_1-2.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#
+#Spectrum #: 1 replaced 
+#
+#1 spectrum  in use
+# 
+#Spectral Data File: HED_PHA_1-2.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  1.963e+03 +/- 1.423e+02 (26.6 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 1 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.42 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+#
+!XSPEC12>backgrnd HED_Bak_1.fits
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#Net count rate (cts/s) for Spectrum:1  1.963e+03 +/- 1.423e+02 (26.6 % total)
+#
+!XSPEC12>response HED_RMF_1.fits
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#Response successfully loaded.
+#
+!XSPEC12>plot data
+#
+!XSPEC12>ignore 1-17 34-** 
+#    17 channels (1,17) ignored in spectrum #     1
+#     7 channels (34,40) ignored in spectrum #     1
+#
+#
+!XSPEC12>plot data
+#
+!XSPEC12>mo pegpwrl ; 2 ; 500. ; 2000. ; 1
+#
+!XSPEC12>model pegpwrl ; 2 ; 500. ; 2000. ; 1
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#   1    1   pegpwrlw   PhoIndex            2.00000      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.00000      +/-  0.0          
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                  230.53     using 16 bins.
+#
+#Test statistic : Chi-Squared                  230.53     using 16 bins.
+# Null hypothesis probability of 2.99e-41 with 14 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>renorm
+#
+#Fit statistic  : Chi-Squared                   12.69     using 16 bins.
+#
+#Test statistic : Chi-Squared                   12.69     using 16 bins.
+# Null hypothesis probability of 5.51e-01 with 14 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm
+#11.6958      4.96877      -3       2.10631   6.55767e+06
+#11.6935      0.0578093    -4       2.10543   6.53506e+06
+#==============================
+# Variances and Principal Axes
+#                 1        4  
+# 1.1230E-02|  1.0000  -0.0000  
+# 2.3284E+11|  0.0000   1.0000  
+#------------------------------
+#
+#========================
+#  Covariance Matrix
+#        1           2   
+#   1.339e-02   2.244e+04
+#   2.244e+04   2.328e+11
+#------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#   1    1   pegpwrlw   PhoIndex            2.10543      +/-  0.115725     
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                6.53506E+06  +/-  4.82535E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   11.69     using 16 bins.
+#
+#Test statistic : Chi-Squared                   11.69     using 16 bins.
+# Null hypothesis probability of 6.31e-01 with 14 degrees of freedom
+#
+!XSPEC12>fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm
+#11.6935      0.00219548   -3       2.10549   6.53517e+06
+#==============================
+# Variances and Principal Axes
+#                 1        4  
+# 1.1272E-02|  1.0000  -0.0000  
+# 2.3291E+11|  0.0000   1.0000  
+#------------------------------
+#
+#========================
+#  Covariance Matrix
+#        1           2   
+#   1.345e-02   2.254e+04
+#   2.254e+04   2.329e+11
+#------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#   1    1   pegpwrlw   PhoIndex            2.10549      +/-  0.115986     
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                6.53517E+06  +/-  4.82603E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   11.69     using 16 bins.
+#
+#Test statistic : Chi-Squared                   11.69     using 16 bins.
+# Null hypothesis probability of 6.31e-01 with 14 degrees of freedom
+#
+!XSPEC12>plot data delchi
+#
+!XSPEC12>error 2.706 1
+# Parameter   Confidence Range (2.706)
+#     1      1.93694      2.31256    (-0.168545,0.207072)
+#
+!XSPEC12>error 1. 1
+# Parameter   Confidence Range (1)
+#     1      1.99959      2.22536    (-0.105892,0.119875)
+#
+!XSPEC12>flux 500 10000 error 100
+#Parameter distribution is derived from fit covariance matrix.
+# Model Flux    5.5179 photons (1.3142e-05 ergs/cm^2/s) range (500.00 - 10000. keV)
+#     Error range     5.161 - 5.882    (1.207e-05 - 1.426e-05)  (68.00% confidence)
+#
+!XSPEC12> flux
+#Parameter distribution is derived from fit covariance matrix.
+# Model Flux    5.5179 photons (1.3142e-05 ergs/cm^2/s) range (500.00 - 10000. keV)
+#     Error range     5.257 - 5.935    (1.239e-05 - 1.444e-05)  (68.00% confidence)
+#
+!XSPEC12> flux 500 10000
+#Parameter distribution is derived from fit covariance matrix.
+# Model Flux    5.5179 photons (1.3142e-05 ergs/cm^2/s) range (500.00 - 10000. keV)
+#     Error range     5.195 - 5.855    (1.220e-05 - 1.422e-05)  (68.00% confidence)
+#
+!XSPEC12> exit
+# XSPEC: quit
+#
