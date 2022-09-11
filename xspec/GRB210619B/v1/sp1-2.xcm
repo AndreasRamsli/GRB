@@ -1,0 +1,32 @@
+cpd /xw
+setplot energy
+setplot xlog on
+setplot ylog on
+
+log sp1-2.log
+
+data HED_PHA_1-2.fits
+backgrnd HED_Bak_1.fits
+response HED_RMF_1.fits
+plot data
+
+ignore 1-17 34-** 
+#setplot rebin 1 10 1 
+#setplot rebin 1 10 2 
+plot data
+
+mo pegpwrl
+2
+500.
+2000.
+1
+renorm
+fit 1000
+fit 1000
+plot data delchi
+#plot eeufspec delchi
+
+error 2.706 1
+error 1. 1
+flux 500 10000 error 100
+
