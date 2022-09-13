@@ -1,0 +1,2837 @@
+#XSPEC version: 12.12.1
+#Build Date/Time: Tue Aug  9 11:26:32 2022
+#
+!XSPEC12>data HED_PHA_3.fits
+#***Warning: Data file HED_PHA_3.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#
+#Spectrum #: 1 replaced 
+#
+#1 spectrum  in use
+# 
+#Spectral Data File: HED_PHA_3.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  1.154e+04 +/- 1.926e+02 (68.1 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.7 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.42 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+#
+!XSPEC12>backgrnd HED_Bak_1.fits
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#Net count rate (cts/s) for Spectrum:1  1.154e+04 +/- 1.926e+02 (68.1 % total)
+#
+!XSPEC12>response HED_RMF_1.fits
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#Response successfully loaded.
+#
+!XSPEC12>plot data
+#
+!XSPEC12>ignore 1-17 32-** 
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#
+#
+!XSPEC12>plot data
+#
+!XSPEC12>mo pegpwrl ; 2 ; 500 ; 2000 ; 1
+#
+!XSPEC12>model pegpwrl ; 2 ; 500 ; 2000 ; 1
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#   1    1   pegpwrlw   PhoIndex            2.00000      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.00000      +/-  0.0          
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                 3154.41     using 14 bins.
+#
+#Test statistic : Chi-Squared                 3154.41     using 14 bins.
+# Null hypothesis probability of 0.00e+00 with 12 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>renorm
+#
+#Fit statistic  : Chi-Squared                   96.07     using 14 bins.
+#
+#Test statistic : Chi-Squared                   96.07     using 14 bins.
+# Null hypothesis probability of 3.27e-15 with 12 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm
+#16.7052      174.59       -3       2.23728   3.83445e+07
+#15.923       12.9069      -4       2.25436   3.80066e+07
+#15.9228      0.199064     -5       2.25386   3.79984e+07
+#==============================
+# Variances and Principal Axes
+#                 1        4  
+# 9.3403E-04|  1.0000  -0.0000  
+# 5.2490E+11|  0.0000   1.0000  
+#------------------------------
+#
+#========================
+#  Covariance Matrix
+#        1           2   
+#   1.065e-03   8.306e+03
+#   8.306e+03   5.249e+11
+#------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#   1    1   pegpwrlw   PhoIndex            2.25386      +/-  3.26413E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                3.79984E+07  +/-  7.24499E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   15.92     using 14 bins.
+#
+#Test statistic : Chi-Squared                   15.92     using 14 bins.
+# Null hypothesis probability of 1.95e-01 with 12 degrees of freedom
+#
+!XSPEC12>fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm
+#15.9228      0.0118628    -3       2.25389   3.79986e+07
+#==============================
+# Variances and Principal Axes
+#                 1        4  
+# 9.3300E-04|  1.0000  -0.0000  
+# 5.2497E+11|  0.0000   1.0000  
+#------------------------------
+#
+#========================
+#  Covariance Matrix
+#        1           2   
+#   1.065e-03   8.314e+03
+#   8.314e+03   5.250e+11
+#------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#   1    1   pegpwrlw   PhoIndex            2.25389      +/-  3.26291E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                3.79986E+07  +/-  7.24551E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   15.92     using 14 bins.
+#
+#Test statistic : Chi-Squared                   15.92     using 14 bins.
+# Null hypothesis probability of 1.95e-01 with 12 degrees of freedom
+#
+!XSPEC12>plot data delchi
+#
+!XSPEC12>error 2.706 1 
+# Parameter   Confidence Range (2.706)
+#     1      2.20282      2.30759    (-0.0510655,0.0537061)
+#
+!XSPEC12>error 1. 1
+# Parameter   Confidence Range (1)
+#     1      2.22252      2.28622    (-0.0313607,0.0323332)
+#
+!XSPEC12>flux 500. 10000. err 100
+#Parameter distribution is derived from fit covariance matrix.
+# Model Flux    31.647 photons (6.8924e-05 ergs/cm^2/s) range (500.00 - 10000. keV)
+#     Error range     30.86 - 32.10    (6.729e-05 - 7.025e-05)  (68.00% confidence)
+#
+!XSPEC12> data none
+#
+!XSPEC12> pl lda
+#
+#***XSPEC Error:  No data loaded
+#
+#
+!XSPEC12> cpd /xw
+#
+!XSPEC12> ls
+#
+!XSPEC12> data GRB210619B_b1.pha
+#
+#1 spectrum  in use
+# 
+#Spectral Data File: GRB210619B_b1.pha  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  1.588e+04 +/- 1.654e+02 (87.1 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-128
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.6674 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.7155 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+#Fit statistic  : Chi-Squared                20978.80     using 128 bins.
+#
+#Test statistic : Chi-Squared                20978.80     using 128 bins.
+# Null hypothesis probability of 0.00e+00 with 126 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> mod none
+#
+!XSPEC12> show data
+#
+#1 file 1 spectrum 
+#Spectrum 1  Spectral Data File: GRB210619B_b1.pha
+#Net count rate (cts/s) for Spectrum:1  1.588e+04 +/- 1.654e+02 (87.1 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-128
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.6674 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.7155 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> grppha
+#
+!XSPEC12> ls
+#
+!XSPEC12> data GRB210619B_b1_gr20.pha 
+#
+#Spectrum #: 1 replaced 
+#
+#1 spectrum  in use
+# 
+#Spectral Data File: GRB210619B_b1_gr20.pha  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  1.588e+04 +/- 1.654e+02 (87.1 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-69
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.6674 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.7155 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign bad
+#
+#ignore:     0 channels ignored from  source number 1
+#
+!XSPEC12> ign **-200.
+#     3 channels (1-3) ignored in spectrum #     1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> data 1:1 HED_PHA_3.fits 2:2 GRB210619B_b1_gr20.pha 
+#***Warning: Data file HED_PHA_3.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#
+#Spectrum #: 1 replaced 
+#
+#2 spectra  in use
+# 
+#Spectral Data File: HED_PHA_3.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  1.154e+04 +/- 1.926e+02 (68.1 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.7 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.42 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+#Spectral Data File: GRB210619B_b1_gr20.pha  Spectrum 2
+#Net count rate (cts/s) for Spectrum:2  1.588e+04 +/- 1.654e+02 (87.1 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  1-69
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.6674 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.7155 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign 1: 1-17 32-**
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign 2: **-200.
+#     3 channels (1-3) ignored in spectrum #     2
+#
+#
+!XSPEC12> ign 2: 10000.-**
+#     6 channels (64-69) ignored in spectrum #     2
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> notice 2: 200.-12000.
+#    63 channels (3-65) noticed in spectrum #     2
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign 2: **-500.
+#    12 channels (1-12) ignored in spectrum #     2
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> model
+# Additive Models: 
+#      agauss      cemekl       equil      nlapec      qsosed    vnpshock
+#      agnsed      cevmkl      expdec    npeggrb*     raymond       voigt
+#     agnslim       cflow    ezdiskbb    npegpow*       redge     vpshock
+#        apec      compLS       gadem     nphgrb*      refsch    vraymond
+#       bapec      compPS    gaussian     nphpow*        rnei       vrnei
+#       bbody      compST        gnei       npow*       sbpl*      vsedov
+#    bbodyrad      compTT        grad     npshock       sedov      vtapec
+#      bexrav      compbb     grbcomp         nsa        sirf      vvapec
+#      bexriv     compmag   grbeiso2*     nsagrav      slimbh      vvgnei
+#     bkn2pow      comptb      grbjet     nsatmos       smaug       vvnei
+#    bknpower      compth   grbliso2*       nsmax      snapec   vvnpshock
+#         bmc         cph        grbm      nsmaxg       srcut    vvpshock
+#      bremss    cplflux*        hatm         nsx       sresc      vvrnei
+#       brnei    cplinear         jet       nteea         ssa     vvsedov
+#      btapec    cutoffpl      kerrbb     nthComp        step     vvtapec
+#      bvapec    cutplep*       kerrd     optxagn       tapec      vvwdem
+#      bvrnei        disk    kerrdisk    optxagnf    twosbpl*       vwdem
+#     bvtapec      diskbb     kyrline     pegcut*       vapec        wdem
+#     bvvapec      diskir        laor    pegpwrlw     vbremss     zagauss
+#     bvvrnei    diskline       laor2      pexmon        vcph      zbbody
+#    bvvtapec       diskm      logpar      pexrav      vequil   zbknpower
+#      bwcycl       disko     lorentz      pexriv      vgadem     zbremss
+#      c6mekl     diskpbb        meka      plcabs       vgnei   zcutoffpl
+#     c6pmekl      diskpn       mekal        posm     vmcflow      zgauss
+#     c6pvmkl    eplogpar     mkcflow    powerlaw       vmeka     zkerrbb
+#     c6vmekl      eqpair         nei     pphcut*      vmekal     zlogpar
+#     carbatm     eqtherm     ngrbep*      pshock        vnei    zpowerlw
+#
+#
+# Multiplicative Models: 
+#     SSS_ice    constant     ismdust      polpow      wndabs      zphabs
+#       TBabs     cyclabs    log10con        pwab        xion     zredden
+#       TBfeo        dust    logconst      redden       xscat     zsmdust
+#       TBgas        edge       lyman      smedge      zTBabs     zvarabs
+#     TBgrain      expabs       notch    spexpcut       zbabs     zvfeabs
+#       TBpcf      expfac  olivineabs      spline       zdust     zvphabs
+#       TBrel        gabs      pcfabs      swind1       zedge       zwabs
+#    TBvarabs      heilin       phabs       uvred    zhighect     zwndabs
+#      absori    highecut       plabs      varabs        zigm      zxipab
+#     acisabs       hrefl    polconst      vphabs     zpcfabs      zxipcf
+#        cabs      ismabs      pollin        wabs
+#
+#
+# Convolution Models: 
+#       cflux    ireflect      kyconv     reflect      thcomp     xilconv
+#      clumin      kdblur     lsmooth     rfxconv     vashift     zashift
+#      cpflux     kdblur2     partcov     rgsxsrc     vmshift     zmshift
+#     gsmooth    kerrconv      rdblur       simpl
+#
+#
+# Mixing Models: 
+#       ascac    monomass      polrot      recorn      suzpsf      xmmpsf
+#      clmass     nfwmass      projct
+#
+#
+# Pile-up Models: 
+#      pileup
+#
+#
+# Table models may be used with the commands atable/mtable/etable
+#	 atable{</path/to/tablemodel.mod>}
+# and are described at:
+#	 heasarc.gsfc.nasa.gov/docs/heasarc/ofwg/docs/general/ogip_92_009/ogip_92_009.html
+#
+# Additional models are available at:
+#	 heasarc.gsfc.nasa.gov/docs/xanadu/xspec/newmodels.html
+#
+!XSPEC12> mod npow
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#            1.5       0.01(     0.015)         -3         -2          9         10
+#            100      -0.01(         1)          0          0       1000       1000
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#            1.5       0.01(     0.015)         -3         -2          9         10
+#            100      -0.01(         1)          0          0       1000       1000
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model npow<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   npow       PhoIndex            1.50000      +/-  0.0          
+#   2    1   npow       enorm      keV      100.000      frozen
+#   3    1   npow       norm                1.00000      +/-  0.0          
+#                           Data group: 2
+#   4    1   npow       PhoIndex            1.50000      = p1
+#   5    1   npow       enorm      keV      100.000      = p2
+#   6    1   npow       norm                1.00000      = p3
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                17951.55     using 14 bins.
+#                 Chi-Squared                 7775.50     using 53 bins.
+#Total fit statistic                         25727.05     with 65 d.o.f.
+#
+#Test statistic : Chi-Squared                25727.05     using 67 bins.
+# Null hypothesis probability of 0.00e+00 with 65 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> untie 3,6
+#
+#Fit statistic  : Chi-Squared                17951.55     using 14 bins.
+#                 Chi-Squared                 7775.50     using 53 bins.
+#Total fit statistic                         25727.05     with 64 d.o.f.
+#
+#Test statistic : Chi-Squared                25727.05     using 67 bins.
+# Null hypothesis probability of 0.00e+00 with 64 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        3:norm        6:norm
+#1306.69      769.748      -1       1.66084      0.424688      0.478291
+#835.995      476.757      -1       1.80942      0.696030      0.842647
+#806.714      544.248      -2       2.18639       1.66272       2.06756
+#98.8341      1063.29      -3       2.24161       2.80969       3.55458
+#83.5083      234.38       -4       2.21991       2.81152       3.55802
+#83.4786      9.16099      -5       2.22289       2.82750       3.57966
+#83.4784      0.197929     -6       2.22266       2.82597       3.57753
+#========================================
+# Variances and Principal Axes
+#                 1        3        6  
+# 2.7607E-05|  0.9960  -0.0771  -0.0452  
+# 3.6275E-03| -0.0332  -0.7891   0.6134  
+# 6.6036E-02|  0.0829   0.6094   0.7885  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   4.855e-04   3.430e-03   4.243e-03
+#   3.430e-03   2.678e-02   2.998e-02
+#   4.243e-03   2.998e-02   4.242e-02
+#------------------------------------
+#
+#========================================================================
+#Model npow<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   npow       PhoIndex            2.22266      +/-  2.20349E-02  
+#   2    1   npow       enorm      keV      100.000      frozen
+#   3    1   npow       norm                2.82597      +/-  0.163658     
+#                           Data group: 2
+#   4    1   npow       PhoIndex            2.22266      = p1
+#   5    1   npow       enorm      keV      100.000      = p2
+#   6    1   npow       norm                3.57753      +/-  0.205966     
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   16.91     using 14 bins.
+#                 Chi-Squared                   66.57     using 53 bins.
+#Total fit statistic                            83.48     with 64 d.o.f.
+#
+#Test statistic : Chi-Squared                   83.48     using 67 bins.
+# Null hypothesis probability of 5.15e-02 with 64 degrees of freedom
+#
+!XSPEC12> pl lda delchi
+#
+!XSPEC12> thaw 2
+#
+#Fit statistic  : Chi-Squared                   16.91     using 14 bins.
+#                 Chi-Squared                   66.57     using 53 bins.
+#Total fit statistic                            83.48     with 63 d.o.f.
+#
+#Test statistic : Chi-Squared                   83.48     using 67 bins.
+# Null hypothesis probability of 4.31e-02 with 63 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex       2:enorm        3:norm        6:norm
+#83.4784      0.0100275     0       2.22266       100.000       2.82597       3.57753
+#==================================================
+# Variances and Principal Axes
+#                 1        2        3        6  
+# 2.7563E-05|  0.9960  -0.0084  -0.0771  -0.0453  
+# 3.6233E-03| -0.0332  -0.0008  -0.7891   0.6134  
+# 6.5270E-02|  0.0834   0.1005   0.6062   0.7845  
+# 1.9178E+12|  0.0000   0.9949  -0.0625  -0.0791  
+#--------------------------------------------------
+#
+#================================================
+#  Covariance Matrix
+#        1           2           3           4   
+#   4.912e-04   3.331e+03  -2.092e+02  -2.649e+02
+#   3.331e+03   1.898e+12  -1.192e+11  -1.510e+11
+#  -2.092e+02  -1.192e+11   7.490e+09   9.481e+09
+#  -2.649e+02  -1.510e+11   9.481e+09   1.200e+10
+#------------------------------------------------
+#
+#========================================================================
+#Model npow<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   npow       PhoIndex            2.22266      +/-  2.21619E-02  
+#   2    1   npow       enorm      keV      100.000      +/-  1.37780E+06  
+#   3    1   npow       norm                2.82597      +/-  8.65427E+04  
+#                           Data group: 2
+#   4    1   npow       PhoIndex            2.22266      = p1
+#   5    1   npow       enorm      keV      100.000      = p2
+#   6    1   npow       norm                3.57753      +/-  1.09559E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   16.91     using 14 bins.
+#                 Chi-Squared                   66.57     using 53 bins.
+#Total fit statistic                            83.48     with 63 d.o.f.
+#
+#Test statistic : Chi-Squared                   83.48     using 67 bins.
+# Null hypothesis probability of 4.31e-02 with 63 degrees of freedom
+#
+!XSPEC12> pl lda delchi
+#
+!XSPEC12> model pegpwrl
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#              2      -0.01(      0.02)       -100       -100      1e+10      1e+10
+#             10      -0.01(       0.1)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#            500      -0.01(         5)       -100       -100      1e+10      1e+10
+#           2000      -0.01(        20)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            1.00000      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.00000      +/-  0.0          
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            1.00000      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                1.00000      = p4
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                 3154.41     using 14 bins.
+#                 Chi-Squared                 2463.89     using 53 bins.
+#Total fit statistic                          5618.29     with 65 d.o.f.
+#
+#Test statistic : Chi-Squared                 5618.29     using 67 bins.
+# Null hypothesis probability of 0.00e+00 with 65 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm
+#916.373      572.574      -3       3.13806   3.42991e+07
+#331.053      197.899       0       2.50526   3.74085e+07
+#168.038      173.449      -1       2.16192   4.10471e+07
+#154.864      96.9804      -2       2.23484   4.11416e+07
+#154.85       0.108155     -3       2.23409   4.10733e+07
+#154.85       0.0555241    -4       2.23414   4.10738e+07
+#==============================
+# Variances and Principal Axes
+#                 1        4  
+# 4.6840E-04|  1.0000  -0.0000  
+# 3.4487E+11|  0.0000   1.0000  
+#------------------------------
+#
+#========================
+#  Covariance Matrix
+#        1           2   
+#   5.231e-04   4.345e+03
+#   4.345e+03   3.449e+11
+#------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.23414      +/-  2.28723E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                4.10738E+07  +/-  5.87256E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.23414      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                4.10738E+07  = p4
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   39.28     using 14 bins.
+#                 Chi-Squared                  115.57     using 53 bins.
+#Total fit statistic                           154.85     with 65 d.o.f.
+#
+#Test statistic : Chi-Squared                  154.85     using 67 bins.
+# Null hypothesis probability of 2.69e-09 with 65 degrees of freedom
+#
+!XSPEC12> untie 4,8
+#
+#Fit statistic  : Chi-Squared                   39.28     using 14 bins.
+#                 Chi-Squared                  115.57     using 53 bins.
+#Total fit statistic                           154.85     with 64 d.o.f.
+#
+#Test statistic : Chi-Squared                  154.85     using 67 bins.
+# Null hypothesis probability of 1.70e-09 with 64 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#83.4941      0.00291188   -3       2.22527   3.77595e+07   4.77883e+07
+#83.4785      1.94206      -4       2.22242   3.77343e+07   4.77675e+07
+#83.4784      0.161042     -5       2.22265   3.77351e+07   4.77712e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 4.3642E-04|  1.0000  -0.0000  -0.0000  
+# 4.8817E+11| -0.0000  -0.9975   0.0703  
+# 9.8763E+11| -0.0000  -0.0703  -0.9975  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   4.871e-04   4.236e+03   4.028e+03
+#   4.236e+03   4.906e+11   3.503e+10
+#   4.028e+03   3.503e+10   9.852e+11
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.22265      +/-  2.20707E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                3.77351E+07  +/-  7.00456E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.22265      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                4.77712E+07  +/-  9.92551E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   16.91     using 14 bins.
+#                 Chi-Squared                   66.57     using 53 bins.
+#Total fit statistic                            83.48     with 64 d.o.f.
+#
+#Test statistic : Chi-Squared                   83.48     using 67 bins.
+# Null hypothesis probability of 5.15e-02 with 64 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> pl lda delchi
+#
+!XSPEC12> save model HED_BGO_fit.xcm
+#
+!XSPEC12> data none
+#
+!XSPEC12> @HED_BGO_fit.xcm
+#
+!XSPEC12>method leven 1000 0.01
+#
+!XSPEC12>abund angr
+# Solar Abundance Vector set to angr:  Anders E. & Grevesse N. Geochimica et Cosmochimica Acta 53, 197 (1989)
+#
+!XSPEC12>xsect vern
+# Cross Section Table set to vern:  Verner, Ferland, Korista, and Yakovlev 1996
+#
+!XSPEC12>cosmo 70 0 0.73
+#
+!XSPEC12>xset delta 0.01
+#Parameter delta values for fits will now be 0.01 * parValue
+#
+!XSPEC12>systematic 0
+# Model systematic error set to 0
+#
+!XSPEC12>model  pegpwrlw  ;          2.22265       0.01         -3         -2          9         10  ;              500      -0.01       -100       -100      1e+10      1e+10  ;             2000      -0.01       -100       -100      1e+10      1e+10  ;      3.77351e+07       0.01          0          0      1e+20      1e+24  ;  = p1  ;              500      -0.01       -100       -100      1e+10      1e+10  ;             2000      -0.01       -100       -100      1e+10      1e+10  ;      4.77712e+07       0.01          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/Off
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#   1    1   pegpwrlw   PhoIndex            2.22265      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                3.77351E+07  +/-  0.0          
+#________________________________________________________________________
+#
+#
+!XSPEC12>bayes off
+#
+!XSPEC12> pl lda
+#
+#***XSPEC Error:  No data loaded
+#
+#
+!XSPEC12> ls
+#
+!XSPEC12> rm HED_BGO_fit.xcm 
+#
+!XSPEC12> pl lda
+#
+#***XSPEC Error:  No data loaded
+#
+#
+!XSPEC12> data 1:1 HED_PHA_3.fits 2:2 GRB210619B_b1_gr20.pha
+#***Warning: Data file HED_PHA_3.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#
+#2 spectra  in use
+# 
+#Spectral Data File: HED_PHA_3.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  1.154e+04 +/- 1.926e+02 (68.1 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.7 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.42 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+#Spectral Data File: GRB210619B_b1_gr20.pha  Spectrum 2
+#Net count rate (cts/s) for Spectrum:2  1.588e+04 +/- 1.654e+02 (87.1 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  1-69
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.6674 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.7155 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+#Fit statistic  : Chi-Squared              5.509826e+07     using 40 bins.
+#
+#***Warning: Chi-square may not be valid due to bins with zero variance
+#            in spectrum number: 1
+#                 Chi-Squared                16932.98     using 69 bins.
+#Total fit statistic                       5.511519e+07     with 107 d.o.f.
+#
+#Test statistic : Chi-Squared              5.511519e+07     using 109 bins.
+#
+#***Warning: Chi-square may not be valid due to bins with zero variance
+#            in spectrum number(s): 1 
+#
+# Null hypothesis probability of 0.000000e+00 with 107 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> ign 1: 1-17 32-**
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#
+#Fit statistic  : Chi-Squared                   16.91     using 14 bins.
+#                 Chi-Squared                16932.98     using 69 bins.
+#Total fit statistic                         16949.90     with 81 d.o.f.
+#
+#Test statistic : Chi-Squared                16949.90     using 83 bins.
+# Null hypothesis probability of 0.00e+00 with 81 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> ign 2: **-500. 11000.-**
+#    12 channels (1-12) ignored in spectrum #     2
+#     6 channels (64-69) ignored in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                   16.91     using 14 bins.
+#                 Chi-Squared                  171.77     using 51 bins.
+#Total fit statistic                           188.68     with 63 d.o.f.
+#
+#Test statistic : Chi-Squared                  188.68     using 65 bins.
+# Null hypothesis probability of 1.80e-14 with 63 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> mod none
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> notice 2: 500.-12000.
+#    54 channels (12-65) noticed in spectrum #     2
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> model pegpwrl
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#              2      -0.01(      0.02)       -100       -100      1e+10      1e+10
+#             10      -0.01(       0.1)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#            500      -0.01(         5)       -100       -100      1e+10      1e+10
+#           2000      -0.01(        20)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            1.00000      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.00000      +/-  0.0          
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            1.00000      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                1.00000      = p4
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                 3154.41     using 14 bins.
+#                 Chi-Squared                 2680.39     using 54 bins.
+#Total fit statistic                          5834.80     with 66 d.o.f.
+#
+#Test statistic : Chi-Squared                 5834.80     using 68 bins.
+# Null hypothesis probability of 0.00e+00 with 66 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> untie 4,8
+#
+#Fit statistic  : Chi-Squared                 3154.41     using 14 bins.
+#                 Chi-Squared                 2680.39     using 54 bins.
+#Total fit statistic                          5834.80     with 65 d.o.f.
+#
+#Test statistic : Chi-Squared                 5834.80     using 68 bins.
+# Null hypothesis probability of 0.00e+00 with 65 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#909.054      393.058      -3       3.11987   3.45105e+07   3.48134e+07
+#779.08       146.045      -1       1.85754   3.98909e+07   4.65455e+07
+#116.455      833.643      -2       2.12925   3.84518e+07   4.79099e+07
+#88.5114      99.7457      -3       2.21321   3.77138e+07   4.71680e+07
+#88.4667      0.817133     -4       2.21323   3.76478e+07   4.69961e+07
+#88.4667      0.0261231    -1       2.21326   3.76481e+07   4.69962e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 4.2228E-04|  1.0000  -0.0000  -0.0000  
+# 4.8776E+11| -0.0000  -0.9982   0.0602  
+# 8.6125E+11|  0.0000   0.0602   0.9982  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   4.639e-04   4.158e+03   2.505e+03
+#   4.158e+03   4.891e+11   2.245e+10
+#   2.505e+03   2.245e+10   8.599e+11
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.21326      +/-  2.15375E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                3.76481E+07  +/-  6.99369E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.21326      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                4.69962E+07  +/-  9.27305E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   17.61     using 14 bins.
+#                 Chi-Squared                   70.85     using 54 bins.
+#Total fit statistic                            88.47     with 65 d.o.f.
+#
+#Test statistic : Chi-Squared                   88.47     using 68 bins.
+# Null hypothesis probability of 2.81e-02 with 65 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> pl lda delchi
+#
+!XSPEC12> save all HED_BGO_fit.xcm
+#
+!XSPEC12> @HED_BGO_fit.xcm 
+#
+!XSPEC12>statistic chi
+#Default fit statistic is set to: Chi-Squared
+#   This will apply to all current and newly loaded spectra.
+#
+#Fit statistic  : Chi-Squared                   17.61     using 14 bins.
+#                 Chi-Squared                   70.85     using 54 bins.
+#Total fit statistic                            88.47     with 65 d.o.f.
+#
+#Test statistic : Chi-Squared                   88.47     using 68 bins.
+# Null hypothesis probability of 2.81e-02 with 65 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>data 1:1 HED_PHA_3.fits
+#***Warning: Data file HED_PHA_3.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#
+#Spectrum #: 1 replaced 
+#
+#Spectrum #: 2 removed 
+#
+#1 spectrum  in use
+# 
+#Spectral Data File: HED_PHA_3.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  1.154e+04 +/- 1.926e+02 (68.1 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.7 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.42 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+#
+#Fit statistic  : Chi-Squared              5.298004e+07     using 40 bins.
+#
+#***Warning: Chi-square may not be valid due to bins with zero variance
+#            in spectrum number: 1
+#
+#Test statistic : Chi-Squared              5.298004e+07     using 40 bins.
+#
+#***Warning: Chi-square may not be valid due to bins with zero variance
+#            in spectrum number(s): 1 
+#
+# Null hypothesis probability of 0.000000e+00 with 38 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>data 2:2 GRB210619B_b1_gr20.pha
+#
+#2 spectra  in use
+# 
+#Spectral Data File: GRB210619B_b1_gr20.pha  Spectrum 2
+#Net count rate (cts/s) for Spectrum:2  1.588e+04 +/- 1.654e+02 (87.1 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  1-69
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.6674 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.7155 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+#Fit statistic  : Chi-Squared              5.298004e+07     using 40 bins.
+#
+#***Warning: Chi-square may not be valid due to bins with zero variance
+#            in spectrum number: 1
+#                 Chi-Squared                16118.15     using 69 bins.
+#Total fit statistic                       5.299616e+07     with 107 d.o.f.
+#
+#Test statistic : Chi-Squared              5.299616e+07     using 109 bins.
+#
+#***Warning: Chi-square may not be valid due to bins with zero variance
+#            in spectrum number(s): 1 
+#
+# Null hypothesis probability of 0.000000e+00 with 107 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>ignore 1:1-17,32-40 2:1-11,66-69
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#    11 channels (1,11) ignored in spectrum #     2
+#     4 channels (66,69) ignored in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                   17.61     using 14 bins.
+#                 Chi-Squared                  174.10     using 54 bins.
+#Total fit statistic                           191.72     with 66 d.o.f.
+#
+#Test statistic : Chi-Squared                  191.72     using 68 bins.
+# Null hypothesis probability of 3.42e-14 with 66 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12>method leven 1000 0.01
+#
+#Fit statistic  : Chi-Squared                   17.61     using 14 bins.
+#                 Chi-Squared                  174.10     using 54 bins.
+#Total fit statistic                           191.72     with 66 d.o.f.
+#
+#Test statistic : Chi-Squared                  191.72     using 68 bins.
+# Null hypothesis probability of 3.42e-14 with 66 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>abund angr
+# Solar Abundance Vector set to angr:  Anders E. & Grevesse N. Geochimica et Cosmochimica Acta 53, 197 (1989)
+#
+#Fit statistic  : Chi-Squared                   17.61     using 14 bins.
+#                 Chi-Squared                  174.10     using 54 bins.
+#Total fit statistic                           191.72     with 66 d.o.f.
+#
+#Test statistic : Chi-Squared                  191.72     using 68 bins.
+# Null hypothesis probability of 3.42e-14 with 66 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>xsect vern
+# Cross Section Table set to vern:  Verner, Ferland, Korista, and Yakovlev 1996
+#
+#Fit statistic  : Chi-Squared                   17.61     using 14 bins.
+#                 Chi-Squared                  174.10     using 54 bins.
+#Total fit statistic                           191.72     with 66 d.o.f.
+#
+#Test statistic : Chi-Squared                  191.72     using 68 bins.
+# Null hypothesis probability of 3.42e-14 with 66 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>cosmo 70 0 0.73
+#
+#Fit statistic  : Chi-Squared                   17.61     using 14 bins.
+#                 Chi-Squared                  174.10     using 54 bins.
+#Total fit statistic                           191.72     with 66 d.o.f.
+#
+#Test statistic : Chi-Squared                  191.72     using 68 bins.
+# Null hypothesis probability of 3.42e-14 with 66 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>xset delta 0.01
+#Parameter delta values for fits will now be 0.01 * parValue
+#
+!XSPEC12>systematic 0
+# Model systematic error set to 0
+#
+!XSPEC12>model  pegpwrlw  ;          2.21326       0.01         -3         -2          9         10  ;              500      -0.01       -100       -100      1e+10      1e+10  ;             2000      -0.01       -100       -100      1e+10      1e+10  ;      3.76481e+07       0.01          0          0      1e+20      1e+24  ;  = p1  ;              500      -0.01       -100       -100      1e+10      1e+10  ;             2000      -0.01       -100       -100      1e+10      1e+10  ;      4.69962e+07       0.01          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.21326      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                3.76481E+07  +/-  0.0          
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.21326      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                4.69962E+07  +/-  0.0          
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   17.61     using 14 bins.
+#                 Chi-Squared                   70.85     using 54 bins.
+#Total fit statistic                            88.47     with 65 d.o.f.
+#
+#Test statistic : Chi-Squared                   88.47     using 68 bins.
+# Null hypothesis probability of 2.81e-02 with 65 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>bayes off
+#
+#Fit statistic  : Chi-Squared                   17.61     using 14 bins.
+#                 Chi-Squared                   70.85     using 54 bins.
+#Total fit statistic                            88.47     with 65 d.o.f.
+#
+#Test statistic : Chi-Squared                   88.47     using 68 bins.
+# Null hypothesis probability of 2.81e-02 with 65 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> pl lda delchi
+#***Warning: Fit is not current.
+#
+!XSPEC12> data none
+#
+!XSPEC12> mod none
+#
+!XSPEC12> cd ..
+#
+!XSPEC12> ls
+#
+!XSPEC12> cd timeInterval3
+#
+!XSPEC12> ls
+#
+!XSPEC12> grppha
+#
+!XSPEC12> ls
+#
+!XSPEC12> data 1:1 HED_PHA_4.fits 2:2 GRB210619B_b1_gr20.pha 
+#***Warning: Data file HED_PHA_4.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#
+#2 spectra  in use
+# 
+#Spectral Data File: HED_PHA_4.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  1.315e+04 +/- 1.655e+02
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.48 sec
+# Using fit statistic: chi
+# No response loaded.
+#
+#Spectral Data File: GRB210619B_b1_gr20.pha  Spectrum 2
+#Net count rate (cts/s) for Spectrum:2  1.360e+04 +/- 1.864e+02 (85.2 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  1-55
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.46 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.4795 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#***Warning!  One or more spectra are missing responses,
+#               and are not suitable for fit.
+#
+!XSPEC12> fparkey HED_Bak_1.fits HED_PHA_4.fits BACKFILE
+#
+!XSPEC12> fparkey HED_RMF_1.fits HED_PHA_4.fits RESPFILE
+#
+!XSPEC12> data 1:1 HED_PHA_4.fits 2:2 GRB210619B_b1_gr20.pha 
+#***Warning: Data file HED_PHA_4.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#
+#Spectrum #: 1 replaced 
+#
+#Spectrum #: 2 replaced 
+#
+#2 spectra  in use
+# 
+#Spectral Data File: HED_PHA_4.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  7.745e+03 +/- 2.007e+02 (58.9 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.48 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.42 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+#Spectral Data File: GRB210619B_b1_gr20.pha  Spectrum 2
+#Net count rate (cts/s) for Spectrum:2  1.360e+04 +/- 1.864e+02 (85.2 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  1-55
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.46 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.4795 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ignore 1-17 32-**
+#    17 channels (1,17) ignored in spectrum #     2
+#    24 channels (32,55) ignored in spectrum #     2
+#
+#
+!XSPEC12> notice all
+#    40 channels (1,40) noticed in spectrum #     1
+#    55 channels (1,55) noticed in spectrum #     2
+#
+#All channels noticed
+#
+!XSPEC12> ign 1: 1-17 32-**
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign 2: **-500. 11000.-**
+#    12 channels (1-12) ignored in spectrum #     2
+#     4 channels (52-55) ignored in spectrum #     2
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign 1: 56
+#      No channels ignored (no channels in specified range)
+#
+#
+!XSPEC12> ign 1: 55-**
+#      No channels ignored (no channels in specified range)
+#
+#
+!XSPEC12> ign 1: 31
+#     1 channels (31-31) ignored in spectrum #     1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> model pegpwrl
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#              2      -0.01(      0.02)       -100       -100      1e+10      1e+10
+#             10      -0.01(       0.1)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#            500      -0.01(         5)       -100       -100      1e+10      1e+10
+#           2000      -0.01(        20)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            1.00000      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.00000      +/-  0.0          
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            1.00000      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                1.00000      = p4
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                 1261.65     using 13 bins.
+#                 Chi-Squared                 1148.90     using 39 bins.
+#Total fit statistic                          2410.54     with 50 d.o.f.
+#
+#Test statistic : Chi-Squared                 2410.54     using 52 bins.
+# Null hypothesis probability of 0.00e+00 with 50 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> untie 4,8
+#
+#Fit statistic  : Chi-Squared                 1261.65     using 13 bins.
+#                 Chi-Squared                 1148.90     using 39 bins.
+#Total fit statistic                          2410.54     with 49 d.o.f.
+#
+#Test statistic : Chi-Squared                 2410.54     using 52 bins.
+# Null hypothesis probability of 0.00e+00 with 49 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#423.613      125.62       -3       3.54329   2.57402e+07   2.51098e+07
+#204.534      63.6863      -1       2.12676   2.71375e+07   3.36073e+07
+#73.8845      148.063      -2       2.42902   2.61265e+07   3.57001e+07
+#71.3693      11.7175      -3       2.47657   2.55180e+07   3.53231e+07
+#71.3586      0.839266     -4       2.47200   2.54976e+07   3.53018e+07
+#71.3584      0.123326     -5       2.47265   2.54986e+07   3.53029e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 1.7319E-03|  1.0000  -0.0000  -0.0000  
+# 5.2457E+11| -0.0000  -1.0000   0.0075  
+# 1.1539E+12|  0.0000   0.0075   1.0000  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   1.760e-03   3.534e+03   2.357e+03
+#   3.534e+03   5.246e+11   4.731e+09
+#   2.357e+03   4.731e+09   1.154e+12
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.47265      +/-  4.19564E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                2.54986E+07  +/-  7.24299E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.47265      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                3.53029E+07  +/-  1.07420E+06  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    5.42     using 13 bins.
+#                 Chi-Squared                   65.93     using 39 bins.
+#Total fit statistic                            71.36     with 49 d.o.f.
+#
+#Test statistic : Chi-Squared                   71.36     using 52 bins.
+# Null hypothesis probability of 2.02e-02 with 49 degrees of freedom
+#
+!XSPEC12> pl lda delchi
+#
+!XSPEC12> fv
+#
+!XSPEC12> ign bad
+#
+#Fit statistic  : Chi-Squared                    5.42     using 13 bins.
+#                 Chi-Squared                   65.93     using 39 bins.
+#Total fit statistic                            71.36     with 49 d.o.f.
+#
+#Test statistic : Chi-Squared                   71.36     using 52 bins.
+# Null hypothesis probability of 2.02e-02 with 49 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#71.3584      0.0173527    -3       2.47256   2.54985e+07   3.53027e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 1.7342E-03|  1.0000  -0.0000  -0.0000  
+# 5.2458E+11| -0.0000  -1.0000   0.0074  
+# 1.1539E+12|  0.0000   0.0074   1.0000  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   1.762e-03   3.524e+03   2.338e+03
+#   3.524e+03   5.246e+11   4.675e+09
+#   2.338e+03   4.675e+09   1.154e+12
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.47256      +/-  4.19817E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                2.54985E+07  +/-  7.24303E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.47256      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                3.53027E+07  +/-  1.07420E+06  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    5.43     using 13 bins.
+#                 Chi-Squared                   65.93     using 39 bins.
+#Total fit statistic                            71.36     with 49 d.o.f.
+#
+#Test statistic : Chi-Squared                   71.36     using 52 bins.
+# Null hypothesis probability of 2.02e-02 with 49 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> fv
+#
+!XSPEC12> ign 2: 50
+#     1 channels (50-50) ignored in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                    5.43     using 13 bins.
+#                 Chi-Squared                   65.76     using 38 bins.
+#Total fit statistic                            71.19     with 48 d.o.f.
+#
+#Test statistic : Chi-Squared                   71.19     using 51 bins.
+# Null hypothesis probability of 1.65e-02 with 48 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> notice 2: 50
+#     1 channels (50-50) noticed in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                    5.43     using 13 bins.
+#                 Chi-Squared                   65.93     using 39 bins.
+#Total fit statistic                            71.36     with 49 d.o.f.
+#
+#Test statistic : Chi-Squared                   71.36     using 52 bins.
+# Null hypothesis probability of 2.02e-02 with 49 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> ign 2: 30
+#     1 channels (30-30) ignored in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                    5.43     using 13 bins.
+#                 Chi-Squared                   65.05     using 38 bins.
+#Total fit statistic                            70.48     with 48 d.o.f.
+#
+#Test statistic : Chi-Squared                   70.48     using 51 bins.
+# Null hypothesis probability of 1.89e-02 with 48 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> notice 2: 30
+#     1 channels (30-30) noticed in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                    5.43     using 13 bins.
+#                 Chi-Squared                   65.93     using 39 bins.
+#Total fit statistic                            71.36     with 49 d.o.f.
+#
+#Test statistic : Chi-Squared                   71.36     using 52 bins.
+# Null hypothesis probability of 2.02e-02 with 49 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> ign 2: 40
+#     1 channels (40-40) ignored in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                    5.43     using 13 bins.
+#                 Chi-Squared                   64.64     using 38 bins.
+#Total fit statistic                            70.07     with 48 d.o.f.
+#
+#Test statistic : Chi-Squared                   70.07     using 51 bins.
+# Null hypothesis probability of 2.05e-02 with 48 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> notice 2: 40
+#     1 channels (40-40) noticed in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                    5.43     using 13 bins.
+#                 Chi-Squared                   65.93     using 39 bins.
+#Total fit statistic                            71.36     with 49 d.o.f.
+#
+#Test statistic : Chi-Squared                   71.36     using 52 bins.
+# Null hypothesis probability of 2.02e-02 with 49 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> ign 2: 43
+#     1 channels (43-43) ignored in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                    5.43     using 13 bins.
+#                 Chi-Squared                   63.93     using 38 bins.
+#Total fit statistic                            69.35     with 48 d.o.f.
+#
+#Test statistic : Chi-Squared                   69.35     using 51 bins.
+# Null hypothesis probability of 2.35e-02 with 48 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> notice 2: 43
+#     1 channels (43-43) noticed in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                    5.43     using 13 bins.
+#                 Chi-Squared                   65.93     using 39 bins.
+#Total fit statistic                            71.36     with 49 d.o.f.
+#
+#Test statistic : Chi-Squared                   71.36     using 52 bins.
+# Null hypothesis probability of 2.02e-02 with 49 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> ign 2: 44
+#     1 channels (44-44) ignored in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                    5.43     using 13 bins.
+#                 Chi-Squared                   59.32     using 38 bins.
+#Total fit statistic                            64.75     with 48 d.o.f.
+#
+#Test statistic : Chi-Squared                   64.75     using 51 bins.
+# Null hypothesis probability of 5.37e-02 with 48 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#64.5257      3.23851      -3       2.45469   2.54627e+07   3.55694e+07
+#64.5224      0.50443      -4       2.45729   2.54650e+07   3.55748e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 1.7018E-03|  1.0000  -0.0000  -0.0000  
+# 5.2455E+11| -0.0000  -1.0000   0.0075  
+# 1.1643E+12|  0.0000   0.0075   1.0000  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   1.734e-03   3.852e+03   2.170e+03
+#   3.852e+03   5.246e+11   4.820e+09
+#   2.170e+03   4.820e+09   1.164e+12
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.45729      +/-  4.16410E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                2.54650E+07  +/-  7.24285E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.45729      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                3.55748E+07  +/-  1.07901E+06  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    5.54     using 13 bins.
+#                 Chi-Squared                   58.98     using 38 bins.
+#Total fit statistic                            64.52     with 48 d.o.f.
+#
+#Test statistic : Chi-Squared                   64.52     using 51 bins.
+# Null hypothesis probability of 5.58e-02 with 48 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign 1: 28
+#     1 channels (28-28) ignored in spectrum #     1
+#
+#Fit statistic  : Chi-Squared                    3.36     using 12 bins.
+#                 Chi-Squared                   58.98     using 38 bins.
+#Total fit statistic                            62.33     with 47 d.o.f.
+#
+#Test statistic : Chi-Squared                   62.33     using 50 bins.
+# Null hypothesis probability of 6.64e-02 with 47 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#62.2604      2.17638      -3       2.44572   2.55080e+07   3.55604e+07
+#62.2591      0.311623     -4       2.44735   2.55104e+07   3.55629e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 1.7239E-03|  1.0000  -0.0000  -0.0000  
+# 5.2530E+11| -0.0000  -1.0000   0.0084  
+# 1.1644E+12|  0.0000   0.0084   1.0000  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   1.756e-03   3.767e+03   2.504e+03
+#   3.767e+03   5.253e+11   5.372e+09
+#   2.504e+03   5.372e+09   1.164e+12
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.44735      +/-  4.19060E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                2.55104E+07  +/-  7.24810E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.44735      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                3.55629E+07  +/-  1.07904E+06  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    3.37     using 12 bins.
+#                 Chi-Squared                   58.89     using 38 bins.
+#Total fit statistic                            62.26     with 47 d.o.f.
+#
+#Test statistic : Chi-Squared                   62.26     using 50 bins.
+# Null hypothesis probability of 6.72e-02 with 47 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#62.2591      0.0419797    -3       2.44713   2.55100e+07   3.55625e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 1.7298E-03|  1.0000  -0.0000  -0.0000  
+# 5.2532E+11| -0.0000  -1.0000   0.0082  
+# 1.1644E+12|  0.0000   0.0082   1.0000  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   1.761e-03   3.744e+03   2.455e+03
+#   3.744e+03   5.254e+11   5.218e+09
+#   2.455e+03   5.218e+09   1.164e+12
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.44713      +/-  4.19698E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                2.55100E+07  +/-  7.24821E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.44713      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                3.55625E+07  +/-  1.07904E+06  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    3.37     using 12 bins.
+#                 Chi-Squared                   58.89     using 38 bins.
+#Total fit statistic                            62.26     with 47 d.o.f.
+#
+#Test statistic : Chi-Squared                   62.26     using 50 bins.
+# Null hypothesis probability of 6.72e-02 with 47 degrees of freedom
+#
+!XSPEC12> pl lda delchi
+#
+!XSPEC12> save all HED_BGO_fit.xcm
+#
+!XSPEC12> mod none
+#
+!XSPEC12> model pegpwrl
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#              2      -0.01(      0.02)       -100       -100      1e+10      1e+10
+#             10      -0.01(       0.1)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#            500      -0.01(         5)       -100       -100      1e+10      1e+10
+#          10000      -0.01(       100)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            1.00000      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      1.00000E+04  frozen
+#   4    1   pegpwrlw   norm                1.00000      +/-  0.0          
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            1.00000      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      1.00000E+04  frozen
+#   8    1   pegpwrlw   norm                1.00000      = p4
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                 1261.14     using 12 bins.
+#                 Chi-Squared                 1148.30     using 38 bins.
+#Total fit statistic                          2409.44     with 48 d.o.f.
+#
+#Test statistic : Chi-Squared                 2409.44     using 50 bins.
+# Null hypothesis probability of 0.00e+00 with 48 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> untie 4,8
+#
+#Fit statistic  : Chi-Squared                 1261.14     using 12 bins.
+#                 Chi-Squared                 1148.30     using 38 bins.
+#Total fit statistic                          2409.44     with 47 d.o.f.
+#
+#Test statistic : Chi-Squared                 2409.44     using 50 bins.
+# Null hypothesis probability of 0.00e+00 with 47 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#245.481      131.171      -1       2.43185   5.66276e+07   5.49639e+07
+#62.2708      91.5993      -2       2.44359   4.08893e+07   5.69080e+07
+#62.2592      0.459779     -3       2.44760   4.07435e+07   5.67985e+07
+#62.2591      0.0998515    -4       2.44707   4.07540e+07   5.68135e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 8.8688E-04|  1.0000   0.0000   0.0000  
+# 1.6228E+12|  0.0000  -0.9452   0.3264  
+# 4.7881E+12|  0.0000  -0.3264  -0.9452  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   1.763e-03  -3.359e+04  -5.125e+04
+#  -3.359e+04   1.960e+12   9.765e+11
+#  -5.125e+04   9.765e+11   4.451e+12
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.44707      +/-  4.19895E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      1.00000E+04  frozen
+#   4    1   pegpwrlw   norm                4.07540E+07  +/-  1.39996E+06  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.44707      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      1.00000E+04  frozen
+#   8    1   pegpwrlw   norm                5.68135E+07  +/-  2.10973E+06  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    3.37     using 12 bins.
+#                 Chi-Squared                   58.89     using 38 bins.
+#Total fit statistic                            62.26     with 47 d.o.f.
+#
+#Test statistic : Chi-Squared                   62.26     using 50 bins.
+# Null hypothesis probability of 6.72e-02 with 47 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> mod npow
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#            1.5       0.01(     0.015)         -3         -2          9         10
+#            100      -0.01(         1)          0          0       1000       1000
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#            1.5       0.01(     0.015)         -3         -2          9         10
+#            100      -0.01(         1)          0          0       1000       1000
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model npow<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   npow       PhoIndex            1.50000      +/-  0.0          
+#   2    1   npow       enorm      keV      100.000      frozen
+#   3    1   npow       norm                1.00000      +/-  0.0          
+#                           Data group: 2
+#   4    1   npow       PhoIndex            1.50000      = p1
+#   5    1   npow       enorm      keV      100.000      = p2
+#   6    1   npow       norm                1.00000      = p3
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                18266.82     using 12 bins.
+#                 Chi-Squared                 8721.12     using 38 bins.
+#Total fit statistic                         26987.94     with 48 d.o.f.
+#
+#Test statistic : Chi-Squared                26987.94     using 50 bins.
+# Null hypothesis probability of 0.00e+00 with 48 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> 
+#
+!XSPEC12> untie 3,6
+#
+#Fit statistic  : Chi-Squared                18266.82     using 12 bins.
+#                 Chi-Squared                 8721.12     using 38 bins.
+#Total fit statistic                         26987.94     with 47 d.o.f.
+#
+#Test statistic : Chi-Squared                26987.94     using 50 bins.
+# Null hypothesis probability of 0.00e+00 with 47 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        3:norm        6:norm
+#759.036      298.351      -1       1.68266      0.294793      0.324562
+#536.492      264.496      -1       1.86724      0.516528      0.624069
+#317.739      282.62       -1       2.01025      0.855798       1.11451
+#309.504      203.675      -2       2.39089       1.90968       2.57380
+#73.4701      394.188      -3       2.47527       3.15272       4.37789
+#62.3027      118.031      -4       2.44078       3.12725       4.36112
+#62.2596      6.33571      -5       2.44805       3.17162       4.42138
+#62.2591      0.301902     -6       2.44713       3.16510       4.41231
+#========================================
+# Variances and Principal Axes
+#                 1        3        6  
+# 7.6782E-05|  0.9966  -0.0709  -0.0430  
+# 1.1396E-02| -0.0331  -0.8153   0.5781  
+# 2.8810E-01|  0.0761   0.5747   0.8148  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   1.756e-03   1.290e-02   1.764e-02
+#   1.290e-02   1.027e-01   1.295e-01
+#   1.764e-02   1.295e-01   1.951e-01
+#------------------------------------
+#
+#========================================================================
+#Model npow<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   npow       PhoIndex            2.44713      +/-  4.19060E-02  
+#   2    1   npow       enorm      keV      100.000      frozen
+#   3    1   npow       norm                3.16510      +/-  0.320525     
+#                           Data group: 2
+#   4    1   npow       PhoIndex            2.44713      = p1
+#   5    1   npow       enorm      keV      100.000      = p2
+#   6    1   npow       norm                4.41231      +/-  0.441684     
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    3.37     using 12 bins.
+#                 Chi-Squared                   58.89     using 38 bins.
+#Total fit statistic                            62.26     with 47 d.o.f.
+#
+#Test statistic : Chi-Squared                   62.26     using 50 bins.
+# Null hypothesis probability of 6.72e-02 with 47 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> pl lda delchi
+#
+!XSPEC12> thaw 2
+#
+#Fit statistic  : Chi-Squared                    3.37     using 12 bins.
+#                 Chi-Squared                   58.89     using 38 bins.
+#Total fit statistic                            62.26     with 46 d.o.f.
+#
+#Test statistic : Chi-Squared                   62.26     using 50 bins.
+# Null hypothesis probability of 5.52e-02 with 46 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex       2:enorm        3:norm        6:norm
+#62.2591      0.0177346    -1       2.44715       100.001       3.16520       4.41247
+#==================================================
+# Variances and Principal Axes
+#                 1        2        3        6  
+# 8.1451E-05|  0.9965  -0.0101  -0.0711  -0.0428  
+# 1.1365E-02| -0.0333  -0.0007  -0.8153   0.5780  
+# 2.8245E-01|  0.0766   0.1313   0.5695   0.8078  
+# 1.1700E+13| -0.0000   0.9913  -0.0768  -0.1070  
+#--------------------------------------------------
+#
+#================================================
+#  Covariance Matrix
+#        1           2           3           4   
+#   1.756e-03  -5.588e+03   4.328e+02   6.034e+02
+#  -5.588e+03   1.150e+13  -8.905e+11  -1.241e+12
+#   4.328e+02  -8.905e+11   6.897e+10   9.615e+10
+#   6.034e+02  -1.241e+12   9.615e+10   1.340e+11
+#------------------------------------------------
+#
+#========================================================================
+#Model npow<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   npow       PhoIndex            2.44715      +/-  4.19001E-02  
+#   2    1   npow       enorm      keV      100.001      +/-  3.39073E+06  
+#   3    1   npow       norm                3.16520      +/-  2.62629E+05  
+#                           Data group: 2
+#   4    1   npow       PhoIndex            2.44715      = p1
+#   5    1   npow       enorm      keV      100.001      = p2
+#   6    1   npow       norm                4.41247      +/-  3.66119E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    3.37     using 12 bins.
+#                 Chi-Squared                   58.89     using 38 bins.
+#Total fit statistic                            62.26     with 46 d.o.f.
+#
+#Test statistic : Chi-Squared                   62.26     using 50 bins.
+# Null hypothesis probability of 5.52e-02 with 46 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> pl lda delchi
+#
+!XSPEC12> data none
+#
+!XSPEC12> mod none
+#
+!XSPEC12> cd ..
+#
+!XSPEC12> ls
+#
+!XSPEC12> cd timeInterval4
+#
+!XSPEC12> ls
+#
+!XSPEC12> fparkey HED_Bak_1.fits HED_PHA_5.fits BACKFILE
+#
+!XSPEC12> fparkey HED_RMF_1.fits HED_PHA_5.fits RESPFILE
+#
+!XSPEC12> grppha
+#
+!XSPEC12> 
+#
+!XSPEC12> ls
+#
+!XSPEC12> data 1:1 HED_PHA_5.fits 2:2 GRB210619B_b1_gr20.pha 
+#***Warning: Data file HED_PHA_5.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#
+#2 spectra  in use
+# 
+#Spectral Data File: HED_PHA_5.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  5.436e+03 +/- 1.751e+02 (50.1 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.61 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.42 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+#Spectral Data File: GRB210619B_b1_gr20.pha  Spectrum 2
+#Net count rate (cts/s) for Spectrum:2  1.104e+04 +/- 1.510e+02 (82.4 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  1-55
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.5888 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.6273 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign bad
+#
+#ignore:     0 channels ignored from  source number 2
+#ignore: no quality array present: spectrum 1
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign 1: 1-17 32-**
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> fv
+#
+!XSPEC12> ls
+#
+!XSPEC12> ign 2: **-500.
+#    12 channels (1-12) ignored in spectrum #     2
+#
+#
+!XSPEC12> fv
+#
+!XSPEC12> ign 2: 12000.-**
+#     4 channels (52-55) ignored in spectrum #     2
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> mod pegpow
+#
+#***XSPEC Error:  No model component named pegpow
+#pegpow is not a valid model component name.
+# Additive Models: 
+#agauss      cemekl      equil       nlapec      qsosed      vnpshock    
+#agnsed      cevmkl      expdec      npeggrb*    raymond     voigt       
+#agnslim     cflow       ezdiskbb    npegpow*    redge       vpshock     
+#apec        compLS      gadem       nphgrb*     refsch      vraymond    
+#bapec       compPS      gaussian    nphpow*     rnei        vrnei       
+#bbody       compST      gnei        npow*       sbpl*       vsedov      
+#bbodyrad    compTT      grad        npshock     sedov       vtapec      
+#bexrav      compbb      grbcomp     nsa         sirf        vvapec      
+#bexriv      compmag     grbeiso2*   nsagrav     slimbh      vvgnei      
+#bkn2pow     comptb      grbjet      nsatmos     smaug       vvnei       
+#bknpower    compth      grbliso2*   nsmax       snapec      vvnpshock   
+#bmc         cph         grbm        nsmaxg      srcut       vvpshock    
+#bremss      cplflux*    hatm        nsx         sresc       vvrnei      
+#brnei       cplinear    jet         nteea       ssa         vvsedov     
+#btapec      cutoffpl    kerrbb      nthComp     step        vvtapec     
+#bvapec      cutplep*    kerrd       optxagn     tapec       vvwdem      
+#bvrnei      disk        kerrdisk    optxagnf    twosbpl*    vwdem       
+#bvtapec     diskbb      kyrline     pegcut*     vapec       wdem        
+#bvvapec     diskir      laor        pegpwrlw    vbremss     zagauss     
+#bvvrnei     diskline    laor2       pexmon      vcph        zbbody      
+#bvvtapec    diskm       logpar      pexrav      vequil      zbknpower   
+#bwcycl      disko       lorentz     pexriv      vgadem      zbremss     
+#c6mekl      diskpbb     meka        plcabs      vgnei       zcutoffpl   
+#c6pmekl     diskpn      mekal       posm        vmcflow     zgauss      
+#c6pvmkl     eplogpar    mkcflow     powerlaw    vmeka       zkerrbb     
+#c6vmekl     eqpair      nei         pphcut*     vmekal      zlogpar     
+#carbatm     eqtherm     ngrbep*     pshock      vnei        zpowerlw    
+#
+#
+# Multiplicative Models: 
+#SSS_ice     constant    ismdust     polpow      wndabs      zphabs      
+#TBabs       cyclabs     log10con    pwab        xion        zredden     
+#TBfeo       dust        logconst    redden      xscat       zsmdust     
+#TBgas       edge        lyman       smedge      zTBabs      zvarabs     
+#TBgrain     expabs      notch       spexpcut    zbabs       zvfeabs     
+#TBpcf       expfac      olivineabs  spline      zdust       zvphabs     
+#TBrel       gabs        pcfabs      swind1      zedge       zwabs       
+#TBvarabs    heilin      phabs       uvred       zhighect    zwndabs     
+#absori      highecut    plabs       varabs      zigm        zxipab      
+#acisabs     hrefl       polconst    vphabs      zpcfabs     zxipcf      
+#cabs        ismabs      pollin      wabs        
+#
+#
+# Convolution Models: 
+#cflux       ireflect    kyconv      reflect     thcomp      xilconv     
+#clumin      kdblur      lsmooth     rfxconv     vashift     zashift     
+#cpflux      kdblur2     partcov     rgsxsrc     vmshift     zmshift     
+#gsmooth     kerrconv    rdblur      simpl       
+#
+#
+# Mixing Models: 
+#ascac       monomass    polrot      recorn      suzpsf      xmmpsf      
+#clmass      nfwmass     projct      
+#
+#
+# Pile-up Models: 
+#pileup      
+#
+#
+# Table models may be used with the commands atable/mtable/etable
+#	 atable{</path/to/tablemodel.mod>}
+# and are described at:
+#	 heasarc.gsfc.nasa.gov/docs/heasarc/ofwg/docs/general/ogip_92_009/ogip_92_009.html
+#
+# Additional models are available at:
+#	 heasarc.gsfc.nasa.gov/docs/xanadu/xspec/newmodels.html
+#
+#
+!XSPEC12> mod pegpwrlw
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#              2      -0.01(      0.02)       -100       -100      1e+10      1e+10
+#             10      -0.01(       0.1)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#            500      -0.01(         5)       -100       -100      1e+10      1e+10
+#           2000      -0.01(        20)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            1.00000      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.00000      +/-  0.0          
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            1.00000      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                1.00000      = p4
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                  809.31     using 14 bins.
+#                 Chi-Squared                  917.44     using 39 bins.
+#Total fit statistic                          1726.75     with 51 d.o.f.
+#
+#Test statistic : Chi-Squared                 1726.75     using 53 bins.
+# Null hypothesis probability of 0.00e+00 with 51 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> untie 4,8
+#
+#Fit statistic  : Chi-Squared                  809.31     using 14 bins.
+#                 Chi-Squared                  917.44     using 39 bins.
+#Total fit statistic                          1726.75     with 50 d.o.f.
+#
+#Test statistic : Chi-Squared                 1726.75     using 53 bins.
+# Null hypothesis probability of 0.00e+00 with 50 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#277.702      86.1242      -3       3.59889   1.60195e+07   1.54106e+07
+#130.103      27.7414      -1       2.23918   1.78438e+07   2.28325e+07
+#62.8517      72.562       -2       2.55913   1.75014e+07   2.46252e+07
+#61.97        4.53168      -3       2.59713   1.71702e+07   2.43501e+07
+#61.9664      0.375336     -4       2.59354   1.71670e+07   2.43465e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 3.1882E-03|  1.0000  -0.0000   0.0000  
+# 3.6772E+11|  0.0000   1.0000   0.0009  
+# 6.8740E+11| -0.0000  -0.0009   1.0000  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   3.192e-03   7.218e+02  -1.333e+03
+#   7.218e+02   3.677e+11  -3.014e+08
+#  -1.333e+03  -3.014e+08   6.874e+11
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.59354      +/-  5.64997E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.71670E+07  +/-  6.06396E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.59354      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                2.43465E+07  +/-  8.29096E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    7.44     using 14 bins.
+#                 Chi-Squared                   54.52     using 39 bins.
+#Total fit statistic                            61.97     with 50 d.o.f.
+#
+#Test statistic : Chi-Squared                   61.97     using 53 bins.
+# Null hypothesis probability of 1.19e-01 with 50 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> pl lda delchi
+#
+!XSPEC12> save all HED_BGO_fit.xcm
+#
+!XSPEC12> data none
+#
+!XSPEC12> mod none
+#
+!XSPEC12> cpd none
+#
+!XSPEC12> cpd /xw
+#
+!XSPEC12> @HED_BGO_fit.xcm 
+#
+!XSPEC12>statistic chi
+#Default fit statistic is set to: Chi-Squared
+#   This will apply to all current and newly loaded spectra.
+#
+!XSPEC12>data 1:1 HED_PHA_5.fits
+#***Warning: Data file HED_PHA_5.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#
+#1 spectrum  in use
+# 
+#Spectral Data File: HED_PHA_5.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  5.436e+03 +/- 1.751e+02 (50.1 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.61 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.42 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+#
+!XSPEC12>data 2:2 GRB210619B_b1_gr20.pha
+#
+#2 spectra  in use
+# 
+#Spectral Data File: GRB210619B_b1_gr20.pha  Spectrum 2
+#Net count rate (cts/s) for Spectrum:2  1.104e+04 +/- 1.510e+02 (82.4 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  1-55
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.5888 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.6273 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+!XSPEC12>ignore 1:1-17,32-40 2:1-12,52-55
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#    12 channels (1,12) ignored in spectrum #     2
+#     4 channels (52,55) ignored in spectrum #     2
+#
+#
+!XSPEC12>method leven 1000 0.01
+#
+!XSPEC12>abund angr
+# Solar Abundance Vector set to angr:  Anders E. & Grevesse N. Geochimica et Cosmochimica Acta 53, 197 (1989)
+#
+!XSPEC12>xsect vern
+# Cross Section Table set to vern:  Verner, Ferland, Korista, and Yakovlev 1996
+#
+!XSPEC12>cosmo 70 0 0.73
+#
+!XSPEC12>xset delta 0.01
+#Parameter delta values for fits will now be 0.01 * parValue
+#
+!XSPEC12>systematic 0
+# Model systematic error set to 0
+#
+!XSPEC12>model  pegpwrlw  ;          2.59354       0.01         -3         -2          9         10  ;              500      -0.01       -100       -100      1e+10      1e+10  ;             2000      -0.01       -100       -100      1e+10      1e+10  ;       1.7167e+07       0.01          0          0      1e+20      1e+24  ;  = p1  ;              500      -0.01       -100       -100      1e+10      1e+10  ;             2000      -0.01       -100       -100      1e+10      1e+10  ;      2.43465e+07       0.01          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.59354      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.71670E+07  +/-  0.0          
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.59354      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                2.43465E+07  +/-  0.0          
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    7.44     using 14 bins.
+#                 Chi-Squared                   54.52     using 39 bins.
+#Total fit statistic                            61.97     with 50 d.o.f.
+#
+#Test statistic : Chi-Squared                   61.97     using 53 bins.
+# Null hypothesis probability of 1.19e-01 with 50 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12>bayes off
+#
+#Fit statistic  : Chi-Squared                    7.44     using 14 bins.
+#                 Chi-Squared                   54.52     using 39 bins.
+#Total fit statistic                            61.97     with 50 d.o.f.
+#
+#Test statistic : Chi-Squared                   61.97     using 53 bins.
+# Null hypothesis probability of 1.19e-01 with 50 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> pl lda delchi
+#***Warning: Fit is not current.
+#
+!XSPEC12> data none mod none
+#
+#Spectrum #: 1 removed 
+#
+#Spectrum #: 2 removed 
+#
+!XSPEC12> mod none
+#
+!XSPEC12> cd ..
+#
+!XSPEC12> ls
+#
+!XSPEC12> cd timeInterval5
+#
+!XSPEC12> fparkey HED_Bak_1.fits HED_PHA_5.fits BACKFILE
+#
+!XSPEC12> ls
+#
+!XSPEC12> fparkey HED_Bak_1.fits HED_PHA_5.fits BACKFILE
+#
+!XSPEC12> fparkey HED_Bak_1.fits HED_PHA_6.fits BACKFILE
+#
+!XSPEC12> fparkey HED_RMF_1.fits HED_PHA_6.fits RESPFILE
+#
+!XSPEC12> ls
+#
+!XSPEC12> grppha
+#
+!XSPEC12> ls
+#
+!XSPEC12> data 1:1 HED_PHA_6.fits 2:2 GRB210619B_b1_gr20.pha 
+#***Warning: Data file HED_PHA_6.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#
+#2 spectra  in use
+# 
+#Spectral Data File: HED_PHA_6.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  3.814e+03 +/- 1.558e+02 (41.4 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.81 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.42 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+#Spectral Data File: GRB210619B_b1_gr20.pha  Spectrum 2
+#Net count rate (cts/s) for Spectrum:2  7.897e+03 +/- 1.142e+02 (77.0 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  1-61
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.7877 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 0.8755 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign bad
+#
+#ignore:     0 channels ignored from  source number 2
+#ignore: no quality array present: spectrum 1
+#
+!XSPEC12> ignore 1:1-17,32-40 2:1-12,52-55
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#    12 channels (1,12) ignored in spectrum #     2
+#     4 channels (52,55) ignored in spectrum #     2
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> mod pegpwrlw
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#              2      -0.01(      0.02)       -100       -100      1e+10      1e+10
+#             10      -0.01(       0.1)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#              2      -0.01(      0.02)       -100       -100      1e+10      1e+10
+#             10      -0.01(       0.1)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            1.00000      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      2.00000      frozen
+#   3    1   pegpwrlw   eMax       keV      10.0000      frozen
+#   4    1   pegpwrlw   norm                1.00000      +/-  0.0          
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            1.00000      = p1
+#   6    1   pegpwrlw   eMin       keV      2.00000      = p2
+#   7    1   pegpwrlw   eMax       keV      10.0000      = p3
+#   8    1   pegpwrlw   norm                1.00000      = p4
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                  533.71     using 14 bins.
+#                 Chi-Squared                  782.67     using 45 bins.
+#Total fit statistic                          1316.38     with 57 d.o.f.
+#
+#Test statistic : Chi-Squared                 1316.38     using 59 bins.
+# Null hypothesis probability of 8.24e-238 with 57 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> mod pegpwrlw
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#              2      -0.01(      0.02)       -100       -100      1e+10      1e+10
+#             10      -0.01(       0.1)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#            500      -0.01(         5)       -100       -100      1e+10      1e+10
+#           2000      -0.01(        20)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            1.00000      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.00000      +/-  0.0          
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            1.00000      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                1.00000      = p4
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                  533.75     using 14 bins.
+#                 Chi-Squared                  782.70     using 45 bins.
+#Total fit statistic                          1316.45     with 57 d.o.f.
+#
+#Test statistic : Chi-Squared                 1316.45     using 59 bins.
+# Null hypothesis probability of 7.99e-238 with 57 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> untie 4,8
+#
+#Fit statistic  : Chi-Squared                  533.75     using 14 bins.
+#                 Chi-Squared                  782.70     using 45 bins.
+#Total fit statistic                          1316.45     with 56 d.o.f.
+#
+#Test statistic : Chi-Squared                 1316.45     using 59 bins.
+# Null hypothesis probability of 1.64e-238 with 56 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#273.599      74.2209      -3       3.57297   8.32653e+06   9.75004e+06
+#269.695      8.84827      -1       1.90934   1.19338e+07   1.62694e+07
+#76.0456      185.415      -2       2.29948   1.21154e+07   1.79556e+07
+#58.9914      28.2664      -3       2.50428   1.19448e+07   1.75223e+07
+#58.8917      1.25927      -4       2.52068   1.18903e+07   1.74023e+07
+#58.8912      0.118284     -5       2.51911   1.18909e+07   1.74014e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 4.4288E-03|  1.0000  -0.0000   0.0000  
+# 2.7211E+11|  0.0000   1.0000   0.0055  
+# 4.1250E+11| -0.0000  -0.0055   1.0000  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   4.454e-03   1.216e+03  -2.847e+03
+#   1.216e+03   2.721e+11  -7.770e+08
+#  -2.847e+03  -7.770e+08   4.125e+11
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.51911      +/-  6.67368E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.18909E+07  +/-  5.21641E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.51911      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                1.74014E+07  +/-  6.42258E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   13.47     using 14 bins.
+#                 Chi-Squared                   45.42     using 45 bins.
+#Total fit statistic                            58.89     with 56 d.o.f.
+#
+#Test statistic : Chi-Squared                   58.89     using 59 bins.
+# Null hypothesis probability of 3.70e-01 with 56 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> save all HED_BGO_fit.xcm
+#
+!XSPEC12> plot eeufspec delchi
+#
+!XSPEC12> notice all
+#    40 channels (1,40) noticed in spectrum #     1
+#    61 channels (1,61) noticed in spectrum #     2
+#
+#Fit statistic  : Chi-Squared              2.269140e+07     using 40 bins.
+#
+#***Warning: Chi-square may not be valid due to bins with zero variance
+#            in spectrum number: 1
+#                 Chi-Squared                19342.42     using 61 bins.
+#Total fit statistic                       2.271074e+07     with 98 d.o.f.
+#
+#Test statistic : Chi-Squared              2.271074e+07     using 101 bins.
+#
+#***Warning: Chi-square may not be valid due to bins with zero variance
+#            in spectrum number(s): 1 
+#
+# Null hypothesis probability of 0.000000e+00 with 98 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> ign 1: 1-17 32-**
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#
+#Fit statistic  : Chi-Squared                   13.47     using 14 bins.
+#                 Chi-Squared                19342.42     using 61 bins.
+#Total fit statistic                         19355.88     with 72 d.o.f.
+#
+#Test statistic : Chi-Squared                19355.88     using 75 bins.
+# Null hypothesis probability of 0.00e+00 with 72 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> ign 2: **-500. 12000.-**
+#    12 channels (1-12) ignored in spectrum #     2
+#     5 channels (57-61) ignored in spectrum #     2
+#
+#Fit statistic  : Chi-Squared                   13.47     using 14 bins.
+#                 Chi-Squared                   38.05     using 44 bins.
+#Total fit statistic                            51.51     with 55 d.o.f.
+#
+#Test statistic : Chi-Squared                   51.51     using 58 bins.
+# Null hypothesis probability of 6.09e-01 with 55 degrees of freedom
+# Current data and model not fit yet.
+#
+#
+!XSPEC12> pl lda
+#***Warning: Fit is not current.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#51.5022      0.526931     -3       2.51266   1.18890e+07   1.74260e+07
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 4.0353E-03|  1.0000  -0.0000   0.0000  
+# 2.7208E+11| -0.0000  -1.0000  -0.0023  
+# 4.0576E+11| -0.0000  -0.0023   1.0000  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   4.043e-03   1.134e+03  -1.094e+03
+#   1.134e+03   2.721e+11  -3.067e+08
+#  -1.094e+03  -3.067e+08   4.058e+11
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            2.51266      +/-  6.35846E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.18890E+07  +/-  5.21609E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            2.51266      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                1.74260E+07  +/-  6.36989E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   13.52     using 14 bins.
+#                 Chi-Squared                   37.98     using 44 bins.
+#Total fit statistic                            51.50     with 55 d.o.f.
+#
+#Test statistic : Chi-Squared                   51.50     using 58 bins.
+# Null hypothesis probability of 6.09e-01 with 55 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> pl lda delchi
+#
+!XSPEC12> save all HED_BGO_fit.xcm
+#
+!XSPEC12> cd ..
+#
+!XSPEC12> ls
+#
+!XSPEC12> mod none
+#
+!XSPEC12> data none
+#
+!XSPEC12> cd timeInterval1
+#
+!XSPEC12> ls
+#
+!XSPEC12> grppha
+#
+!XSPEC12> fparkey HED_Bak_1.fits HED_PHA_1-2.fits BACKFILE
+#
+!XSPEC12> fparkey HED_RMF_1.fits HED_PHA_1-2.fits RESPFILE
+#
+!XSPEC12> data 1:1 HED_PHA_1-2.fits 2:2 GRB210619B_b1_gr20.pha 
+#***Warning: Data file HED_PHA_1-2.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will assume Poisson errors.
+#Warning: RMF INSTRUMENT keyword (MXGS) is not consistent with spectrum (MXGS: HED)
+#***Warning: Background file HED_Bak_1.fits has both POISSERR key set to 'true' and a STAT_ERR column.
+#   XSPEC will use assume Poisson errors.
+#
+#2 spectra  in use
+# 
+#Spectral Data File: HED_PHA_1-2.fits  Spectrum 1
+#Net count rate (cts/s) for Spectrum:1  1.963e+03 +/- 1.423e+02 (26.6 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-40
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 1 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.42 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+#Spectral Data File: GRB210619B_b1_gr20.pha  Spectrum 2
+#Net count rate (cts/s) for Spectrum:2  2.214e+03 +/- 6.819e+01 (48.4 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  1-69
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.9868 sec
+# Using fit statistic: chi
+# Using Background File                GRB210619B_b1.bak
+#  Background Exposure Time: 1.035 sec
+# Using Response (RMF) File            GRB210619B_b1.rsp for Source 1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign bad
+#
+#ignore:     0 channels ignored from  source number 2
+#ignore: no quality array present: spectrum 1
+#
+!XSPEC12> ign 1: 1-17 32-**
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> ign 2: 
+#    38 channels (32,69) ignored in spectrum #     2
+#
+#
+!XSPEC12> notice 2: all
+#***Xspec Error: Invalid ignore/notice string: 2:all
+#
+#
+!XSPEC12> notice all
+#    40 channels (1,40) noticed in spectrum #     1
+#    69 channels (1,69) noticed in spectrum #     2
+#
+#All channels noticed
+#
+!XSPEC12> ign 1: 1-17 32-**
+#    17 channels (1,17) ignored in spectrum #     1
+#     9 channels (32,40) ignored in spectrum #     1
+#
+#
+!XSPEC12> ign 2: **-500. 12000.-**
+#    12 channels (1-12) ignored in spectrum #     2
+#     7 channels (63-69) ignored in spectrum #     2
+#
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> mod pegpwrlw
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#              2      -0.01(      0.02)       -100       -100      1e+10      1e+10
+#             10      -0.01(       0.1)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#Input parameter value, delta, min, bot, top, and max values for ...
+#              1       0.01(      0.01)         -3         -2          9         10
+#            500      -0.01(         5)       -100       -100      1e+10      1e+10
+#           2000      -0.01(        20)       -100       -100      1e+10      1e+10
+#              1       0.01(      0.01)          0          0      1e+20      1e+24
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            1.00000      +/-  0.0          
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                1.00000      +/-  0.0          
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            1.00000      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                1.00000      = p4
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                  229.82     using 14 bins.
+#                 Chi-Squared                  398.35     using 50 bins.
+#Total fit statistic                           628.17     with 62 d.o.f.
+#
+#Test statistic : Chi-Squared                  628.17     using 64 bins.
+# Null hypothesis probability of 1.34e-94 with 62 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> untie 4,8
+#
+#Fit statistic  : Chi-Squared                  229.82     using 14 bins.
+#                 Chi-Squared                  398.35     using 50 bins.
+#Total fit statistic                           628.17     with 61 d.o.f.
+#
+#Test statistic : Chi-Squared                  628.17     using 64 bins.
+# Null hypothesis probability of 4.14e-95 with 61 degrees of freedom
+# Current data and model not fit yet.
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex        4:norm        8:norm
+#126.354      44.7874      -3       2.45713   6.88034e+06   7.37344e+06
+#119.993      22.2873      -4       1.65165   6.57527e+06   7.90184e+06
+#72.0524      76.0772      -5       1.84743   6.05649e+06   7.93408e+06
+#70.9246      6.79876      -6       1.88188   5.97014e+06   7.73901e+06
+#70.9206      0.000831343  -7       1.88164   5.98310e+06   7.71586e+06
+#========================================
+# Variances and Principal Axes
+#                 1        4        8  
+# 2.6596E-03|  1.0000  -0.0000  -0.0000  
+# 1.7074E+11| -0.0000  -0.6872   0.7265  
+# 2.2052E+11| -0.0000  -0.7265  -0.6872  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   3.455e-03   1.024e+04   8.385e+03
+#   1.024e+04   1.970e+11   2.485e+10
+#   8.385e+03   2.485e+10   1.942e+11
+#------------------------------------
+#
+#========================================================================
+#Model pegpwrlw<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   pegpwrlw   PhoIndex            1.88164      +/-  5.87815E-02  
+#   2    1   pegpwrlw   eMin       keV      500.000      frozen
+#   3    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   4    1   pegpwrlw   norm                5.98310E+06  +/-  4.43864E+05  
+#                           Data group: 2
+#   5    1   pegpwrlw   PhoIndex            1.88164      = p1
+#   6    1   pegpwrlw   eMin       keV      500.000      frozen
+#   7    1   pegpwrlw   eMax       keV      2000.00      frozen
+#   8    1   pegpwrlw   norm                7.71586E+06  +/-  4.40736E+05  
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   14.99     using 14 bins.
+#                 Chi-Squared                   55.93     using 50 bins.
+#Total fit statistic                            70.92     with 61 d.o.f.
+#
+#Test statistic : Chi-Squared                   70.92     using 64 bins.
+# Null hypothesis probability of 1.81e-01 with 61 degrees of freedom
+#
+!XSPEC12> pl lda
+#
+!XSPEC12> save all HED_BGO_fit.xcm
+#
+!XSPEC12> exit
+# XSPEC: quit
+#
