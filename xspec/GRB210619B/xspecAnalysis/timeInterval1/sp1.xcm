@@ -1,0 +1,46 @@
+cpd /xw
+setplot energy
+setplot xlog on
+setplot ylog on
+
+log sp1.log
+
+data HED_PHA_1.fits
+backgrnd HED_Bak_1.fits
+response HED_RMF_1.fits
+plot data
+
+ignore 1-17 34-**
+#setplot rebin 1 10 1 
+#setplot rebin 1 10 2 
+#plot data
+
+mdef cplgrb E**alpha * exp(-E*(alpha+2)/Ep)
+
+mo 1:led_mo cplgrb
+-1,,-10.,-10.,10.,10.
+1000,,10,10,10000,10000
+1
+renorm
+
+mo 2:hed_mo cplgrb
+-1,,-10.,-10.,10.,10.
+1000,,10,10,10000,10000
+1
+renorm
+
+newpar led_mo:1 = hed_mo:1
+newpar led_mo:2 = hed_mo:2
+newpar led_mo:3 = hed_mo:3
+renorm
+fit 1000
+fit 1000
+plot data delchi
+#plot eeufspec delchi
+
+#error 2.706 hed_mo:1 hed_mo:2
+
+error 1. hed_mo:1 hed_mo:2
+
+#flux 200 10000 error 100
+
