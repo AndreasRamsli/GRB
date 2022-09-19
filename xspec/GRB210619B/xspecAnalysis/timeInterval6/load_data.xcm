@@ -1,0 +1,6 @@
+data 1:1 HED_PHA_7.fits 2:2 GRB210619B_b1_interval6_gr20.pha 3:3 GRB210619B_n4_interval6_gr20.pha 3:4 GRB210619B_n8_interval6_gr20.pha 4:5 t_BAT_6.pha 
+ign 1: 1-17 34-**
+ign 2: **-250. 10000.-**
+ign 3: **-8. 900.-**
+ign 4: **-8. 900.-**
+ign 5: **-15. 150.-**
