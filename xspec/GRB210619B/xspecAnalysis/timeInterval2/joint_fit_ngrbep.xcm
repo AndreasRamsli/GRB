@@ -1,0 +1,40 @@
+statistic chi
+data 1:1 HED_PHA_3.fits
+
+data 2:2 GRB210619B_b1_interval2_gr20.pha
+
+data 3:3 GRB210619B_n4_interval2_gr20.pha
+
+data 3:4 GRB210619B_n8_interval2_gr20.pha
+
+data 4:5 t_BAT_2.pha
+ignore 1:1-17,32-40 2:1-5,64-69 3:1-3,114-116 4:1-3,114-116 5:1-4,62-80
+
+method leven 1000 0.01
+abund angr
+xsect vern
+cosmo 70 0 0.73
+xset delta 0.01
+systematic 0
+model  ngrbep
+      -0.386192       0.01        -10         -3          2          5
+       -2.14461       0.01        -10         -5          2         10
+        444.514         10        0.1        0.1       1000      10000
+            100      -0.01          0          0       1000       1000
+        0.83777       0.01          0          0      1e+20      1e+24
+= p1
+= p2
+= p3
+= p4
+       0.997521       0.01          0          0      1e+20      1e+24
+= p1
+= p2
+= p3
+= p4
+       0.928093       0.01          0          0      1e+20      1e+24
+= p1
+= p2
+= p3
+= p4
+       0.598901       0.01          0          0      1e+20      1e+24
+bayes off
