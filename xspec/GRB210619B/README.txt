@@ -20,7 +20,7 @@ ToF_Fermi_ASIM = 0.0227
 ToF_KW_ASIM = -2.6183 
 
 
->>calculated tlagg from Cross Correlation: ~ 0.544 s
+>>calculated tlagg from Cross Correlation: ~ 0.646 s
 See attached plots
 
 
@@ -44,13 +44,19 @@ n1      144.321
 n2      155.105
 
 
->> Energy range
+>> Energy range for data extraction
 NaI: 8-1000 keV
 BGO: 150 keV - 40MeV
 
->>Background estimated from T0-130 to T0-5 s 
+>>Background estimated from T0-130 to T0-5 s for all detectors
 
->>Spectra retrived from 6 different time intervals for each detector
+>>Spectra retrived from 6 different time intervals (seconds):
+Interval1 = (0, 1)
+Interval2 = (1, 1.7)
+Interval3 = (1.7, 2.18)
+Interval4 = (2.18, 2.79)
+Interval5 = (2.79, 3.6)
+Interval6 = (3.6, 4.5)
 
 >>Grouping in xspec
 used grppha to group the channels by grou min 20
