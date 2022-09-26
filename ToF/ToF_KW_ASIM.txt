@@ -1,3 +1,4 @@
+#If value is positive, the radiation first reaches ISS
        Name        RA      Dec  LocInstr  ToF_KW_ASIM  
  GRB180720B     0.528   -2.917       XRT   -4.2377      
  GRB181222B   312.572    24.24   IPN_cat    2.8716       
