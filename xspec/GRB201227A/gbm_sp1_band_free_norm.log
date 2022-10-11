@@ -1,0 +1,192 @@
+#XSPEC version: 12.12.1
+#Build Date/Time: Tue Aug  9 11:26:32 2022
+#
+!XSPEC12>show all 
+#
+#XSPEC version: 12.12.1
+#
+#Tue Oct 11 13:15:28 2022
+# Auto-saving is done after every command.
+# Fit statistic in use: Chi-Squared
+# Minimization technique: Levenberg-Marquardt
+#    Convergence criterion = 0.01
+#    Parameter fit deltas: 0.01 * parValue
+#Using chain rule to calculate statistic derivatives (faster method).
+# Querying enabled.
+# Prefit-renorming enabled.
+# Solar abundance table: angr
+# Photoionization Cross-Section Table:
+#    vern:  Verner, Ferland, Korista, and Yakovlev 1996
+# Cosmology in use: H0 = 70 q0 = 0 Lambda0 = 0.73
+# Model data directory: /Home/siv30/wad005/master/heasoft-6.30.1/x86_64-pc-linux-gnu-libc2.31/../spectral/manager/../modelData/
+# Plot settings:
+#   Showing of individual additive components is OFF.
+#   Showing of background spectra is OFF.
+#   Effective area normalization is OFF.
+#   Current unit settings:
+#      Energy     = keV
+#      Wavelength = angstrom, with Y-Axis displayed per Hz
+#   X-Axis data display mode: Energy
+#   Spectra plots will be shifted to source frame by redshift value z: 0
+#   Device: /xw
+#   Plotting of line IDs is OFF.
+#   Splashpage is ON.
+#   xlog for data plots is ON.
+#   ylog for data plots is OFF.
+#
+#   Default plot rebin settings for all plot groups:
+#   Min. Signif.   Max. # Bins   Error Type
+#        0.00000             1         quad
+#
+# Responses read: 
+#   GRB201227A_b0.rsp associated with spectrum 3 source 1 data group 3
+#      energies: 140 channels: 95
+#   GRB201227A_n4.rsp associated with spectrum 1 source 1
+#      energies: 140 channels: 36
+#   GRB201227A_n8.rsp associated with spectrum 2 source 1 data group 2
+#      energies: 140 channels: 18
+# Distinct RMF files: 
+#     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_b0.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_n4.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_n8.rsp
+#
+#3 files 3 spectra 
+#Spectrum 1  Spectral Data File: GRB201227A_n4_gr20.pha
+#Net count rate (cts/s) for Spectrum:1  8.191e+03 +/- 3.888e+02 (87.9 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  2-26
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06163 sec
+# Using fit statistic: chi
+# Using Background File                GRB201227A_n4.bak
+#  Background Exposure Time: 0.06435 sec
+# Using Response (RMF) File            GRB201227A_n4.rsp for Source 1
+#
+# Spectral data counts: 574
+# Model predicted rate: 7812.44
+#
+#Spectrum 2  Spectral Data File: GRB201227A_n8_gr20.pha
+#Net count rate (cts/s) for Spectrum:2  4.671e+03 +/- 2.960e+02 (85.5 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  2-17
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.0624 sec
+# Using fit statistic: chi
+# Using Background File                GRB201227A_n8.bak
+#  Background Exposure Time: 0.06495 sec
+# Using Response (RMF) File            GRB201227A_n8.rsp for Source 1
+#
+# Spectral data counts: 341
+# Model predicted rate: 4439.77
+#
+#Spectrum 3  Spectral Data File: GRB201227A_b0_gr20.pha
+#Net count rate (cts/s) for Spectrum:3  1.173e+04 +/- 4.653e+02 (88.9 % total)
+# Assigned to Data Group 3 and Plot Group 3
+#  Noticed Channels:  2-25
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06099 sec
+# Using fit statistic: chi
+# Using Background File                GRB201227A_b0.bak
+#  Background Exposure Time: 0.0633 sec
+# Using Response (RMF) File            GRB201227A_b0.rsp for Source 1
+#
+# Spectral data counts: 805
+# Model predicted rate: 1.13280E+04
+#
+#
+#Current model list:
+#
+#========================================================================
+#Model constant<1>*cflux<2>*ngrbep<3> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   cflux      Emin       keV      10.0000      frozen
+#   3    2   cflux      Emax       keV      1.00000E+04  frozen
+#   4    2   cflux      lg10Flux   cgs      -4.01321     +/-  4.61538E-02  
+#   5    3   ngrbep     alpha               -0.197597    +/-  9.17248E-02  
+#   6    3   ngrbep     beta                -3.01079     +/-  0.535202     
+#   7    3   ngrbep     epeak      keV      971.484      +/-  87.1625      
+#   8    3   ngrbep     enorm      keV      100.000      frozen
+#   9    3   ngrbep     norm                1.00000      frozen
+#                           Data group: 2
+#  10    1   constant   factor              0.981560     +/-  7.99757E-02  
+#  11    2   cflux      Emin       keV      10.0000      = p2
+#  12    2   cflux      Emax       keV      1.00000E+04  = p3
+#  13    2   cflux      lg10Flux   cgs      -4.01321     = p4
+#  14    3   ngrbep     alpha               -0.197597    = p5
+#  15    3   ngrbep     beta                -3.01079     = p6
+#  16    3   ngrbep     epeak      keV      971.484      = p7
+#  17    3   ngrbep     enorm      keV      100.000      = p8
+#  18    3   ngrbep     norm                1.00000      = p9
+#                           Data group: 3
+#  19    1   constant   factor              1.02348      +/-  8.08005E-02  
+#  20    2   cflux      Emin       keV      10.0000      = p2
+#  21    2   cflux      Emax       keV      1.00000E+04  = p3
+#  22    2   cflux      lg10Flux   cgs      -4.01321     = p4
+#  23    3   ngrbep     alpha               -0.197597    = p5
+#  24    3   ngrbep     beta                -3.01079     = p6
+#  25    3   ngrbep     epeak      keV      971.484      = p7
+#  26    3   ngrbep     enorm      keV      100.000      = p8
+#  27    3   ngrbep     norm                1.00000      = p9
+#________________________________________________________________________
+#
+#   Using energies from responses.
+#
+#Fit statistic  : Chi-Squared                   26.54     using 25 bins.
+#                 Chi-Squared                   16.34     using 16 bins.
+#                 Chi-Squared                   24.04     using 24 bins.
+#Total fit statistic                            66.92     with 59 d.o.f.
+#
+#Test statistic : Chi-Squared                   66.92     using 65 bins.
+# Null hypothesis probability of 2.24e-01 with 59 degrees of freedom
+#
+#Bayes is off
+#
+#
+!XSPEC12>error 1. 10, 19, 4-7
+# Parameter   Confidence Range (1)
+#    10     0.904394       1.0634    (-0.0771672,0.0818352)
+#    19     0.946541        1.107    (-0.0769421,0.0835144)
+#     4     -4.06128     -3.96761    (-0.0480734,0.0455972)
+#     5    -0.274907    -0.104019    (-0.0773057,0.0935815)
+#     6     -3.80951     -2.59884    (-0.798715,0.411953)
+#***Warning: Zero alpha-matrix diagonal element for parameter 5
+# Parameter 5 is pegged at -9.14841 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 5
+# Parameter 5 is pegged at -9.14841 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#Apparent non-monotonicity in statistic space detected.
+#Current bracket values 981.729, 1019.46
+#and delta stat 0.00605146, 243.102
+#but latest trial 1000.6 gives 291.896
+#Suggest that you check this result using the steppar command.
+#     7      881.984       4083.6    (-89.4979,3112.12)
+#
+!XSPEC12>error 2.706 10, 19, 4-7
+# Parameter   Confidence Range (2.706)
+#    10     0.856619      1.11914    (-0.124943,0.137575)
+#    19     0.901785      1.16541    (-0.121698,0.141928)
+#Apparent non-monotonicity in statistic space detected.
+#Current bracket values -4.0954, -4.16505
+#and delta stat 2.66202, 10.9138
+#but latest trial -4.09601 gives 2.65232
+#Suggest that you check this result using the steppar command.
+#     4     -4.13023     -3.93824    (-0.117019,0.074965)
+#     5    -0.311058   -0.0367186    (-0.113457,0.160882)
+#     6     -4.34982       -2.409    (-1.33903,0.601794)
+#***Warning: Zero alpha-matrix diagonal element for parameter 5
+# Parameter 5 is pegged at -9.24011 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 5
+# Parameter 5 is pegged at -9.24011 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#Apparent non-monotonicity in statistic space detected.
+#Current bracket values 994.943, 1114.86
+#and delta stat 0.0486964, 247.131
+#but latest trial 1054.9 gives 630.666
+#Suggest that you check this result using the steppar command.
+#     7      822.375      9895.65    (-149.107,8924.17)
+#
+!XSPEC12>log none
+#

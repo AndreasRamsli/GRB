@@ -1,0 +1,248 @@
+#XSPEC version: 12.12.1
+#Build Date/Time: Tue Aug  9 11:26:32 2022
+#
+!XSPEC12>show all 
+#
+#XSPEC version: 12.12.1
+#
+#Tue Oct 11 13:14:56 2022
+# Auto-saving is done after every command.
+# Fit statistic in use: Chi-Squared
+# Minimization technique: Levenberg-Marquardt
+#    Convergence criterion = 0.01
+#    Parameter fit deltas: 0.01 * parValue
+#Using chain rule to calculate statistic derivatives (faster method).
+# Querying enabled.
+# Prefit-renorming enabled.
+# Solar abundance table: angr
+# Photoionization Cross-Section Table:
+#    vern:  Verner, Ferland, Korista, and Yakovlev 1996
+# Cosmology in use: H0 = 70 q0 = 0 Lambda0 = 0.73
+# Model data directory: /Home/siv30/wad005/master/heasoft-6.30.1/x86_64-pc-linux-gnu-libc2.31/../spectral/manager/../modelData/
+# Plot settings:
+#   Showing of individual additive components is OFF.
+#   Showing of background spectra is OFF.
+#   Effective area normalization is OFF.
+#   Current unit settings:
+#      Energy     = keV
+#      Wavelength = angstrom, with Y-Axis displayed per Hz
+#   X-Axis data display mode: Energy
+#   Spectra plots will be shifted to source frame by redshift value z: 0
+#   Device: /xw
+#   Plotting of line IDs is OFF.
+#   Splashpage is ON.
+#   xlog for data plots is ON.
+#   ylog for data plots is OFF.
+#
+#   Default plot rebin settings for all plot groups:
+#   Min. Signif.   Max. # Bins   Error Type
+#        0.00000             1         quad
+#
+# Responses read: 
+#   GRB201227A_b0.rsp associated with spectrum 6 source 1 data group 4
+#      energies: 140 channels: 95
+#   GRB201227A_n4.rsp associated with spectrum 4 source 1 data group 3
+#      energies: 140 channels: 36
+#   GRB201227A_n8.rsp associated with spectrum 5 source 1 data group 3
+#      energies: 140 channels: 18
+#   HED_RMF_1.fits associated with spectrum 1 source 1
+#      energies: 40 channels: 18
+#   KW20201227_T54846_1.rmf associated with spectrum 2 source 1 data group 2
+#      energies: 263 channels: 20
+#   KW20201227_T54846_2.rmf associated with spectrum 3 source 1 data group 2
+#      energies: 263 channels: 37
+# Distinct RMF files: 
+#     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_b0.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_n4.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_n8.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/HED_RMF_1.fits     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/KW20201227_T54846_1.rmf     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/KW20201227_T54846_2.rmf
+#
+#6 files 6 spectra 
+#Spectrum 1  Spectral Data File: HED_PHA_1.fits
+#Net count rate (cts/s) for Spectrum:1  4.180e+03 +/- 3.044e+02 (71.9 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  5-12
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.064 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.9 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+# Spectral data counts: 372
+# Model predicted rate: 4190.27
+#
+#Spectrum 2  Spectral Data File: KW201227_1_gr20.pha
+#Net count rate (cts/s) for Spectrum:2  9.018e+03 +/- 4.909e+02 (88.6 % total)
+# Assigned to Data Group 2 and Plot Group 2
+#  Noticed Channels:  1-16
+#  Telescope: WIND Instrument: KONUS  Channel Type: PHA
+#  Exposure Time: 0.04224 sec
+# Using fit statistic: chi
+# Using Background File                KW20201227_T54846_1_bg.pha
+#  Background Exposure Time: 162.9 sec
+# Using Response (RMF) File            KW20201227_T54846_1.rmf for Source 1
+# Using Auxiliary Response (ARF) File  KW20201227_T54846.arf
+#
+# Spectral data counts: 430
+# Model predicted rate: 8520.59
+#
+#Spectrum 3  Spectral Data File: KW201227_2_gr20.pha
+#Net count rate (cts/s) for Spectrum:3  1.956e+03 +/- 1.972e+02 (89.1 % total)
+# Assigned to Data Group 2 and Plot Group 3
+#  Noticed Channels:  1-5
+#  Telescope: WIND Instrument: KONUS  Channel Type: PHA
+#  Exposure Time: 0.05648 sec
+# Using fit statistic: chi
+# Using Background File                KW20201227_T54846_2_bg.pha
+#  Background Exposure Time: 168.8 sec
+# Using Response (RMF) File            KW20201227_T54846_2.rmf for Source 1
+# Using Auxiliary Response (ARF) File  KW20201227_T54846.arf
+#
+# Spectral data counts: 124
+# Model predicted rate: 2060.61
+#
+#Spectrum 4  Spectral Data File: GRB201227A_n4_gr20.pha
+#Net count rate (cts/s) for Spectrum:4  8.191e+03 +/- 3.888e+02 (87.9 % total)
+# Assigned to Data Group 3 and Plot Group 4
+#  Noticed Channels:  2-26
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06163 sec
+# Using fit statistic: chi
+# Using Background File                GRB201227A_n4.bak
+#  Background Exposure Time: 0.06435 sec
+# Using Response (RMF) File            GRB201227A_n4.rsp for Source 1
+#
+# Spectral data counts: 574
+# Model predicted rate: 7780.18
+#
+#Spectrum 5  Spectral Data File: GRB201227A_n8_gr20.pha
+#Net count rate (cts/s) for Spectrum:5  4.671e+03 +/- 2.960e+02 (85.5 % total)
+# Assigned to Data Group 3 and Plot Group 5
+#  Noticed Channels:  2-17
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.0624 sec
+# Using fit statistic: chi
+# Using Background File                GRB201227A_n8.bak
+#  Background Exposure Time: 0.06495 sec
+# Using Response (RMF) File            GRB201227A_n8.rsp for Source 1
+#
+# Spectral data counts: 341
+# Model predicted rate: 4472.99
+#
+#Spectrum 6  Spectral Data File: GRB201227A_b0_gr20.pha
+#Net count rate (cts/s) for Spectrum:6  1.173e+04 +/- 4.653e+02 (88.9 % total)
+# Assigned to Data Group 4 and Plot Group 6
+#  Noticed Channels:  2-25
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06099 sec
+# Using fit statistic: chi
+# Using Background File                GRB201227A_b0.bak
+#  Background Exposure Time: 0.0633 sec
+# Using Response (RMF) File            GRB201227A_b0.rsp for Source 1
+#
+# Spectral data counts: 805
+# Model predicted rate: 1.12448E+04
+#
+#
+#Current model list:
+#
+#========================================================================
+#Model constant<1>*cflux<2>*ngrbep<3> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.27737      +/-  0.127300     
+#   2    2   cflux      Emin       keV      10.0000      frozen
+#   3    2   cflux      Emax       keV      1.00000E+04  frozen
+#   4    2   cflux      lg10Flux   cgs      -4.18518     +/-  3.00161E-02  
+#   5    3   ngrbep     alpha               -0.185890    +/-  7.28931E-02  
+#   6    3   ngrbep     beta                -3.44617     +/-  0.512888     
+#   7    3   ngrbep     epeak      keV      922.399      +/-  58.2440      
+#   8    3   ngrbep     enorm      keV      100.000      frozen
+#   9    3   ngrbep     norm                1.00000      frozen
+#                           Data group: 2
+#  10    1   constant   factor              1.00000      frozen
+#  11    2   cflux      Emin       keV      10.0000      = p2
+#  12    2   cflux      Emax       keV      1.00000E+04  = p3
+#  13    2   cflux      lg10Flux   cgs      -4.18518     = p4
+#  14    3   ngrbep     alpha               -0.185890    = p5
+#  15    3   ngrbep     beta                -3.44617     = p6
+#  16    3   ngrbep     epeak      keV      922.399      = p7
+#  17    3   ngrbep     enorm      keV      100.000      = p8
+#  18    3   ngrbep     norm                1.00000      = p9
+#                           Data group: 3
+#  19    1   constant   factor              1.31508      +/-  8.29398E-02  
+#  20    2   cflux      Emin       keV      10.0000      = p2
+#  21    2   cflux      Emax       keV      1.00000E+04  = p3
+#  22    2   cflux      lg10Flux   cgs      -4.18518     = p4
+#  23    3   ngrbep     alpha               -0.185890    = p5
+#  24    3   ngrbep     beta                -3.44617     = p6
+#  25    3   ngrbep     epeak      keV      922.399      = p7
+#  26    3   ngrbep     enorm      keV      100.000      = p8
+#  27    3   ngrbep     norm                1.00000      = p9
+#                           Data group: 4
+#  28    1   constant   factor              1.39527      +/-  9.27995E-02  
+#  29    2   cflux      Emin       keV      10.0000      = p2
+#  30    2   cflux      Emax       keV      1.00000E+04  = p3
+#  31    2   cflux      lg10Flux   cgs      -4.18518     = p4
+#  32    3   ngrbep     alpha               -0.185890    = p5
+#  33    3   ngrbep     beta                -3.44617     = p6
+#  34    3   ngrbep     epeak      keV      922.399      = p7
+#  35    3   ngrbep     enorm      keV      100.000      = p8
+#  36    3   ngrbep     norm                1.00000      = p9
+#________________________________________________________________________
+#
+#   Using energies from responses.
+#
+#Fit statistic  : Chi-Squared                    1.95     using 8 bins.
+#                 Chi-Squared                   13.79     using 16 bins.
+#                 Chi-Squared                    4.11     using 5 bins.
+#                 Chi-Squared                   26.29     using 25 bins.
+#                 Chi-Squared                   16.84     using 16 bins.
+#                 Chi-Squared                   25.56     using 24 bins.
+#Total fit statistic                            88.54     with 87 d.o.f.
+#
+#Test statistic : Chi-Squared                   88.54     using 94 bins.
+# Null hypothesis probability of 4.34e-01 with 87 degrees of freedom
+#
+#Bayes is off
+#
+#
+!XSPEC12>error 1. 1, 19, 28, 4-7
+# Parameter   Confidence Range (1)
+#     1      1.15486      1.41086    (-0.122507,0.133494)
+#    19      1.23494      1.40194    (-0.0801467,0.0868618)
+#    28      1.30668      1.49112    (-0.0885832,0.0958577)
+#     4     -4.21571      -4.1526    (-0.0305203,0.0325901)
+#     5    -0.255639    -0.106621    (-0.0697578,0.07926)
+#     6     -4.22559     -3.03039    (-0.779171,0.416028)
+#     7      860.555      984.489    (-61.8521,62.0822)
+#
+!XSPEC12>error 2.706 1, 19, 28, 4-7
+# Parameter   Confidence Range (2.706)
+#     1      1.08093      1.50359    (-0.196433,0.226221)
+#    19      1.18599      1.46183    (-0.129095,0.146752)
+#    28      1.25263       1.5575    (-0.142635,0.162233)
+#     4     -4.23552      -4.1351    (-0.0503282,0.0500879)
+#     5    -0.296555    -0.058995    (-0.110671,0.126889)
+#
+#***Warning: Number of trials exceeded before bracketing of delta fit-stat.
+#Last attempt: -9.99999, with delta statistic: 2.07827
+#
+#
+!XSPEC12>tclreadline::readline eofchar ""
+#
+!XSPEC12>tclreadline::readline read {Continue error search in this direction? }
+#
+!XSPEC12>tclreadline::readline eofchar "puts {}; exit"
+#
+#*** Parameter lower bound is INVALID.
+#
+#     6            0     -2.87354    (3.44645,0.572907)
+#Apparent non-monotonicity in statistic space detected.
+#Current bracket values 932.701, 1018.22
+#and delta stat 0.0219267, 593.477
+#but latest trial 1013.01 gives 637.223
+#Suggest that you check this result using the steppar command.
+#     7      826.474      975.461    (-95.9362,53.0509)
+#
+!XSPEC12>log none
+#

@@ -1,0 +1,196 @@
+log none
+model none
+data none
+
+data 1:1 HED_PHA_1.fits 2:2 KW201227_1_gr20.pha 2:3 KW201227_2_gr20.pha 3:4 GRB201227A_n4_gr20.pha 3:5 GRB201227A_n8_gr20.pha 4:6 GRB201227A_b0_gr20.pha
+
+ignore bad
+ignore 1:**-400. 2:500.-** 4:**-8. 128 5:**-8. 128 6:1 128
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & 
+untie 10, 19, 28
+freeze 9, 10
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd hed_kw_gbm_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log hed_kw_gbm_sp1_band.log
+show all 
+error 1. 1, 19, 28, 4-7
+error 2.706 1, 19, 28, 4-7
+log none
+model none
+data none
+
+data 1:1 KW201227_1_gr20.pha 1:2 KW201227_2_gr20.pha 2:3 GRB201227A_n4_gr20.pha 2:4 GRB201227A_n8_gr20.pha 3:5 GRB201227A_b0_gr20.pha
+
+ignore bad
+ignore 1:500.-** 3:**-8. 128 4:**-8. 128 5:1 128
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & & & & & & & & & & & & & 
+untie 10, 19
+freeze 1, 9, 
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd kw_gbm_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log kw_gbm_sp1_band.log
+show all 
+error 1. 10, 19, 4-7
+error 2.706 10, 19, 4-7
+log none
+model none
+data none
+
+data KW201227_1_gr20.pha KW201227_2_gr20.pha 
+ignore bad
+ignore 1:500.-** 
+
+model cflux*ngrbep & & & & & & & & 
+freeze 8
+newpar 1 10
+newpar 2 1e4
+newpar 3 -6
+
+fit 1000
+newpar 4 -1
+fit 1000
+
+cpd kw_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log kw_sp1_band.log
+show all 
+error 1. 3-6
+error 2.706 3-6
+log none
+model none
+data none
+
+data HED_PHA_1.fits
+ignore bad
+ignore 1:**-400. 
+model cflux*ngrbep & & & & & & & &  
+freeze 8
+newpar 1 10
+newpar 2 1e4
+newpar 3 -6
+
+fit 1000
+newpar 4 -1
+newpar 6 1000
+fit 1000
+cpd hed_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log hed_sp1_band.log
+show all 
+error 1. 3-6
+error 2.706 3-6
+log none
+model none
+data none
+
+data 1:1 GRB201227A_n4_gr20.pha 1:2 GRB201227A_n8_gr20.pha 2:3 GRB201227A_b0_gr20.pha
+
+ignore bad
+ignore 1:**-8. 128 2:**-8. 128 3:1 128
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & 
+untie 10
+freeze 9, 1
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd gbm_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log gbm_sp1_band.log
+show all 
+error 1. 10, 4-7
+error 2.706 10, 4-7
+log none
+model none
+data none
+
+data 1:1 GRB201227A_n4_gr20.pha 2:2 GRB201227A_n8_gr20.pha 3:3 GRB201227A_b0_gr20.pha
+
+ignore bad
+ignore 1:**-8. 128 2:**-8. 128 3:1 128
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & 
+untie 10, 19
+freeze 9, 1
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd gbm_sp1_band_free_norm.ps/cps
+plot ldata delchi
+cpd /xw
+log gbm_sp1_band_free_norm.log
+show all 
+error 1. 10, 19, 4-7
+error 2.706 10, 19, 4-7
+log none
+model none
+data none
+
+data 1:1 HED_PHA_1.fits 2:2 KW201227_1_gr20.pha 2:3 KW201227_2_gr20.pha 
+
+ignore bad
+ignore 1:**-400. 2:500.-**
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & 
+untie 10,
+freeze 9, 10
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd hed_kw_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log hed_kw_sp1_band.log
+show all 
+error 1. 1, 4-7
+error 2.706 1, 4-7
+log none
+model none
+data none
+
+data 1:1 HED_PHA_1.fits 2:2 GRB201227A_n4_gr20.pha 3:3 GRB201227A_n8_gr20.pha 3:4 GRB201227A_b0_gr20.pha
+
+ignore bad
+ignore 1:**-400. 2:**-8. 128 3:**-8. 128 4:1 128
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & 
+untie 10, 19
+freeze 9, 10
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd hed_gbm_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log hed_gbm_sp1_band.log
+show all 
+error 1. 1, 19, 4-7
+error 2.706 1, 19, 4-7
+log none
+model none
+data none

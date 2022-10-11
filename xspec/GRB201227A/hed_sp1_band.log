@@ -1,0 +1,319 @@
+#XSPEC version: 12.12.1
+#Build Date/Time: Tue Aug  9 11:26:32 2022
+#
+!XSPEC12>show all 
+#
+#XSPEC version: 12.12.1
+#
+#Tue Oct 11 13:15:23 2022
+# Auto-saving is done after every command.
+# Fit statistic in use: Chi-Squared
+# Minimization technique: Levenberg-Marquardt
+#    Convergence criterion = 0.01
+#    Parameter fit deltas: 0.01 * parValue
+#Using chain rule to calculate statistic derivatives (faster method).
+# Querying enabled.
+# Prefit-renorming enabled.
+# Solar abundance table: angr
+# Photoionization Cross-Section Table:
+#    vern:  Verner, Ferland, Korista, and Yakovlev 1996
+# Cosmology in use: H0 = 70 q0 = 0 Lambda0 = 0.73
+# Model data directory: /Home/siv30/wad005/master/heasoft-6.30.1/x86_64-pc-linux-gnu-libc2.31/../spectral/manager/../modelData/
+# Plot settings:
+#   Showing of individual additive components is OFF.
+#   Showing of background spectra is OFF.
+#   Effective area normalization is OFF.
+#   Current unit settings:
+#      Energy     = keV
+#      Wavelength = angstrom, with Y-Axis displayed per Hz
+#   X-Axis data display mode: Energy
+#   Spectra plots will be shifted to source frame by redshift value z: 0
+#   Device: /xw
+#   Plotting of line IDs is OFF.
+#   Splashpage is ON.
+#   xlog for data plots is ON.
+#   ylog for data plots is OFF.
+#
+#   Default plot rebin settings for all plot groups:
+#   Min. Signif.   Max. # Bins   Error Type
+#        0.00000             1         quad
+#
+# Responses read: 
+#   HED_RMF_1.fits associated with spectrum 1 source 1
+#      energies: 40 channels: 18
+# Distinct RMF files: 
+#     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/HED_RMF_1.fits
+#
+#1 file 1 spectrum 
+#Spectrum 1  Spectral Data File: HED_PHA_1.fits
+#Net count rate (cts/s) for Spectrum:1  4.180e+03 +/- 3.044e+02 (71.9 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  5-12
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.064 sec
+# Using fit statistic: chi
+# Using Background File                HED_Bak_1.fits
+#  Background Exposure Time: 0.9 sec
+# Using Response (RMF) File            HED_RMF_1.fits for Source 1
+#
+# Spectral data counts: 372
+# Model predicted rate: 4142.73
+#
+#
+#Current model list:
+#
+#========================================================================
+#Model cflux<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#   1    1   cflux      Emin       keV      10.0000      frozen
+#   2    1   cflux      Emax       keV      1.00000E+04  frozen
+#   3    1   cflux      lg10Flux   cgs      -4.14409     +/-  0.143722     
+#   4    2   ngrbep     alpha               1.20689      +/-  3.59799      
+#   5    2   ngrbep     beta                -3.45671     +/-  0.831317     
+#   6    2   ngrbep     epeak      keV      897.562      +/-  138.315      
+#   7    2   ngrbep     enorm      keV      100.000      frozen
+#   8    2   ngrbep     norm                1.00000      frozen
+#________________________________________________________________________
+#
+#   Using energies from responses.
+#
+#Fit statistic  : Chi-Squared                    1.20     using 8 bins.
+#
+#Test statistic : Chi-Squared                    1.20     using 8 bins.
+# Null hypothesis probability of 8.79e-01 with 4 degrees of freedom
+#
+#Bayes is off
+#
+#
+!XSPEC12>error 1. 3-6
+# Parameter   Confidence Range (1)
+#     3     -4.21556     -3.94706    (-0.084717,0.183782)
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 6 is pegged at 897.562 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 6 is pegged at 897.562 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#
+#***Warning: Number of trials exceeded before bracketing of delta fit-stat.
+#Last attempt: 5, with delta statistic: 0.597521
+#
+#
+!XSPEC12>tclreadline::readline eofchar ""
+#
+!XSPEC12>tclreadline::readline read {Continue error search in this direction? }
+#
+!XSPEC12>tclreadline::readline eofchar "puts {}; exit"
+#
+#*** Parameter upper bound is INVALID.
+#
+#     4     -1.06398            0    (-1.8394,-0.775427)
+#     5     -4.56921     -3.04768    (-1.03835,0.483177)
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -2.90844 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -2.90844 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -3.55907 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -3.55907 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 5
+# Parameter 5 is pegged at -5.41983 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 5
+# Parameter 5 is pegged at -5.41983 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#Apparent non-monotonicity in statistic space detected.
+#Current bracket values 979.058, 1014.58
+#and delta stat 0.417512, 7.5207
+#but latest trial 1002.29 gives 57.2864
+#Suggest that you check this result using the steppar command.
+#     6      714.754      996.816    (-191.14,90.9222)
+#
+!XSPEC12>error 2.706 3-6
+# Parameter   Confidence Range (2.706)
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 4 is pegged at -8.6909 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+# Parameter 6 is pegged at 879.77 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 4 is pegged at -8.6909 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+# Parameter 6 is pegged at 879.77 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+# Warning: renorm - no variable model to allow  renormalization
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    3:lg10Flux       4:alpha        5:beta       6:epeak
+#1.17839      0.0722964    -3      -4.13572      0.983702      -3.51000       901.910
+#==================================================
+# Variances and Principal Axes
+#                 3        4        5        6  
+# 9.3070E-04|  0.9990   0.0347  -0.0289   0.0001  
+# 2.3737E-01| -0.0317   0.0819  -0.9961  -0.0030  
+# 1.5429E+01| -0.0322   0.9960   0.0829   0.0073  
+# 1.7786E+04| -0.0000   0.0070   0.0035  -1.0000  
+#--------------------------------------------------
+#
+#================================================
+#  Covariance Matrix
+#        1           2           3           4   
+#   1.721e-02  -4.984e-01  -3.499e-02   3.405e-01
+#  -4.984e-01   1.618e+01   1.696e+00  -1.242e+02
+#  -3.499e-02   1.696e+00   5.655e-01  -6.310e+01
+#   3.405e-01  -1.242e+02  -6.310e+01   1.779e+04
+#------------------------------------------------
+#
+#========================================================================
+#Model cflux<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#   1    1   cflux      Emin       keV      10.0000      frozen
+#   2    1   cflux      Emax       keV      1.00000E+04  frozen
+#   3    1   cflux      lg10Flux   cgs      -4.13572     +/-  0.131186     
+#   4    2   ngrbep     alpha               0.983702     +/-  4.02207      
+#   5    2   ngrbep     beta                -3.51000     +/-  0.752017     
+#   6    2   ngrbep     epeak      keV      901.910      +/-  133.362      
+#   7    2   ngrbep     enorm      keV      100.000      frozen
+#   8    2   ngrbep     norm                1.00000      frozen
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                    1.18     using 8 bins.
+#
+#Test statistic : Chi-Squared                    1.18     using 8 bins.
+# Null hypothesis probability of 8.82e-01 with 4 degrees of freedom
+#***Warning: New best fit found, fit parameters will be set to new values.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 4 is pegged at -8.82927 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+# Parameter 6 is pegged at 900.965 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 4 is pegged at -8.82927 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+# Parameter 6 is pegged at 900.965 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 4 is pegged at -8.41439 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+# Parameter 6 is pegged at 901.044 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 4 is pegged at -8.41439 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+# Parameter 6 is pegged at 901.044 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#Apparent non-monotonicity in statistic space detected.
+#Current bracket values -3.88187, -3.70446
+#and delta stat 1.40186, 35.0108
+#but latest trial -3.79317 gives 42.9553
+#Suggest that you check this result using the steppar command.
+#     3     -4.24057     -3.79317    (-0.104504,0.342895)
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 6 is pegged at 901.91 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 6 is pegged at 901.91 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 6 is pegged at 901.91 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 6 is pegged at 901.91 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 6 is pegged at 901.91 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 6 is pegged at 901.91 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 6 is pegged at 901.91 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 6 is pegged at 901.91 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#
+#***Warning: Number of trials exceeded before bracketing of delta fit-stat.
+#Last attempt: 5, with delta statistic: 0.608763
+#
+#
+!XSPEC12>tclreadline::readline eofchar ""
+#
+!XSPEC12>tclreadline::readline read {Continue error search in this direction? }
+#
+!XSPEC12>tclreadline::readline eofchar "puts {}; exit"
+#
+#*** Parameter upper bound is INVALID.
+#
+#     4     -1.91655            0    (-2.91389,-0.997341)
+#
+#***Warning: Number of trials exceeded before bracketing of delta fit-stat.
+#Last attempt: -10, with delta statistic: 1.42962
+#
+#
+!XSPEC12>tclreadline::readline eofchar ""
+#
+!XSPEC12>tclreadline::readline read {Continue error search in this direction? }
+#
+!XSPEC12>tclreadline::readline eofchar "puts {}; exit"
+#
+#*** Parameter lower bound is INVALID.
+#
+#     5            0      -2.8709    (3.50745,0.636553)
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -8.27339 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -8.27339 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -8.23203 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -8.23203 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#Apparent non-monotonicity in statistic space detected.
+#Current bracket values 486.241, 462.805
+#and delta stat 1.95464, 7.5316
+#but latest trial 465.665 gives 7.5316
+#Suggest that you check this result using the steppar command.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -2.99952 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -2.99952 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -3.17341 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -3.17341 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -8.60385 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+# Parameter 4 is pegged at -8.60385 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#Apparent non-monotonicity in statistic space detected.
+#Current bracket values 937.668, 1056.47
+#and delta stat 0.0874428, 7.5316
+#but latest trial 1001.25 gives 7.5316
+#Suggest that you check this result using the steppar command.
+#     6      474.523       997.07    (-427.041,95.5063)
+#
+!XSPEC12>log none
+#
