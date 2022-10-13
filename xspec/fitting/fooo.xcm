@@ -1,0 +1,198 @@
+log none
+model none
+data none
+lmod grb
+setpl en
+
+data 1:1 bla 2:2 blaa 2:3 blaaa 3:4 la 3:5 laa 4:6 laaa
+
+ignore bad
+ignore 1:**-400. 2:500.-** 4:**-8. 128 5:**-8. 128 6:1 128
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & 
+untie 10, 19, 28
+freeze 9, 10
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd hed_kw_gbm_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log hed_kw_gbm_sp1_band.log
+show all 
+error 1. 1, 19, 28, 4-7
+error 2.706 1, 19, 28, 4-7
+log none
+model none
+data none
+
+data 1:1 blaa 1:2 blaaa 2:3 la 2:4 laa 3:5 laaa
+
+ignore bad
+ignore 1:500.-** 3:**-8. 128 4:**-8. 128 5:1 128
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & & & & & & & & & & & & & 
+untie 10, 19
+freeze 1, 9, 
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd kw_gbm_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log kw_gbm_sp1_band.log
+show all 
+error 1. 10, 19, 4-7
+error 2.706 10, 19, 4-7
+log none
+model none
+data none
+
+data blaa blaaa 
+ignore bad
+ignore 1:500.-** 
+
+model cflux*ngrbep & & & & & & & & 
+freeze 8
+newpar 1 10
+newpar 2 1e4
+newpar 3 -6
+
+fit 1000
+newpar 4 -1
+fit 1000
+
+cpd kw_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log kw_sp1_band.log
+show all 
+error 1. 3-6
+error 2.706 3-6
+log none
+model none
+data none
+
+data bla
+ignore bad
+ignore 1:**-400. 
+model cflux*ngrbep & & & & & & & &  
+freeze 8
+newpar 1 10
+newpar 2 1e4
+newpar 3 -6
+
+fit 1000
+newpar 4 -1
+newpar 6 1000
+fit 1000
+cpd hed_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log hed_sp1_band.log
+show all 
+error 1. 3-6
+error 2.706 3-6
+log none
+model none
+data none
+
+data 1:1 la 1:2 laa 2:3 laaa
+
+ignore bad
+ignore 1:**-8. 128 2:**-8. 128 3:1 128
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & 
+untie 10
+freeze 9, 1
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd gbm_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log gbm_sp1_band.log
+show all 
+error 1. 10, 4-7
+error 2.706 10, 4-7
+log none
+model none
+data none
+
+data 1:1 la 2:2 laa 3:3 laaa
+
+ignore bad
+ignore 1:**-8. 128 2:**-8. 128 3:1 128
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & 
+untie 10, 19
+freeze 9, 1
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd gbm_sp1_band_free_norm.ps/cps
+plot ldata delchi
+cpd /xw
+log gbm_sp1_band_free_norm.log
+show all 
+error 1. 10, 19, 4-7
+error 2.706 10, 19, 4-7
+log none
+model none
+data none
+
+data 1:1 bla 2:2 blaa 2:3 blaaa 
+
+ignore bad
+ignore 1:**-400. 2:500.-**
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & 
+untie 10,
+freeze 9, 10
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd hed_kw_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log hed_kw_sp1_band.log
+show all 
+error 1. 1, 4-7
+error 2.706 1, 4-7
+log none
+model none
+data none
+
+data 1:1 bla 2:2 la 3:3 laa 3:4 laaa
+
+ignore bad
+ignore 1:**-400. 2:**-8. 128 3:**-8. 128 4:1 128
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & 
+untie 10, 19
+freeze 9, 10
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
+cpd hed_gbm_sp1_band.ps/cps
+plot ldata delchi
+cpd /xw
+log hed_gbm_sp1_band.log
+show all 
+error 1. 1, 19, 4-7
+error 2.706 1, 19, 4-7
+log none
+model none
+data none
