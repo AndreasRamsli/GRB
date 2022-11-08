@@ -1,0 +1,201 @@
+#XSPEC version: 12.12.1
+#Build Date/Time: Tue Aug  9 11:26:32 2022
+#
+!XSPEC12> show all
+#
+#XSPEC version: 12.12.1
+#
+#Tue Nov  8 14:31:22 2022
+# Auto-saving is done after every command.
+# Fit statistic in use: Chi-Squared
+# Minimization technique: Levenberg-Marquardt
+#    Convergence criterion = 0.01
+#    Parameter fit deltas: 0.01 * parValue
+#Using chain rule to calculate statistic derivatives (faster method).
+# Querying enabled.
+# Prefit-renorming enabled.
+# Solar abundance table: angr
+# Photoionization Cross-Section Table:
+#    vern:  Verner, Ferland, Korista, and Yakovlev 1996
+# Cosmology in use: H0 = 70 q0 = 0 Lambda0 = 0.73
+# Model data directory: /Home/siv30/wad005/master/heasoft-6.30.1/x86_64-pc-linux-gnu-libc2.31/../spectral/manager/../modelData/
+# Plot settings:
+#   Showing of individual additive components is OFF.
+#   Showing of background spectra is OFF.
+#   Effective area normalization is OFF.
+#   Current unit settings:
+#      Energy     = keV
+#      Wavelength = angstrom, with Y-Axis displayed per Hz
+#   X-Axis data display mode: Energy
+#   Spectra plots will be shifted to source frame by redshift value z: 0
+#   Device: /xw
+#   Plotting of line IDs is OFF.
+#   Splashpage is ON.
+#   xlog for data plots is ON.
+#   ylog for data plots is OFF.
+#
+#   Default plot rebin settings for all plot groups:
+#   Min. Signif.   Max. # Bins   Error Type
+#        0.00000             1         quad
+#
+# Responses read: 
+#   GRB190606_b0.rsp associated with spectrum 3 source 1 data group 2
+#      energies: 140 channels: 62
+#   GRB190606_n1.rsp associated with spectrum 4 source 1 data group 2
+#      energies: 140 channels: 29
+#   GRB190606_n5.rsp associated with spectrum 5 source 1 data group 2
+#      energies: 140 channels: 34
+#   HED_GRB190606_phi_30.rsp associated with spectrum 6 source 1 data group 3
+#      energies: 40 channels: 22
+#   KW20190606_T06903_1.rmf associated with spectrum 1 source 1
+#      energies: 263 channels: 32
+#   KW20190606_T06903_2.rmf associated with spectrum 2 source 1
+#      energies: 263 channels: 19
+# Distinct RMF files: 
+#     /Home/siv30/wad005/master/GRB/xspec/GRB190606A/GRB190606_b0.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB190606A/GRB190606_n1.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB190606A/GRB190606_n5.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB190606A/HED_GRB190606_phi_30.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB190606A/KW20190606_T06903_1.rmf     /Home/siv30/wad005/master/GRB/xspec/GRB190606A/KW20190606_T06903_2.rmf
+#
+#6 files 6 spectra 
+#Spectrum 1  Spectral Data File: KW_1_gr20.pha
+#Net count rate (cts/s) for Spectrum:1  9.576e+03 +/- 5.035e+02 (89.1 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  1-18
+#  Telescope: WIND Instrument: KONUS  Channel Type: PHA
+#  Exposure Time: 0.04241 sec
+# Using fit statistic: chi
+# Using Background File                KW20190606_T06903_1_bg.pha
+#  Background Exposure Time: 85.21 sec
+# Using Response (RMF) File            KW20190606_T06903_1.rmf for Source 1
+# Using Auxiliary Response (ARF) File  KW20190606_T06903.arf
+#
+# Spectral data counts: 456
+# Model predicted rate: 8840.15
+#
+#Spectrum 2  Spectral Data File: KW_2_gr20.pha
+#Net count rate (cts/s) for Spectrum:2  1.589e+03 +/- 1.822e+02 (83.2 % total)
+# Assigned to Data Group 1 and Plot Group 2
+#  Noticed Channels:  1-5
+#  Telescope: WIND Instrument: KONUS  Channel Type: PHA
+#  Exposure Time: 0.05757 sec
+# Using fit statistic: chi
+# Using Background File                KW20190606_T06903_2_bg.pha
+#  Background Exposure Time: 88.46 sec
+# Using Response (RMF) File            KW20190606_T06903_2.rmf for Source 1
+# Using Auxiliary Response (ARF) File  KW20190606_T06903.arf
+#
+# Spectral data counts: 110
+# Model predicted rate: 1844.94
+#
+#Spectrum 3  Spectral Data File: GRB190606_b0_gr20.pha
+#Net count rate (cts/s) for Spectrum:3  6.588e+03 +/- 3.546e+02 (84.9 % total)
+# Assigned to Data Group 2 and Plot Group 3
+#  Noticed Channels:  5-23
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06173 sec
+# Using fit statistic: chi
+# Using Background File                GRB190606_b0.bak
+#  Background Exposure Time: 0.06372 sec
+# Using Response (RMF) File            GRB190606_b0.rsp for Source 1
+#
+# Spectral data counts: 479
+# Model predicted rate: 4931.48
+#
+#Spectrum 4  Spectral Data File: GRB190606_n1_gr20.pha
+#Net count rate (cts/s) for Spectrum:4  8.572e+03 +/- 3.920e+02 (90.2 % total)
+# Assigned to Data Group 2 and Plot Group 4
+#  Noticed Channels:  2-25
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06186 sec
+# Using fit statistic: chi
+# Using Background File                GRB190606_n1.bak
+#  Background Exposure Time: 0.06406 sec
+# Using Response (RMF) File            GRB190606_n1.rsp for Source 1
+#
+# Spectral data counts: 588
+# Model predicted rate: 8647.87
+#
+#Spectrum 5  Spectral Data File: GRB190606_n5_gr20.pha
+#Net count rate (cts/s) for Spectrum:5  1.080e+04 +/- 4.377e+02 (91.5 % total)
+# Assigned to Data Group 2 and Plot Group 5
+#  Noticed Channels:  2-30
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.06156 sec
+# Using fit statistic: chi
+# Using Background File                GRB190606_n5.bak
+#  Background Exposure Time: 0.06369 sec
+# Using Response (RMF) File            GRB190606_n5.rsp for Source 1
+#
+# Spectral data counts: 726
+# Model predicted rate: 1.02945E+04
+#
+#Spectrum 6  Spectral Data File: HED_GRB190606_phi_30_gr20.pha
+#Net count rate (cts/s) for Spectrum:6  5.889e+03 +/- 3.924e+02 (61.6 % total)
+# Assigned to Data Group 3 and Plot Group 6
+#  Noticed Channels:  4-13
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.064 sec
+# Using fit statistic: chi
+# Using Background File                HED_GRB190606.bak
+#  Background Exposure Time: 0.8 sec
+# Using Response (RMF) File            HED_GRB190606_phi_30.rsp for Source 1
+#
+# Spectral data counts: 612
+# Model predicted rate: 5257.27
+#
+#
+#Current model list:
+#
+#========================================================================
+#Model constant<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   ngrbep     alpha               -0.244250    +/-  5.41436E-02  
+#   3    2   ngrbep     beta                -1.45493     +/-  2.53222E-02  
+#   4    2   ngrbep     epeak      keV      147.949      +/-  8.23949      
+#   5    2   ngrbep     enorm      keV      100.000      frozen
+#   6    2   ngrbep     norm                1.00000      frozen
+#                           Data group: 2
+#   7    1   constant   factor              0.941964     +/-  5.31192E-02  
+#   8    2   ngrbep     alpha               -0.244250    = p2
+#   9    2   ngrbep     beta                -1.45493     = p3
+#  10    2   ngrbep     epeak      keV      147.949      = p4
+#  11    2   ngrbep     enorm      keV      100.000      = p5
+#  12    2   ngrbep     norm                1.00000      = p6
+#                           Data group: 3
+#  13    1   constant   factor              0.896226     +/-  9.54063E-02  
+#  14    2   ngrbep     alpha               -0.244250    = p2
+#  15    2   ngrbep     beta                -1.45493     = p3
+#  16    2   ngrbep     epeak      keV      147.949      = p4
+#  17    2   ngrbep     enorm      keV      100.000      = p5
+#  18    2   ngrbep     norm                1.00000      = p6
+#________________________________________________________________________
+#
+#   Using energies from responses.
+#
+#Fit statistic  : Chi-Squared                   23.26     using 18 bins.
+#                 Chi-Squared                    6.45     using 5 bins.
+#                 Chi-Squared                   48.92     using 19 bins.
+#                 Chi-Squared                   38.70     using 24 bins.
+#                 Chi-Squared                   26.65     using 29 bins.
+#                 Chi-Squared                   35.33     using 10 bins.
+#Total fit statistic                           179.32     with 100 d.o.f.
+#
+#Test statistic : Chi-Squared                  179.32     using 105 bins.
+# Null hypothesis probability of 1.93e-06 with 100 degrees of freedom
+#
+#Bayes is off
+#
+#
+!XSPEC12> err 1,2,3
+#*** Parameter 1 is not a variable model parameter and no confidence range will be calculated.
+# Parameter   Confidence Range (2.706)
+#     2    -0.339649    -0.144639    (-0.0953267,0.0996829)
+#     3     -1.50416     -1.41076    (-0.0492187,0.0441865)
+#
+!XSPEC12> err 4
+# Parameter   Confidence Range (2.706)
+#     4      130.847      164.912    (-17.0917,16.9732)
+#
+!XSPEC12> log none
+#
