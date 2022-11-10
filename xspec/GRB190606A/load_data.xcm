@@ -1,5 +1,11 @@
-data 1:1 KW_1_gr20.pha 1:2 KW_2_gr20.pha 2:3 HED_GRB190606_phi_-30_gr20.pha
-ign 1: 500.-**
-ign 2: 10000.-**
-ign 3: **-400. 10000.-**
+data 1:1 KW_1_gr20.pha 1:2 KW_2_gr20.pha 2:3 GRB190606_b0_gr20.pha 2:4 GRB190606_n1_gr20.pha 2:5 GRB190606_n5_gr20.pha  3:6 HED_GRB190606_phi_-15_gr20.pha
 ign bad
+ign 1: 500.-**
+ign 2: ign 10000.-**
+ign 3: ign **-150., 10000.-**
+ign 4: **-8. 
+ign 5: **-8.
+ign 6: **-400., 10000.-**
+
+
+
