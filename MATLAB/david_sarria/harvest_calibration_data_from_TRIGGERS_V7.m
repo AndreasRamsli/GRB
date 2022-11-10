@@ -3,14 +3,18 @@ close all
 clc
 
 % YEAR MONTH DAY HOUR MINUTE SECOND
-WANTED_DATETIME = datetime(2020,3,4,12,34,13);
-TIME_WINDOW_IN_MINUTES = 3;
+WANTED_DATETIME = datetime(2019,3,5,13,3,48);
+TIME_WINDOW_IN_MINUTES = 2;
 
 cd(fileparts(which(mfilename)));
 
-addpath ./NASA_CDF_PATCH/
-HomeDir = pwd;
-TargetDir = '/scratch/ASIM_ASDC2/net/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/MXGS/cdf/';
+%addpath ./NASA_CDF_PATCH/
+addpath('/Home/siv30/wad005/master/GRB/MATLAB/david_sarria/NASA_CDF_PATCH/');
+%HomeDir = pwd;
+HomeDir = '/Home/siv30/wad005/master/GRB/MATLAB/david_sarria/';
+%TargetDir = '/scratch/ASIM_ASDC2/net/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/MXGS/cdf/';
+TargetDir = './MXGS/cdf/';
+
 rootdir = TargetDir;
 
 my_year = year(WANTED_DATETIME);
