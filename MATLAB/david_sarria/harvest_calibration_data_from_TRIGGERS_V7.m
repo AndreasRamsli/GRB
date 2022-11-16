@@ -21,6 +21,10 @@ my_doy = day(WANTED_DATETIME,'dayofyear');
 disp(['Processing DOY ' num2str(my_doy) ' ...'])
 out_data = get_trigger_accumulated_background_data(my_doy,my_year,rootdir, WANTED_DATETIME, TIME_WINDOW_IN_MINUTES);
 
+disp(num2str(length(out_data)));
+out_data = unique(out_data,'rows');
+disp(num2str(length(out_data)));
+
 out_filename = [num2str(year(WANTED_DATETIME)) '_' num2str(month(WANTED_DATETIME)) '_' num2str(day(WANTED_DATETIME)) '_'...
     num2str(hour(WANTED_DATETIME)) '_' num2str(minute(WANTED_DATETIME)) '_' num2str(round(second(WANTED_DATETIME)))...
     '.mat'];
