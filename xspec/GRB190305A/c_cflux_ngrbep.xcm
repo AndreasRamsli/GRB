@@ -1,0 +1,13 @@
+data 1:1 HED_GRB190305A_gr20.pha 2:2 KW_1_gr20.pha 2:3 KW_2_gr20.pha 
+
+ignore bad
+ignore 1:**-400. 2:500.-**
+
+model const*cflux*ngrbep & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & & 
+untie 10,
+freeze 9, 10
+newpar 2 10
+newpar 3 1e4
+newpar 4 -6
+
+fit 1000
