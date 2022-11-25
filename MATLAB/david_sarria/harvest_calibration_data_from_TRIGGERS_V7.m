@@ -3,9 +3,10 @@ close all
 clc
 
 % YEAR MONTH DAY HOUR MINUTE SECOND
-WANTED_DATETIME = datetime(2020,12,27,15,14,6);
+WANTED_DATETIME = datetime(2021,06,19,23,59,25);
 TIME_WINDOW_IN_MINUTES = 5;
 
+cd /Home/siv30/wad005/master/GRB/MATLAB/david_sarria
 cd(fileparts(which(mfilename)));
 disp(pwd);
 addpath ./NASA_CDF_PATCH/
@@ -20,6 +21,7 @@ my_doy = day(WANTED_DATETIME,'dayofyear');
 
 disp(['Processing DOY ' num2str(my_doy) ' ...'])
 out_data = get_trigger_accumulated_background_data(my_doy,my_year,rootdir, WANTED_DATETIME, TIME_WINDOW_IN_MINUTES);
+
 
 %checking if duplicates are removed
 disp(num2str(length(out_data)));
@@ -39,7 +41,6 @@ save(out_filename,'out_data')
 function mat_out = get_trigger_accumulated_background_data(myDOY, year, rootdir, WANTED_DATETIME, TIME_WINDOW_IN_MINUTES)
 
 mat_out=[];
-
 % make file list for selected DOYs
 files = {};
 
@@ -80,6 +81,7 @@ for i_file = 1:nb_files % can be for or parfor
     
     if ~isempty(mat_out_tmp)
         mat_out = [mat_out ; mat_out_tmp];
+        
     end
     
 end
