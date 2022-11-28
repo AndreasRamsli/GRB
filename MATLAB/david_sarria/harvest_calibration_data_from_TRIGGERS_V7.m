@@ -3,7 +3,7 @@ close all
 clc
 
 % YEAR MONTH DAY HOUR MINUTE SECOND
-WANTED_DATETIME = datetime(2021,06,19,23,59,25);
+WANTED_DATETIME = datetime(2019,03,05,13,05,19);%13:05:19.816
 TIME_WINDOW_IN_MINUTES = 5;
 
 cd /Home/siv30/wad005/master/GRB/MATLAB/david_sarria
