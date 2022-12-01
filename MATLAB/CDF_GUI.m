@@ -2,7 +2,9 @@ function CDF_GUI();
 
 % This GUI shows list of cdf files in subfolders.
 
-addpath ('matlab_cdf380_patch-64');
+addpath ./NASA_CDF_PATCH/
+
+TargetDir = '/scratch/ASDC/net/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/MXGS/cdf/' % global var
 
 T0 = datetime(datevec(datenum(0, 1, 1, 0, 0, 0)));  % reference time
 
@@ -16,7 +18,7 @@ f.Name = 'CDF GUI';
 % Move the window to the center of the screen.
 movegui(f,'center')
 f.Position = [0 0 1 1];
-f.Resize = 'on';
+f.Resize = 'off';
 
 % create tab_group
 tabgp = uitabgroup(f, 'Position', [0 0 1 1]);
@@ -28,62 +30,31 @@ tab3 = uitab(tabgp, 'Title', 'Export Selected Variables');
 
 
 % global vars --------
-%TargetDir = 'C:\Work\Bergen\Projects\ASIM\Data';
-TargetDir = '/Volumes/ift_asdc/bulktransfer2/ops/';
-%TargetDir = '/net_krb5/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/';
-f_ToShow = {};
+HomeDir = pwd;
 %---------------------
 
 
 % Measures ---------
-dx = 0.01; dy = 0.03;
+dx = 0.03; dy = 0.03;
 TopLine = 0.94;
 %-------------------
 
 
 % Construct Tab1 components------------------------------------------------
-% List of Instruments 
-folder = TargetDir;
-disp(folder);
-
-I = dir(folder);     % list of all objects in current folder
-disp(I);
-
-I_val = {}; j = 0;
-for k = 1:length(I)
-    if (I(k).isdir==1) && (strcmp(I(k).name, 'DHPU') || strcmp(I(k).name, 'MMIA') || strcmp(I(k).name, 'MXGS'))
-%     if (I(k).isdir==1) && ~(strcmp(I(k).name, '.')) && ~(strcmp(I(k).name, '..'))
-        j = j + 1;
-        I_val{j} = I(k).name;
-    end
-end
-I_w = 0.1; I_h = 0.7;
-I_x = dx; I_y = TopLine - I_h; 
-I_list = uicontrol('Style', 'listbox', 'String', I_val, 'FontName', 'Arial', 'FontSize', 14, ...
-           'Units', 'normalized', 'Position', [I_x, I_y, I_w, I_h], 'Max', 1, ...
-           'Callback', @I_list_Callback, 'Enable', 'on', 'Parent', tab1);
-
-% Caption -----------
-tI_w = I_w; tI_h = dy;
-tI_x = I_x; tI_y = TopLine + dy/4; 
-text_I = uicontrol('Style', 'text', 'String', 'List of Instruments', 'FontName', 'Arial', 'FontSize', 14, ...
-            'Units', 'normalized', 'Position', [tI_x, tI_y, tI_w, tI_h], 'Parent', tab1);
-%--------------------        
-%--------------------
-
 % List of folders --
-folder = [TargetDir '/' I_val{I_list.Value} '/cdf']; 
-F = dir(folder);     % list of all objects in current folder
+cd(TargetDir)        
+F = dir;     % list of all objects in current folder
+cd(HomeDir)        
 F_val = {}; j = 0;
 for k = 1:length(F)
-    if (F(k).isdir==1) && ~(strcmp(F(k).name, '.')) && ~(strcmp(F(k).name, '..'))            
+    if (F(k).isdir==1) && ~(strcmp(F(k).name, '.')) && ~(strcmp(F(k).name, '..')) ...
+            && ~(strcmp(F(k).name, 'mxgssampleddetectorcounts')) && ~(strcmp(F(k).name, 'mxgssampleddetectorcountslevel1'))
         j = j + 1;
         F_val{j} = F(k).name;
     end
 end
-
-F_w = 0.27; F_h = 0.9;
-F_x = I_w + I_x + dx; F_y = TopLine - F_h; 
+F_w = 0.27; F_h = 0.7;
+F_x = dx; F_y = TopLine - F_h; 
 F_list = uicontrol('Style', 'listbox', 'String', F_val, 'FontName', 'Arial', 'FontSize', 14, ...
            'Units', 'normalized', 'Position', [F_x, F_y, F_w, F_h], 'Max', 1, ...
            'Callback', @F_list_Callback, 'Enable', 'on', 'Parent', tab1);
@@ -98,17 +69,19 @@ text_F = uicontrol('Style', 'text', 'String', 'List of Folders', 'FontName', 'Ar
 
 
 % List of years -----
-folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{F_list.Value}];
-Y = dir(folder);     % list of all objects in current folder
+cd(TargetDir)        
+folder = F_val{F_list.Value}; cd(folder)
+Y = dir;     % list of all objects in current folder
 Y_val = {}; j = 0;
 for k = 1:length(Y)
-    if (Y(k).isdir==1) && ~(isempty(str2num(Y(k).name))) && (str2num(Y(k).name)>=2018)
+    if (Y(k).isdir==1) && ~(strcmp(Y(k).name, '.')) && ~(strcmp(Y(k).name, '..'))            
         j = j + 1;
         Y_val{j} = Y(k).name;
     end
 end
+cd(HomeDir)
 
-Y_w = 0.1; Y_h = 0.2;
+Y_w = 0.1; Y_h = 0.1;
 Y_x = F_w + F_x + dx; Y_y = TopLine - Y_h; 
 Y_list = uicontrol('Style', 'listbox', 'String', Y_val, 'FontName', 'Arial', 'FontSize', 14, ...
            'Units', 'normalized', 'Position', [Y_x, Y_y, Y_w, Y_h], 'Max', 1, ...
@@ -124,8 +97,9 @@ text_Y = uicontrol('Style', 'text', 'String', 'List of Years', 'FontName', 'Aria
 
 
 % List of days ------
-folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{F_list.Value} '/' Y_val{Y_list.Value}];   
-D = dir(folder);     % list of all objects in current folder
+cd(TargetDir)        
+folder = [F_val{F_list.Value} '/' Y_val{Y_list.Value}]; cd(folder)
+D = dir;     % list of all objects in current folder
 D_val = {}; j = 0;
 for k = 1:length(D)
     if (D(k).isdir==1) && ~(strcmp(D(k).name, '.')) && ~(strcmp(D(k).name, '..'))            
@@ -133,8 +107,9 @@ for k = 1:length(D)
         D_val{j} = D(k).name;
     end
 end
+cd(HomeDir)
 
-D_w = 0.1; D_h = 0.9;
+D_w = 0.1; D_h = 0.3;
 D_x = Y_x + Y_w + dx; D_y = TopLine - D_h; 
 D_list = uicontrol('Style', 'listbox', 'String', D_val, 'FontName', 'Arial', 'FontSize', 14, ...
            'Units', 'normalized', 'Position', [D_x, D_y, D_w, D_h], 'Max', 1, ...
@@ -150,20 +125,21 @@ text_D = uicontrol('Style', 'text', 'String', 'List of Days', 'FontName', 'Arial
 
 
 % List of files -----
-folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{F_list.Value} '/' Y_val{Y_list.Value} '/' D_val{D_list.Value}];         
-df = dir(folder);     % list of all objects in current folder
-f_val = {}; j = 0; f_ToShow = {};
+cd(TargetDir)        
+folder = [F_val{F_list.Value} '/' Y_val{Y_list.Value} '/' D_val{D_list.Value}]; cd(folder)
+df = dir;     % list of all objects in current folder
+f_val = {}; j = 0;
 for k = 1:length(df)
     if df(k).isdir==0
         j = j + 1;
         f_val{j} = df(k).name;
-        f_ToShow{j} = [sprintf('%03d', j) ' --> ' f_val{j}];
     end
 end
+cd(HomeDir)
 
 f_x = D_x + D_w + dx; f_w = 1 - f_x - dx; 
-f_h = 0.9; f_y = TopLine - f_h; 
-f_list = uicontrol('Style', 'listbox', 'String', f_ToShow, 'FontName', 'Arial', 'FontSize', 10, ...
+f_h = 0.89; f_y = TopLine - f_h; 
+f_list = uicontrol('Style', 'listbox', 'String', f_val, 'FontName', 'Arial', 'FontSize', 12, ...
            'Units', 'normalized', 'Position', [f_x, f_y, f_w, f_h], 'Max', 1, ...
            'Callback', @f_list_Callback, 'Enable', 'on', 'Parent', tab1);
 
@@ -178,13 +154,23 @@ text_f = uicontrol('Style', 'text', 'String', LoF_text, 'FontName', 'Arial', 'Fo
 
 
 % default file list of variables
-folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{F_list.Value} '/' Y_val{Y_list.Value} '/' D_val{D_list.Value}];         
-fn = [folder '/' f_val{f_list.Value}];  % selected cdf data file name
-[data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
+cd(TargetDir)   
+folder = [F_val{F_list.Value} '/' Y_val{Y_list.Value} '/' D_val{D_list.Value}]; cd(folder)
+fn = f_val{f_list.Value};  % selected cdf data file name
+if contains(fn,'.cdf.gz')
+    gunzip(fn) ;
+    fn = fn(1:end-3);
+    [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1);
+else
+    [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1);
+end
+%[data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
 names = info.Variables(:, 1);  % list of all variables names
 text_f.String = [LoF_text int2str(length(names)) '.'];
 V_val = names; V_list.String = V_val;
+N_of_Obs = length(data{strcmp(V_val, 'raw_datetime')});  % number of observations in file
 VE_list.String = V_val;
+cd(HomeDir)        
 %--------------------
 
 %--------------------------------------------------------------------------
@@ -241,8 +227,26 @@ text_S = uicontrol('Style', 'text', 'String', S_val, 'FontName', 'Arial', 'FontS
 % Variable Value ----
 VV_val = data{V_list.Value};
 
-ToShow = [];
-Get2Show();
+N_of_Obs = length(data{strcmp(V_val, 'raw_datetime')});  % number of observations in file
+% disp(N_of_Obs)
+
+if strcmp(S_val{3}, 'epoch16')
+    temp = T0 + seconds(VV_val(:, 1) + VV_val(:, 2)*1e-12);      % raw contains read epoch16 data from cdf
+    temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+    ToShow = char(temp);
+else
+    if strcmp(S_val{3}, 'epoch')
+        temp = T0 + seconds(VV_val*1e-3);      % raw contains read epoch16 data from cdf
+        temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+        ToShow = char(temp);    
+    else
+        if strcmp(S_val{3}, 'char')
+            ToShow = VV_val;
+        else
+            ToShow = VV_val(:, 1);
+        end
+    end
+end
 
 VV_w = 0.5; VV_h = TopLine - S1_h - (2 * dy);
 VV_x = V_x + V_w + dx; VV_y = V_y; 
@@ -271,91 +275,22 @@ E_x = V_x + V_w + dx; E_y = 0.5;
 Export_b = uicontrol('Style', 'pushbutton', 'String', 'Export', 'Units', 'normalized', ...
              'Position', [E_x, E_y, E_w, E_h], 'Parent', tab3, 'Enable', 'on', 'Callback', @Export_Callback);
 %-------------------- 
+
 %--------------------------------------------------------------------------
+
+
 
 % Make the window visible.
 f.Visible = 'on';
 
+
+
 % Callback functions ------------------------------------------------------
-  function I_list_Callback(source, eventdata)
-               
-        % List of folders ----
-        folder = [TargetDir '/' I_val{source.Value} '/cdf']; 
-        F = dir(folder);     % list of all objects in current folder
-        F_val = {}; j = 0;
-        for k = 1:length(F)
-            if (F(k).isdir==1) && ~(strcmp(F(k).name, '.')) && ~(strcmp(F(k).name, '..'))            
-                j = j + 1;
-                F_val{j} = F(k).name;
-            end
-        end
-        F_list.String = F_val; F_list.Value = 1;
-        %---------------------
-        
-        % List of years -----
-        folder = [TargetDir '/' I_val{source.Value} '/cdf/' F_val{F_list.Value}]; 
-        Y = dir(folder);     % list of all objects in current folder
-        Y_val = {}; j = 0;
-        for k = 1:length(Y)
-            if (Y(k).isdir==1) && ~(strcmp(Y(k).name, '.')) && ~(strcmp(Y(k).name, '..'))            
-                j = j + 1;
-                Y_val{j} = Y(k).name;
-            end
-        end
-        Y_list.String = Y_val; Y_list.Value = 1;
-        %---------------------
-        
-        % List of days ------
-        folder = [TargetDir '/' I_val{source.Value} '/cdf/' F_val{F_list.Value} '/' Y_val{Y_list.Value}]; 
-        D = dir(folder);     % list of all objects in current folder
-        D_val = {}; j = 0;
-        for k = 1:length(D)
-            if (D(k).isdir==1) && ~(strcmp(D(k).name, '.')) && ~(strcmp(D(k).name, '..'))            
-                j = j + 1;
-                D_val{j} = D(k).name;
-            end
-        end
-        D_list.String = D_val; D_list.Value = 1;
-        %---------------------
-        
-        % List of files -----
-        folder = [TargetDir '/' I_val{source.Value} '/cdf/' F_val{F_list.Value} '/' Y_val{Y_list.Value} '/' D_val{D_list.Value}]; 
-        df = dir(folder);     % list of all objects in current folder
-        f_val = {}; j = 0; f_ToShow = {};
-        for k = 1:length(df)
-            if df(k).isdir==0
-                j = j + 1;
-                f_val{j} = df(k).name;
-                f_ToShow{j} = [sprintf('%03d', j) ' --> ' f_val{j}];
-            end
-        end
-        f_list.String = f_ToShow; f_list.Value = 1;
-        %---------------------
-        
-        fn = [folder '/' f_val{f_list.Value}];  % selected cdf data file name
-        [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
-        names = info.Variables(:, 1);  % list of all variables names
-        text_f.String = [LoF_text int2str(length(names)) '.'];
-        V_val = names; V_list.String = V_val; V_list.Value = 1;
-        VE_list.String = V_val; VE_list.Value = 1;
-        
-        S_val = {info.Variables{V_list.Value, 1};num2str(info.Variables{V_list.Value, 2});...
-                 info.Variables{V_list.Value, 4}; num2str(info.Variables{V_list.Value, 9})};
-        text_S.String = S_val;
-     
-        VV_val = data{V_list.Value};
-        
-        Get2Show();
-        
-        VV_list.String = ToShow; VV_list.Value = 1;
-  end
-    
-    
   function F_list_Callback(source, eventdata) 
-      
+        cd(TargetDir)        
         % List of years -----
-        folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{source.Value}]; 
-        Y = dir(folder);     % list of all objects in current folder
+        folder = F_val{source.Value}; cd(folder)
+        Y = dir;     % list of all objects in current folder
         Y_val = {}; j = 0;
         for k = 1:length(Y)
             if (Y(k).isdir==1) && ~(strcmp(Y(k).name, '.')) && ~(strcmp(Y(k).name, '..'))            
@@ -367,8 +302,8 @@ f.Visible = 'on';
         %---------------------
         
         % List of days ------
-        folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{source.Value} '/' Y_val{Y_list.Value}]; 
-        D = dir(folder);     % list of all objects in current folder
+        folder = Y_val{Y_list.Value}; cd(folder)
+        D = dir;     % list of all objects in current folder
         D_val = {}; j = 0;
         for k = 1:length(D)
             if (D(k).isdir==1) && ~(strcmp(D(k).name, '.')) && ~(strcmp(D(k).name, '..'))            
@@ -380,24 +315,31 @@ f.Visible = 'on';
         %---------------------
         
         % List of files -----
-        folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{source.Value} '/' Y_val{Y_list.Value} '/' D_val{D_list.Value}]; 
-        df = dir(folder);     % list of all objects in current folder
-        f_val = {}; j = 0; f_ToShow = {};
+        folder = D_val{D_list.Value}; cd(folder)
+        df = dir;     % list of all objects in current folder
+        f_val = {}; j = 0;
         for k = 1:length(df)
             if df(k).isdir==0
                 j = j + 1;
                 f_val{j} = df(k).name;
-                f_ToShow{j} = [sprintf('%03d', j) ' --> ' f_val{j}];
             end
         end
-        f_list.String = f_ToShow; f_list.Value = 1;
+        f_list.String = f_val; f_list.Value = 1;
         %---------------------
-        
-        fn = [folder '/' f_val{f_list.Value}];  % selected cdf data file name
-        [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
+
+        fn = f_val{f_list.Value};  % selected cdf data file name
+        if contains(fn,'.cdf.gz')
+            gunzip(fn) ;
+            fn = fn(1:end-3);
+            [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1);
+        else
+            [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1);
+        end
+        %[data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
         names = info.Variables(:, 1);  % list of all variables names
         text_f.String = [LoF_text int2str(length(names)) '.'];
         V_val = names; V_list.String = V_val; V_list.Value = 1;
+        N_of_Obs = length(data{strcmp(V_val, 'raw_datetime')});  % number of observations in file
         VE_list.String = V_val; VE_list.Value = 1;
         
         S_val = {info.Variables{V_list.Value, 1};num2str(info.Variables{V_list.Value, 2});...
@@ -406,17 +348,35 @@ f.Visible = 'on';
      
         VV_val = data{V_list.Value};
         
-        Get2Show();
-        
+        if strcmp(S_val{3}, 'epoch16')
+            temp = T0 + seconds(VV_val(:, 1) + VV_val(:, 2)*1e-12);      % raw contains read epoch16 data from cdf
+            temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+            ToShow = char(temp);
+        else
+            if strcmp(S_val{3}, 'epoch')
+                temp = T0 + seconds(VV_val*1e-3);      % raw contains read epoch16 data from cdf
+                temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+                ToShow = char(temp);    
+            else
+                if strcmp(S_val{3}, 'char')
+                    ToShow = VV_val;
+                else
+                    ToShow = VV_val(:, 1);
+                end
+            end
+        end
+
         VV_list.String = ToShow; VV_list.Value = 1;
+
+        cd(HomeDir)        
   end
 
 
   function Y_list_Callback(source, eventdata) 
-      
+        cd(TargetDir)        
         % List of days ------
-        folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{F_list.Value} '/' Y_val{source.Value}]; 
-        D = dir(folder);     % list of all objects in current folder
+        folder = [F_val{F_list.Value} '/' Y_val{source.Value}]; cd(folder)
+        D = dir;     % list of all objects in current folder
         D_val = {}; j = 0;
         for k = 1:length(D)
             if (D(k).isdir==1) && ~(strcmp(D(k).name, '.')) && ~(strcmp(D(k).name, '..'))            
@@ -428,24 +388,31 @@ f.Visible = 'on';
         %---------------------
         
         % List of files -----
-        folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{F_list.Value} '/' Y_val{source.Value} '/' D_val{D_list.Value}]; 
-        df = dir(folder);     % list of all objects in current folder
-        f_val = {}; j = 0; f_ToShow = {};
+        folder = D_val{D_list.Value}; cd(folder)
+        df = dir;     % list of all objects in current folder
+        f_val = {}; j = 0;
         for k = 1:length(df)
             if df(k).isdir==0
                 j = j + 1;
                 f_val{j} = df(k).name;
-                f_ToShow{j} = [sprintf('%03d', j) ' --> ' f_val{j}];
             end
         end
-        f_list.String = f_ToShow; f_list.Value = 1;
+        f_list.String = f_val; f_list.Value = 1;
         %---------------------
-        
-        fn = [folder '/' f_val{f_list.Value}];  % selected cdf data file name
-        [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
+
+        fn = f_val{f_list.Value};  % selected cdf data file name
+        if contains(fn,'.cdf.gz')
+            gunzip(fn) ;
+            fn = fn(1:end-3);
+            [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1);
+        else
+            [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1);
+        end
+        %[data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
         names = info.Variables(:, 1);  % list of all variables names
         text_f.String = [LoF_text int2str(length(names)) '.'];
         V_val = names; V_list.String = V_val; V_list.Value = 1;
+        N_of_Obs = length(data{strcmp(V_val, 'raw_datetime')});  % number of observations in file
         VE_list.String = V_val; VE_list.Value = 1;
         
         S_val = {info.Variables{V_list.Value, 1};num2str(info.Variables{V_list.Value, 2});...
@@ -454,33 +421,58 @@ f.Visible = 'on';
         
         VV_val = data{V_list.Value};
         
-        Get2Show();
+        if strcmp(S_val{3}, 'epoch16')
+            temp = T0 + seconds(VV_val(:, 1) + VV_val(:, 2)*1e-12);      % raw contains read epoch16 data from cdf
+            temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+            ToShow = char(temp);
+        else
+            if strcmp(S_val{3}, 'epoch')
+                temp = T0 + seconds(VV_val*1e-3);      % raw contains read epoch16 data from cdf
+                temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+                ToShow = char(temp);    
+            else
+                if strcmp(S_val{3}, 'char')
+                    ToShow = VV_val;
+                else
+                    ToShow = VV_val(:, 1);
+                end
+            end
+        end
         
         VV_list.String = ToShow; VV_list.Value = 1;
+        
+        cd(HomeDir)        
   end
 
 
   function D_list_Callback(source, eventdata)
-        
+        cd(TargetDir)        
         % List of files -----
-        folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{F_list.Value} '/' Y_val{Y_list.Value} '/' D_val{source.Value}]; 
-        df = dir(folder);     % list of all objects in current folder
-        f_val = {}; j = 0; f_ToShow = {};
+        folder = [F_val{F_list.Value} '/' Y_val{Y_list.Value} '/' D_val{source.Value}]; cd(folder)
+        df = dir;     % list of all objects in current folder
+        f_val = {}; j = 0;
         for k = 1:length(df)
             if df(k).isdir==0
                 j = j + 1;
                 f_val{j} = df(k).name;
-                f_ToShow{j} = [sprintf('%03d', j) ' --> ' f_val{j}];
             end
         end
-        f_list.String = f_ToShow; f_list.Value = 1;
+        f_list.String = f_val; f_list.Value = 1;
         %---------------------
-        
-        fn = [folder '/' f_val{f_list.Value}];  % selected cdf data file name
-        [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
+
+        fn = f_val{f_list.Value};  % selected cdf data file name
+        if contains(fn,'.cdf.gz')
+            gunzip(fn) ;
+            fn = fn(1:end-3);
+            [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1);
+        else
+            [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1);
+        end
+        %[data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
         names = info.Variables(:, 1);  % list of all variables names
         text_f.String = [LoF_text int2str(length(names)) '.'];
         V_val = names; V_list.String = V_val; V_list.Value = 1;
+        N_of_Obs = length(data{strcmp(V_val, 'raw_datetime')});  % number of observations in file
         VE_list.String = V_val; VE_list.Value = 1;
         
         S_val = {info.Variables{V_list.Value, 1};num2str(info.Variables{V_list.Value, 2});...
@@ -489,20 +481,46 @@ f.Visible = 'on';
         
         VV_val = data{V_list.Value};
         
-        Get2Show();
+        if strcmp(S_val{3}, 'epoch16')
+            temp = T0 + seconds(VV_val(:, 1) + VV_val(:, 2)*1e-12);      % raw contains read epoch16 data from cdf
+            temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+            ToShow = char(temp);
+        else
+            if strcmp(S_val{3}, 'epoch')
+                temp = T0 + seconds(VV_val*1e-3);      % raw contains read epoch16 data from cdf
+                temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+                ToShow = char(temp);    
+            else
+                if strcmp(S_val{3}, 'char')
+                    ToShow = VV_val;
+                else
+                    ToShow = VV_val(:, 1);
+                end
+            end
+        end
         
         VV_list.String = ToShow; VV_list.Value = 1;
+        
+        cd(HomeDir)        
   end
 
 
   function f_list_Callback(source, eventdata)
-
-        folder = [TargetDir '/' I_val{I_list.Value} '/cdf/' F_val{F_list.Value} '/' Y_val{Y_list.Value} '/' D_val{D_list.Value}]; 
-        fn = [folder '/' f_val{source.Value}];  % selected cdf data file name
-        [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
-        names = info.Variables(:, 1);  % list of all variables names
-        text_f.String = [LoF_text int2str(length(names)) '.'];
-        V_val = names; V_list.String = V_val; V_list.Value = 1;
+      cd(TargetDir)
+      folder = [F_val{F_list.Value} '/' Y_val{Y_list.Value} '/' D_val{D_list.Value}]; cd(folder)
+      fn = f_val{source.Value};  % selected cdf data file name
+      if contains(fn,'.cdf.gz')
+          gunzip(fn) ;
+          fn = fn(1:end-3);
+          [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1);
+      else
+          [data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1);
+      end
+      %[data, info] = spdfcdfread(fn, 'KeepEpochAsIs', 1); % read data and data info; this function closes the file itself
+      names = info.Variables(:, 1);  % list of all variables names
+      text_f.String = [LoF_text int2str(length(names)) '.'];
+      V_val = names; V_list.String = V_val; V_list.Value = 1;
+        N_of_Obs = length(data{strcmp(V_val, 'raw_datetime')});  % number of observations in file
         VE_list.String = V_val; VE_list.Value = 1;
         
         S_val = {info.Variables{V_list.Value, 1};num2str(info.Variables{V_list.Value, 2});...
@@ -511,21 +529,55 @@ f.Visible = 'on';
         
         VV_val = data{V_list.Value};
         
-        Get2Show();
+        if strcmp(S_val{3}, 'epoch16')
+            temp = T0 + seconds(VV_val(:, 1) + VV_val(:, 2)*1e-12);      % raw contains read epoch16 data from cdf
+            temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+            ToShow = char(temp);
+        else
+            if strcmp(S_val{3}, 'epoch')
+                temp = T0 + seconds(VV_val*1e-3);      % raw contains read epoch16 data from cdf
+                temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+                ToShow = char(temp);    
+            else
+                if strcmp(S_val{3}, 'char')
+                    ToShow = VV_val;
+                else
+                    ToShow = VV_val(:, 1);
+                end
+            end
+        end
         
         VV_list.String = ToShow; VV_list.Value = 1;
+        
+        cd(HomeDir)        
   end
 
   
   function V_list_Callback(source, eventdata)
-        S_val = {info.Variables{source.Value, 1}; num2str(info.Variables{source.Value, 2});...
+        S_val = {info.Variables{source.Value, 1};num2str(info.Variables{source.Value, 2});...
                  info.Variables{source.Value, 4}; num2str(info.Variables{source.Value, 9})};
         text_S.String = S_val; 
         
         VV_val = data{source.Value};
         
-        Get2Show();
-
+        if strcmp(S_val{3}, 'epoch16')
+            temp = T0 + seconds(VV_val(:, 1) + VV_val(:, 2)*1e-12);      % raw contains read epoch16 data from cdf
+            temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+            ToShow = char(temp);
+        else
+            if strcmp(S_val{3}, 'epoch')
+                temp = T0 + seconds(VV_val*1e-3);      % raw contains read epoch16 data from cdf
+                temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
+                ToShow = char(temp);    
+            else
+                if strcmp(S_val{3}, 'char')
+                    ToShow = VV_val;
+                else
+                    ToShow = VV_val(:, 1);
+                end
+            end
+        end
+        
         VV_list.String = ToShow; VV_list.Value = 1;      
   end
 
@@ -546,39 +598,6 @@ f.Visible = 'on';
         end
         
         export2wsdlg(Labels, VarNames, VarData, 'Export Selected Variables to Workspace');
-  end
-
-  function Get2Show();
-        NN = size(VV_val, 1);        % number of triggers
-        numers = [int2str([1:NN].') repmat('  -->  ', NN, 1)];
-        
-        if strcmp(S_val{3}, 'epoch16')
-            temp = T0 + seconds(VV_val(:, 1) + VV_val(:, 2)*1e-12);      % raw contains read epoch16 data from cdf
-            temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
-            ToShow = [numers char(temp)];
-        else
-            if strcmp(S_val{3}, 'epoch')
-                NN = length(VV_val);        % number of triggers
-                numers = [int2str([1:NN].') repmat('  -->  ', NN, 1)];
-                temp = T0 + seconds(VV_val*1e-3);      % raw contains read epoch16 data from cdf
-                temp.Format = 'yyyy-MMM-dd HH:mm:ss.SSSSSS';
-                ToShow = [numers char(temp)];    
-            else
-                if strcmp(S_val{3}, 'char')
-                    ToShow = [numers VV_val];
-                else
-                    ToShow = VV_val(:, 1);
-                end
-            end
-        end
-        
-        if strfind(S_val{3}, 'int')
-            ToShow = [numers int2str(ToShow)];
-        else
-            if strfind(S_val{3}, 'double')
-                ToShow = [numers num2str(ToShow)];
-            end
-        end
   end
 
 %--------------------------------------------------------------------------

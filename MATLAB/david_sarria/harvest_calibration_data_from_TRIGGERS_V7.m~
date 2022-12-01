@@ -76,13 +76,10 @@ for i_file = 1:nb_files % can be for or parfor
     else
         filename = files;
     end
-    
     try
         [mat_out_tmp] = spectra_from_triggers_v8(filename, WANTED_DATETIME, TIME_WINDOW_IN_MINUTES);
     catch ME
-        mat_out_temp = [];
-    end
-    
+        mat_out_temp = []
     if ~isempty(mat_out_tmp)
         mat_out = [mat_out ; mat_out_tmp];
         
