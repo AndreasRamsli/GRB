@@ -1,3 +1,4 @@
-setpl en
-
 data 1:1 FERMI_GRB211211A_3_n2_gr20.pha 1:2 FERMI_GRB211211A_3_b0_gr20.pha 2:3 HED_GRB211211A_3_gr20.pha
+
+ign bad
+ign 1: **-8. 400.-** 2: **-350. 10000.-**  3: **-400. 10000.-**
