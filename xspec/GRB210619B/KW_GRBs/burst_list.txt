@@ -1,0 +1,9 @@
+Name         KW_trig_time  KW_trig_time_sod  KW_sp_start  KW_sp_stop  Comment
+                      UTC                 s            s           s
+GRB181222B   20:11:34.563         72694.563            0       0.512    sp1_5
+        --             --                --        0.128       0.256    sp3_4
+GRB200716C   22:57:38.337         82658.337            0       0.256    sp1_4
+GRB210619B   23:59:28.157         86368.157            0       2.048   sp1_11
+        --             --                --        0.512       0.768      sp6
+
+KW_sp_start and KW_sp_stop are given relative to the trigger time
