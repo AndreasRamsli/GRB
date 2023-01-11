@@ -4,14 +4,16 @@ clc
 
 % YEAR MONTH DAY HOUR MINUTE SECOND
 WANTED_DATETIME = datetime(2021,6,19,23,59,24);
-TIME_WINDOW_IN_MINUTES = 3;
+TIME_WINDOW_IN_MINUTES = 5;
 
-cd /Home/siv30/wad005/master/GRB/MATLAB/david_sarria
+%cd /Home/siv30/wad005/master/GRB/MATLAB/david_sarria
 cd(fileparts(which(mfilename)));
 disp(pwd);
 addpath ./NASA_CDF_PATCH/
-HomeDir = '/Home/siv30/wad005/master/GRB/MATLAB/david_sarria';
-TargetDir = '/scratch/ASDC/net/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/MXGS/cdf/';
+%HomeDir = '/Home/siv30/wad005/master/GRB/MATLAB/david_sarria';
+HomeDir = '/Users/andreas/phys/master/GRB/MATLAB/david_sarria'
+%TargetDir = '/scratch/ASDC/net/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/MXGS/cdf/';
+TargetDir = '/Volumes/ift_asdc/bulktransfer2/ops/MXGS/cdf/'
 rootdir = TargetDir;
 
 my_year = year(WANTED_DATETIME);
@@ -22,11 +24,10 @@ my_doy = day(WANTED_DATETIME,'dayofyear');
 disp(['Processing DOY ' num2str(my_doy) ' ...'])
 out_data = get_trigger_accumulated_background_data(my_doy,my_year,rootdir, WANTED_DATETIME, TIME_WINDOW_IN_MINUTES);
 
-
 %checking if duplicates are removed
-disp(num2str(length(out_data)));
-out_data = unique(out_data,'rows');
-disp(num2str(length(out_data)));
+%disp(num2str(length(out_data)));
+%out_data = unique(out_data,'rows');
+%disp(num2str(length(out_data)));
 
 out_filename = [num2str(year(WANTED_DATETIME)) '_' num2str(month(WANTED_DATETIME)) '_' num2str(day(WANTED_DATETIME)) '_'...
     num2str(hour(WANTED_DATETIME)) '_' num2str(minute(WANTED_DATETIME)) '_' num2str(round(second(WANTED_DATETIME)))...
@@ -77,11 +78,10 @@ for i_file = 1:nb_files % can be for or parfor
         filename = files;
     end
     
-    try
+ %   try
         [mat_out_tmp] = spectra_from_triggers_v8(filename, WANTED_DATETIME, TIME_WINDOW_IN_MINUTES);
-    catch ME
-        mat_out_temp = [];
-    end
+%    catch ME
+
     
     if ~isempty(mat_out_tmp)
         mat_out = [mat_out ; mat_out_tmp];
