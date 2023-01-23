@@ -1,2 +1,0 @@
-use the zip function for iterating over the safety time criteria
-a for loop should only be executed if not enough time has passed to the next element.

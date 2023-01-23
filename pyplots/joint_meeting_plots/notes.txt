@@ -1,0 +1,15 @@
+
+Extract new background for GRB190305A. Use bkg up to ~  T0-0.05s
+
+New absorbation plot for problematic quadrant of theta,phi angles
+
+New computer generated polar plot
+
+Verify xcm files
+
+Prepare the GRB2007** for the meeting
+
+
+
+
+
