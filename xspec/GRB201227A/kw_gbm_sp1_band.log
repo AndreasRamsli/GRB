@@ -1,11 +1,11 @@
-#XSPEC version: 12.12.1
-#Build Date/Time: Tue Aug  9 11:26:32 2022
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
 #
 !XSPEC12>show all 
 #
-#XSPEC version: 12.12.1
+#XSPEC version: 12.13.0c
 #
-#Tue Oct 11 13:15:13 2022
+#Thu Feb  2 09:57:08 2023
 # Auto-saving is done after every command.
 # Fit statistic in use: Chi-Squared
 # Minimization technique: Levenberg-Marquardt
@@ -18,7 +18,7 @@
 # Photoionization Cross-Section Table:
 #    vern:  Verner, Ferland, Korista, and Yakovlev 1996
 # Cosmology in use: H0 = 70 q0 = 0 Lambda0 = 0.73
-# Model data directory: /Home/siv30/wad005/master/heasoft-6.30.1/x86_64-pc-linux-gnu-libc2.31/../spectral/manager/../modelData/
+# Model data directory: /Users/andreas/phys/master/GRB_local/heasoft-6.31.1/aarch64-apple-darwin22.2.0/../spectral/manager/../modelData/
 # Plot settings:
 #   Showing of individual additive components is OFF.
 #   Showing of background spectra is OFF.
@@ -50,7 +50,7 @@
 #   KW20201227_T54846_2.rmf associated with spectrum 2 source 1
 #      energies: 263 channels: 37
 # Distinct RMF files: 
-#     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_b0.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_n4.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_n8.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/KW20201227_T54846_1.rmf     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/KW20201227_T54846_2.rmf
+#     /Users/andreas/phys/master/GRB/xspec/GRB201227A/GRB201227A_b0.rsp     /Users/andreas/phys/master/GRB/xspec/GRB201227A/GRB201227A_n4.rsp     /Users/andreas/phys/master/GRB/xspec/GRB201227A/GRB201227A_n8.rsp     /Users/andreas/phys/master/GRB/xspec/GRB201227A/KW20201227_T54846_1.rmf     /Users/andreas/phys/master/GRB/xspec/GRB201227A/KW20201227_T54846_2.rmf
 #
 #5 files 5 spectra 
 #Spectrum 1  Spectral Data File: KW201227_1_gr20.pha
@@ -166,11 +166,11 @@
 #
 #   Using energies from responses.
 #
-#Fit statistic  : Chi-Squared                   13.81     using 16 bins.
-#                 Chi-Squared                    4.52     using 5 bins.
-#                 Chi-Squared                   26.27     using 25 bins.
-#                 Chi-Squared                   16.89     using 16 bins.
-#                 Chi-Squared                   24.74     using 24 bins.
+#Fit statistic  : Chi-Squared                   13.81     using 16 bins, spectrum 1, group 1.
+#                 Chi-Squared                    4.52     using 5 bins, spectrum 2, group 1.
+#                 Chi-Squared                   26.27     using 25 bins, spectrum 3, group 2.
+#                 Chi-Squared                   16.89     using 16 bins, spectrum 4, group 2.
+#                 Chi-Squared                   24.74     using 24 bins, spectrum 5, group 3.
 #Total fit statistic                            86.22     with 80 d.o.f.
 #
 #Test statistic : Chi-Squared                   86.22     using 86 bins.

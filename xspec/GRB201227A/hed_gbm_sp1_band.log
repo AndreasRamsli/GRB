@@ -1,11 +1,11 @@
-#XSPEC version: 12.12.1
-#Build Date/Time: Tue Aug  9 11:26:32 2022
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
 #
 !XSPEC12>show all 
 #
-#XSPEC version: 12.12.1
+#XSPEC version: 12.13.0c
 #
-#Tue Oct 11 13:15:33 2022
+#Thu Feb  2 09:57:36 2023
 # Auto-saving is done after every command.
 # Fit statistic in use: Chi-Squared
 # Minimization technique: Levenberg-Marquardt
@@ -18,7 +18,7 @@
 # Photoionization Cross-Section Table:
 #    vern:  Verner, Ferland, Korista, and Yakovlev 1996
 # Cosmology in use: H0 = 70 q0 = 0 Lambda0 = 0.73
-# Model data directory: /Home/siv30/wad005/master/heasoft-6.30.1/x86_64-pc-linux-gnu-libc2.31/../spectral/manager/../modelData/
+# Model data directory: /Users/andreas/phys/master/GRB_local/heasoft-6.31.1/aarch64-apple-darwin22.2.0/../spectral/manager/../modelData/
 # Plot settings:
 #   Showing of individual additive components is OFF.
 #   Showing of background spectra is OFF.
@@ -48,7 +48,7 @@
 #   HED_RMF_1.fits associated with spectrum 1 source 1
 #      energies: 40 channels: 18
 # Distinct RMF files: 
-#     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_b0.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_n4.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/GRB201227A_n8.rsp     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/HED_RMF_1.fits
+#     /Users/andreas/phys/master/GRB/xspec/GRB201227A/GRB201227A_b0.rsp     /Users/andreas/phys/master/GRB/xspec/GRB201227A/GRB201227A_n4.rsp     /Users/andreas/phys/master/GRB/xspec/GRB201227A/GRB201227A_n8.rsp     /Users/andreas/phys/master/GRB/xspec/GRB201227A/HED_RMF_1.fits
 #
 #4 files 4 spectra 
 #Spectrum 1  Spectral Data File: HED_PHA_1.fits
@@ -148,10 +148,10 @@
 #
 #   Using energies from responses.
 #
-#Fit statistic  : Chi-Squared                    2.50     using 8 bins.
-#                 Chi-Squared                   26.77     using 25 bins.
-#                 Chi-Squared                   16.27     using 16 bins.
-#                 Chi-Squared                   24.74     using 24 bins.
+#Fit statistic  : Chi-Squared                    2.50     using 8 bins, spectrum 1, group 1.
+#                 Chi-Squared                   26.77     using 25 bins, spectrum 2, group 2.
+#                 Chi-Squared                   16.27     using 16 bins, spectrum 3, group 3.
+#                 Chi-Squared                   24.74     using 24 bins, spectrum 4, group 3.
 #Total fit statistic                            70.28     with 67 d.o.f.
 #
 #Test statistic : Chi-Squared                   70.28     using 73 bins.
@@ -169,8 +169,8 @@
 #     6     -4.42622     -3.04642    (-0.883996,0.495807)
 #
 #***Warning: Number of trials exceeded before convergence.
-#Current trial values 999.974, 1000.04
-#and delta statistic 0.108423, 11.4142
+#Current trial values 999.934, 1000.03
+#and delta statistic 0.108046, 8.46944
 #
 #
 !XSPEC12>tclreadline::readline eofchar ""
@@ -178,7 +178,7 @@
 !XSPEC12>tclreadline::readline read {Continue error search in this direction? }
 #
 !XSPEC12>tclreadline::readline eofchar "puts {}; exit"
-#     7      899.411      999.982    (-76.2763,24.2949)
+#     7      899.411      999.983    (-76.2763,24.2955)
 #
 !XSPEC12>error 2.706 1, 19, 4-7
 # Parameter   Confidence Range (2.706)

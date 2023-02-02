@@ -1,11 +1,11 @@
-#XSPEC version: 12.12.1
-#Build Date/Time: Tue Aug  9 11:26:32 2022
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
 #
 !XSPEC12>show all 
 #
-#XSPEC version: 12.12.1
+#XSPEC version: 12.13.0c
 #
-#Tue Oct 11 13:15:19 2022
+#Thu Feb  2 09:57:14 2023
 # Auto-saving is done after every command.
 # Fit statistic in use: Chi-Squared
 # Minimization technique: Levenberg-Marquardt
@@ -18,7 +18,7 @@
 # Photoionization Cross-Section Table:
 #    vern:  Verner, Ferland, Korista, and Yakovlev 1996
 # Cosmology in use: H0 = 70 q0 = 0 Lambda0 = 0.73
-# Model data directory: /Home/siv30/wad005/master/heasoft-6.30.1/x86_64-pc-linux-gnu-libc2.31/../spectral/manager/../modelData/
+# Model data directory: /Users/andreas/phys/master/GRB_local/heasoft-6.31.1/aarch64-apple-darwin22.2.0/../spectral/manager/../modelData/
 # Plot settings:
 #   Showing of individual additive components is OFF.
 #   Showing of background spectra is OFF.
@@ -44,7 +44,7 @@
 #   KW20201227_T54846_2.rmf associated with spectrum 2 source 1
 #      energies: 263 channels: 37
 # Distinct RMF files: 
-#     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/KW20201227_T54846_1.rmf     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/KW20201227_T54846_2.rmf
+#     /Users/andreas/phys/master/GRB/xspec/GRB201227A/KW20201227_T54846_1.rmf     /Users/andreas/phys/master/GRB/xspec/GRB201227A/KW20201227_T54846_2.rmf
 #
 #2 files 2 spectra 
 #Spectrum 1  Spectral Data File: KW201227_1_gr20.pha
@@ -96,8 +96,8 @@
 #
 #   Using energies from responses.
 #
-#Fit statistic  : Chi-Squared                   13.34     using 16 bins.
-#                 Chi-Squared                    3.64     using 5 bins.
+#Fit statistic  : Chi-Squared                   13.34     using 16 bins, spectrum 1.
+#                 Chi-Squared                    3.64     using 5 bins, spectrum 2.
 #Total fit statistic                            16.98     with 17 d.o.f.
 #
 #Test statistic : Chi-Squared                   16.98     using 21 bins.
@@ -123,15 +123,15 @@
 # Warning: renorm - no variable model to allow  renormalization
 #                                   Parameters
 #Chi-Squared  |beta|/N    Lvl    3:lg10Flux       4:alpha        5:beta       6:epeak
-#16.8586      0.92381      -3      -4.21386     -0.132779      -3.36613       834.496
-#16.8471      1.15491      -4      -4.21470     -0.133185      -3.42843       835.517
-#16.847       0.0737617    -5      -4.21476     -0.133374      -3.43383       835.725
+#16.8587      0.925887     -3      -4.21386     -0.132780      -3.36595       834.495
+#16.8471      1.15874      -4      -4.21470     -0.133184      -3.42840       835.516
+#16.847       0.0741527    -5      -4.21476     -0.133372      -3.43382       835.724
 #==================================================
 # Variances and Principal Axes
 #                 3        4        5        6  
 # 4.2936E-04|  0.9865  -0.1563  -0.0480  -0.0005  
-# 8.9492E-03|  0.1568   0.9876   0.0071   0.0011  
-# 1.4640E+00|  0.0463  -0.0145   0.9988   0.0102  
+# 8.9493E-03|  0.1568   0.9876   0.0071   0.0011  
+# 1.4639E+00|  0.0463  -0.0145   0.9988   0.0102  
 # 1.6395E+04|  0.0002   0.0010   0.0102  -0.9999  
 #--------------------------------------------------
 #
@@ -150,29 +150,29 @@
 # par  comp
 #   1    1   cflux      Emin       keV      10.0000      frozen
 #   2    1   cflux      Emax       keV      1.00000E+04  frozen
-#   3    1   cflux      lg10Flux   cgs      -4.21476     +/-  6.50892E-02  
-#   4    2   ngrbep     alpha               -0.133374    +/-  0.159140     
-#   5    2   ngrbep     beta                -3.43383     +/-  1.77681      
-#   6    2   ngrbep     epeak      keV      835.725      +/-  128.038      
+#   3    1   cflux      lg10Flux   cgs      -4.21476     +/-  6.50890E-02  
+#   4    2   ngrbep     alpha               -0.133372    +/-  0.159141     
+#   5    2   ngrbep     beta                -3.43382     +/-  1.77675      
+#   6    2   ngrbep     epeak      keV      835.724      +/-  128.037      
 #   7    2   ngrbep     enorm      keV      100.000      frozen
 #   8    2   ngrbep     norm                1.00000      frozen
 #________________________________________________________________________
 #
 #
-#Fit statistic  : Chi-Squared                   13.11     using 16 bins.
-#                 Chi-Squared                    3.74     using 5 bins.
+#Fit statistic  : Chi-Squared                   13.11     using 16 bins, spectrum 1.
+#                 Chi-Squared                    3.74     using 5 bins, spectrum 2.
 #Total fit statistic                            16.85     with 17 d.o.f.
 #
 #Test statistic : Chi-Squared                   16.85     using 21 bins.
 # Null hypothesis probability of 4.65e-01 with 17 degrees of freedom
 #***Warning: New best fit found, fit parameters will be set to new values.
-#     3     -4.26149      -4.1533    (-0.0467296,0.0614618)
+#     3     -4.26149      -4.1533    (-0.0467286,0.0614626)
 #Apparent non-monotonicity in statistic space detected.
-#Current bracket values -0.133374, -0.292514
-#and delta stat 0, 1.35296
-#but latest trial -0.27019 gives 1.55167
+#Current bracket values -0.133367, -0.292509
+#and delta stat 0, 1.35286
+#but latest trial -0.27019 gives 1.55165
 #Suggest that you check this result using the steppar command.
-#     4    -0.212944     0.031022    (-0.0795701,0.164395)
+#     4    -0.212938     0.031022    (-0.0795706,0.164389)
 #
 #***Warning: Number of trials exceeded before bracketing of delta fit-stat.
 #Last attempt: -10, with delta statistic: 0.132882
@@ -186,13 +186,13 @@
 #
 #*** Parameter lower bound is INVALID.
 #
-#     5            0     -2.57048    (3.43384,0.863357)
+#     5            0     -2.57048    (3.43396,0.863478)
 #     6      714.602      953.798    (-121.123,118.073)
 #
 !XSPEC12>error 2.706 3-6
 # Parameter   Confidence Range (2.706)
-#     3     -4.27151     -4.11596    (-0.0567454,0.0987998)
-#     4    -0.345943     0.154654    (-0.21257,0.288028)
+#     3     -4.27151     -4.11596    (-0.0567449,0.0988007)
+#     4    -0.345943     0.154654    (-0.212576,0.288022)
 #
 #***Warning: Number of trials exceeded before bracketing of delta fit-stat.
 #Last attempt: -10, with delta statistic: 0.132881
@@ -206,47 +206,53 @@
 #
 #*** Parameter lower bound is INVALID.
 #
-#     5            0     -2.30543    (3.43384,1.1284)
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 4 is pegged at -8.68193 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+# Parameter 6 is pegged at 74.9952 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 4
+#***Warning: Zero alpha-matrix diagonal element for parameter 6
+# Parameter 4 is pegged at -8.68193 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+# Parameter 6 is pegged at 74.9952 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#     5            0     -2.30543    (3.43396,1.12852)
 #***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -9.05019 due to zero or negative pivot element, likely
+# Parameter 5 is pegged at -9.0592 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -9.05019 due to zero or negative pivot element, likely
+# Parameter 5 is pegged at -9.0592 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -4.42746 due to zero or negative pivot element, likely
+# Parameter 5 is pegged at -4.4489 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -4.42746 due to zero or negative pivot element, likely
+# Parameter 5 is pegged at -4.4489 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -9.13113 due to zero or negative pivot element, likely
+# Parameter 5 is pegged at -9.19609 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -9.13113 due to zero or negative pivot element, likely
+# Parameter 5 is pegged at -9.19609 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -8.87534 due to zero or negative pivot element, likely
+# Parameter 5 is pegged at -8.86598 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -8.87534 due to zero or negative pivot element, likely
+# Parameter 5 is pegged at -8.86598 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -9.29822 due to zero or negative pivot element, likely
+# Parameter 5 is pegged at -9.11208 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -9.29822 due to zero or negative pivot element, likely
-# caused by the fit being insensitive to the parameter.
-#***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -9.33245 due to zero or negative pivot element, likely
-# caused by the fit being insensitive to the parameter.
-#***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -9.33245 due to zero or negative pivot element, likely
+# Parameter 5 is pegged at -9.11208 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #
 #***Warning: Number of trials exceeded before convergence.
-#Current trial values 999.519, 1000.04
-#and delta statistic 2.18064, 13.1192
+#Current trial values 999.803, 1000.06
+#and delta statistic 2.18927, 20.2658
 #
 #
 !XSPEC12>tclreadline::readline eofchar ""
@@ -254,7 +260,7 @@
 !XSPEC12>tclreadline::readline read {Continue error search in this direction? }
 #
 !XSPEC12>tclreadline::readline eofchar "puts {}; exit"
-#     6      637.226      999.629    (-198.499,163.904)
+#     6      637.226      999.933    (-198.499,164.208)
 #
 !XSPEC12>log none
 #

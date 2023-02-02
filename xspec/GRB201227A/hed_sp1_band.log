@@ -1,11 +1,11 @@
-#XSPEC version: 12.12.1
-#Build Date/Time: Tue Aug  9 11:26:32 2022
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
 #
 !XSPEC12>show all 
 #
-#XSPEC version: 12.12.1
+#XSPEC version: 12.13.0c
 #
-#Tue Oct 11 13:15:23 2022
+#Thu Feb  2 09:57:19 2023
 # Auto-saving is done after every command.
 # Fit statistic in use: Chi-Squared
 # Minimization technique: Levenberg-Marquardt
@@ -18,7 +18,7 @@
 # Photoionization Cross-Section Table:
 #    vern:  Verner, Ferland, Korista, and Yakovlev 1996
 # Cosmology in use: H0 = 70 q0 = 0 Lambda0 = 0.73
-# Model data directory: /Home/siv30/wad005/master/heasoft-6.30.1/x86_64-pc-linux-gnu-libc2.31/../spectral/manager/../modelData/
+# Model data directory: /Users/andreas/phys/master/GRB_local/heasoft-6.31.1/aarch64-apple-darwin22.2.0/../spectral/manager/../modelData/
 # Plot settings:
 #   Showing of individual additive components is OFF.
 #   Showing of background spectra is OFF.
@@ -42,7 +42,7 @@
 #   HED_RMF_1.fits associated with spectrum 1 source 1
 #      energies: 40 channels: 18
 # Distinct RMF files: 
-#     /Home/siv30/wad005/master/GRB/xspec/GRB201227A/HED_RMF_1.fits
+#     /Users/andreas/phys/master/GRB/xspec/GRB201227A/HED_RMF_1.fits
 #
 #1 file 1 spectrum 
 #Spectrum 1  Spectral Data File: HED_PHA_1.fits
@@ -117,23 +117,17 @@
 # Parameter 4 is pegged at -2.90844 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 4
-# Parameter 4 is pegged at -3.55907 due to zero or negative pivot element, likely
+# Parameter 4 is pegged at -2.92927 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 4
-# Parameter 4 is pegged at -3.55907 due to zero or negative pivot element, likely
-# caused by the fit being insensitive to the parameter.
-#***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -5.41983 due to zero or negative pivot element, likely
-# caused by the fit being insensitive to the parameter.
-#***Warning: Zero alpha-matrix diagonal element for parameter 5
-# Parameter 5 is pegged at -5.41983 due to zero or negative pivot element, likely
+# Parameter 4 is pegged at -2.92927 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #Apparent non-monotonicity in statistic space detected.
-#Current bracket values 979.058, 1014.58
-#and delta stat 0.417512, 7.5207
-#but latest trial 1002.29 gives 57.2864
+#Current bracket values 969.554, 1044.21
+#and delta stat 0.289046, 7.52072
+#but latest trial 1036.75 gives 7.52072
 #Suggest that you check this result using the steppar command.
-#     6      714.754      996.816    (-191.14,90.9222)
+#     6      714.754      9173.15    (-191.14,8267.25)
 #
 !XSPEC12>error 2.706 3-6
 # Parameter   Confidence Range (2.706)
@@ -258,7 +252,7 @@
 #
 #*** Parameter upper bound is INVALID.
 #
-#     4     -1.91655            0    (-2.91389,-0.997341)
+#     4     -1.91914            0    (-2.91649,-0.997341)
 #
 #***Warning: Number of trials exceeded before bracketing of delta fit-stat.
 #Last attempt: -10, with delta statistic: 1.42962
@@ -280,15 +274,15 @@
 # Parameter 4 is pegged at -8.27339 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 4
-# Parameter 4 is pegged at -8.23203 due to zero or negative pivot element, likely
+# Parameter 4 is pegged at -8.24791 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 4
-# Parameter 4 is pegged at -8.23203 due to zero or negative pivot element, likely
+# Parameter 4 is pegged at -8.24791 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #Apparent non-monotonicity in statistic space detected.
-#Current bracket values 486.241, 462.805
-#and delta stat 1.95464, 7.5316
-#but latest trial 465.665 gives 7.5316
+#Current bracket values 476.191, 462.805
+#and delta stat 1.98381, 7.5316
+#but latest trial 464.598 gives 7.5316
 #Suggest that you check this result using the steppar command.
 #***Warning: Zero alpha-matrix diagonal element for parameter 4
 # Parameter 4 is pegged at -2.99952 due to zero or negative pivot element, likely
@@ -297,23 +291,17 @@
 # Parameter 4 is pegged at -2.99952 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 4
-# Parameter 4 is pegged at -3.17341 due to zero or negative pivot element, likely
+# Parameter 4 is pegged at -3.07242 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #***Warning: Zero alpha-matrix diagonal element for parameter 4
-# Parameter 4 is pegged at -3.17341 due to zero or negative pivot element, likely
-# caused by the fit being insensitive to the parameter.
-#***Warning: Zero alpha-matrix diagonal element for parameter 4
-# Parameter 4 is pegged at -8.60385 due to zero or negative pivot element, likely
-# caused by the fit being insensitive to the parameter.
-#***Warning: Zero alpha-matrix diagonal element for parameter 4
-# Parameter 4 is pegged at -8.60385 due to zero or negative pivot element, likely
+# Parameter 4 is pegged at -3.07242 due to zero or negative pivot element, likely
 # caused by the fit being insensitive to the parameter.
 #Apparent non-monotonicity in statistic space detected.
-#Current bracket values 937.668, 1056.47
-#and delta stat 0.0874428, 7.5316
-#but latest trial 1001.25 gives 7.5316
+#Current bracket values 901.564, 1120.94
+#and delta stat 0, 7.5316
+#but latest trial 1081.3 gives 7.5316
 #Suggest that you check this result using the steppar command.
-#     6      474.523       997.07    (-427.041,95.5063)
+#     6      469.498      9492.18    (-432.066,8590.62)
 #
 !XSPEC12>log none
 #
