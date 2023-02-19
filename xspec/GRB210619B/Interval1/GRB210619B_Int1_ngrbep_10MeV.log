@@ -1,0 +1,47 @@
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
+#
+!XSPEC12> show p
+#
+#Parameters defined:
+#========================================================================
+#Model constant<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   ngrbep     alpha               -0.510162    +/-  5.91176E-02  
+#   3    2   ngrbep     beta                -2.16523     +/-  3.04731E-02  
+#   4    2   ngrbep     epeak      keV      580.900      +/-  31.5502      
+#   5    2   ngrbep     enorm      keV      100.000      frozen
+#   6    2   ngrbep     norm                0.721704     +/-  2.29341E-02  
+#                           Data group: 2
+#   7    1   constant   factor              1.18356      +/-  2.82340E-02  
+#   8    2   ngrbep     alpha               -0.510162    = p2
+#   9    2   ngrbep     beta                -2.16523     = p3
+#  10    2   ngrbep     epeak      keV      580.900      = p4
+#  11    2   ngrbep     enorm      keV      100.000      = p5
+#  12    2   ngrbep     norm                0.721704     = p6
+#                           Data group: 3
+#  13    1   constant   factor              0.922371     +/-  3.50532E-02  
+#  14    2   ngrbep     alpha               -0.510162    = p2
+#  15    2   ngrbep     beta                -2.16523     = p3
+#  16    2   ngrbep     epeak      keV      580.900      = p4
+#  17    2   ngrbep     enorm      keV      100.000      = p5
+#  18    2   ngrbep     norm                0.721704     = p6
+#________________________________________________________________________
+#
+#
+!XSPEC12> err 2-4
+# Parameter   Confidence Range (2.706)
+#     2     -0.61171    -0.396142    (-0.101405,0.114163)
+#     3     -2.22006     -2.11636    (-0.0547794,0.0489211)
+#     4      524.569      644.525    (-56.4249,63.5312)
+#
+!XSPEC12> err 7,13
+# Parameter   Confidence Range (2.706)
+#     7      1.13799      1.23143    (-0.0455465,0.0478941)
+#    13     0.865114     0.992702    (-0.0572011,0.0703864)
+#
+!XSPEC12> log none
+#

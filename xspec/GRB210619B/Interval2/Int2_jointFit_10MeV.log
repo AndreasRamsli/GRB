@@ -1,0 +1,47 @@
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
+#
+!XSPEC12> show p
+#
+#Parameters defined:
+#========================================================================
+#Model constant<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   ngrbep     alpha               -0.732925    +/-  2.08634E-02  
+#   3    2   ngrbep     beta                -2.21694     +/-  1.43983E-02  
+#   4    2   ngrbep     epeak      keV      542.602      +/-  11.2229      
+#   5    2   ngrbep     enorm      keV      100.000      frozen
+#   6    2   ngrbep     norm                0.637571     +/-  7.63606E-03  
+#                           Data group: 2
+#   7    1   constant   factor              1.12526      +/-  1.06269E-02  
+#   8    2   ngrbep     alpha               -0.732925    = p2
+#   9    2   ngrbep     beta                -2.21694     = p3
+#  10    2   ngrbep     epeak      keV      542.602      = p4
+#  11    2   ngrbep     enorm      keV      100.000      = p5
+#  12    2   ngrbep     norm                0.637571     = p6
+#                           Data group: 3
+#  13    1   constant   factor              0.847605     +/-  1.88574E-02  
+#  14    2   ngrbep     alpha               -0.732925    = p2
+#  15    2   ngrbep     beta                -2.21694     = p3
+#  16    2   ngrbep     epeak      keV      542.602      = p4
+#  17    2   ngrbep     enorm      keV      100.000      = p5
+#  18    2   ngrbep     norm                0.637571     = p6
+#________________________________________________________________________
+#
+#
+!XSPEC12> err 2-4
+# Parameter   Confidence Range (2.706)
+#     2    -0.770586    -0.685513    (-0.0376608,0.0474125)
+#     3     -2.24385     -2.18895    (-0.0269111,0.0279945)
+#     4      514.716      566.318    (-27.8857,23.7165)
+#
+!XSPEC12> err 7,13
+# Parameter   Confidence Range (2.706)
+#     7      1.10803      1.14331    (-0.0172299,0.0180472)
+#    13     0.820913     0.880115    (-0.0266919,0.0325104)
+#
+!XSPEC12> log none
+#

@@ -1,0 +1,68 @@
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha        3:beta       4:epeak        6:norm      7:factor
+#60.9241      0.00423656   -3    -0.0772772      -4.04835       412.020       2.48699      0.892374
+#============================================================
+# Variances and Principal Axes
+#                 2        3        4        6        7  
+# 2.9723E-04| -0.2730  -0.0350  -0.0057  -0.3545  -0.8936  
+# 2.1456E-03|  0.8648  -0.0288  -0.0016  -0.4969  -0.0660  
+# 3.6118E-03| -0.4208   0.0110  -0.0057  -0.7919   0.4423  
+# 4.4417E-02|  0.0200   0.9988   0.0121  -0.0181  -0.0382  
+# 1.3251E+02|  0.0028   0.0123  -0.9999   0.0071   0.0022  
+#------------------------------------------------------------
+#
+#============================================================
+#  Covariance Matrix
+#        1           2           3           4           5   
+#   3.309e-03   5.342e-03  -3.684e-01   2.917e-03   6.100e-05
+#   5.342e-03   6.427e-02  -1.625e+00   1.078e-02   1.945e-03
+#  -3.684e-01  -1.625e+00   1.325e+02  -9.433e-01  -2.939e-01
+#   2.917e-03   1.078e-02  -9.433e-01   9.563e-03   1.023e-03
+#   6.100e-05   1.945e-03  -2.939e-01   1.023e-03   1.670e-03
+#------------------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   ngrbep     alpha               -7.72772E-02 +/-  5.75223E-02  
+#   3    2   ngrbep     beta                -4.04835     +/-  0.253523     
+#   4    2   ngrbep     epeak      keV      412.020      +/-  11.5099      
+#   5    2   ngrbep     enorm      keV      100.000      frozen
+#   6    2   ngrbep     norm                2.48699      +/-  9.77924E-02  
+#                           Data group: 2
+#   7    1   constant   factor              0.892374     +/-  4.08654E-02  
+#   8    2   ngrbep     alpha               -7.72772E-02 = p2
+#   9    2   ngrbep     beta                -4.04835     = p3
+#  10    2   ngrbep     epeak      keV      412.020      = p4
+#  11    2   ngrbep     enorm      keV      100.000      = p5
+#  12    2   ngrbep     norm                2.48699      = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   44.72     using 44 bins, spectrum 1, group 1.
+#                 Chi-Squared                    8.39     using 10 bins, spectrum 2, group 1.
+#                 Chi-Squared                    7.81     using 11 bins, spectrum 3, group 2.
+#Total fit statistic                            60.92     with 60 d.o.f.
+#
+#Test statistic : Chi-Squared                   60.92     using 65 bins.
+# Null hypothesis probability of 4.42e-01 with 60 degrees of freedom
+#
+!XSPEC12> err 2-4
+# Parameter   Confidence Range (2.706)
+#     2    -0.167912     0.025205    (-0.0906436,0.102473)
+#     3     -4.62257     -3.66415    (-0.574241,0.384175)
+#     4      392.074      431.393    (-19.9436,19.3755)
+#
+!XSPEC12> err 7
+# Parameter   Confidence Range (2.706)
+#     7      0.82726     0.977951    (-0.0651199,0.0855708)
+#
+!XSPEC12> log none
+#
