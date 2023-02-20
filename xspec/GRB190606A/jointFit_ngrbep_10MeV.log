@@ -1,0 +1,78 @@
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
+#
+!XSPEC12> fit 1000
+# renorm: no renormalization necessary
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha        3:beta       4:epeak        6:norm      7:factor     13:factor
+#58.1295      0.0647236     6     -0.924341      -1.78962       993.938      0.300204       1.02360       1.17874
+#======================================================================
+# Variances and Principal Axes
+#                 2        3        4        6        7       13  
+# 6.4191E-05|  0.1633   0.0892   0.0001   0.9684   0.1632   0.0299  
+# 1.1871E-03|  0.8063   0.4967   0.0004  -0.1533  -0.2041   0.1949  
+# 3.1316E-03|  0.3994  -0.2686   0.0000  -0.1741   0.8246  -0.2413  
+# 4.8326E-03| -0.4044   0.7705  -0.0000  -0.0856   0.4671   0.1312  
+# 2.0672E-02| -0.0135  -0.2820   0.0002  -0.0317   0.1834   0.9411  
+# 5.5381E+04|  0.0003   0.0001  -1.0000   0.0001   0.0000   0.0003  
+#----------------------------------------------------------------------
+#
+#========================================================================
+#  Covariance Matrix
+#        1           2           3           4           5           6   
+#   8.412e-03   2.737e-04  -1.875e+01   1.034e-03  -1.201e-04   4.182e-03
+#   2.737e-04   5.416e-03  -4.610e+00   2.257e-04  -1.405e-04  -3.495e-03
+#  -1.875e+01  -4.610e+00   5.538e+04  -3.581e+00  -1.845e-02  -1.422e+01
+#   1.034e-03   2.257e-04  -3.581e+00   4.707e-04  -7.144e-04   3.466e-04
+#  -1.201e-04  -1.405e-04  -1.845e-02  -7.144e-04   3.930e-03   3.198e-03
+#   4.182e-03  -3.495e-03  -1.422e+01   3.466e-04   3.198e-03   2.227e-02
+#------------------------------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   ngrbep     alpha               -0.924341    +/-  9.17188E-02  
+#   3    2   ngrbep     beta                -1.78962     +/-  7.35916E-02  
+#   4    2   ngrbep     epeak      keV      993.938      +/-  235.333      
+#   5    2   ngrbep     enorm      keV      100.000      frozen
+#   6    2   ngrbep     norm                0.300204     +/-  2.16964E-02  
+#                           Data group: 2
+#   7    1   constant   factor              1.02360      +/-  6.26882E-02  
+#   8    2   ngrbep     alpha               -0.924341    = p2
+#   9    2   ngrbep     beta                -1.78962     = p3
+#  10    2   ngrbep     epeak      keV      993.938      = p4
+#  11    2   ngrbep     enorm      keV      100.000      = p5
+#  12    2   ngrbep     norm                0.300204     = p6
+#                           Data group: 3
+#  13    1   constant   factor              1.17874      +/-  0.149242     
+#  14    2   ngrbep     alpha               -0.924341    = p2
+#  15    2   ngrbep     beta                -1.78962     = p3
+#  16    2   ngrbep     epeak      keV      993.938      = p4
+#  17    2   ngrbep     enorm      keV      100.000      = p5
+#  18    2   ngrbep     norm                0.300204     = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   14.02     using 18 bins, spectrum 1, group 1.
+#                 Chi-Squared                    9.02     using 5 bins, spectrum 2, group 1.
+#                 Chi-Squared                   10.74     using 23 bins, spectrum 3, group 2.
+#                 Chi-Squared                   16.31     using 17 bins, spectrum 4, group 2.
+#                 Chi-Squared                    8.05     using 9 bins, spectrum 5, group 3.
+#Total fit statistic                            58.13     with 66 d.o.f.
+#
+#Test statistic : Chi-Squared                   58.13     using 72 bins.
+# Null hypothesis probability of 7.44e-01 with 66 degrees of freedom
+#
+!XSPEC12> err 2-4,7,13
+# Parameter   Confidence Range (1)
+#     2    -0.962881    -0.806155    (-0.0385401,0.118186)
+#     3     -1.84954     -1.70429    (-0.0599174,0.0853328)
+#     4      734.524      1509.42    (-259.414,515.481)
+#     7     0.962802      1.08542    (-0.0608005,0.0618154)
+#    13      1.06496      1.32899    (-0.11378,0.150254)
+#
+!XSPEC12> log none
+#

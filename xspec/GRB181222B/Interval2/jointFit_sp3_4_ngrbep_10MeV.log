@@ -2,29 +2,30 @@
 #Build Date/Time: Thu Jan 12 14:41:02 2023
 #
 !XSPEC12> fit 1000
+# renorm: no renormalization necessary
 #                                   Parameters
 #Chi-Squared  |beta|/N    Lvl       2:alpha        3:beta       4:epeak        6:norm      7:factor     13:factor
-#197.452      0.0205805     0     -0.118324      -4.14956       429.783       2.36773       1.11658      0.849607
+#197.932      0.0127742     5     -0.118333      -4.14227       429.287       2.36314       1.12016      0.853687
 #======================================================================
 # Variances and Principal Axes
 #                 2        3        4        6        7       13  
-# 1.1899E-04| -0.0733   0.0090   0.0031   0.4656   0.8781   0.0817  
-# 2.4623E-04| -0.6037  -0.0227  -0.0046  -0.2229   0.1381  -0.7525  
-# 4.9153E-04|  0.7936  -0.0143  -0.0001  -0.1459   0.1956  -0.5572  
-# 3.4832E-03|  0.0181   0.0074   0.0047   0.8438  -0.4142  -0.3407  
-# 3.5646E-02|  0.0019  -0.9995  -0.0151   0.0177  -0.0011   0.0233  
-# 4.8424E+01|  0.0026   0.0152  -0.9999   0.0062   0.0001   0.0018  
+# 1.1943E-04|  0.0740  -0.0092  -0.0031  -0.4684  -0.8765  -0.0821  
+# 2.4695E-04| -0.6117  -0.0229  -0.0047  -0.2255   0.1389  -0.7451  
+# 4.9131E-04|  0.7875  -0.0147  -0.0001  -0.1432   0.1961  -0.5662  
+# 3.3356E-03|  0.0112   0.0067   0.0048   0.8420  -0.4170  -0.3420  
+# 3.5054E-02| -0.0019   0.9995   0.0149  -0.0173   0.0008  -0.0239  
+# 4.8044E+01|  0.0026   0.0151  -0.9999   0.0064   0.0001   0.0018  
 #----------------------------------------------------------------------
 #
 #========================================================================
 #  Covariance Matrix
 #        1           2           3           4           5           6   
-#   7.175e-04   1.815e-03  -1.237e-01   7.930e-04   3.953e-05   1.023e-04
-#   1.815e-03   4.683e-02  -7.365e-01   3.960e-03   1.308e-04   5.312e-04
-#  -1.237e-01  -7.365e-01   4.841e+01  -2.999e-01  -6.878e-03  -8.938e-02
-#   7.930e-04   3.960e-03  -2.999e-01   4.397e-03  -1.148e-03  -3.473e-04
-#   3.953e-05   1.308e-04  -6.878e-03  -1.148e-03   7.139e-04   4.328e-04
-#   1.023e-04   5.312e-04  -8.938e-02  -3.473e-04   4.328e-04   8.815e-04
+#   7.192e-04   1.804e-03  -1.242e-01   7.957e-04   4.023e-05   1.043e-04
+#   1.804e-03   4.594e-02  -7.237e-01   4.017e-03   6.822e-05   4.622e-04
+#  -1.242e-01  -7.237e-01   4.803e+01  -3.051e-01  -3.364e-03  -8.620e-02
+#   7.957e-04   4.017e-03  -3.051e-01   4.362e-03  -1.123e-03  -3.126e-04
+#   4.023e-05   6.822e-05  -3.364e-03  -1.123e-03   6.958e-04   4.095e-04
+#   1.043e-04   4.622e-04  -8.620e-02  -3.126e-04   4.095e-04   8.602e-04
 #------------------------------------------------------------------------
 #
 #========================================================================
@@ -33,50 +34,50 @@
 # par  comp
 #                           Data group: 1
 #   1    1   constant   factor              1.00000      frozen
-#   2    2   ngrbep     alpha               -0.118324    +/-  2.67861E-02  
-#   3    2   ngrbep     beta                -4.14956     +/-  0.216398     
-#   4    2   ngrbep     epeak      keV      429.783      +/-  6.95776      
+#   2    2   ngrbep     alpha               -0.118333    +/-  2.68184E-02  
+#   3    2   ngrbep     beta                -4.14227     +/-  0.214328     
+#   4    2   ngrbep     epeak      keV      429.287      +/-  6.93040      
 #   5    2   ngrbep     enorm      keV      100.000      frozen
-#   6    2   ngrbep     norm                2.36773      +/-  6.63127E-02  
+#   6    2   ngrbep     norm                2.36314      +/-  6.60465E-02  
 #                           Data group: 2
-#   7    1   constant   factor              1.11658      +/-  2.67196E-02  
-#   8    2   ngrbep     alpha               -0.118324    = p2
-#   9    2   ngrbep     beta                -4.14956     = p3
-#  10    2   ngrbep     epeak      keV      429.783      = p4
+#   7    1   constant   factor              1.12016      +/-  2.63780E-02  
+#   8    2   ngrbep     alpha               -0.118333    = p2
+#   9    2   ngrbep     beta                -4.14227     = p3
+#  10    2   ngrbep     epeak      keV      429.287      = p4
 #  11    2   ngrbep     enorm      keV      100.000      = p5
-#  12    2   ngrbep     norm                2.36773      = p6
+#  12    2   ngrbep     norm                2.36314      = p6
 #                           Data group: 3
-#  13    1   constant   factor              0.849607     +/-  2.96895E-02  
-#  14    2   ngrbep     alpha               -0.118324    = p2
-#  15    2   ngrbep     beta                -4.14956     = p3
-#  16    2   ngrbep     epeak      keV      429.783      = p4
+#  13    1   constant   factor              0.853687     +/-  2.93295E-02  
+#  14    2   ngrbep     alpha               -0.118333    = p2
+#  15    2   ngrbep     beta                -4.14227     = p3
+#  16    2   ngrbep     epeak      keV      429.287      = p4
 #  17    2   ngrbep     enorm      keV      100.000      = p5
-#  18    2   ngrbep     norm                2.36773      = p6
+#  18    2   ngrbep     norm                2.36314      = p6
 #________________________________________________________________________
 #
 #
-#Fit statistic  : Chi-Squared                   46.40     using 44 bins, spectrum 1, group 1.
-#                 Chi-Squared                    5.49     using 10 bins, spectrum 2, group 1.
-#                 Chi-Squared                  120.69     using 96 bins, spectrum 3, group 2.
-#                 Chi-Squared                   11.88     using 23 bins, spectrum 4, group 2.
-#                 Chi-Squared                   12.99     using 14 bins, spectrum 5, group 3.
-#Total fit statistic                           197.45     with 181 d.o.f.
+#Fit statistic  : Chi-Squared                   46.27     using 44 bins, spectrum 1, group 1.
+#                 Chi-Squared                    6.05     using 11 bins, spectrum 2, group 1.
+#                 Chi-Squared                  120.68     using 96 bins, spectrum 3, group 2.
+#                 Chi-Squared                   12.02     using 23 bins, spectrum 4, group 2.
+#                 Chi-Squared                   12.91     using 13 bins, spectrum 5, group 3.
+#Total fit statistic                           197.93     with 181 d.o.f.
 #
-#Test statistic : Chi-Squared                  197.45     using 187 bins.
-# Null hypothesis probability of 1.91e-01 with 181 degrees of freedom
+#Test statistic : Chi-Squared                  197.93     using 187 bins.
+# Null hypothesis probability of 1.84e-01 with 181 degrees of freedom
 #
 !XSPEC12> err 2-4,7,13
 # Parameter   Confidence Range (2.706)
-#     2    -0.160691   -0.0734324    (-0.0423673,0.0448915)
+#     2    -0.160884   -0.0734572    (-0.0425508,0.044876)
 #Apparent non-monotonicity in statistic space detected.
-#Current bracket values -4.49553, -4.4986
-#and delta stat 2.34051, 3.0022
-#but latest trial -4.497 gives 2.28611
+#Current bracket values -4.50019, -4.50308
+#and delta stat 2.48312, 3.10355
+#but latest trial -4.50158 gives 2.44266
 #Suggest that you check this result using the steppar command.
-#     3     -4.49707     -3.85524    (-0.347534,0.29429)
-#     4      418.394       440.94    (-11.3887,11.1576)
-#     7      1.07404      1.16196    (-0.0425422,0.0453751)
-#    13     0.802311     0.900454    (-0.0472953,0.0508473)
+#     3     -4.50163     -3.85007    (-0.359361,0.292196)
+#     4      417.968       440.48    (-11.3181,11.1932)
+#     7      1.07807      1.16489    (-0.0420844,0.0447327)
+#    13     0.806832     0.903772    (-0.0468549,0.0500847)
 #
 !XSPEC12> log none
 #
