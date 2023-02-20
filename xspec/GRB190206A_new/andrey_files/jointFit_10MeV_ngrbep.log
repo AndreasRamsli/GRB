@@ -1,0 +1,80 @@
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
+#
+!XSPEC12> fit 1000
+# renorm: no renormalization necessary
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha        3:beta       4:epeak        6:norm      7:factor
+#55.5965      0.56293       8     -0.317550      -3.39250       1083.00      0.587327       2.71453
+#============================================================
+# Variances and Principal Axes
+#                 2        3        4        6        7  
+# 1.3732E-04|  0.5415   0.0019   0.0007   0.8330   0.1133  
+# 3.3430E-03| -0.8015   0.0027  -0.0010   0.5522  -0.2293  
+# 2.9528E-02| -0.2525  -0.0987   0.0021   0.0335   0.9620  
+# 4.5756E-02|  0.0239  -0.9951   0.0005  -0.0002  -0.0958  
+# 1.6522E+03| -0.0007   0.0007   1.0000  -0.0001  -0.0022  
+#------------------------------------------------------------
+#
+#============================================================
+#  Covariance Matrix
+#        1           2           3           4           5   
+#   4.873e-03  -1.128e-03  -1.133e+00  -1.499e-03  -4.120e-03
+#  -1.128e-03   4.636e-02   1.122e+00  -2.488e-04  -9.521e-04
+#  -1.133e+00   1.122e+00   1.652e+03  -2.466e-01  -3.695e+00
+#  -1.499e-03  -2.488e-04  -2.466e-01   1.185e-03   1.094e-03
+#  -4.120e-03  -9.521e-04  -3.695e+00   1.094e-03   3.619e-02
+#------------------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   ngrbep     alpha               -0.317550    +/-  6.98089E-02  
+#   3    2   ngrbep     beta                -3.39250     +/-  0.215313     
+#   4    2   ngrbep     epeak      keV      1083.00      +/-  40.6471      
+#   5    2   ngrbep     enorm      keV      100.000      frozen
+#   6    2   ngrbep     norm                0.587327     +/-  3.44184E-02  
+#                           Data group: 2
+#   7    1   constant   factor              2.71453      +/-  0.190225     
+#   8    2   ngrbep     alpha               -0.317550    = p2
+#   9    2   ngrbep     beta                -3.39250     = p3
+#  10    2   ngrbep     epeak      keV      1083.00      = p4
+#  11    2   ngrbep     enorm      keV      100.000      = p5
+#  12    2   ngrbep     norm                0.587327     = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   25.27     using 20 bins, spectrum 1, group 1.
+#                 Chi-Squared                   15.56     using 11 bins, spectrum 2, group 1.
+#                 Chi-Squared                   14.76     using 11 bins, spectrum 3, group 2.
+#Total fit statistic                            55.60     with 37 d.o.f.
+#
+#Test statistic : Chi-Squared                   55.60     using 42 bins.
+# Null hypothesis probability of 2.54e-02 with 37 degrees of freedom
+#
+!XSPEC12> err 2-4,7
+# Parameter   Confidence Range (2.706)
+#     2    -0.402723    -0.229847    (-0.0851731,0.0877035)
+#     3     -3.93654     -3.09328    (-0.544046,0.299222)
+#Apparent non-monotonicity in statistic space detected.
+#Current bracket values 1000.01, 961.506
+#and delta stat 0, 2.84293
+#but latest trial 964.17 gives 2.84641
+#Suggest that you check this result using the steppar command.
+#***Warning: Zero alpha-matrix diagonal element for parameter 3
+# Parameter 3 is pegged at -9.341 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 3
+# Parameter 3 is pegged at -9.341 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 3
+# Parameter 3 is pegged at -9.37167 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#     4       980.76      1221.33    (-102.24,138.328)
+#     7      2.48449      2.94375    (-0.230034,0.22922)
+#
+!XSPEC12> log none
+#
