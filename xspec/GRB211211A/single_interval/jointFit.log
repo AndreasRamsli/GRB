@@ -1,0 +1,64 @@
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
+#
+!XSPEC12> fit 10000
+# Warning: renorm - no variable model to allow  renormalization
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha        3:beta       4:epeak      7:factor
+#193.987      0.609556      8      -1.15579      -2.67500       1368.16       1.15026
+#==================================================
+# Variances and Principal Axes
+#                 2        3        4        7  
+# 3.6779E-05|  0.9629   0.0481   0.0003   0.2655  
+# 5.0334E-04|  0.2684  -0.0708  -0.0001  -0.9607  
+# 3.6539E-03|  0.0274  -0.9963  -0.0009   0.0810  
+# 2.7613E+03|  0.0003   0.0009  -1.0000   0.0001  
+#--------------------------------------------------
+#
+#================================================
+#  Covariance Matrix
+#        1           2           3           4   
+#   2.874e-04   5.998e-04  -7.692e-01  -4.808e-06
+#   5.998e-04   5.966e-03  -2.540e+00   9.447e-05
+#  -7.692e-01  -2.540e+00   2.761e+03  -3.858e-01
+#  -4.808e-06   9.447e-05  -3.858e-01   5.450e-04
+#------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   ngrbep     alpha               -1.15579     +/-  1.69514E-02  
+#   3    2   ngrbep     beta                -2.67500     +/-  7.72377E-02  
+#   4    2   ngrbep     epeak      keV      1368.16      +/-  52.5484      
+#   5    2   ngrbep     enorm      keV      100.000      frozen
+#   6    2   ngrbep     norm                1.00000      frozen
+#                           Data group: 2
+#   7    1   constant   factor              1.15026      +/-  2.33462E-02  
+#   8    2   ngrbep     alpha               -1.15579     = p2
+#   9    2   ngrbep     beta                -2.67500     = p3
+#  10    2   ngrbep     epeak      keV      1368.16      = p4
+#  11    2   ngrbep     enorm      keV      100.000      = p5
+#  12    2   ngrbep     norm                1.00000      = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                  109.27     using 81 bins, spectrum 1, group 1.
+#                 Chi-Squared                   58.14     using 59 bins, spectrum 2, group 1.
+#                 Chi-Squared                   26.58     using 12 bins, spectrum 3, group 2.
+#Total fit statistic                           193.99     with 148 d.o.f.
+#
+#Test statistic : Chi-Squared                  193.99     using 152 bins.
+# Null hypothesis probability of 6.66e-03 with 148 degrees of freedom
+#
+!XSPEC12> err 2.706 2-4,7
+# Parameter   Confidence Range (2.706)
+#     2     -1.17336     -1.12971    (-0.0175723,0.0260811)
+#     3     -2.77332      -2.5667    (-0.098319,0.108298)
+#     4      1263.51      1436.03    (-104.645,67.8734)
+#     7      1.11251      1.18993    (-0.0377458,0.0396778)
+#
+!XSPEC12> log none
+#
