@@ -1,0 +1,52 @@
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
+#
+!XSPEC12> fit 10000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl    1:PhoIndex       2:Epeak        3:norm
+#20.8328      0.000878181   4      0.195802       881.820      0.534989
+#========================================
+# Variances and Principal Axes
+#                 1        2        3  
+# 6.4509E-05|  0.9429  -0.0002  -0.3331  
+# 6.2432E-02|  0.3331  -0.0027   0.9429  
+# 5.6453E+03|  0.0011   1.0000   0.0025  
+#----------------------------------------
+#
+#====================================
+#  Covariance Matrix
+#        1           2           3   
+#   1.375e-02   6.178e+00   3.475e-02
+#   6.178e+00   5.645e+03   1.385e+01
+#   3.475e-02   1.385e+01   8.949e-02
+#------------------------------------
+#
+#========================================================================
+#Model cutplep<1> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#   1    1   cutplep    PhoIndex            0.195802     +/-  0.117245     
+#   2    1   cutplep    Epeak      keV      881.820      +/-  75.1348      
+#   3    1   cutplep    norm                0.534989     +/-  0.299144     
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   17.31     using 20 bins, spectrum 1.
+#                 Chi-Squared                    3.53     using 5 bins, spectrum 2.
+#Total fit statistic                            20.83     with 22 d.o.f.
+#
+#Test statistic : Chi-Squared                   20.83     using 25 bins.
+# Null hypothesis probability of 5.31e-01 with 22 degrees of freedom
+#
+!XSPEC12> err 1-2
+# Parameter   Confidence Range (2.706)
+#     1  -0.00263201     0.370041    (-0.198434,0.174239)
+#
+#***Warning: Number of trials exceeded before convergence.
+#Current trial values 999.953, 1000.01
+#and delta statistic 2.03676, 3.35356
+#
+#     2      767.975      1020.06    (-113.845,138.239)
+#
+!XSPEC12> log none
+#
