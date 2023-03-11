@@ -1,0 +1,10 @@
+section 4.2.3:  indicate that the 511 and 1274.5 lines come from on-board Na22 calirbation source (a part of the 511 is also due to secondaries from cosmic protons).
+There are no references for the energy calibration.
+
+section 4.3 Spectral fitting : consider indicating where are the two model coming from : theoritical support? empirical only ? why did you chose these ones and not others.
+
+section 4.4 : "the calibration coefficient" consider renaming to "scaling coefficient" or "cross-calibration coef." or something else, because this can be confunsed with the "C" that is channel-to-energy calibration coeficient.
+
+In general the inconsistency of the C_A values is a result of your work so may not be appropriate here in the "method section" and moved to result section.
+
+The results section 5 looks very good.
