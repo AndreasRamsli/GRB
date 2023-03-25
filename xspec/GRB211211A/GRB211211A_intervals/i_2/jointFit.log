@@ -1,0 +1,102 @@
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
+#
+!XSPEC12> fit 10000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha        3:beta       4:epeak        6:norm      7:factor
+#318.54       0.00187803    2     -0.886622      -2.43155       784.260      0.570174      0.791833
+#============================================================
+# Variances and Principal Axes
+#                 2        3        4        6        7  
+# 1.4414E-05| -0.1004  -0.0434  -0.0004  -0.9925  -0.0550  
+# 5.4884E-05|  0.9856   0.0749   0.0005  -0.1088   0.1055  
+# 4.4411E-04| -0.1300   0.3084   0.0005  -0.0525   0.9409  
+# 1.0493E-03| -0.0402   0.9473   0.0006  -0.0198  -0.3172  
+# 6.0107E+02|  0.0004   0.0008  -1.0000   0.0003   0.0004  
+#------------------------------------------------------------
+#
+#============================================================
+#  Covariance Matrix
+#        1           2           3           4           5   
+#   1.647e-04   1.342e-04  -2.476e-01   7.038e-05   5.448e-05
+#   1.342e-04   1.330e-03  -4.559e-01   1.039e-04  -2.097e-05
+#  -2.476e-01  -4.559e-01   6.011e+02  -1.722e-01  -2.175e-01
+#   7.038e-05   1.039e-04  -1.722e-01   6.584e-05   4.713e-05
+#   5.448e-05  -2.097e-05  -2.175e-01   4.713e-05   5.781e-04
+#------------------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   ngrbep     alpha               -0.886622    +/-  1.28333E-02  
+#   3    2   ngrbep     beta                -2.43155     +/-  3.64685E-02  
+#   4    2   ngrbep     epeak      keV      784.260      +/-  24.5168      
+#   5    2   ngrbep     enorm      keV      100.000      frozen
+#   6    2   ngrbep     norm                0.570174     +/-  8.11398E-03  
+#                           Data group: 2
+#   7    1   constant   factor              0.791833     +/-  2.40436E-02  
+#   8    2   ngrbep     alpha               -0.886622    = p2
+#   9    2   ngrbep     beta                -2.43155     = p3
+#  10    2   ngrbep     epeak      keV      784.260      = p4
+#  11    2   ngrbep     enorm      keV      100.000      = p5
+#  12    2   ngrbep     norm                0.570174     = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                  145.04     using 100 bins, spectrum 1, group 1.
+#                 Chi-Squared                  138.25     using 63 bins, spectrum 2, group 1.
+#                 Chi-Squared                   35.25     using 15 bins, spectrum 3, group 2.
+#Total fit statistic                           318.54     with 173 d.o.f.
+#
+#Test statistic : Chi-Squared                  318.54     using 178 bins.
+# Null hypothesis probability of 1.06e-10 with 173 degrees of freedom
+#
+!XSPEC12> err 2-4,7
+# Parameter   Confidence Range (2.706)
+#     2    -0.909733    -0.862622    (-0.0231104,0.0240003)
+#     3     -2.50047     -2.37025    (-0.0689166,0.0613074)
+#     4      735.283      835.543    (-48.977,51.2833)
+#     7      0.75208     0.833096    (-0.0397527,0.0412625)
+#
+!XSPEC12> show da
+#
+#3 files 3 spectra 
+#Spectrum 1  Spectral Data File: FERMI_GRB211211A_2_n2_gr20.pha
+#Net count rate (cts/s) for Spectrum:1  1.641e+04 +/- 1.298e+02 (94.7 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  2-19,31-112
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 1.03 sec
+# Using fit statistic: chi
+# Using Background File                FERMI_GRB211211A_2_n2.bak
+#  Background Exposure Time: 1.03 sec
+# Using Response (RMF) File            FERMI_GRB211211A_2_n2.rsp for Source 1
+#
+#Spectrum 2  Spectral Data File: FERMI_GRB211211A_2_b0_gr20.pha
+#Net count rate (cts/s) for Spectrum:2  5.716e+03 +/- 8.169e+01 (81.8 % total)
+# Assigned to Data Group 1 and Plot Group 2
+#  Noticed Channels:  2-64
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 1.05 sec
+# Using fit statistic: chi
+# Using Background File                FERMI_GRB211211A_2_b0.bak
+#  Background Exposure Time: 0.9713 sec
+# Using Response (RMF) File            FERMI_GRB211211A_2_b0.rsp for Source 1
+#
+#Spectrum 3  Spectral Data File: HED_GRB211211A_2_gr20.pha
+#Net count rate (cts/s) for Spectrum:3  3.626e+03 +/- 9.457e+01 (50.5 % total)
+# Assigned to Data Group 2 and Plot Group 3
+#  Noticed Channels:  5-19
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 1 sec
+# Using fit statistic: chi
+# Using Background File                HED_GRB211211A.bak
+#  Background Exposure Time: 2.01 sec
+# Using Response (RMF) File            HED_GRB211211A_2.rsp for Source 1
+#
+#
+!XSPEC12> log none
+#
