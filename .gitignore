@@ -2,3 +2,4 @@
 *.swp
 *.DS_Store
 .jupyter/*
+*.jupyter/desktop-workspaces/default-37a8.jupyterlab-workspace
