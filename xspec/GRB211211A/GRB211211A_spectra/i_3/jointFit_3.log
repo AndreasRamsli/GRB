@@ -1,0 +1,177 @@
+#XSPEC version: 12.13.0c
+#Build Date/Time: Thu Jan 12 14:41:02 2023
+#
+!XSPEC12> show da
+#
+#4 files 4 spectra 
+#Spectrum 1  Spectral Data File: FERMI_GRB211211A_na_3_gr20.pha
+#Net count rate (cts/s) for Spectrum:1  2.040e+04 +/- 2.653e+02 (97.9 % total)
+# Assigned to Data Group 1 and Plot Group 1
+#  Noticed Channels:  29-109
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.2964 sec
+# Using fit statistic: chi
+# Using Background File                FERMI_GRB211211A_na.bak
+#  Background Exposure Time: 0.3571 sec
+# Using Response (RMF) File            FERMI_GRB211211A_na.rsp for Source 1
+#
+#Spectrum 2  Spectral Data File: FERMI_GRB211211A_n2_3_gr20.pha
+#Net count rate (cts/s) for Spectrum:2  2.651e+04 +/- 3.050e+02 (98.3 % total)
+# Assigned to Data Group 1 and Plot Group 2
+#  Noticed Channels:  28-108
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.29 sec
+# Using fit statistic: chi
+# Using Background File                FERMI_GRB211211A_n2.bak
+#  Background Exposure Time: 0.3499 sec
+# Using Response (RMF) File            FERMI_GRB211211A_n2.rsp for Source 1
+#
+#Spectrum 3  Spectral Data File: FERMI_GRB211211A_b0_3_gr20.pha
+#Net count rate (cts/s) for Spectrum:3  1.432e+04 +/- 2.289e+02 (92.0 % total)
+# Assigned to Data Group 1 and Plot Group 3
+#  Noticed Channels:  6-59
+#  Telescope: GLAST Instrument: GBM  Channel Type: PHA
+#  Exposure Time: 0.2973 sec
+# Using fit statistic: chi
+# Using Background File                FERMI_GRB211211A_b0.bak
+#  Background Exposure Time: 0.3586 sec
+# Using Response (RMF) File            FERMI_GRB211211A_b0.rsp for Source 1
+#
+#Spectrum 4  Spectral Data File: HED_GRB211211A_3_gr20.pha
+#Net count rate (cts/s) for Spectrum:4  4.510e+03 +/- 1.517e+02 (60.6 % total)
+# Assigned to Data Group 2 and Plot Group 4
+#  Noticed Channels:  6-16
+#  Telescope: ASIM Instrument: MXGS: HED  Channel Type: PI
+#  Exposure Time: 0.384 sec
+# Using fit statistic: chi
+# Using Background File                HED_GRB211211A.bak
+#  Background Exposure Time: 0.8 sec
+# Using Response (RMF) File            HED_GRB211211A_3.rsp for Source 1
+#
+#
+!XSPEC12> fit 1000
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha        3:beta       4:epeak        6:norm      7:factor
+#333.213      3.6974        3      -1.04096      -2.84924       1559.58      0.996361      0.446654
+#============================================================
+# Variances and Principal Axes
+#                 2        3        4        6        7  
+# 3.3257E-05|  0.6926   0.0146   0.0002   0.7058   0.1484  
+# 1.5629E-04|  0.6223   0.0158   0.0001  -0.6890   0.3711  
+# 2.7474E-04|  0.3645  -0.0137  -0.0000  -0.1647  -0.9164  
+# 1.4911E-02| -0.0150   0.9997   0.0013  -0.0016  -0.0206  
+# 4.8745E+03|  0.0002   0.0013  -1.0000   0.0001   0.0001  
+#------------------------------------------------------------
+#
+#============================================================
+#  Covariance Matrix
+#        1           2           3           4           5   
+#   2.832e-04   9.702e-04  -9.020e-01  -1.236e-05   2.362e-05
+#   9.702e-04   2.343e-02  -6.447e+00   3.645e-04   2.073e-04
+#  -9.020e-01  -6.447e+00   4.874e+03  -2.947e-01  -3.852e-01
+#  -1.236e-05   3.645e-04  -2.947e-01   1.161e-04   2.878e-05
+#   2.362e-05   2.073e-04  -3.852e-01   2.878e-05   2.897e-04
+#------------------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   ngrbep     alpha               -1.04096     +/-  1.68295E-02  
+#   3    2   ngrbep     beta                -2.84924     +/-  0.153065     
+#   4    2   ngrbep     epeak      keV      1559.58      +/-  69.8175      
+#   5    2   ngrbep     enorm      keV      100.000      frozen
+#   6    2   ngrbep     norm                0.996361     +/-  1.07738E-02  
+#                           Data group: 2
+#   7    1   constant   factor              0.446654     +/-  1.70217E-02  
+#   8    2   ngrbep     alpha               -1.04096     = p2
+#   9    2   ngrbep     beta                -2.84924     = p3
+#  10    2   ngrbep     epeak      keV      1559.58      = p4
+#  11    2   ngrbep     enorm      keV      100.000      = p5
+#  12    2   ngrbep     norm                0.996361     = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   96.11     using 81 bins, spectrum 1, group 1.
+#                 Chi-Squared                  146.51     using 81 bins, spectrum 2, group 1.
+#                 Chi-Squared                   81.59     using 54 bins, spectrum 3, group 1.
+#                 Chi-Squared                    9.01     using 11 bins, spectrum 4, group 2.
+#Total fit statistic                           333.21     with 222 d.o.f.
+#
+#Test statistic : Chi-Squared                  333.21     using 227 bins.
+# Null hypothesis probability of 1.92e-06 with 222 degrees of freedom
+#
+!XSPEC12> err 2-4
+# Parameter   Confidence Range (2.706)
+#     2     -1.06403     -1.02395    (-0.023068,0.0170046)
+#     3     -3.14543     -2.68284    (-0.296191,0.166407)
+#***Warning: Zero alpha-matrix diagonal element for parameter 3
+# Parameter 3 is pegged at -8.75331 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#***Warning: Zero alpha-matrix diagonal element for parameter 3
+# Parameter 3 is pegged at -8.82607 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#                                   Parameters
+#Chi-Squared  |beta|/N    Lvl       2:alpha        3:beta       4:epeak        6:norm      7:factor
+#332.906      0.144682      3      -1.04907      -2.90942       1595.89      0.995249      0.443126
+#============================================================
+# Variances and Principal Axes
+#                 2        3        4        6        7  
+# 3.2971E-05|  0.6964   0.0097   0.0002   0.7021   0.1485  
+# 1.5464E-04|  0.6201   0.0062   0.0001  -0.6929   0.3679  
+# 2.7173E-04|  0.3611   0.0064  -0.0000  -0.1641  -0.9179  
+# 1.8453E-02| -0.0129   0.9999   0.0012  -0.0014   0.0021  
+# 4.2585E+03|  0.0002   0.0012  -1.0000   0.0001   0.0001  
+#------------------------------------------------------------
+#
+#============================================================
+#  Covariance Matrix
+#        1           2           3           4           5   
+#   2.516e-04   7.076e-04  -7.656e-01  -2.211e-05   2.809e-05
+#   7.076e-04   2.492e-02  -5.251e+00   2.747e-04   5.869e-04
+#  -7.656e-01  -5.251e+00   4.258e+03  -2.446e-01  -4.449e-01
+#  -2.211e-05   2.747e-04  -2.446e-01   1.119e-04   3.046e-05
+#   2.809e-05   5.869e-04  -4.449e-01   3.046e-05   2.972e-04
+#------------------------------------------------------------
+#
+#========================================================================
+#Model constant<1>*ngrbep<2> Source No.: 1   Active/On
+#Model Model Component  Parameter  Unit     Value
+# par  comp
+#                           Data group: 1
+#   1    1   constant   factor              1.00000      frozen
+#   2    2   ngrbep     alpha               -1.04907     +/-  1.58622E-02  
+#   3    2   ngrbep     beta                -2.90942     +/-  0.157875     
+#   4    2   ngrbep     epeak      keV      1595.89      +/-  65.2569      
+#   5    2   ngrbep     enorm      keV      100.000      frozen
+#   6    2   ngrbep     norm                0.995249     +/-  1.05786E-02  
+#                           Data group: 2
+#   7    1   constant   factor              0.443126     +/-  1.72391E-02  
+#   8    2   ngrbep     alpha               -1.04907     = p2
+#   9    2   ngrbep     beta                -2.90942     = p3
+#  10    2   ngrbep     epeak      keV      1595.89      = p4
+#  11    2   ngrbep     enorm      keV      100.000      = p5
+#  12    2   ngrbep     norm                0.995249     = p6
+#________________________________________________________________________
+#
+#
+#Fit statistic  : Chi-Squared                   96.38     using 81 bins, spectrum 1, group 1.
+#                 Chi-Squared                  146.81     using 81 bins, spectrum 2, group 1.
+#                 Chi-Squared                   80.70     using 54 bins, spectrum 3, group 1.
+#                 Chi-Squared                    9.02     using 11 bins, spectrum 4, group 2.
+#Total fit statistic                           332.91     with 222 d.o.f.
+#
+#Test statistic : Chi-Squared                  332.91     using 227 bins.
+# Null hypothesis probability of 2.03e-06 with 222 degrees of freedom
+#***Warning: New best fit found, fit parameters will be set to new values.
+#     2     -1.06799      -1.0294    (-0.0189191,0.0196676)
+#     3     -3.20359      -2.7119    (-0.29417,0.197527)
+#***Warning: Zero alpha-matrix diagonal element for parameter 3
+# Parameter 3 is pegged at -9.11465 due to zero or negative pivot element, likely
+# caused by the fit being insensitive to the parameter.
+#     4      1479.01      1702.89    (-116.722,107.166)
+#
+!XSPEC12> log none
+#
