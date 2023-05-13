@@ -1,0 +1,17 @@
+digraph GRB_Detection_and_Data_Sources {
+	graph [bgcolor=white pad=0.5 rankdir=TB size="8,5"]
+	A [label="GRB Detection
+and Location" fillcolor=white fontcolor=black fontsize=12 shape=ellipse style=filled]
+	B [label=IPN fillcolor=white fontcolor=black fontsize=12 shape=box style=filled]
+	C [label=GRBweb fillcolor=white fontcolor=black fontsize=12 shape=box style=filled]
+	D [label="GCN Archive" fillcolor=white fontcolor=black fontsize=12 shape=box style=filled]
+	E [label="ASIM Data" fillcolor=white fontcolor=black fontsize=12 shape=box style=filled]
+	F [label="Konus-WIND Data" fillcolor=white fontcolor=black fontsize=12 shape=box style=filled]
+	G [label="Fermi/GBM Data" fillcolor=white fontcolor=black fontsize=12 shape=box style=filled]
+	B -> A
+	C -> A
+	D -> A
+	E -> A
+	F -> A
+	G -> A
+}
