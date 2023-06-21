@@ -3,7 +3,7 @@ function CDF_GUI();
 % This GUI shows list of cdf files in subfolders.
 
 %addpath /Users/andreas/phys/master/GRB/MATLAB/david_sarria/NASA_CDF_PATCH
-addpath /Users/andreas/phys/master/GRB/MATLAB/matlab_cdf390_patch-64/
+addpath /Users/andreas/phys/master/GRB/MATLAB/david_sarria/NASA_CDF_PATCH/
 
 T0 = datetime(datevec(datenum(0, 1, 1, 0, 0, 0)));  % reference time
 
@@ -29,8 +29,8 @@ tab3 = uitab(tabgp, 'Title', 'Export Selected Variables');
 
 
 % global vars --------
-%TargetDir = '/scratch/ASDC/net/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/';
-TargetDir = '/Volumes/ift_asdc/bulktransfer2/ops/'
+TargetDir = '/scratch/ASDC/net/felles3.uib.no/vol/ift_asdc/bulktransfer2/ops/';
+%TargetDir = '/Volumes/ift_asdc/bulktransfer2/ops/'
 f_ToShow = {};
 %---------------------
 
