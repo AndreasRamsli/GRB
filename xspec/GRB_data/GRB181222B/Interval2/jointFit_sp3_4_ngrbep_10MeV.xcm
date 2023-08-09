@@ -1,0 +1,38 @@
+statistic chi
+data 1:1 KW_1_sp3_4_gr20.pha
+
+data 1:2 KW_2_sp3_4_gr20.pha
+
+data 2:3 FERMI_GRB181222B_n4_sp3_4_gr20.pha
+
+data 2:4 FERMI_GRB181222B_b0_sp3_4_gr20.pha
+
+data 3:5 HED_GRB181222B_sp3_4_gr20.pha
+ignore 1:45-58 2:1,13-41 3:1-2,99 4:1-5,29 5:1-3,17-26
+
+method leven 1000 0.01
+abund angr
+xsect vern
+cosmo 70 0 0.73
+xset delta 0.01
+systematic 0
+model  constant*ngrbep
+              1      -0.01          0          0      1e+10      1e+10
+      -0.118333       0.01        -10         -3          2          5
+       -4.14227       0.01        -10         -5          2         10
+        429.287         10        0.1        0.1       1000      10000
+            100      -0.01          0          0       1000       1000
+        2.36314       0.01          0          0      1e+20      1e+24
+        1.12016       0.01          0          0      1e+10      1e+10
+= p2
+= p3
+= p4
+= p5
+= p6
+       0.853687       0.01          0          0      1e+10      1e+10
+= p2
+= p3
+= p4
+= p5
+= p6
+bayes off

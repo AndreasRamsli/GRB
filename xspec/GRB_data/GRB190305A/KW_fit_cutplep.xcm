@@ -1,0 +1,17 @@
+statistic chi
+data 1:1 KW_1_gr20.pha
+
+data 1:2 KW_2_gr20.pha
+ignore 1:45-57 2:1,22-28
+
+method leven 1000 0.01
+abund angr
+xsect vern
+cosmo 70 0 0.73
+xset delta 0.01
+systematic 0
+model  cutplep
+       0.314369       0.01         -3         -2          9         10
+        486.871       0.01       0.01          1       1000      10000
+        7.29496       0.01          0          0      1e+20      1e+24
+bayes off
